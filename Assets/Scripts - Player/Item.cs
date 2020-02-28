@@ -12,8 +12,13 @@ public class Item : ScriptableObject
     //public Sprite sprite? for the actual sprite render in the game?
     public bool isDefaultItem = false;
 
-    public virtual void Equip()
+    public virtual void Use(){}
+    public virtual void Attack(){}
+
+    public void RemoveFromInventory()
     {
-        Debug.Log("Equipping " + name);   
+        //removes the item that was used from the inventory
+        Inventory.instance.Remove(this);
     }
 }
+

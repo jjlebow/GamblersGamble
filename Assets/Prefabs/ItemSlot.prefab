@@ -100,7 +100,7 @@ RectTransform:
   m_GameObject: {fileID: 6618795256071162563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25730208, y: 1.2199719, z: 0.25730208}
+  m_LocalScale: {x: 0.5173573, y: 2.4529974, z: 0.5173573}
   m_Children:
   - {fileID: 6660606278004782992}
   m_Father: {fileID: 5029375487455533253}
@@ -161,7 +161,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7555033601907133480}
+        m_MethodName: UseItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8197791023660082638
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,4 +305,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 4563908945499421132}
-  image: {fileID: 0}
