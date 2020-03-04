@@ -21,7 +21,7 @@ public class EquipManager : MonoBehaviour
 
     #endregion
 
-    Equippable[] currentEquipment;  //unserialize this when testing is done
+    public Equippable[] currentEquipment;  //unserialize this when testing is done
 
     public delegate void OnEquipmentChanged(Equippable newItem, Equippable oldItem);
     public OnEquipmentChanged onEquipmentChanged;
@@ -35,6 +35,10 @@ public class EquipManager : MonoBehaviour
         int numSlots = System.Enum.GetNames(typeof(EquipType)).Length;
         currentEquipment = new Equippable[numSlots];  //this represents what the player currently has equipped
         inventory = Inventory.instance;
+        //if(currentEquipment[(int)System.Enum.equipType.ARM] == null)
+        //{
+            //Debug.Log("we are here");
+        //}
     }
 
     public void Equip(Equippable newItem)

@@ -1599,6 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60d41b67c7897b4abd2fe879acea366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEquipment: []
 --- !u!4 &939189354
 Transform:
   m_ObjectHideFlags: 0
@@ -1921,7 +1922,7 @@ GameObject:
   - component: {fileID: 1068324071}
   - component: {fileID: 1068324070}
   m_Layer: 0
-  m_Name: Plasma Sword
+  m_Name: Rapier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1940,7 +1941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 839735391}
-  item: {fileID: 11400000, guid: a086e0ff662b54e4f9994279e78002f6, type: 2}
+  item: {fileID: 3928588082792041359, guid: 7fe379dc5fd22584594e544740cb0922, type: 3}
 --- !u!50 &1068324071
 Rigidbody2D:
   serializedVersion: 4

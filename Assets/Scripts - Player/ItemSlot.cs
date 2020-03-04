@@ -24,13 +24,13 @@ public class ItemSlot : MonoBehaviour
         icon.enabled = false;
     }
 
-    public void UseItem()
+    public void EquipItem()
     {
         Debug.Log("here");
         if(item != null) 
         {
             Debug.Log("here2");
-            item.Use();
+            item.Equip();
         }
     }
 }

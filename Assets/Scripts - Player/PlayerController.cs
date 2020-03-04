@@ -30,11 +30,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Rigidbody2D m_Rigidbody2D;
     //determines whether the player is facing right or not
     
-    
+    EquipType equipType;
 
     
 
-    
+
     
 
 
@@ -75,7 +75,10 @@ public class PlayerController : MonoBehaviour
         //landedEvent += playerMove.DashReset;
         
         
+        
     }
+
+    
 
     private void Update()
     {
