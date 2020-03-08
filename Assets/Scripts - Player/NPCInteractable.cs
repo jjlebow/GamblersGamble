@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NPCInteractable : MonoBehaviour
+public class NPCInteractable : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+
+    protected override void Interact()
     {
-        
+        if(canInteract && Input.GetKeyDown(KeyCode.E))
+        {
+            DialogueManager.instance.LoadDialogue("Dialogue", this.name, "AUTUMN 1 TRUE END");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

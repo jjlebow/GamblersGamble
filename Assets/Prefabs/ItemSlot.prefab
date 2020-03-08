@@ -163,7 +163,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7555033601907133480}
-        m_MethodName: UseItem
+        m_MethodName: EquipItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
