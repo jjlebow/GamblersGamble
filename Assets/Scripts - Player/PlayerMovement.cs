@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         availJumps = extraJumps;
         
     }
-
+    /*
     void FixedUpdate()
     {
         if(!StateManager.instance.playerGrounded)
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             Move(horizontal * Time.fixedDeltaTime);
             StateManager.instance.jump = false;
         }
-    }
+    }*/
 
 //try to find a better solution to the problem of spamming spacebar makes the player float a bit
     private IEnumerator JumpTimer()
@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
             }*/
 
             //can only control the player if grounded or airControl is on
-            if(StateManager.instance.playerGrounded || controller.airControl)
+            if(true)//StateManager.instance.playerGrounded)// || controller.airControl)
             {
                 /*
                 if(crouch)

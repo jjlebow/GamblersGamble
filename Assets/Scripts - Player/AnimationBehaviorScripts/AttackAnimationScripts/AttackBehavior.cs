@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeutralAttackBehavior : StateMachineBehaviour
+public class AttackBehavior : StateMachineBehaviour
 {
     private PlayerAttack playerAttacker;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -10,25 +10,25 @@ public class NeutralAttackBehavior : StateMachineBehaviour
     {
         if(playerAttacker == null)
             playerAttacker = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();   
-        if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
-            StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
+        //if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
+            //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
         playerAttacker.attackTriggerNeutral.SetActive(true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(Input.GetKey(KeyCode.K) && !StateManager.instance.stance)
-        {
-            StateManager.instance.attackContinue = true;
-        }
+        //if(Input.GetKey(KeyCode.K) && !StateManager.instance.stance)
+        //{
+            //StateManager.instance.attackContinue = true;
+        //}
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerAttacker.attackTriggerNeutral.SetActive(false);
-        StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
+        //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

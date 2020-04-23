@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeutralAttackEndBehavior : StateMachineBehaviour
+public class AttackStart : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        ////StateManager.instance.attackInitiate = false;
+        ////Debug.Log("we have entered this part");
+        ////StateManager.instance.isAttacking = true;
+        //StateManager.instance.attackContinue = false;
+        //if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
+            //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
+        StateManager.instance.isActive = true;
+    }
+
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
     //    
     //}
 
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        if(Input.GetKey(KeyCode.K))
-        {
-            StateManager.instance.attackContinue = true;
-        }
-    }
-
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(StateManager.instance.attackContinue == false)
-            StateManager.instance.attackCooldown = false;
+        //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
+        //StateManager.instance.attackInitiate = false;    
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

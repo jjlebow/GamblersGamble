@@ -7,19 +7,29 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    [HideInInspector] public Animator playerAnim;
+
+    //[HideInInspector] public Animator playerAnim;
 
     //initialized private variables that can be edited in the editor
     //[Range(0,1)] [SerializeField] private float crouchSpeed = .36f;
     
-    public bool airControl = false;
-    [SerializeField] public LayerMask whatIsGround;
+    //public bool airControl = false;
+    //[SerializeField] public LayerMask whatIsGround;
     [SerializeField] public Transform groundCheck;
     [SerializeField] public Transform ceilingCheck;
-    [SerializeField] public Collider2D crouchDisableCollider;
+    //[SerializeField] public Collider2D crouchDisableCollider;
 
     public delegate void LandedDelegate();
     public event LandedDelegate landedEvent;
+
+    //Jump variables
+    [SerializeField] private float gravityScale = 1f;
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpTimer = 0.5f;
+    private bool jumpPressed = false;
+    private bool jumpReleased = false;
+    private bool startTimer = false;
+    private float timer;
 
     
 
@@ -28,9 +38,18 @@ public class PlayerController : MonoBehaviour
     //radius of the circle that determinds if the player is touching a ceiling or not
     const float ceilingRadius = 0.2f;
     [HideInInspector] public Rigidbody2D m_Rigidbody2D;
+    //public Rigidbody2D leg_Rigidbody2D;
     //determines whether the player is facing right or not
     
     EquipType equipType;
+    [Range(0, 0.3f)][SerializeField] private float movementSmoothing = 0.05f;
+    private Vector3 m_velocity = Vector3.zero;
+    private float horizontal = 0f;
+    public float runningSpeed = 20f;
+
+    //this adjusts the length for the raycast that recognizes if grounded or not
+    private float raycastMaxDistance = 0.32f; //this needs to change if you change the size of the player
+    private Vector2 direction = new Vector2(0,-1);
 
     
 
@@ -44,8 +63,7 @@ public class PlayerController : MonoBehaviour
     private float timeBtwDamage = 1.5f; //this is the cooldown between which the player can take damage
     
     
-    public int health;
-    public Slider healthBar;
+    
 
     private PlayerAttack playerAttacker;
     private PlayerMovement playerMove;
@@ -63,18 +81,26 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        playerAttacker = GetComponent<PlayerAttack>();
-        playerMove = GetComponent<PlayerMovement>();
-        playerAnim = GetComponent<Animator>();
+        //playerAttacker = GetComponent<PlayerAttack>();
+        //playerMove = GetComponent<PlayerMovement>();
+        //playerAnim = GetComponent<Animator>();
         
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        timer = jumpTimer;
+
+        //fsm = StateManager.instance.fsm;
         
-        landedEvent += playerAttacker.attackCancel;
-        landedEvent += playerMove.jumpReset;
-        landedEvent += landingAnimation;
-        //landedEvent += playerMove.DashReset;
+        //landedEvent += playerAttacker.attackCancel;
+        //landedEvent += playerMove.jumpReset;
+        //landedEvent += landingAnimation;
+        ////landedEvent += playerMove.DashReset;
         
         
+        
+    }
+
+    public void Start()
+    {
         
     }
 
@@ -82,22 +108,45 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(health <= 0)
-        {
-            StateManager.instance.playerState = StateManager.PlayerStates.DEAD;
-        }
-        healthBar.value = health;
 
-        if(StateManager.instance.playerState != StateManager.PlayerStates.HOLD)
+        //if(health <= 0)
+        //{
+            //StateManager.instance.playerState = StateManager.PlayerStates.DEAD;
+        //}
+        
+
+        //if(StateManager.instance.playerState != StateManager.PlayerStates.HOLD)
+        //{
+            //if(playerMove.horizontal != 0 && StateManager.instance.playerGrounded)
+                //StateManager.instance.playerState = StateManager.PlayerStates.MOVING;
+            //else if(playerMove.horizontal == 0 && StateManager.instance.playerGrounded)
+                //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
+        //}
+        if(Input.GetKey(KeyCode.K) && StateManager.instance.isActive == false)
         {
-            if(playerMove.horizontal != 0 && StateManager.instance.playerGrounded)
-                StateManager.instance.playerState = StateManager.PlayerStates.MOVING;
-            else if(playerMove.horizontal == 0 && StateManager.instance.playerGrounded)
-                StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
+            CheckKeyK();
         }
 
+        if(Input.GetButtonDown("Jump"))
+        {
+            jumpPressed = true;
+        }
+        if(Input.GetButtonUp("Jump"))
+        {
+            jumpReleased = true;
+        }
+        if(startTimer) 
+        {
+            timer -= Time.deltaTime;
+            if(timer <= 0) 
+            {
+                jumpReleased = true;
+            } 
+        }
+        
         //this chain of if statements is used to determine which direction the attack is used in. GetKey is used instead so that we can read 
         //multiple inputs at once
+        /*
         if(Input.GetAxisRaw("Vertical") < 0)
         {
             StateManager.instance.directionalFacing = StateManager.Directional.DOWN;
@@ -115,7 +164,10 @@ public class PlayerController : MonoBehaviour
             StateManager.instance.switchStance = true;
             StateManager.instance.isStanceChanging = true;
         }
+        */
 
+
+        /*
         if(!StateManager.instance.attackCooldown && Input.GetKey(KeyCode.K) && StateManager.instance.playerState != StateManager.PlayerStates.HOLD)
             playerAttacker.Attack();
 
@@ -149,7 +201,7 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetBool("Walking", true);
         else
             playerAnim.SetBool("Walking", false);
-
+        /*
         playerAnim.SetBool("Attacking", StateManager.instance.isAttacking);
         playerAnim.SetBool("attackCooldown", StateManager.instance.attackCooldown);        
         playerAnim.SetBool("Grounded", StateManager.instance.playerGrounded);
@@ -166,9 +218,73 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetBool("WalkBackwards", true);
         else
             playerAnim.SetBool("WalkBackwards", false);
-
+        */
         //anim.SetBool("Landing", false);    //ensures that landing animation is not true for any frame past the frame that the character lands
     }
+
+    private void FixedUpdate()
+    {
+        RaycastCheckUpdateGround();
+        horizontal = Input.GetAxisRaw("Horizontal") * runningSpeed;
+        //add a grounded check to this when you get that working
+        if(horizontal == 0)
+            StateManager.instance.walking = false;
+        else
+            StateManager.instance.walking = true;
+
+        if(jumpPressed)
+            StartJump();
+        if(jumpReleased)
+            StopJump();
+
+        Move(horizontal * Time.fixedDeltaTime);
+    }
+
+
+    public void Attack()
+    {
+        StateManager.instance.isActive = true;
+    }
+
+
+    //try to make a different function for each key that will do different stuff
+    //based on what keystroke each card is stored under. 
+    private void CheckKeyK()
+    {
+        //for now i am just going to access the first card in the hand, but in the future,
+        //try to access cards specific to this key
+        for(int i = 0; i < Deck.instance.handCards.Length; i++)
+        {
+            if(Deck.instance.handCards[i].card != null)
+            {
+                Debug.Log("clearing the slot " + i);
+                this.SendMessage(Deck.instance.handCards[i].card.name);
+                Deck.instance.handCards[i].ClearSlot();
+                break;
+            }
+            //else 
+                //Debug.Log("nothing is equipped there");
+        }
+    }
+
+
+    private void StartJump()
+    {
+        m_Rigidbody2D.gravityScale = 0;
+        m_Rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        jumpPressed = false;
+        startTimer = true;
+    }
+
+    private void StopJump()
+    {
+        m_Rigidbody2D.gravityScale = gravityScale;
+        jumpReleased = false;
+        timer = jumpTimer;
+        startTimer = false;
+    }
+
+
 
     private void landingAnimation()
     {
@@ -184,7 +300,93 @@ public class PlayerController : MonoBehaviour
     }
 
     
+    public void Move(float move)
+    {
+        //if(!inCooldown)
+        //{
+            /*
+            if(!crouch)
+            {
+                if(Physics2D.OverlapCircle(ceilingCheck.position, ceilingRadius, whatIsGround))
+                {
+                    crouch = true;
+                }
+            }*/
+            Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
+            m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_velocity, movementSmoothing);
+            //can only control the player if grounded or airControl is on
+            //if the input is moving the player to the right and the player is facing left
+            if(move > 0 && !StateManager.instance.faceRight)
+            {
+                Flip();
+                //StateManager.instance.faceRight = true;
+            }
+            else if(move < 0 && StateManager.instance.faceRight)
+            {
+                Flip();
+                //StateManager.instance.faceRight = false;
+            }
+            
+                /*
+                if(crouch)
+                {
+                    if(!wasCrouching)
+                    {
+                        wasCrouching = true;
+                        //OnCrouchEvent.Invoke(true);
+                    }
 
+                    //Reduce speed my the crouchSpeed multiplier
+                    move *= crouchSpeed;
+
+                    if(crouchDisableCollider != null)
+                        crouchDisableCollider.enabled = false;
+                }
+                else
+                {
+                    if(crouchDisableCollider != null)
+                        crouchDisableCollider.enabled = true;
+
+                    if(wasCrouching)
+                    {
+                        wasCrouching = false;
+                        //OnCrouchEvent.Invoke(false);
+                    }
+                }*/
+                
+            
+            //This is called when the player jumps and they are grounded
+            //if(StateManager.instance.playerGrounded && StateManager.instance.jump)
+            //{
+                //StateManager.instance.isJumping = true;
+                //jumpTimeCounter = jumpTime;
+                //Jump(jumpForce);
+            //}
+            //this is called when the player is not grounded but still has 
+            //available jumps(double jump)
+            
+            //else if(!StateManager.instance.playerGrounded && StateManager.instance.jump && availJumps > 0)
+            //{
+                //StateManager.instance.isJumping = true;
+                //jumpTimeCounter = jumpTime;        
+                //controller.m_Rigidbody2D.velocity = new Vector3(controller.m_Rigidbody2D.velocity.x,0,0);
+                //Jump((float)(jumpForce * 2));    //more force to the double jump to counterbalance the negative velocity
+                //--availJumps;
+            //}
+            //This is when the jump button is being held down
+            //if(StateManager.instance.isJumping)
+            //{
+                //This confirms that the timer for the jump does not exceed
+                //if(jumpTimeCounter > 0)
+                //{
+                    //Jump(jumpForce);
+                    //jumpTimeCounter -= Time.deltaTime;
+                //}
+                //else
+                    //StateManager.instance.isJumping = false;
+            //}
+        //}
+    }
     
 
     
@@ -221,6 +423,19 @@ public class PlayerController : MonoBehaviour
     }
     */
 
+    private void Flip()
+    {
+        if(!StateManager.instance.attacking) //&& !StateManager.instance.stance)
+        {
+            //switches the way the player is facing
+            StateManager.instance.faceRight = !StateManager.instance.faceRight;
+            //multiplies the players x local scale by -1
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
+    }
+
     
 
     //this includes the knockback but want to edit it to make the knockback move slower
@@ -245,7 +460,7 @@ public class PlayerController : MonoBehaviour
         //knockbackDirLeft = new Vector3(transform.position.x + 12, transform.position.y + 10, transform.position.z);
         StartCoroutine(KnockbackTimer());
         StartCoroutine(DamageTimer());
-        health -= damage;
+        Manager.instance.health -= damage;
     }
 
     //determines how long the player will be in the knockback phase
@@ -275,6 +490,32 @@ public class PlayerController : MonoBehaviour
             yield return null;
         }
         StateManager.instance.cantDamage = false;
+    }
+
+    //this is for creating the raycast given a direction, and returning that raycast
+    private RaycastHit2D CheckRaycastGround(Vector2 direction)
+    {
+        Vector2 startingPosition = new Vector2(transform.position.x, transform.position.y);// + directionOriginOffset);
+        //Debug.DrawRay(startingPosition,direction, Color.red, raycastMaxDistance); //this is not accurate
+        //the final argument is a layer mask telling the raycast to only pay attention to layer 10 (ground)
+        
+        return Physics2D.Raycast(startingPosition, direction, raycastMaxDistance, 1 << 10);
+    }
+
+    //This function is called in fixed update and constantly checks to see if there is ground
+    private void RaycastCheckUpdateGround()
+    {
+        RaycastHit2D hit = CheckRaycastGround(direction);
+        //Debug.DrawRay(transform.position, direction, Color.red);
+        if(hit.collider)// && StateManager.instance.grounded == false)
+        {
+            StateManager.instance.grounded = true;
+            //controller.TriggerLandEvent();
+        }
+        else if(!hit.collider)
+        {
+            StateManager.instance.grounded = false;
+        }
     }
 }
 

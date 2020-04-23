@@ -75,12 +75,12 @@ public class PlayerAttack : MonoBehaviour
         if(StateManager.instance.directionalFacing == StateManager.Directional.UP)
         {
             //attackTriggerUp.SetActive(true);
-            player.playerAnim.SetInteger("attackDirection", 3);
+            //player.playerAnim.SetInteger("attackDirection", 3);
             StartCoroutine(attackCooldownCoroutine);
         }
         else if(StateManager.instance.directionalFacing == StateManager.Directional.DOWN && !StateManager.instance.playerGrounded)
         {
-            player.playerAnim.SetInteger("attackDirection", 2);
+            //player.playerAnim.SetInteger("attackDirection", 2);
             StartCoroutine(attackCooldownCoroutine);
             //attackTriggerDown.SetActive(true);
             
@@ -92,7 +92,7 @@ public class PlayerAttack : MonoBehaviour
         else if(StateManager.instance.directionalFacing == StateManager.Directional.NEUTRAL)
         {
             //Debug.Log("AND HERE");
-            player.playerAnim.SetInteger("attackDirection", 1);
+            //player.playerAnim.SetInteger("attackDirection", 1);
             StartCoroutine(attackCooldownCoroutine);
             //attackTriggerNeutral.SetActive(true);
             
