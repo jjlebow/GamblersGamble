@@ -101,7 +101,7 @@ public class Manager : MonoBehaviour
     {
         for(int i = 0; i < Deck.instance.handCards.Length; i++)
         {
-            if(Deck.instance.handCards[i].cards != null)
+            if(Deck.instance.handCards[i].card != null)
             {
                 Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
                 Deck.instance.handCards[i].ClearSlot();

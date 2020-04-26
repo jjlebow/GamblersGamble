@@ -257,8 +257,8 @@ public class PlayerController : MonoBehaviour
         {
             if(Deck.instance.handCards[i].card != null)
             {
-                Debug.Log("clearing the slot " + i);
                 this.SendMessage(Deck.instance.handCards[i].card.name);
+                Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
                 Deck.instance.handCards[i].ClearSlot();
                 break;
             }
