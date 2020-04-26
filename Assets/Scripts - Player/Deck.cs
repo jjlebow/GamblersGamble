@@ -65,19 +65,20 @@ public class Deck : MonoBehaviour
 
     //}
 
-     public void Shuffle()
+     public void Shuffle(List<Card> deck)
      {
      	System.Random rand = new System.Random();
      	Card mGO;
 
-     	int n = deckOfCards.Count;
+     	int n = deck.Count;
      	for(int i = 0; i < n; i++)
      	{
      		int r = i + (int)(rand.NextDouble() * (n - i));
-     		mGO = deckOfCards[i];
-     		deckOfCards[r] = deckOfCards[i];
-     		deckOfCards[i] = mGO;
+     		mGO = deck[i];
+     		deck[r] = deck[i];
+     		deck[i] = mGO;
      	}
+     	//return deck;
      }
 
 
@@ -88,22 +89,40 @@ public class Deck : MonoBehaviour
      	deckOfCards.RemoveAt(length);
      }
 
-
+     //ref will pass by reference to directly modify the array, though this is 
+     //redundant in this case since the array is now part of this script.
+     //and lists are passed by reference anyways automatically...
+     //this function will draw a number of cards from the back of the deck
+     //equal to the number of cards to fill a hand of drawnCards. if there are
+     //not enough cards to fill that hand, we will reshuffle the discard pile back
+     //into the deck and finish drawing.
      public void DrawCards(ref CardSlot[] m_array)
      {
      	int length = m_array.Length;
-     	//Debug.Log(m_array.Length);
+     	int deckLength;
      	for(int i = length - 1; i >= 0; i--)
      	{
-     		//Debug.Log(m_array[i]);
-     		//Debug.Log(deckOfCards[deckOfCards.Count - 1]);
-     		m_array[i].AddCard(deckOfCards[deckOfCards.Count - 1]);
-     		//Debug.Log(m_array[i].card);
-     		//m_array[i].card = deckOfCards[deckOfCards.Count - 1];
-     		//Debug.Log(m_array[i].icon);
-     		//m_array[i].icon = deckOfCards[deckOfCards.Count - 1].icon;
-     		//moveToDiscard(deckOfCards.Count - 1);
-     		deckOfCards.RemoveAt(deckOfCards.Count -1);
+     		deckLength = deckOfCards.Count - 1;
+     		if(deckLength == 0)
+     		{
+     			Reshuffle();
+     			deckLength = deckOfCards.Count;  //must refresh the size variable after we reshuffle
+     		}
+
+     		m_array[i].AddCard(deckOfCards[deckLength - 1]);
+     		deckOfCards.RemoveAt(deckLength -1);
+     		//Debug.Log("index " + deckLength);
      	}
+     }
+
+     //this is a helper function to DrawCards that will reshuffle the discard
+     //pile and put it into the deck slot (which should be empty whenn this
+     //function is called) 
+     public void Reshuffle()
+     {
+     	//Debug.Log("reshuffling");
+     	Shuffle(discardPile);
+     	deckOfCards.AddRange(discardPile);
+     	discardPile.Clear();
      }
 }
