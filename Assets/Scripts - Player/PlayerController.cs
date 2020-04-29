@@ -25,11 +25,13 @@ public class PlayerController : MonoBehaviour
     //Jump variables
     [SerializeField] private float gravityScale = 1f;
     [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float jumpTimer = 0.5f;
+    [SerializeField] private float jumpTimer; //if the jumpTimer is low, there is no variability in jump heights
     private bool jumpPressed = false;
-    private bool jumpReleased = false;
+    private bool jumpReleased = true;
     private bool startTimer = false;
     private float timer;
+    public float fallMultiplier;
+    public float lowJumpMultiplier;
 
     
 
@@ -135,9 +137,11 @@ public class PlayerController : MonoBehaviour
             CheckKeyK();
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && availJumps > 0)
         {
             jumpPressed = true;
+            jumpReleased = false;
+            availJumps -= 1;
         }
         if(Input.GetButtonUp("Jump"))
         {
@@ -240,14 +244,24 @@ public class PlayerController : MonoBehaviour
         else
             StateManager.instance.walking = true;
         Debug.Log(availJumps);
-        if(jumpPressed && availJumps > 0)
+        if(jumpPressed)
         {
             Debug.Log("jumpInitiated");
             StartJump();
-            availJumps -= 1;
         }
         if(jumpReleased)
             StopJump();
+    
+        if(m_Rigidbody2D.velocity.y < 0)
+        {
+            Debug.Log("falling");
+            m_Rigidbody2D.velocity += (Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
+        }
+        else if(m_Rigidbody2D.velocity.y > 0 && jumpReleased)// && !Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("rising");
+            m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
 
         Move(horizontal * Time.fixedDeltaTime);
     }
@@ -291,9 +305,10 @@ public class PlayerController : MonoBehaviour
     private void StopJump()
     {
         m_Rigidbody2D.gravityScale = gravityScale;
-        jumpReleased = false;
+        jumpReleased = true;
         timer = jumpTimer;
         startTimer = false;
+        jumpTimer = timer;
     }
 
 

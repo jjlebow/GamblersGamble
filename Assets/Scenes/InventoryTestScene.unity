@@ -6291,10 +6291,12 @@ MonoBehaviour:
   groundCheck: {fileID: 168391490}
   ceilingCheck: {fileID: 1716036102}
   gravityScale: 1
-  jumpForce: 5
-  jumpTimer: 0.5
+  jumpForce: 7
+  jumpTimer: 0.3
+  fallMultiplier: 3
+  lowJumpMultiplier: 3
   m_Rigidbody2D: {fileID: 0}
-  movementSmoothing: 0.05
+  movementSmoothing: 0.03
   runningSpeed: 20
   numberOfJumps: 1
   boss:
@@ -9619,6 +9621,8 @@ MonoBehaviour:
   gravityScale: 1
   jumpForce: 5
   jumpTimer: 0.5
+  fallMultiplier: 0
+  lowJumpMultiplier: 0
   m_Rigidbody2D: {fileID: 0}
   movementSmoothing: 0.05
   runningSpeed: 20
