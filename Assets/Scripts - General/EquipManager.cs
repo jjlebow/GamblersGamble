@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class EquipManager : MonoBehaviour
 {
+
+
+    public Equippable[] currentEquipment;  //unserialize this when testing is done
+
+    public delegate void OnEquipmentChanged(Equippable newItem, Equippable oldItem);
+    public OnEquipmentChanged onEquipmentChanged;
+
+    Inventory inventory;
+
     #region Singleton
     
 
@@ -20,13 +29,6 @@ public class EquipManager : MonoBehaviour
     }
 
     #endregion
-
-    public Equippable[] currentEquipment;  //unserialize this when testing is done
-
-    public delegate void OnEquipmentChanged(Equippable newItem, Equippable oldItem);
-    public OnEquipmentChanged onEquipmentChanged;
-
-    Inventory inventory;
 
     void Start()
     {

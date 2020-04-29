@@ -6,7 +6,7 @@ using System.Collections.Generic;
 	public class FSMState
 	{
 		public string name;
-		public FSM owner;
+		public FSM owner;   //this is private by default;
 		private Dictionary<string, FSMState> transitionMap;
 		private List<FSMAction> actions;
 		

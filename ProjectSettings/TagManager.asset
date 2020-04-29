@@ -9,6 +9,7 @@ TagManager:
   - Weapon
   - DownWeapon
   - StateManager
+  - StartingPosition
   layers:
   - Default
   - TransparentFX

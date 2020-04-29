@@ -9,7 +9,7 @@ using System.Collections.Generic;
     public class FSM
     {
         private readonly string name;
-        private FSMState currentState;
+        public FSMState currentState;
         private readonly Dictionary<string, FSMState> stateMap;
 
 

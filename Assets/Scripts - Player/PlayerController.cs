@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Transform ceilingCheck;
     //[SerializeField] public Collider2D crouchDisableCollider;
 
-    public delegate void LandedDelegate();
-    public event LandedDelegate landedEvent;
+    public delegate void hasLanded();
+    public event hasLanded hasLandedCallback;
 
     //Jump variables
     [SerializeField] private float gravityScale = 1f;
@@ -51,6 +51,9 @@ public class PlayerController : MonoBehaviour
     private float raycastMaxDistance = 0.32f; //this needs to change if you change the size of the player
     private Vector2 direction = new Vector2(0,-1);
 
+    private int availJumps;
+    public int numberOfJumps;
+
     
 
 
@@ -67,6 +70,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerAttack playerAttacker;
     private PlayerMovement playerMove;
+    
+    
 
     public Boss boss;
 
@@ -88,12 +93,15 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         timer = jumpTimer;
 
+
+
+
         //fsm = StateManager.instance.fsm;
         
-        //landedEvent += playerAttacker.attackCancel;
-        //landedEvent += playerMove.jumpReset;
-        //landedEvent += landingAnimation;
-        ////landedEvent += playerMove.DashReset;
+        //hasLandedCallback += playerAttacker.attackCancel;
+        hasLandedCallback += jumpReset;
+        //hasLandedCallback += landingAnimation;
+        //hasLandedCallback += playerMove.DashReset;
         
         
         
@@ -101,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
     public void Start()
     {
-        
+        availJumps = numberOfJumps;   
     }
 
     
@@ -143,7 +151,7 @@ public class PlayerController : MonoBehaviour
                 jumpReleased = true;
             } 
         }
-        
+
         //this chain of if statements is used to determine which direction the attack is used in. GetKey is used instead so that we can read 
         //multiple inputs at once
         /*
@@ -231,9 +239,13 @@ public class PlayerController : MonoBehaviour
             StateManager.instance.walking = false;
         else
             StateManager.instance.walking = true;
-
-        if(jumpPressed)
+        Debug.Log(availJumps);
+        if(jumpPressed && availJumps > 0)
+        {
+            Debug.Log("jumpInitiated");
             StartJump();
+            availJumps -= 1;
+        }
         if(jumpReleased)
             StopJump();
 
@@ -295,8 +307,13 @@ public class PlayerController : MonoBehaviour
 
     public void TriggerLandEvent()
     {
-        if(landedEvent != null)
-            landedEvent();
+        if(hasLandedCallback != null)
+            hasLandedCallback.Invoke();
+    }
+
+     public void jumpReset()
+    {
+        availJumps = numberOfJumps;
     }
 
     
@@ -507,12 +524,12 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D hit = CheckRaycastGround(direction);
         //Debug.DrawRay(transform.position, direction, Color.red);
-        if(hit.collider)// && StateManager.instance.grounded == false)
+        if(hit.collider && StateManager.instance.grounded == false)
         {
             StateManager.instance.grounded = true;
-            //controller.TriggerLandEvent();
+            hasLandedCallback.Invoke();
         }
-        else if(!hit.collider)
+        else if(!hit.collider && StateManager.instance.grounded == true)
         {
             StateManager.instance.grounded = false;
         }

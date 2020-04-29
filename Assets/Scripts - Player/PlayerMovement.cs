@@ -12,10 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public bool cantJump = false;
 
     //determines how many jumps the player has
-    public int extraJumps;
+    
     public float jumpTime;
     private float jumpTimeCounter;
     private int availJumps;
+    public int extraJumps;
 
     private Vector3 m_velocity = Vector3.zero;
     [Range(0, 0.3f)][SerializeField] private float movementSmoothing = 0.05f;

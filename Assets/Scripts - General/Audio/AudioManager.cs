@@ -127,7 +127,7 @@ public class AudioManager : MonoBehaviour
         CR_running = true;
         while(s.source.volume > 0.01f)
         {
-            s.source.volume -= Time.deltaTime / s.fadeOutTime;  //For a duration of fadeTime, volume gradually decreases till its 0
+            s.source.volume -= Time.unscaledDeltaTime / s.fadeOutTime;  //For a duration of fadeTime, volume gradually decreases till its 0
             yield return null;
         }
         s.source.volume = 0f;
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
         while (s.source.volume < s.endFade)
         {
-            s.source.volume += Time.deltaTime / s.fadeInTime; //fades in over course of seconds fadeTime
+            s.source.volume += Time.unscaledDeltaTime / s.fadeInTime; //fades in over course of seconds fadeTime
             yield return null;
         }
         CR_running = false;

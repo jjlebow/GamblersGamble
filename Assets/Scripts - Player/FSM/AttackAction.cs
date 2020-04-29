@@ -27,7 +27,6 @@ public class AttackAction : FSMAction
 
     public override void OnEnter()
     {
-        Debug.Log("hello");
         //there needs to be logic here to determine what animation each body 
         //part plays
         if(StateManager.instance.grounded == false)

@@ -37,7 +37,6 @@ public class IdleAction : FSMAction
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
         if(StateManager.instance.grounded == false)
         {
-            Debug.Log("here3");
             Finish(3);
         }
         if(StateManager.instance.isActive == true)
