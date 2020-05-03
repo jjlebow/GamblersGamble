@@ -36,7 +36,7 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && canInteract)
+        if(Input.GetKeyDown(KeyCode.E) && canInteract && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             Interact();
         }

@@ -224,6 +224,7 @@ public class DialogueManager : MonoBehaviour
                     dialogueAvailable = false;
                     currentSprite = null;
                     bgPanel2.GetComponent<Image>().sprite = null;
+                    Manager.instance.RevertState();
                 }
                 //dont know if this is accurate. i dont think this should necessarily hidePanels yet, we are just skipping the last dialgoue i think. 
                 else if (Input.GetKeyDown(KeyCode.Space) && spaceDelay)
@@ -240,6 +241,7 @@ public class DialogueManager : MonoBehaviour
                     dialogueAvailable = false;
                     currentSprite = null;
                     bgPanel2.GetComponent<Image>().sprite = null;
+                    Manager.instance.RevertState();
                 }
             }
         }
@@ -312,7 +314,6 @@ public class DialogueManager : MonoBehaviour
         int currentLine = 1;
         fileName = fileName + "/" + speakerName + "/" + speakerDialogue;
 
-        Debug.Log(fileName);
         Dictionary<int, Dialogue> dialogueDict = BuildDialogueDictionary(Resources.Load<TextAsset>(fileName));
 
         while (currentLine <= dialogueDict.Count)
@@ -320,6 +321,7 @@ public class DialogueManager : MonoBehaviour
         maxLines = textOutput.Count;
         count = maxLines;
         ShouldBePlayingDialogue = true;
+        Manager.instance.NewState(Manager.GameState.DIALOGUE);
     }
 
     private void DisplayNextSentence()

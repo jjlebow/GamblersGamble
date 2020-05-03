@@ -23,7 +23,9 @@ public class Manager : MonoBehaviour
     public float timeLeft;
     public bool startTimer = false;
 
-    public enum GameState {PAUSED, BATTLE, DIALOGUE, MENU};
+    public enum GameState {PAUSED, BATTLE, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL};
+    public GameState currentState;
+    public GameState previousState;
     public GameState gameState;
     public PlayerController player;
     public StateController stateMachine;
@@ -40,8 +42,8 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FirstBoss>();
-        gameState = GameState.BATTLE;   
+        currentState = GameState.BATTLE;
+        //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FirstBoss>(); 
         if(instance != null)
         {
             Debug.LogWarning("More than one instance of inventory found");
@@ -93,6 +95,19 @@ public class Manager : MonoBehaviour
         //{
             //Victory();
         //}
+    }
+
+    public void NewState(GameState newState)
+    {
+        previousState = currentState;
+        currentState = newState;
+    }
+
+    public void RevertState()
+    {
+        var temp = previousState;
+        previousState = currentState;
+        currentState = temp;
     }
 
     private void ResetPlayerPosition()
@@ -166,7 +181,6 @@ public class Manager : MonoBehaviour
         Time.timeScale = 0;
         while(localTime >= 0)
         {
-            Debug.Log(localTime);
             localTime -= Time.unscaledDeltaTime;//Time.unscaledTime * 0.001f;
             yield return null;
         }
@@ -180,6 +194,14 @@ public class Manager : MonoBehaviour
             }
         }
         Time.timeScale = 1.0f;
+        foreach(Card card in Deck.instance.discardPile)
+        {
+            Debug.Log("Card " + card.name);
+        }
+        foreach(Card card in Deck.instance.deckOfCards)
+        {
+            Debug.Log("CardDeck " + card.name);
+        }
     }
 
 }

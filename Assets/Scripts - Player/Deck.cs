@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 //The deck holds the deck of cards, the discard pile, the current drawn cards, and the array of cards in hand
@@ -10,11 +11,15 @@ public class Deck : MonoBehaviour
 	public static Deck instance;
 	public List<Card> deckOfCards;
 	public List<Card> discardPile;
+    public List<KeyCode> storedKeys;
 	public Transform drawnCardsParent;
 	public Transform handParent;
 
 	public CardSlot[] drawnCards;
 	public CardSlot[] handCards;
+    public readonly Array allKeyCodes = Enum.GetValues(typeof(KeyCode));
+
+    private System.Random rand = new System.Random();
 
 
 
@@ -33,13 +38,27 @@ public class Deck : MonoBehaviour
     {
     	deckOfCards = new List<Card>();
     	discardPile = new List<Card>();
-    	for(int i = 0; i < 10; i++)
+    	for(int i = 0; i < 5; i++)
     	{
-    		deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 10));
-    		//Debug.Log(deckOfCards[i].name);
+            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5));
     	}
+        for(int j = 0; j < 5; j++)
+        {
+            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5));
+        }
+        
+        for(int k = 0; k < 5; k++)
+        {
+            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5));
+        }
+        for(int l = 0; l < 5; l++)
+        {
+            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5));
+        }
+        
     	handCards = handParent.GetComponentsInChildren<CardSlot>();
     	drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
+        Shuffle(deckOfCards);
     }
 
     //call this function to generate a card that you want
@@ -65,21 +84,24 @@ public class Deck : MonoBehaviour
 
     //}
 
+    //this is a helper function to DrawCards that will reshuffle the discard
+     //pile and put it into the deck slot (which should be empty whenn this
+     //function is called) 
      public void Shuffle(List<Card> deck)
      {
-     	System.Random rand = new System.Random();
-     	Card mGO;
-
      	int n = deck.Count;
-     	for(int i = 0; i < n; i++)
+     	for(int i = 0; i < n - 1; i++)
      	{
-     		int r = i + (int)(rand.NextDouble() * (n - i));
-     		mGO = deck[i];
+     		int r = i + rand.Next(n - i);
+     		Card mGO = deck[r];
      		deck[r] = deck[i];
      		deck[i] = mGO;
      	}
+
      	//return deck;
      }
+
+
 
 
 
@@ -96,33 +118,35 @@ public class Deck : MonoBehaviour
      //equal to the number of cards to fill a hand of drawnCards. if there are
      //not enough cards to fill that hand, we will reshuffle the discard pile back
      //into the deck and finish drawing.
-     public void DrawCards(ref CardSlot[] m_array)
+     public void DrawCards(CardSlot[] m_array)
      {
      	int length = m_array.Length;
      	int deckLength;
-     	for(int i = length - 1; i >= 0; i--)
+     	for(int i = length - 1; i >= 0; i--) //for each of the drawnCard slots,
      	{
-     		deckLength = deckOfCards.Count - 1;
-     		if(deckLength == 0)
+     		deckLength = deckOfCards.Count;//we readjust the length variable of the deck
+     		if(deckLength == 0)  //if the deckLength is zero, then we 
      		{
+                //Debug.Log("reshuffling");
+                //Debug.Log("pre length " + discardPile.Count);
+                //Debug.Log("current index " + i);
      			Reshuffle();
+                //Debug.Log("post length " + discardPile.Count);
      			deckLength = deckOfCards.Count;  //must refresh the size variable after we reshuffle
      		}
 
      		m_array[i].AddCard(deckOfCards[deckLength - 1]);
      		deckOfCards.RemoveAt(deckLength -1);
-     		//Debug.Log("index " + deckLength);
      	}
      }
 
-     //this is a helper function to DrawCards that will reshuffle the discard
-     //pile and put it into the deck slot (which should be empty whenn this
-     //function is called) 
+
      public void Reshuffle()
      {
      	//Debug.Log("reshuffling");
-     	Shuffle(discardPile);
+     	
      	deckOfCards.AddRange(discardPile);
+        Shuffle(deckOfCards);
      	discardPile.Clear();
      }
 }

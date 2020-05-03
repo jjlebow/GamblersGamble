@@ -15,14 +15,32 @@ public class PlayerController : MonoBehaviour
     
     //public bool airControl = false;
     //[SerializeField] public LayerMask whatIsGround;
-    [SerializeField] public Transform groundCheck;
-    [SerializeField] public Transform ceilingCheck;
-    //[SerializeField] public Collider2D crouchDisableCollider;
 
+    //an array of all keycodes for input reference
+    private bool keyRelease;
+
+    //Calls an assortment of functions on landing
     public delegate void hasLanded();
     public event hasLanded hasLandedCallback;
+    //----------------------------------------------
 
-    //Jump variables
+    //checks for ground and ceiling collisions
+    [SerializeField] public Transform groundCheck;
+    [SerializeField] public Transform ceilingCheck;
+    //Radius of the circle that determines if we are grounded or not
+    const float groundedRadius = 0.2f;
+    //radius of the circle that determinds if the player is touching a ceiling or not
+    const float ceilingRadius = 0.2f;
+    //this adjusts the length for the raycast that recognizes if grounded or not
+    private float raycastMaxDistance = 0.32f; //this needs to change if you change the size of the player
+    private Vector2 direction = new Vector2(0,-1);
+    //[SerializeField] public Collider2D crouchDisableCollider;
+    //----------------------------------------------
+
+    //jump variables
+    public float fallMultiplier;
+    public float lowJumpMultiplier;
+    public int numberOfJumps;
     [SerializeField] private float gravityScale = 1f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float jumpTimer; //if the jumpTimer is low, there is no variability in jump heights
@@ -30,61 +48,40 @@ public class PlayerController : MonoBehaviour
     private bool jumpReleased = true;
     private bool startTimer = false;
     private float timer;
-    public float fallMultiplier;
-    public float lowJumpMultiplier;
+    private int availJumps;
+    //----------------------------------------------
 
+    //Dash variables
+    public int numDash;
+    //----------------------------------------------
     
 
-    //Radius of the circle that determines if we are grounded or not
-    const float groundedRadius = 0.2f;
-    //radius of the circle that determinds if the player is touching a ceiling or not
-    const float ceilingRadius = 0.2f;
+    //General Physics variables/movement
     [HideInInspector] public Rigidbody2D m_Rigidbody2D;
-    //public Rigidbody2D leg_Rigidbody2D;
-    //determines whether the player is facing right or not
-    
-    EquipType equipType;
+    public float runningSpeed = 20f;
     [Range(0, 0.3f)][SerializeField] private float movementSmoothing = 0.05f;
     private Vector3 m_velocity = Vector3.zero;
     private float horizontal = 0f;
-    public float runningSpeed = 20f;
 
-    //this adjusts the length for the raycast that recognizes if grounded or not
-    private float raycastMaxDistance = 0.32f; //this needs to change if you change the size of the player
-    private Vector2 direction = new Vector2(0,-1);
-
-    private int availJumps;
-    public int numberOfJumps;
-
+    //----------------------------------------------
     
+    //EquipMent/Inventory variables
+    EquipType equipType;
+    //----------------------------------------------
 
 
     
+    //References to other gameObject scripts
+    public Boss boss;
+    //----------------------------------------------
 
 
-    //private bool isFalling;
-
+    //Knockback variables
+    [HideInInspector]public Vector3 knockbackDir;
     private float knockbackDuration = 0.3f; //how long player is knocked back for
     private float timeBtwDamage = 1.5f; //this is the cooldown between which the player can take damage
-    
-    
-    
+    //----------------------------------------------
 
-    private PlayerAttack playerAttacker;
-    private PlayerMovement playerMove;
-    
-    
-
-    public Boss boss;
-
-    //private Vector3 knockbackDirRight;
-    //private Vector3 knockbackDirLeft;
-    [HideInInspector]public Vector3 knockbackDir;
-
-    
-
-
-    //private bool wasCrouching = false;
 
     private void Awake()
     {
@@ -132,28 +129,46 @@ public class PlayerController : MonoBehaviour
             //else if(playerMove.horizontal == 0 && StateManager.instance.playerGrounded)
                 //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
         //}
-        if(Input.GetKey(KeyCode.K) && StateManager.instance.isActive == false)
+        //only runs once per key pressdown regardless of duration held, but multiple keys can be pressed down at once and all are registered
+
+        //this only gets run once every time a key is pressed.
+        if(Manager.instance.currentState == Manager.GameState.BATTLE && Input.anyKeyDown)
         {
-            CheckKeyK();
+            CheckKeyInput();
         }
 
-        if(Input.GetButtonDown("Jump") && availJumps > 0)
+
+
+        if(Manager.instance.currentState == Manager.GameState.BATTLE)
         {
-            jumpPressed = true;
-            jumpReleased = false;
-            availJumps -= 1;
-        }
-        if(Input.GetButtonUp("Jump"))
-        {
-            jumpReleased = true;
-        }
-        if(startTimer) 
-        {
-            timer -= Time.deltaTime;
-            if(timer <= 0) 
+            //condition for the grounded jump
+            if(Input.GetButtonDown("Jump") && availJumps > 0 && StateManager.instance.grounded)
+            {
+                m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x,0,0);
+                jumpPressed = true;
+                jumpReleased = false;
+                availJumps -= 1;
+            }
+            //condition for the air jump not needed for a constant air jump
+            else if(Input.GetButtonDown("Jump") && availJumps > 0 && m_Rigidbody2D.velocity.y <= 0)
+            {
+                m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x,0,0);
+                jumpPressed = true;
+                jumpReleased = false;
+                availJumps -= 1;
+            }
+            if(Input.GetButtonUp("Jump"))
             {
                 jumpReleased = true;
-            } 
+            }
+            if(startTimer) 
+            {
+                timer -= Time.deltaTime;
+                if(timer <= 0) 
+                {
+                    jumpReleased = true;
+                } 
+            }
         }
 
         //this chain of if statements is used to determine which direction the attack is used in. GetKey is used instead so that we can read 
@@ -234,36 +249,64 @@ public class PlayerController : MonoBehaviour
         //anim.SetBool("Landing", false);    //ensures that landing animation is not true for any frame past the frame that the character lands
     }
 
+    public void Dash()
+    {
+        m_Rigidbody2D.gravityScale = 0f;
+        if(StateManager.instance.faceRight == true)
+        {
+            m_Rigidbody2D.velocity = new Vector3(100,0,0);
+        }
+        else
+        {
+            m_Rigidbody2D.velocity = new Vector3(-100,0,0);
+        }
+        m_Rigidbody2D.gravityScale = 1f;
+    }
+
+    public void BackDash()
+    {
+        m_Rigidbody2D.gravityScale = 0f;
+        if(StateManager.instance.faceRight == true)
+        {
+            m_Rigidbody2D.velocity = new Vector3(-100,0,0);
+        }
+        else
+        {
+            m_Rigidbody2D.velocity = new Vector3(100,0,0);
+        }
+        m_Rigidbody2D.gravityScale = 1f;
+    }
+
     private void FixedUpdate()
     {
-        RaycastCheckUpdateGround();
-        horizontal = Input.GetAxisRaw("Horizontal") * runningSpeed;
-        //add a grounded check to this when you get that working
-        if(horizontal == 0)
-            StateManager.instance.walking = false;
-        else
-            StateManager.instance.walking = true;
-        Debug.Log(availJumps);
-        if(jumpPressed)
+        if(Manager.instance.currentState == Manager.GameState.BATTLE)
         {
-            Debug.Log("jumpInitiated");
-            StartJump();
-        }
-        if(jumpReleased)
-            StopJump();
+            RaycastCheckUpdateGround();
+            horizontal = Input.GetAxisRaw("Horizontal") * runningSpeed;
+            //add a grounded check to this when you get that working
+            if(horizontal == 0)
+                StateManager.instance.walking = false;
+            else
+                StateManager.instance.walking = true;
+            if(jumpPressed)
+            {
+                StartJump();
+            }
+            if(jumpReleased)
+                StopJump();
     
-        if(m_Rigidbody2D.velocity.y < 0)
-        {
-            Debug.Log("falling");
-            m_Rigidbody2D.velocity += (Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
-        }
-        else if(m_Rigidbody2D.velocity.y > 0 && jumpReleased)// && !Input.GetButtonDown("Jump"))
-        {
-            Debug.Log("rising");
-            m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        }
+            if(m_Rigidbody2D.velocity.y < 0)
+            {
+                m_Rigidbody2D.velocity += (Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
+            }
+            else if(m_Rigidbody2D.velocity.y > 0 && jumpReleased)// && !Input.GetButtonDown("Jump"))
+            {
+                m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+        
 
-        Move(horizontal * Time.fixedDeltaTime);
+            Move(horizontal * Time.fixedDeltaTime);
+        }
     }
 
 
@@ -272,26 +315,49 @@ public class PlayerController : MonoBehaviour
         StateManager.instance.isActive = true;
     }
 
-
-    //try to make a different function for each key that will do different stuff
-    //based on what keystroke each card is stored under. 
-    private void CheckKeyK()
+    public void Jump()
     {
-        //for now i am just going to access the first card in the hand, but in the future,
-        //try to access cards specific to this key
-        for(int i = 0; i < Deck.instance.handCards.Length; i++)
-        {
-            if(Deck.instance.handCards[i].card != null)
-            {
-                this.SendMessage(Deck.instance.handCards[i].card.name);
-                Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
-                Deck.instance.handCards[i].ClearSlot();
-                break;
-            }
-            //else 
-                //Debug.Log("nothing is equipped there");
-        }
+        //if we want to make the double jump a constant jump instead of variable,
+        //we need to take the airjump condition out of the update, and put the constant jump force in here
+        //delete the extra conditioin in checkKeyInput()
+       // m_Rigidbody2D.AddForce(transform.up * 500f);// * StateManager.instance.faceRight);
+        availJumps += 1;
     }
+
+    //this matches the input with the appropriate action function and executes it. we use the storedKeys array to 
+    //avoid looping through the entire keyboard every frame and only looping through the keys that were registered to buttons
+    public void CheckKeyInput()
+    {
+        for(int i = 0; i < Deck.instance.handCards.Length; i++)
+            {
+                if(Deck.instance.handCards[i].card != null)
+                {
+                    foreach(KeyCode code in Deck.instance.storedKeys)
+                    {
+                        if(Input.GetKeyDown(code) && code.ToString() == Deck.instance.handCards[i].keyCode)
+                        {
+                            if((code == KeyCode.Space && !StateManager.instance.grounded) || code != KeyCode.Space)//this condition is for the hard coding of the Jump function to make sure we dont call this on our first jump (delete this for other uses of this)
+                            //if(code == KeyCode.Space && !StateManager.instance.grounded) this line is used if we are doing the constant double jump
+                            {
+                                this.SendMessage(Deck.instance.handCards[i].card.name);
+                                Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
+                                Deck.instance.handCards[i].ClearSlot();
+                                Deck.instance.storedKeys.Remove(code);
+                                        //foreach(Card card in Deck.instance.discardPile)
+                                        //{
+                                        //        Debug.Log("Card " + card.name);
+                                        //}
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+    }
+
+
+    
+
 
 
     private void StartJump()
@@ -348,12 +414,12 @@ public class PlayerController : MonoBehaviour
             m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_velocity, movementSmoothing);
             //can only control the player if grounded or airControl is on
             //if the input is moving the player to the right and the player is facing left
-            if(move > 0 && !StateManager.instance.faceRight)
+            if(move > 0 && StateManager.instance.faceRight == false)
             {
                 Flip();
                 //StateManager.instance.faceRight = true;
             }
-            else if(move < 0 && StateManager.instance.faceRight)
+            else if(move < 0 && StateManager.instance.faceRight == true)
             {
                 Flip();
                 //StateManager.instance.faceRight = false;
@@ -460,7 +526,7 @@ public class PlayerController : MonoBehaviour
         if(!StateManager.instance.attacking) //&& !StateManager.instance.stance)
         {
             //switches the way the player is facing
-            StateManager.instance.faceRight = !StateManager.instance.faceRight;
+            StateManager.instance.faceRight = !StateManager.instance.faceRight;//1;//StateManager.instance.faceRight * -1;
             //multiplies the players x local scale by -1
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
@@ -539,6 +605,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit2D hit = CheckRaycastGround(direction);
         //Debug.DrawRay(transform.position, direction, Color.red);
+        //this condition catches the exact moment of landing
         if(hit.collider && StateManager.instance.grounded == false)
         {
             StateManager.instance.grounded = true;
@@ -550,6 +617,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
 
 
 

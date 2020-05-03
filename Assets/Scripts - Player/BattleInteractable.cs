@@ -19,7 +19,8 @@ public class BattleInteractable : Interactable
     	if(canInteract && Input.GetKeyDown(KeyCode.E))
     	{
     		battleMenu.SetActive(true);
-    		Deck.instance.DrawCards(ref Deck.instance.drawnCards);
+    		Deck.instance.DrawCards(Deck.instance.drawnCards);
+            Manager.instance.NewState(Manager.GameState.MENU);
     	}
     }
 }

@@ -10,6 +10,7 @@ public class NPCInteractable : Interactable
     {
         if(canInteract && Input.GetKeyDown(KeyCode.E))
         {
+        	//Manager.instance.currentState = Manager.GameState.DIALOGUE;
             DialogueManager.instance.LoadDialogue("Dialogue", this.name, "AUTUMN 1 TRUE END");
         }
     }

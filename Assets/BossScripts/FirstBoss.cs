@@ -68,7 +68,7 @@ public class FirstBoss : MonoBehaviour {
                 //Debug.Log("Boss has taken Damage: " + player.strength);
                 boss.health -= PlayerAttack.strength;
                 //Debug.Log("Initiate pogo");
-                playerMove.ConstantJump();
+                //playerMove.ConstantJump();
             }
             StartCoroutine(boss.CollisionTimer());
             //collisionFlag = false;

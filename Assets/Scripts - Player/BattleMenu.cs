@@ -29,6 +29,11 @@ public class BattleMenu : MonoBehaviour
         }
 
         battleMenu.SetActive(false);
+        Manager.instance.NewState(Manager.GameState.BATTLE);
+        //foreach(Card card in Deck.instance.discardPile)
+        //{
+            //Debug.Log("Card " + card.name);
+        //}
     }
 
     public void StartTimer()

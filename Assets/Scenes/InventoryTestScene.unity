@@ -1217,6 +1217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 186287687}
+  keyCode: 
 --- !u!114 &245831962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2032,6 +2033,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 232690206}
+  keyCode: 
 --- !u!114 &468616282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2791,6 +2793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1731546498}
+  keyCode: 
 --- !u!114 &680968966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3094,6 +3097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1875237791}
+  keyCode: 
 --- !u!114 &717022474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4245,6 +4249,7 @@ MonoBehaviour:
   healthBar: {fileID: 1363694939}
   timeLeft: 0
   startTimer: 0
+  currentState: 0
   gameState: 0
   player: {fileID: 1609293309}
   stateMachine: {fileID: 1609293307}
@@ -4260,6 +4265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51017f4fafbe59846843d13697461145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storedKeys: 
   drawnCardsParent: {fileID: 1352287129}
   handParent: {fileID: 1042054415}
   drawnCards: []
@@ -4360,6 +4366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1931915714}
+  keyCode: 
 --- !u!114 &1046253721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6103,6 +6110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 2103271993}
+  keyCode: 
 --- !u!114 &1538217127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6216,7 +6224,6 @@ GameObject:
   - component: {fileID: 1609293306}
   - component: {fileID: 1609293307}
   - component: {fileID: 1609293309}
-  - component: {fileID: 1609293310}
   - component: {fileID: 1609293308}
   m_Layer: 0
   m_Name: Player (1)
@@ -6290,15 +6297,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 168391490}
   ceilingCheck: {fileID: 1716036102}
-  gravityScale: 1
-  jumpForce: 7
-  jumpTimer: 0.3
   fallMultiplier: 3
   lowJumpMultiplier: 3
-  m_Rigidbody2D: {fileID: 0}
-  movementSmoothing: 0.03
-  runningSpeed: 20
   numberOfJumps: 1
+  gravityScale: 1
+  jumpForce: 6
+  jumpTimer: 0.3
+  numDash: 0
+  m_Rigidbody2D: {fileID: 0}
+  runningSpeed: 20
+  movementSmoothing: 0.03
   boss:
     attackTrigger: 0
     health: 100
@@ -6308,20 +6316,6 @@ MonoBehaviour:
     isDead: 0
     bossCantDamage: 0
   knockbackDir: {x: 0, y: 0, z: 0}
---- !u!114 &1609293310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609293305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afd63ad3db7eb5342a23bf076d474513, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handCards: []
-  handParent: {fileID: 0}
 --- !u!224 &1612871300 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5029375487455533253, guid: 7c4571a5b8f9c404b82d4a655f414e1b,
@@ -6593,6 +6587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 472480534}
+  keyCode: 
 --- !u!114 &1691315781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6681,6 +6676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 1382076727}
+  keyCode: 
 --- !u!114 &1710382063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9618,15 +9614,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 7003982631462964143}
   ceilingCheck: {fileID: 7003982631911642381}
+  fallMultiplier: 0
+  lowJumpMultiplier: 0
+  numberOfJumps: 0
   gravityScale: 1
   jumpForce: 5
   jumpTimer: 0.5
-  fallMultiplier: 0
-  lowJumpMultiplier: 0
+  numDash: 0
   m_Rigidbody2D: {fileID: 0}
-  movementSmoothing: 0.05
   runningSpeed: 20
-  numberOfJumps: 0
+  movementSmoothing: 0.05
   boss:
     attackTrigger: 0
     health: 0

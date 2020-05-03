@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
-{
+{/*
 
 	private PlayerController controller;
 	[HideInInspector]public float horizontal = 0f;
@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             StateManager.instance.jump = false;
         }
     }*/
+    /*
 
 //try to find a better solution to the problem of spamming spacebar makes the player float a bit
     private IEnumerator JumpTimer()
@@ -108,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
                     crouch = true;
                 }
             }*/
-
+/*
             //can only control the player if grounded or airControl is on
             if(true)//StateManager.instance.playerGrounded)// || controller.airControl)
             {
@@ -138,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                         //OnCrouchEvent.Invoke(false);
                     }
                 }*/
-
+/*
                 //finding target velocity to move the player
                 Vector3 targetVelocity = new Vector2(move * 10f, controller.m_Rigidbody2D.velocity.y);
                 //this is for smoothing out movement
@@ -312,5 +313,5 @@ public class PlayerMovement : MonoBehaviour
         }
         canDash = true;
     }
-    
+*/
 }
