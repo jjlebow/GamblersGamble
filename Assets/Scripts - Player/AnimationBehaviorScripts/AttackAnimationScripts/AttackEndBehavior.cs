@@ -19,6 +19,7 @@ public class AttackEndBehavior : StateMachineBehaviour
         {
             StateManager.instance.isActive = false;
         }
+
         //Debug.Log(StateManager.instance.isActive);
         //if(Input.GetKey(KeyCode.K))
         //{
@@ -31,6 +32,7 @@ public class AttackEndBehavior : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        
         //if(StateManager.instance.attackContinue == false)
             //StateManager.instance.attackCooldown = false;
         //Debug.Log(StateManager.instance.isActive);

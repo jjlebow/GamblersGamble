@@ -42,9 +42,18 @@ public class Deck : MonoBehaviour
     	{
             deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5));
     	}
+        for(int i = 0; i < 5; i ++)
+        {
+            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5));
+        }
         for(int j = 0; j < 5; j++)
         {
             deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5));
+        }
+
+        for(int i = 0; i < 5; i++)
+        {
+            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5));
         }
         
         for(int k = 0; k < 5; k++)

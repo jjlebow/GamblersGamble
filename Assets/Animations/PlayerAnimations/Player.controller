@@ -493,7 +493,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Light
+  m_Name: Precision
   m_ChildStates: []
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
@@ -544,6 +544,18 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-1655715297874112167
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7d9a066ddc3a94dbc666c9276d8449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-1607730590809525661
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -718,22 +730,49 @@ AnimatorController:
     m_Name: Heavy
     m_StateMachine: {fileID: -72340057178964388}
     m_Mask: {fileID: 0}
-    m_Motions: []
-    m_Behaviours: []
+    m_Motions:
+    - serializedVersion: 2
+      m_State: {fileID: 754499148272804668}
+      m_Motion: {fileID: 7400000, guid: fc0a1251ce93b7f438980603c7cc0388, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 7369489138109397281}
+      m_Motion: {fileID: 7400000, guid: f10db62fa38b8ab4aa8ef988e0be25f9, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 1473320387393465169}
+      m_Motion: {fileID: 7400000, guid: 6ad74934604acd6418ee7bc99eba2d7d, type: 2}
+    m_Behaviours:
+    - m_State: {fileID: 754499148272804668}
+      m_StateMachineBehaviours:
+      - {fileID: 513999612889901355}
+    - m_State: {fileID: 7369489138109397281}
+      m_StateMachineBehaviours:
+      - {fileID: -1655715297874112167}
+    - m_State: {fileID: 1473320387393465169}
+      m_StateMachineBehaviours:
+      - {fileID: 2454450038396248388}
     m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
+    m_SyncedLayerIndex: 0
     m_DefaultWeight: 0
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Light
+    m_Name: Precision
     m_StateMachine: {fileID: -2419875059463830925}
     m_Mask: {fileID: 0}
-    m_Motions: []
+    m_Motions:
+    - serializedVersion: 2
+      m_State: {fileID: 754499148272804668}
+      m_Motion: {fileID: 7400000, guid: 1b3e2ef91f6c68441bb13331cbe960dd, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 7369489138109397281}
+      m_Motion: {fileID: 7400000, guid: 00f66b1c2cb0b11488a9dfd749e7a11b, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 1473320387393465169}
+      m_Motion: {fileID: 7400000, guid: 0e2615fb22c6771408121037e09ef098, type: 2}
     m_Behaviours: []
     m_BlendingMode: 0
-    m_SyncedLayerIndex: -1
+    m_SyncedLayerIndex: 0
     m_DefaultWeight: 0
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
@@ -789,6 +828,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &513999612889901355
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501b6f8fe1f5d7c42b8a81cf65316850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &754499148272804668
 AnimatorState:
   serializedVersion: 5
@@ -942,6 +993,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 501b6f8fe1f5d7c42b8a81cf65316850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2454450038396248388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87945d46faf5b5349b8dc61da7056973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1102 &2478424726548737408

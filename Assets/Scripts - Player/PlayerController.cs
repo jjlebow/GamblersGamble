@@ -82,6 +82,10 @@ public class PlayerController : MonoBehaviour
     private float timeBtwDamage = 1.5f; //this is the cooldown between which the player can take damage
     //----------------------------------------------
 
+    //Animator variables
+    public Animator torsoAnim;
+    //----------------------------------------------
+
 
     private void Awake()
     {
@@ -251,6 +255,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash()
     {
+        TurnOffLayers();
         m_Rigidbody2D.gravityScale = 0f;
         if(StateManager.instance.faceRight == true)
         {
@@ -265,6 +270,7 @@ public class PlayerController : MonoBehaviour
 
     public void BackDash()
     {
+        TurnOffLayers();
         m_Rigidbody2D.gravityScale = 0f;
         if(StateManager.instance.faceRight == true)
         {
@@ -312,16 +318,40 @@ public class PlayerController : MonoBehaviour
 
     public void Attack()
     {
+        TurnOffLayers();
+        StateManager.instance.isActive = true;
+    }
+
+    public void HeavyAttack()
+    {
+        TurnOffLayers();
+        //this sets the animation layer heavy to being active to override the default layer.
+        torsoAnim.SetLayerWeight(1,1);
+        StateManager.instance.isActive = true;
+    }
+
+    public void PrecisionAttack()
+    {
+        TurnOffLayers();
+        torsoAnim.SetLayerWeight(2,1);
         StateManager.instance.isActive = true;
     }
 
     public void Jump()
     {
+        TurnOffLayers();
         //if we want to make the double jump a constant jump instead of variable,
         //we need to take the airjump condition out of the update, and put the constant jump force in here
         //delete the extra conditioin in checkKeyInput()
        // m_Rigidbody2D.AddForce(transform.up * 500f);// * StateManager.instance.faceRight);
         availJumps += 1;
+    }
+
+    private void TurnOffLayers()
+    {
+        //before we start an attack, we turn off all non-default layers
+        torsoAnim.SetLayerWeight(1,0);
+        torsoAnim.SetLayerWeight(2,0);
     }
 
     //this matches the input with the appropriate action function and executes it. we use the storedKeys array to 
@@ -527,10 +557,12 @@ public class PlayerController : MonoBehaviour
         {
             //switches the way the player is facing
             StateManager.instance.faceRight = !StateManager.instance.faceRight;//1;//StateManager.instance.faceRight * -1;
+            transform.Rotate(0f, 180f, 0f);
+
             //multiplies the players x local scale by -1
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            //Vector3 theScale = transform.localScale;
+            //theScale.x *= -1;
+            //transform.localScale = theScale;
         }
     }
 
