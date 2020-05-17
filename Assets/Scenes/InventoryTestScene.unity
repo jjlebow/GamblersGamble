@@ -6434,7 +6434,7 @@ MonoBehaviour:
   groundCheck: {fileID: 168391490}
   ceilingCheck: {fileID: 1716036102}
   fallMultiplier: 3
-  lowJumpMultiplier: -13.01
+  lowJumpMultiplier: 3
   numberOfJumps: 1
   gravityScale: 1
   jumpForce: 6
