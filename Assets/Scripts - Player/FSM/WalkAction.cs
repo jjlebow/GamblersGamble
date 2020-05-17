@@ -40,6 +40,8 @@ public class WalkAction : FSMAction
             Finish(0);
         if(StateManager.instance.isActive == true)
             Finish(1);
+        if(StateManager.instance.isShooting == true)
+            Finish(4);
     }
 
     public void Finish(int num)

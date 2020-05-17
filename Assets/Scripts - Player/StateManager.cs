@@ -38,6 +38,7 @@ public class StateManager : MonoBehaviour
 
     public PlayerController player;
     public bool isActive = false;
+    public bool isShooting = false;
     public bool walking = false;
     public bool playerGrounded = false;
     public bool faceRight = false;

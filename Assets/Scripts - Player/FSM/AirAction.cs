@@ -12,6 +12,9 @@ public class AirAction : FSMAction
     string[] finishEvent;
     PlayerController player;
 
+    private bool rising = true;
+    private bool falling = false;
+
     public AirAction(FSMState owner) : base(owner)
     {
 
@@ -31,14 +34,18 @@ public class AirAction : FSMAction
     {
         Debug.Log("engertingAirAction");
         //Debug.Log("shoule print once");
+        rising = false;
+        falling = false;
         if(player.m_Rigidbody2D.velocity.y <= 0)
         {
             animator.SetTrigger(triggerName2);
             Debug.Log("the trigger has been set");
+            falling = true;
             //legAnimator.SetTrigger(triggerName2);
         }
         else
         {
+            rising = true;
             animator.SetTrigger(triggerName);
             //legAnimator.SetTrigger(triggerName);
         }
@@ -48,16 +55,31 @@ public class AirAction : FSMAction
 
     public override void OnUpdate()
     {
-        if(StateManager.instance.grounded == true)
+        if(StateManager.instance.grounded == true && StateManager.instance.walking == false)
         {
             //set trigger for landing animation here if you want to add that
             Finish(0);
             Debug.Log("grounded");
         }
+        else if(StateManager.instance.walking == true && StateManager.instance.grounded == true)
+        {
+
+            Finish(2);
+        }
         else if(StateManager.instance.isActive == true)
         {
             Debug.Log("We are leaving air and going into attack");
             Finish(1);
+        }
+
+        else if(StateManager.instance.isShooting == true)
+        {
+            Finish(4);
+        }
+        //this will reverse the jump while still in midair if we sheft to a positive or negative velocity while still in midair. 
+        if((rising == true && player.m_Rigidbody2D.velocity.y <= 0) || (falling == true && player.m_Rigidbody2D.velocity.y > 0))
+        {
+            Finish(3);
         }
 
     }

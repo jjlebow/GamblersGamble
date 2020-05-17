@@ -43,6 +43,8 @@ public class IdleAction : FSMAction
             Finish(1);
         else if(StateManager.instance.walking == true)
             Finish(2);
+        else if(StateManager.instance.isShooting == true)
+            Finish(4);
         //record the state that existed before it entered this state and set that to finishedEvent
         //if we are exiting into a different state, (knockback), then set finished event to that. 
     }

@@ -82,8 +82,15 @@ public class PlayerController : MonoBehaviour
     private float timeBtwDamage = 1.5f; //this is the cooldown between which the player can take damage
     //----------------------------------------------
 
-    //Animator variables
+    //Player components
     public Animator torsoAnim;
+    //----------------------------------------------
+
+    //Shooting variables
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+    public GameObject heavyShotImpactEffect;
+    public LineRenderer lineRenderer;
     //----------------------------------------------
 
 
@@ -313,6 +320,47 @@ public class PlayerController : MonoBehaviour
 
             Move(horizontal * Time.fixedDeltaTime);
         }
+    }
+
+    public void Shoot()
+    {
+        StateManager.instance.isShooting = true;
+    }
+
+    public void HeavyShot()
+    {
+        Debug.Log("Heavey shto");
+        StartCoroutine(RevolverShot());
+    }
+
+    private IEnumerator RevolverShot()
+    {
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, -firePoint.right);
+        if(hitInfo)  
+        {
+            //Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
+            //if(hitInfo.transform.GetComponent<Boss>() != null)    //if we are colliding with a boss, (if we collide with something else then this returns null)
+            //{
+                               // make the enemy take damaage
+            //}
+            //Instantiate(heavyShotImpactEffect, hitInfo.point, Quaternion.identity); //quaternion identity just tells us that we dont need to rotate
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, hitInfo.point);
+
+        }
+        else
+        {
+            lineRenderer.SetPosition(0, firePoint.position);
+            lineRenderer.SetPosition(1, firePoint.position +  (-firePoint.right) * 100);  //taking start position and shifting it 100 units forward
+        }
+        lineRenderer.enabled = true;
+        yield return new WaitForSeconds(0.02f); // this forces us to wait for this many seconds before turning the line off
+        lineRenderer.enabled = false;
+    }
+
+    public void PrecisionShot()
+    {
+
     }
 
 

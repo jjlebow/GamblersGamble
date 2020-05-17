@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackAction : FSMAction
+public class ShootAction : FSMAction
 {
     public Animator animator;
     public Animator legAnimator;
@@ -11,7 +11,7 @@ public class AttackAction : FSMAction
     string[] finishEvent;
 
 
-    public AttackAction(FSMState owner) : base(owner)
+    public ShootAction(FSMState owner) : base(owner)
     {
     }
 
@@ -47,15 +47,15 @@ public class AttackAction : FSMAction
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead,
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
-        if(StateManager.instance.grounded == false && StateManager.instance.isActive == false)
+        if(StateManager.instance.grounded == false && StateManager.instance.isShooting == false)
         {
             Finish(3);
         }
-        else if(StateManager.instance.walking == true && StateManager.instance.isActive == false)
+        else if(StateManager.instance.walking == true && StateManager.instance.isShooting == false)
         {
             Finish(2);
         }
-        else if(StateManager.instance.isActive == false && StateManager.instance.walking == false)
+        else if(StateManager.instance.isShooting == false && StateManager.instance.walking == false)
             Finish(0);
         //record the state that existed before it entered this state and set that to finishedEvent
         //if we are exiting into a different state, (knockback), then set finished event to that. 
@@ -67,11 +67,3 @@ public class AttackAction : FSMAction
             GetOwner().SendEvent(finishEvent[num]);
     }
 }
-
-/*legs animator is always in real time with the state updates. 
-There is no exit time on leg animations. Upper body animations will 
-(almost) always have to finish their animation before moving onto
-the next animation, whereas leg stuff will be ahead. (unless its a top priority
-transition like knockback).
-NO COOLDOWN. the next action can be initiated immediatlely after the last animation ends
-*/
