@@ -21,7 +21,7 @@ public class StateController : MonoBehaviour
 
     public Animator animator;
     public Animator legAnimator;
-    private string[] endTransitions = new string[] {"ToIdle", "ToAttack", "ToWalking", "ToAir", "ToShooting"};
+    private string[] endTransitions = new string[] {"ToIdle", "ToAttack", "ToWalking", "ToAir", "ToShoot"};
 
     private PlayerController player;
     // Start is called before the first frame update
@@ -66,6 +66,10 @@ public class StateController : MonoBehaviour
         s_AirState.AddTransition("ToShoot", s_ShootState);
         s_AirState.AddTransition("ToWalking", s_WalkState);
         s_AirState.AddTransition("ToAir", s_AirState);
+
+        s_ShootState.AddTransition("ToIdle", s_IdleState);
+        s_ShootState.AddTransition("ToWalking", s_WalkState);
+        s_ShootState.AddTransition("ToAir", s_AirState);
 
         a_IdleAction.Init("Idle", endTransitions, animator, legAnimator);
         a_AttackAction.Init("Attacking", "airAttack", endTransitions, animator, legAnimator);
