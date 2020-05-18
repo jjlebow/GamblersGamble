@@ -2,24 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShotBehavior : StateMachineBehaviour
+public class HeavyShotBehavior : StateMachineBehaviour
 {
     private PlayerController player;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(player == null)
-        {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        }
-        if(player.intendedLayer == 0)
-        {
-            Instantiate(player.bulletPrefab, player.firePoint.position, player.firePoint.rotation);
-        }
-        else if(player.intendedLayer == 1)
-        {
-            player.StartHeavyCoroutineShot();
-        }
+
+        //Debug.Log("WE SHOULD BE COMING HERE ARE WE NOT");
+        player.StartHeavyCoroutineShot();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

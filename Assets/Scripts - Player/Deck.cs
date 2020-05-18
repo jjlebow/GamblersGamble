@@ -38,7 +38,6 @@ public class Deck : MonoBehaviour
     {
     	deckOfCards = new List<Card>();
     	discardPile = new List<Card>();
-        /*
     	for(int i = 0; i < 5; i++)
     	{
             deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5));
@@ -65,11 +64,11 @@ public class Deck : MonoBehaviour
         {
             deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5));
         }
+        
         for(int i = 0; i < 5; i++)
         {
             deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5));
         }
-        */
         for(int i = 0; i < 5; i++)
         {
             deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5));

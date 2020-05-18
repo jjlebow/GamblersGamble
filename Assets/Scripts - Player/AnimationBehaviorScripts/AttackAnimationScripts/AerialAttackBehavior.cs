@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBehavior : StateMachineBehaviour
+public class AerialAttackBehavior : StateMachineBehaviour
 {
     private PlayerController player;
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -13,9 +13,9 @@ public class AttackBehavior : StateMachineBehaviour
         //if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
             //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
         if(player.intendedLayer == 0)
-            player.neutralHitbox.SetActive(true);
-        else if(player.intendedLayer == 1)
-            player.heavyHitbox.SetActive(true);
+            player.aerialNeutralHitbox.SetActive(true);
+        else if(player.intendedLayer == 0)
+            player.aerialHeavyHitbox.SetActive(true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -30,8 +30,8 @@ public class AttackBehavior : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player.neutralHitbox.SetActive(false);
-        player.heavyHitbox.SetActive(false);
+        player.aerialNeutralHitbox.SetActive(false);
+        player.aerialHeavyHitbox.SetActive(false);
         //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
     }
 

@@ -2,37 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBehavior : StateMachineBehaviour
+public class ShotAirStartBehavior : StateMachineBehaviour
 {
     private PlayerController player;
-    //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();   
-        //if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
-            //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
-        if(player.intendedLayer == 0)
-            player.neutralHitbox.SetActive(true);
-        else if(player.intendedLayer == 1)
-            player.heavyHitbox.SetActive(true);
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        if(player.intendedLayer == 1)
+        {
+            player.m_Rigidbody2D.velocity = new Vector3(0f, 0f, 0f);
+            player.m_Rigidbody2D.gravityScale = 0; 
+
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        //if(Input.GetKey(KeyCode.K) && !StateManager.instance.stance)
-        //{
-            //StateManager.instance.attackContinue = true;
-        //}
-    }
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player.neutralHitbox.SetActive(false);
-        player.heavyHitbox.SetActive(false);
-        //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
+        player.m_Rigidbody2D.gravityScale = 1;    
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier;
     public float lowJumpMultiplier;
     public int numberOfJumps;
-    [SerializeField] private float gravityScale = 1f;
+    //[SerializeField] private float gravityScale = 1f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float jumpTimer; //if the jumpTimer is low, there is no variability in jump heights
     private bool jumpPressed = false;
@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
 
     //Player components
     public Animator torsoAnim;
+    public int intendedLayer;
     //----------------------------------------------
 
     //Shooting variables
@@ -92,6 +93,13 @@ public class PlayerController : MonoBehaviour
     public GameObject heavyShotImpactEffect;
     public LineRenderer lineRenderer;
     //----------------------------------------------
+
+
+    //attack hitboxes
+    public GameObject neutralHitbox;
+    public GameObject aerialNeutralHitbox;
+    public GameObject heavyHitbox;
+    public GameObject aerialHeavyHitbox;
 
 
     private void Awake()
@@ -317,6 +325,7 @@ public class PlayerController : MonoBehaviour
                 m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
         
+            Debug.Log(m_Rigidbody2D.gravityScale);
 
             Move(horizontal * Time.fixedDeltaTime);
         }
@@ -324,17 +333,28 @@ public class PlayerController : MonoBehaviour
 
     public void Shoot()
     {
+        TurnOffLayers();
+        intendedLayer = 0;
         StateManager.instance.isShooting = true;
     }
 
+
     public void HeavyShot()
     {
-        Debug.Log("Heavey shto");
+        TurnOffLayers();
+        torsoAnim.SetLayerWeight(1,1);
+        intendedLayer = 1;
+        StateManager.instance.isShooting = true;
+    }
+
+    public void StartHeavyCoroutineShot()
+    {
         StartCoroutine(RevolverShot());
     }
 
     private IEnumerator RevolverShot()
     {
+        Debug.Log("WE ARE HERE NOW");
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, -firePoint.right);
         if(hitInfo)  
         {
@@ -367,6 +387,7 @@ public class PlayerController : MonoBehaviour
     public void Attack()
     {
         TurnOffLayers();
+        intendedLayer = 0;
         StateManager.instance.isActive = true;
     }
 
@@ -375,6 +396,7 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         //this sets the animation layer heavy to being active to override the default layer.
         torsoAnim.SetLayerWeight(1,1);
+        intendedLayer = 1;
         StateManager.instance.isActive = true;
     }
 
@@ -382,6 +404,7 @@ public class PlayerController : MonoBehaviour
     {
         TurnOffLayers();
         torsoAnim.SetLayerWeight(2,1);
+        intendedLayer = 2;
         StateManager.instance.isActive = true;
     }
 
@@ -440,7 +463,7 @@ public class PlayerController : MonoBehaviour
 
     private void StartJump()
     {
-        m_Rigidbody2D.gravityScale = 0;
+        //m_Rigidbody2D.gravityScale = 1;
         m_Rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         jumpPressed = false;
         startTimer = true;
@@ -448,7 +471,7 @@ public class PlayerController : MonoBehaviour
 
     private void StopJump()
     {
-        m_Rigidbody2D.gravityScale = gravityScale;
+        //m_Rigidbody2D.gravityScale = gravityScale;
         jumpReleased = true;
         timer = jumpTimer;
         startTimer = false;
