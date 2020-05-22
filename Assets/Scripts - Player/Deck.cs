@@ -40,42 +40,42 @@ public class Deck : MonoBehaviour
     	discardPile = new List<Card>();
     	for(int i = 0; i < 5; i++)
     	{
-            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5));
+            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7));
     	}
         for(int i = 0; i < 5; i ++)
         {
-            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5));
+            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10));
         }
         for(int j = 0; j < 5; j++)
         {
-            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5));
+            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0));
         }
 
         for(int i = 0; i < 5; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5));
+            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
         }
         
         for(int k = 0; k < 5; k++)
         {
-            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5));
+            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0));
         }
         for(int l = 0; l < 5; l++)
         {
-            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5));
+            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0));
         }
         
         for(int i = 0; i < 5; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5));
+            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8));
         }
         for(int i = 0; i < 5; i++)
         {
-            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5));
+            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5));
         }
         for(int i = 0; i < 5; i++)
         {
-            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5));
+            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7));
         }
         
     	handCards = handParent.GetComponentsInChildren<CardSlot>();
@@ -84,12 +84,13 @@ public class Deck : MonoBehaviour
     }
 
     //call this function to generate a card that you want
-    public Card GenerateCard(string newName, string newIconPath, int newCost)
+    public Card GenerateCard(string newName, string newIconPath, int newCost, int newDamage)
     {
     	Card newCard = new Card();
     	newCard.cost = newCost;
     	newCard.name = newName;
     	newCard.icon = Resources.Load<Sprite>(newIconPath) as Sprite;
+        newCard.damage = newDamage;
     	return newCard;
     }
     //create some kind of default deck values for the deck

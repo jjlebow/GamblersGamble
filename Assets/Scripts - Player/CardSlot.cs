@@ -9,6 +9,8 @@ public class CardSlot : MonoBehaviour
     public Card card;
     public string keyCode;
 
+    public Damageable playerDamage;
+
     public void AddCard(Card newCard)
     {
     	card = newCard;
@@ -41,13 +43,13 @@ public class CardSlot : MonoBehaviour
     		  if(card != null && Deck.instance.handCards[i].card == null)
     		  {
 
-    		      if(Manager.instance.health > this.card.cost)
+    		      if(playerDamage.health > this.card.cost)
     			  {
                     //hard code in the jump condition because this is always a default to space bar. we must skip all the steps
                     //that assign the action to a key.
                     if(this.card.name == "Jump")
                     {
-                        Manager.instance.health -= this.card.cost;
+                        playerDamage.TakeDamage(this.card.cost);
                         Deck.instance.storedKeys.Add(KeyCode.Space);
                         Deck.instance.handCards[i].AddCard(this.card);
                         Deck.instance.handCards[i].keyCode = "Space";
@@ -101,7 +103,7 @@ public class CardSlot : MonoBehaviour
             //Debug.Log("Waiting for input");
             yield return null;
         }
-        Manager.instance.health -= this.card.cost;
+        playerDamage.TakeDamage(this.card.cost);
         Deck.instance.handCards[i].AddCard(this.card);
         //Hand.instance.cards.Add(this.card);
         this.ClearSlot();

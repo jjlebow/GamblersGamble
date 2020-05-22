@@ -1002,13 +1002,13 @@ AnimatorController:
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: 754499148272804668}
-      m_Motion: {fileID: 7400000, guid: fc0a1251ce93b7f438980603c7cc0388, type: 2}
+      m_Motion: {fileID: 7400000, guid: c40c6472cabbe994a99f41077769bf3b, type: 2}
     - serializedVersion: 2
       m_State: {fileID: 7369489138109397281}
-      m_Motion: {fileID: 7400000, guid: f10db62fa38b8ab4aa8ef988e0be25f9, type: 2}
+      m_Motion: {fileID: 7400000, guid: 7c7d289ba5bb2104396344d26fd89ea7, type: 2}
     - serializedVersion: 2
       m_State: {fileID: 1473320387393465169}
-      m_Motion: {fileID: 7400000, guid: 6ad74934604acd6418ee7bc99eba2d7d, type: 2}
+      m_Motion: {fileID: 7400000, guid: d3faa38195213f446aee83baac5b74b8, type: 2}
     - serializedVersion: 2
       m_State: {fileID: -4091454740851418131}
       m_Motion: {fileID: 7400000, guid: 24fcabaf808f3974296d258d25cb4a36, type: 2}
@@ -1027,6 +1027,15 @@ AnimatorController:
     - serializedVersion: 2
       m_State: {fileID: 2741732037354482186}
       m_Motion: {fileID: 7400000, guid: 2397a249f978e1449904e35c8d4ece67, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 4748566650606119939}
+      m_Motion: {fileID: 7400000, guid: c40c6472cabbe994a99f41077769bf3b, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -7912039231936568317}
+      m_Motion: {fileID: 7400000, guid: 7c7d289ba5bb2104396344d26fd89ea7, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: -3606690061066824206}
+      m_Motion: {fileID: 7400000, guid: d3faa38195213f446aee83baac5b74b8, type: 2}
     m_Behaviours:
     - m_State: {fileID: 754499148272804668}
       m_StateMachineBehaviours: []

@@ -16,6 +16,8 @@ public class AttackBehavior : StateMachineBehaviour
             player.neutralHitbox.SetActive(true);
         else if(player.intendedLayer == 1)
             player.heavyHitbox.SetActive(true);
+        else if(player.intendedLayer ==2)
+            player.precisionHitbox.SetActive(true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -32,6 +34,7 @@ public class AttackBehavior : StateMachineBehaviour
     {
         player.neutralHitbox.SetActive(false);
         player.heavyHitbox.SetActive(false);
+        player.precisionHitbox.SetActive(false);
         //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
     }
 

@@ -14,8 +14,10 @@ public class AerialAttackBehavior : StateMachineBehaviour
             //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
         if(player.intendedLayer == 0)
             player.aerialNeutralHitbox.SetActive(true);
-        else if(player.intendedLayer == 0)
+        else if(player.intendedLayer == 1)
             player.aerialHeavyHitbox.SetActive(true);
+        else if(player.intendedLayer == 2)
+            player.aerialPrecisionHitbox.SetActive(true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -32,6 +34,7 @@ public class AerialAttackBehavior : StateMachineBehaviour
     {
         player.aerialNeutralHitbox.SetActive(false);
         player.aerialHeavyHitbox.SetActive(false);
+        player.aerialPrecisionHitbox.SetActive(false);
         //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
     }
 

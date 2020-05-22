@@ -14,7 +14,8 @@ public class ShotBehavior : StateMachineBehaviour
         }
         if(player.intendedLayer == 0)
         {
-            Instantiate(player.bulletPrefab, player.firePoint.position, player.firePoint.rotation);
+            GameObject dart = Instantiate(player.bulletPrefab, player.firePoint.position, player.firePoint.rotation);
+            dart.GetComponent<Dart>().damage = player.damageHolder;
         }
         else if(player.intendedLayer == 1)
         {

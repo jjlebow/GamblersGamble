@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     //Player components
     public Animator torsoAnim;
     public int intendedLayer;
+    private Damageable playerDamage;
     //----------------------------------------------
 
     //Shooting variables
@@ -100,6 +101,14 @@ public class PlayerController : MonoBehaviour
     public GameObject aerialNeutralHitbox;
     public GameObject heavyHitbox;
     public GameObject aerialHeavyHitbox;
+    public GameObject precisionHitbox;
+    public GameObject aerialPrecisionHitbox;
+
+    //================================================
+    //damage variables
+    public int damageHolder;    //damage is applied by taking the damage value off the card (when its initialized). when the card is called, we store the 
+                                ///damage value here to make it accessible to other scripts easily, and then apply it to the damage dealt. 
+
 
 
     private void Awake()
@@ -109,6 +118,7 @@ public class PlayerController : MonoBehaviour
         //playerAnim = GetComponent<Animator>();
         
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        playerDamage = GetComponent<Damageable>();
         timer = jumpTimer;
 
 
@@ -268,7 +278,7 @@ public class PlayerController : MonoBehaviour
         //anim.SetBool("Landing", false);    //ensures that landing animation is not true for any frame past the frame that the character lands
     }
 
-    public void Dash()
+    public void Dash(int damage)
     {
         TurnOffLayers();
         m_Rigidbody2D.gravityScale = 0f;
@@ -283,7 +293,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody2D.gravityScale = 1f;
     }
 
-    public void BackDash()
+    public void BackDash(int damage)
     {
         TurnOffLayers();
         m_Rigidbody2D.gravityScale = 0f;
@@ -331,19 +341,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Shoot()
+    public void Shoot(int damage)
     {
         TurnOffLayers();
         intendedLayer = 0;
+        damageHolder = damage;
         StateManager.instance.isShooting = true;
     }
 
 
-    public void HeavyShot()
+    public void HeavyShot(int damage)
     {
         TurnOffLayers();
         torsoAnim.SetLayerWeight(1,1);
         intendedLayer = 1;
+        damageHolder = damage;
         StateManager.instance.isShooting = true;
     }
 
@@ -354,7 +366,6 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator RevolverShot()
     {
-        Debug.Log("WE ARE HERE NOW");
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, -firePoint.right);
         if(hitInfo)  
         {
@@ -365,50 +376,59 @@ public class PlayerController : MonoBehaviour
             //}
             //Instantiate(heavyShotImpactEffect, hitInfo.point, Quaternion.identity); //quaternion identity just tells us that we dont need to rotate
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, hitInfo.point);
-
+            lineRenderer.SetPosition(1, hitInfo.point);        //if we hit something, then this draws the line up to the thing we hit
+            if(hitInfo.transform.GetComponent<Damageable>() != null)
+            {
+                hitInfo.transform.GetComponent<Damageable>().TakeDamage(damageHolder);
+            }
         }
         else
         {
             lineRenderer.SetPosition(0, firePoint.position);
-            lineRenderer.SetPosition(1, firePoint.position +  (-firePoint.right) * 100);  //taking start position and shifting it 100 units forward
+            lineRenderer.SetPosition(1, firePoint.position +  (-firePoint.right) * 100);  //taking start position and shifting it 100 units forward?? i dot get this
         }
         lineRenderer.enabled = true;
         yield return new WaitForSeconds(0.02f); // this forces us to wait for this many seconds before turning the line off
         lineRenderer.enabled = false;
     }
 
-    public void PrecisionShot()
+    public void PrecisionShot(int damage)
     {
-
+        TurnOffLayers();
+        intendedLayer = 2;
+        damageHolder = damage;
+        StateManager.instance.isShooting = true;
     }
 
 
-    public void Attack()
+    public void Attack(int damage)
     {
         TurnOffLayers();
         intendedLayer = 0;
+        damageHolder = damage;
         StateManager.instance.isActive = true;
     }
 
-    public void HeavyAttack()
+    public void HeavyAttack(int damage)
     {
         TurnOffLayers();
         //this sets the animation layer heavy to being active to override the default layer.
         torsoAnim.SetLayerWeight(1,1);
+        damageHolder = damage;
         intendedLayer = 1;
         StateManager.instance.isActive = true;
     }
 
-    public void PrecisionAttack()
+    public void PrecisionAttack(int damage)
     {
         TurnOffLayers();
         torsoAnim.SetLayerWeight(2,1);
+        damageHolder = damage;
         intendedLayer = 2;
         StateManager.instance.isActive = true;
     }
 
-    public void Jump()
+    public void Jump(int damage)
     {
         TurnOffLayers();
         //if we want to make the double jump a constant jump instead of variable,
@@ -440,7 +460,7 @@ public class PlayerController : MonoBehaviour
                             if((code == KeyCode.Space && !StateManager.instance.grounded) || code != KeyCode.Space)//this condition is for the hard coding of the Jump function to make sure we dont call this on our first jump (delete this for other uses of this)
                             //if(code == KeyCode.Space && !StateManager.instance.grounded) this line is used if we are doing the constant double jump
                             {
-                                this.SendMessage(Deck.instance.handCards[i].card.name);
+                                this.SendMessage(Deck.instance.handCards[i].card.name, Deck.instance.handCards[i].card.damage);
                                 Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
                                 Deck.instance.handCards[i].ClearSlot();
                                 Deck.instance.storedKeys.Remove(code);
@@ -661,7 +681,7 @@ public class PlayerController : MonoBehaviour
         //knockbackDirLeft = new Vector3(transform.position.x + 12, transform.position.y + 10, transform.position.z);
         StartCoroutine(KnockbackTimer());
         StartCoroutine(DamageTimer());
-        Manager.instance.health -= damage;
+        playerDamage.TakeDamage(damage);
     }
 
     //determines how long the player will be in the knockback phase

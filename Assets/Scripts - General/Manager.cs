@@ -17,9 +17,9 @@ public class Manager : MonoBehaviour
     public GameObject VictoryPanel;
 
     public float timer = 10f;
-
-    public int health;
+    
     public Slider healthBar;
+    public Slider badHealthBar;
     public float timeLeft;
     public bool startTimer = false;
 
@@ -32,6 +32,9 @@ public class Manager : MonoBehaviour
     //public delegate void OnRoundChange();
     //public OnRoundChange OnRoundChangeCallback;
     private Vector2 startingPoint;
+    public Damageable playerDamageable;
+    public Boss currentBoss;
+    public Damageable bossDamageable;
 
 
 
@@ -50,8 +53,11 @@ public class Manager : MonoBehaviour
             return;
         }
         instance = this;
-        player = player.GetComponent<PlayerController>();
-        stateMachine = stateMachine.GetComponent<StateController>();
+        //player = player.GetComponent<PlayerController>();
+        //stateMachine = stateMachine.GetComponent<StateController>();
+        //playerDamageable = player.GetComponent<Damageable>();
+        //currentBoss = currentBoss.GetComponent<Boss>();
+        //bossDamageable = currentBoss
         // this should go in some kind of OnScenLoadedthing 
         startingPoint = GameObject.FindGameObjectWithTag("StartingPosition").transform.position;
 
@@ -60,6 +66,7 @@ public class Manager : MonoBehaviour
     private void Start()
     {
         timeLeft = timer;
+        
         //OnRoundChangeCallback += PauseScreen;
         //OnRoundChangeCallback += ResetPlayerPosition;
         //OnRoundChangeCallback += ResetPlayerState;
@@ -69,7 +76,8 @@ public class Manager : MonoBehaviour
     {
         //if(gameState.GameState = PAUSED)
             //Time.timeScale = 0;
-        healthBar.value = health;
+        healthBar.value = playerDamageable.health;
+        badHealthBar.value = bossDamageable.health;
         //runs the game over function when the player has died, regardless of whether or not the boss has died
         if(StateManager.instance.playerState == StateManager.PlayerStates.DEAD)
         {
