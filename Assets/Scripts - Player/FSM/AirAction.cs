@@ -32,14 +32,14 @@ public class AirAction : FSMAction
 
     public override void OnEnter()
     {
-        Debug.Log("engertingAirAction");
+        //Debug.Log("engertingAirAction");
         //Debug.Log("shoule print once");
         rising = false;
         falling = false;
         if(player.m_Rigidbody2D.velocity.y <= 0)
         {
             animator.SetTrigger(triggerName2);
-            Debug.Log("the trigger has been set");
+            //Debug.Log("the trigger has been set");
             falling = true;
             //legAnimator.SetTrigger(triggerName2);
         }
@@ -59,7 +59,7 @@ public class AirAction : FSMAction
         {
             //set trigger for landing animation here if you want to add that
             Finish(0);
-            Debug.Log("grounded");
+            //Debug.Log("grounded");
         }
         else if(StateManager.instance.walking == true && StateManager.instance.grounded == true)
         {
@@ -68,7 +68,7 @@ public class AirAction : FSMAction
         }
         else if(StateManager.instance.isActive == true)
         {
-            Debug.Log("We are leaving air and going into attack");
+            //Debug.Log("We are leaving air and going into attack");
             Finish(1);
         }
 

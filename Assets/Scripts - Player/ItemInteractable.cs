@@ -8,13 +8,13 @@ public class ItemInteractable : Interactable
 
     protected override void Interact()
     {
-        Debug.Log("The item is being interacted with"); 
+        //Debug.Log("The item is being interacted with"); 
         Pickup();
     }
 
     private void Pickup()
     {
-        Debug.Log(("Picking up " + item.name));
+        //Debug.Log(("Picking up " + item.name));
         Inventory.instance.Add(item);
         Destroy(gameObject);
     }

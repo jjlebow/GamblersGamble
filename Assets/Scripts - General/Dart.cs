@@ -20,30 +20,26 @@ public class Dart : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         
-        Debug.Log("WE COLLIDED WITH SOMETHING");
         if(hitInfo.gameObject.CompareTag("Weapon") == false && hitInfo.gameObject.CompareTag("Player") == false)
         {
-
-            Debug.Log("We collided with something that isnt a weapon or the player");
-            if(hitInfo.GetComponent<Damageable>() != null)
-            {
-                hitInfo.GetComponent<Damageable>().TakeDamage(damage);
-            }
-            Destroy(gameObject);
-            
-        }
-        else
-        {
+            Transform hitParent = hitInfo.transform;
             /*
-            Debug.Log("we are destroying the dart now");
-            if(hitInfo.GetComponent<Damageable>() != null)
+            while(true)
             {
-                Debug.Log("should have taken damage");
-                hitInfo.GetComponent<Damageable>().TakeDamage(5);  //5 should be taken from the card...maybe? look into this later
+                if(hitParent.parent != null)
+                    hitParent = hitParent.parent;
+                else
+                    break;
             }
-            Destroy(gameObject);  //do this by playy8ing a destruction animation
             */
+            hitParent = PublicFunctions.FindParent(hitParent);
+            if(hitParent.GetComponent<Damageable>() != null)
+            {
+                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name);
+                Destroy(gameObject);
+            }
         }
+        
     	//play animation for bullet falling out (impact effect);
     	//Destroy(gameObject); destroy this while we are not touching the player
     	//if the thing is damagable, then it takes damage and dies if necessary, playing

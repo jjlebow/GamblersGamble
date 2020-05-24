@@ -335,7 +335,7 @@ public class PlayerController : MonoBehaviour
                 m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
         
-            Debug.Log(m_Rigidbody2D.gravityScale);
+            //Debug.Log(m_Rigidbody2D.gravityScale);
 
             Move(horizontal * Time.fixedDeltaTime);
         }
@@ -369,6 +369,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.position, -firePoint.right);
         if(hitInfo)  
         {
+            Transform hitParent;
             //Enemy enemy = hitInfo.transform.GetComponent<Enemy>();
             //if(hitInfo.transform.GetComponent<Boss>() != null)    //if we are colliding with a boss, (if we collide with something else then this returns null)
             //{
@@ -377,9 +378,10 @@ public class PlayerController : MonoBehaviour
             //Instantiate(heavyShotImpactEffect, hitInfo.point, Quaternion.identity); //quaternion identity just tells us that we dont need to rotate
             lineRenderer.SetPosition(0, firePoint.position);
             lineRenderer.SetPosition(1, hitInfo.point);        //if we hit something, then this draws the line up to the thing we hit
-            if(hitInfo.transform.GetComponent<Damageable>() != null)
+            hitParent = PublicFunctions.FindParent(hitInfo.transform);   //ensures that damage is applied to the highest parent of whatever was collided with
+            if(hitParent.GetComponent<Damageable>() != null)
             {
-                hitInfo.transform.GetComponent<Damageable>().TakeDamage(damageHolder);
+                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damageHolder, hitInfo.collider.name);
             }
         }
         else
@@ -681,7 +683,7 @@ public class PlayerController : MonoBehaviour
         //knockbackDirLeft = new Vector3(transform.position.x + 12, transform.position.y + 10, transform.position.z);
         StartCoroutine(KnockbackTimer());
         StartCoroutine(DamageTimer());
-        playerDamage.TakeDamage(damage);
+        playerDamage.TakeCollisionDamage(damage, "null");
     }
 
     //determines how long the player will be in the knockback phase

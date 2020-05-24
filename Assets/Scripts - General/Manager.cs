@@ -204,11 +204,11 @@ public class Manager : MonoBehaviour
         Time.timeScale = 1.0f;
         foreach(Card card in Deck.instance.discardPile)
         {
-            Debug.Log("Card " + card.name);
+            //Debug.Log("Card " + card.name);
         }
         foreach(Card card in Deck.instance.deckOfCards)
         {
-            Debug.Log("CardDeck " + card.name);
+            //Debug.Log("CardDeck " + card.name);
         }
     }
 

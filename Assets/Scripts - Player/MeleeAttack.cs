@@ -19,11 +19,13 @@ public class MeleeAttack : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D hitInfo)
     {
-    	Debug.Log("we are colliding with " + hitInfo);
-    	if(hitInfo.GetComponent<Damageable>() != null)
+    	Transform hitParent = hitInfo.transform;
+    	hitParent = PublicFunctions.FindParent(hitParent);
+    	//Debug.Log("we are colliding with " + tempName);
+    	if(hitParent.GetComponent<Damageable>() != null)
     	{
     		Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
-    		hitInfo.GetComponent<Damageable>().TakeDamage(player.damageHolder);
+    		hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder,  hitInfo.name);
     	}
     }
 }
