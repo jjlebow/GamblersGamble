@@ -32,7 +32,7 @@ public class AttackEndBehavior : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        Manager.instance.currentState = Manager.GameState.BATTLE;
         //if(StateManager.instance.attackContinue == false)
             //StateManager.instance.attackCooldown = false;
         //Debug.Log(StateManager.instance.isActive);

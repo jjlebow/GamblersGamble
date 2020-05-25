@@ -23,7 +23,7 @@ public class Manager : MonoBehaviour
     public float timeLeft;
     public bool startTimer = false;
 
-    public enum GameState {PAUSED, BATTLE, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL};
+    public enum GameState {PAUSED, BATTLE, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL, PLAYERSTATIC};
     public GameState currentState;
     public GameState previousState;
     public GameState gameState;
