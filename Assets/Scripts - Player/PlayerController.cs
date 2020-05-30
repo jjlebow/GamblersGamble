@@ -161,15 +161,12 @@ public class PlayerController : MonoBehaviour
         //only runs once per key pressdown regardless of duration held, but multiple keys can be pressed down at once and all are registered
 
         //this only gets run once every time a key is pressed.
-        if(Manager.instance.currentState == Manager.GameState.BATTLE)
+
+
+        if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.isStaticAttack == false)
         {
+
             CheckKeyInput();
-        }
-
-
-
-        if(Manager.instance.currentState == Manager.GameState.BATTLE )
-        {
             //condition for the grounded jump
             if(Input.GetButtonDown("Jump") && availJumps > 0 && StateManager.instance.grounded)
             {
@@ -310,7 +307,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(Manager.instance.currentState == Manager.GameState.BATTLE)
+        if(!StateManager.instance.isStaticAttack && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             RaycastCheckUpdateGround();
             horizontal = Input.GetAxisRaw("Horizontal") * runningSpeed;
@@ -408,6 +405,7 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;
+
         StateManager.instance.isActive = true;
     }
 
@@ -428,7 +426,7 @@ public class PlayerController : MonoBehaviour
         damageHolder = damage;
         intendedLayer = 2;
         StateManager.instance.isActive = true;
-        Manager.instance.currentState = Manager.GameState.PLAYERSTATIC;
+        StateManager.instance.isStaticAttack = true;
         m_Rigidbody2D.velocity = new Vector3(0,0,0);
     }
 

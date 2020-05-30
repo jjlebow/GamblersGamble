@@ -38,7 +38,7 @@ public class Deck : MonoBehaviour
     {
     	deckOfCards = new List<Card>();
     	discardPile = new List<Card>();
-        /*
+        
     	for(int i = 0; i < 5; i++)
     	{
             deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7));
@@ -51,12 +51,7 @@ public class Deck : MonoBehaviour
         {
             deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0));
         }
-        */
-        for(int i = 0; i < 5; i++)
-        {
-            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
-        }
-        /*
+        
         for(int k = 0; k < 5; k++)
         {
             deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0));
@@ -78,7 +73,12 @@ public class Deck : MonoBehaviour
         {
             deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7));
         }
-        */
+
+        for(int i = 0; i < 5; i++)
+        {
+            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
+        }
+        
     	handCards = handParent.GetComponentsInChildren<CardSlot>();
     	drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
         Shuffle(deckOfCards);

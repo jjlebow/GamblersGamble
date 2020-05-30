@@ -23,10 +23,14 @@ public class Manager : MonoBehaviour
     public float timeLeft;
     public bool startTimer = false;
 
-    public enum GameState {PAUSED, BATTLE, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL, PLAYERSTATIC};
+    public enum GameState {PAUSED, BATTLE, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL};
     public GameState currentState;
     public GameState previousState;
     public GameState gameState;
+
+    public enum PlayerState{MELEE, SHOOT, DASH, KNOCKBACK, IDLE};
+    public PlayerState playerState;
+
     public PlayerController player;
     public StateController stateMachine;
     //public delegate void OnRoundChange();
@@ -46,6 +50,7 @@ public class Manager : MonoBehaviour
     private void Awake()
     {
         currentState = GameState.BATTLE;
+        playerState = PlayerState.IDLE;
         //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FirstBoss>(); 
         if(instance != null)
         {
