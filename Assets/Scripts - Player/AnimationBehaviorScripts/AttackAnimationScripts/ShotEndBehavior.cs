@@ -17,6 +17,7 @@ public class ShotEndBehavior : StateMachineBehaviour
         if(stateInfo.normalizedTime >= length)
         {
             StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
+            StateManager.instance.playerStatic = false;
         }    
     }
 

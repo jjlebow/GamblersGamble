@@ -420,6 +420,8 @@ public class PlayerController : MonoBehaviour
         damageHolder = damage;
         intendedLayer = 1;
         StateManager.instance.ChangeState(StateManager.PlayerState.MELEE);
+        StateManager.instance.playerStatic = true;
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
         //StateManager.instance.isActive = true;
     }
 

@@ -51,7 +51,7 @@ public class AttackAction : FSMAction
         {
             Finish(3);
         }
-        else if(StateManager.instance.walking == true && StateManager.instance.currentState != StateManager.PlayerState.SHOOT)
+        else if(StateManager.instance.walking == true && StateManager.instance.currentState != StateManager.PlayerState.MELEE)
         {
             Finish(2);
         }
