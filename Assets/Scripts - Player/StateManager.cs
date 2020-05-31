@@ -28,6 +28,9 @@ public class StateManager : MonoBehaviour
     public bool isStanceChanging = false;   //this represents the duration of the stance changing
 
 
+    public enum PlayerState{MELEE, SHOOT, DASH, KNOCKBACK, IDLE, DEAD};
+    public PlayerState currentState;
+    public PlayerState previousState;
 
 
 
@@ -37,38 +40,15 @@ public class StateManager : MonoBehaviour
 
 
     public PlayerController player;
-    public bool isActive = false;
-    public bool isShooting = false;
-    public bool isStaticAttack = false;
+    //public bool isActive = false;
+    //public bool isShooting = false;
+    public bool playerStatic = false;
     public bool walking = false;
     public bool playerGrounded = false;
     public bool faceRight = false;
     //public bool airFalling = false;
     //public bool airRising = false;
     public bool grounded = false;
-
-
-
-
-    public enum PlayerStates
-    {
-        IDLE,
-        MOVING,
-        DEAD,
-        HOLD               //Being in HOLD stops EVERYTHING the player can do
-        //AIRFALLING,
-        //AIRRISING
-        //BACKWARDS MOVE (Strafe mid combo option)
-    }
-
-    public enum Directional
-    {
-        NEUTRAL,
-        DOWN,
-        UP
-    }
-    public PlayerStates playerState;
-    public Directional directionalFacing;
 
     private void Start()
     {
@@ -81,8 +61,22 @@ public class StateManager : MonoBehaviour
             instance = this;
         else if(instance != this)
             Destroy(gameObject);
-        playerState = PlayerStates.IDLE;
+        currentState = PlayerState.IDLE;
 
         //animator = player.GetComponent<Animator>();
+    }
+
+    public void ChangeState(PlayerState newState)
+    {
+        previousState = currentState;
+        currentState = newState;
+    }
+
+    public void RevertState()
+    {
+        var temp = currentState;
+        currentState = previousState;
+        previousState = temp;
+
     }
 }

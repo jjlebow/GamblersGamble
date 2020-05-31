@@ -17,8 +17,9 @@ public class AttackEndBehavior : StateMachineBehaviour
     {
         if(stateInfo.normalizedTime >= length)
         {
-            StateManager.instance.isActive = false;
-            StateManager.instance.isStaticAttack = false;
+            //StateManager.instance.isActive = false;
+            StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
+            StateManager.instance.playerStatic = false;
         }
 
         //Debug.Log(StateManager.instance.isActive);

@@ -38,9 +38,9 @@ public class WalkAction : FSMAction
             Finish(3);
         if(StateManager.instance.walking == false)
             Finish(0);
-        if(StateManager.instance.isActive == true)
+        if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)
             Finish(1);
-        if(StateManager.instance.isShooting == true)
+        if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
             Finish(4);
     }
 

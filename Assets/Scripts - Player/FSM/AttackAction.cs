@@ -47,15 +47,15 @@ public class AttackAction : FSMAction
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead,
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
-        if(StateManager.instance.grounded == false && StateManager.instance.isActive == false)
+        if(StateManager.instance.grounded == false && StateManager.instance.currentState != StateManager.PlayerState.MELEE)
         {
             Finish(3);
         }
-        else if(StateManager.instance.walking == true && StateManager.instance.isActive == false)
+        else if(StateManager.instance.walking == true && StateManager.instance.currentState != StateManager.PlayerState.SHOOT)
         {
             Finish(2);
         }
-        else if(StateManager.instance.isActive == false && StateManager.instance.walking == false)
+        else if(StateManager.instance.currentState != StateManager.PlayerState.MELEE && StateManager.instance.walking == false)
             Finish(0);
         //record the state that existed before it entered this state and set that to finishedEvent
         //if we are exiting into a different state, (knockback), then set finished event to that. 

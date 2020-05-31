@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
         //this only gets run once every time a key is pressed.
 
 
-        if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.isStaticAttack == false)
+        if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false)
         {
 
             CheckKeyInput();
@@ -307,7 +307,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!StateManager.instance.isStaticAttack && Manager.instance.currentState == Manager.GameState.BATTLE)
+        if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             RaycastCheckUpdateGround();
             horizontal = Input.GetAxisRaw("Horizontal") * runningSpeed;
@@ -343,7 +343,8 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;
-        StateManager.instance.isShooting = true;
+        StateManager.instance.ChangeState(StateManager.PlayerState.SHOOT);
+        //StateManager.instance.isShooting = true;
     }
 
 
@@ -353,7 +354,8 @@ public class PlayerController : MonoBehaviour
         torsoAnim.SetLayerWeight(1,1);
         intendedLayer = 1;
         damageHolder = damage;
-        StateManager.instance.isShooting = true;
+        StateManager.instance.ChangeState(StateManager.PlayerState.SHOOT);
+        //StateManager.instance.isShooting = true;
     }
 
     public void StartHeavyCoroutineShot()
@@ -396,7 +398,7 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         intendedLayer = 2;
         damageHolder = damage;
-        StateManager.instance.isShooting = true;
+        StateManager.instance.ChangeState(StateManager.PlayerState.SHOOT);
     }
 
 
@@ -406,7 +408,8 @@ public class PlayerController : MonoBehaviour
         intendedLayer = 0;
         damageHolder = damage;
 
-        StateManager.instance.isActive = true;
+        //StateManager.instance.isActive = true;
+        StateManager.instance.ChangeState(StateManager.PlayerState.MELEE);
     }
 
     public void HeavyAttack(int damage)
@@ -416,7 +419,8 @@ public class PlayerController : MonoBehaviour
         torsoAnim.SetLayerWeight(1,1);
         damageHolder = damage;
         intendedLayer = 1;
-        StateManager.instance.isActive = true;
+        StateManager.instance.ChangeState(StateManager.PlayerState.MELEE);
+        //StateManager.instance.isActive = true;
     }
 
     public void PrecisionAttack(int damage)
@@ -425,8 +429,9 @@ public class PlayerController : MonoBehaviour
         torsoAnim.SetLayerWeight(2,1);
         damageHolder = damage;
         intendedLayer = 2;
-        StateManager.instance.isActive = true;
-        StateManager.instance.isStaticAttack = true;
+        //StateManager.instance.isActive = true;
+        StateManager.instance.ChangeState(StateManager.PlayerState.MELEE);
+        StateManager.instance.playerStatic = true;
         m_Rigidbody2D.velocity = new Vector3(0,0,0);
     }
 
@@ -690,7 +695,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator KnockbackTimer()
     {
         float copy = knockbackDuration;
-        StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
+        //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
         StateManager.instance.knockback = true;
         //StateManager.instance.cantDamage = true;
         while(copy > 0)
@@ -700,7 +705,7 @@ public class PlayerController : MonoBehaviour
         }
         //StateManager.instance.cantDamage = false;
         StateManager.instance.knockback = false;
-        StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
+        StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
     }
     //determines how long the player has invulnerability between attacks
     private IEnumerator DamageTimer()

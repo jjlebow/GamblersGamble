@@ -66,13 +66,13 @@ public class AirAction : FSMAction
 
             Finish(2);
         }
-        else if(StateManager.instance.isActive == true)
+        else if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)
         {
             //Debug.Log("We are leaving air and going into attack");
             Finish(1);
         }
 
-        else if(StateManager.instance.isShooting == true)
+        else if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
         {
             Finish(4);
         }

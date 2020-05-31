@@ -7,7 +7,7 @@ using TMPro;
 public class Manager : MonoBehaviour
 {  
     public static Manager instance;
-    private FirstBoss boss;
+    //private FirstBoss boss;
     public TextMeshProUGUI timerUI;
 
 
@@ -28,8 +28,7 @@ public class Manager : MonoBehaviour
     public GameState previousState;
     public GameState gameState;
 
-    public enum PlayerState{MELEE, SHOOT, DASH, KNOCKBACK, IDLE};
-    public PlayerState playerState;
+    
 
     public PlayerController player;
     public StateController stateMachine;
@@ -50,7 +49,6 @@ public class Manager : MonoBehaviour
     private void Awake()
     {
         currentState = GameState.BATTLE;
-        playerState = PlayerState.IDLE;
         //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FirstBoss>(); 
         if(instance != null)
         {
@@ -84,7 +82,7 @@ public class Manager : MonoBehaviour
         healthBar.value = playerDamageable.health;
         badHealthBar.value = bossDamageable.health;
         //runs the game over function when the player has died, regardless of whether or not the boss has died
-        if(StateManager.instance.playerState == StateManager.PlayerStates.DEAD)
+        if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
         {
             GameOver();
         }

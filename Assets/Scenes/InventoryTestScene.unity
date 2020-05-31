@@ -10092,26 +10092,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &247583455820772527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7003982631606322550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1c5f1a050c5c445987dadb35579048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 7003982631606322547}
-  attackTriggerNeutral: {fileID: 247583455700674706}
-  attackTriggerDown: {fileID: 247583454385386600}
-  attackTriggerUp: {fileID: 247583455087521998}
-  attackTriggerNeutralCombo2: {fileID: 247583456084436463}
-  attackTriggerNeutralCombo3: {fileID: 247583454583767770}
-  attackTriggerAerial: {fileID: 247583455717686254}
-  attackActiveTime: 0.2
 --- !u!61 &247583456084436461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10199,18 +10179,6 @@ Transform:
   m_Father: {fileID: 769299152}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7003982631606322540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7003982631606322550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3500e6e6bbafea6408021e29813cd875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &7003982631606322541
 Transform:
   m_ObjectHideFlags: 0
@@ -10381,11 +10349,9 @@ GameObject:
   - component: {fileID: 7003982631606322546}
   - component: {fileID: 7003982631606322547}
   - component: {fileID: 7003982631606322544}
-  - component: {fileID: 7003982631606322540}
   - component: {fileID: 7003982631606322543}
   - component: {fileID: 247583455820772519}
   - component: {fileID: 247583455820772526}
-  - component: {fileID: 247583455820772527}
   m_Layer: 8
   m_Name: Torso
   m_TagString: Player

@@ -89,7 +89,7 @@ public class StateController : MonoBehaviour
     void Update() //will need to set bools for legAnimator too when we implement that
     {
         fsm.Update();
-        if(StateManager.instance.isActive || StateManager.instance.isShooting)
+        if(StateManager.instance.currentState == StateManager.PlayerState.MELEE || StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
             animator.SetBool("activeAction", true);
         else
             animator.SetBool("activeAction", false);
