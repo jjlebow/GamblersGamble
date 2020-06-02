@@ -34,14 +34,20 @@ public class WalkAction : FSMAction
 
     public override void OnUpdate()
     {
-        if(StateManager.instance.grounded == false)
-            Finish(3);
-        if(StateManager.instance.walking == false)
-            Finish(0);
+        if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
+            Finish(7);
+        if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
+            Finish(5);
+        if(StateManager.instance.currentState == StateManager.PlayerState.DASH)
+            Finish(6);
         if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)
             Finish(1);
         if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
             Finish(4);
+        if(StateManager.instance.grounded == false)
+            Finish(3);
+        if(StateManager.instance.walking == false)
+            Finish(0);
     }
 
     public void Finish(int num)

@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
     //Dash variables
     public int numDash;
+    public float dashTimer;
     //----------------------------------------------
     
 
@@ -278,30 +279,54 @@ public class PlayerController : MonoBehaviour
     public void Dash(int damage)
     {
         TurnOffLayers();
-        m_Rigidbody2D.gravityScale = 0f;
-        if(StateManager.instance.faceRight == true)
-        {
-            m_Rigidbody2D.velocity = new Vector3(100,0,0);
-        }
-        else
-        {
-            m_Rigidbody2D.velocity = new Vector3(-100,0,0);
-        }
-        m_Rigidbody2D.gravityScale = 1f;
+        StartCoroutine(DashRoutine());
     }
 
     public void BackDash(int damage)
     {
         TurnOffLayers();
+        StartCoroutine(BackDashRoutine());
+    }
+
+    public IEnumerator DashRoutine()
+    {
+        float temp = dashTimer;
         m_Rigidbody2D.gravityScale = 0f;
-        if(StateManager.instance.faceRight == true)
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
+        while(temp >= 0)
         {
-            m_Rigidbody2D.velocity = new Vector3(-100,0,0);
+            if(StateManager.instance.faceRight == true)
+            {
+                //transform.position = new Vector3((float)transform.position.x + 0.1, transform.position.y, 0);
+                m_Rigidbody2D.velocity = new Vector3(25,0,0);
+            }
+            temp -= Time.deltaTime;
+            yield return null;
         }
-        else
+        StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        m_Rigidbody2D.gravityScale = 1f;
+    }
+
+    public IEnumerator BackDashRoutine()
+    {
+        float temp = dashTimer;
+        m_Rigidbody2D.gravityScale = 0f;
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
+        while(temp >= 0)
         {
-            m_Rigidbody2D.velocity = new Vector3(100,0,0);
+            if(StateManager.instance.faceRight == true)
+            {
+                //transform.position = new Vector3((float)transform.position.x - 0.1, transform.position.y, 0);
+                m_Rigidbody2D.velocity = new Vector3(-25,0,0);
+            }
+            temp -= Time.deltaTime;
+            yield return null;
         }
+        StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
         m_Rigidbody2D.gravityScale = 1f;
     }
 
@@ -437,6 +462,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody2D.velocity = new Vector3(0,0,0);
     }
 
+    //double jump functions
     public void Jump(int damage)
     {
         TurnOffLayers();
@@ -446,6 +472,7 @@ public class PlayerController : MonoBehaviour
        // m_Rigidbody2D.AddForce(transform.up * 500f);// * StateManager.instance.faceRight);
         availJumps += 1;
     }
+
 
     private void TurnOffLayers()
     {
@@ -694,7 +721,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //determines how long the player will be in the knockback phase
-    private IEnumerator KnockbackTimer()
+    public IEnumerator KnockbackTimer()
     {
         float copy = knockbackDuration;
         //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;

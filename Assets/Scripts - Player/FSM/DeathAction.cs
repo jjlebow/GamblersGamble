@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnockbackAction : FSMAction
+public class DeathAction : FSMAction
 {
     public Animator animator;
     public Animator legAnimator;
     string triggerName;
-    string triggerName2;
     string[] finishEvent;
 
 
-    public KnockbackAction(FSMState owner) : base(owner)
+    public DeathAction(FSMState owner) : base(owner)
     {
     }
 
@@ -27,9 +26,9 @@ public class KnockbackAction : FSMAction
     public override void OnEnter()
     {
         //there needs to be logic here to determine what animation each body 
-        //part plays
-
+        //part pl
         animator.SetTrigger(triggerName);
+
     }
 
     public override void OnUpdate()
@@ -37,26 +36,10 @@ public class KnockbackAction : FSMAction
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead,
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
-        if(StateManager.instance.currentState != StateManager.PlayerState.KNOCKBACK)
-        {
-        	if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)
-            	Finish(1);
-            if(StateManager.instance.currentState == StateManager.PlayerState.DASH)
-            	Finish(6);
-            if (StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
-            	Finish(4);
-        	if(StateManager.instance.grounded == false)
-            	Finish(3);  //go to air state
-        	if(StateManager.instance.walking == true)
-            	Finish(2);  //go to walk state
-        	if(StateManager.instance.walking == false)
-            	Finish(0);   //go to idle state
-            
-            
-            
+        //dunno if this stuff matters
+
         //record the state that existed before it entered this state and set that to finishedEvent
         //if we are exiting into a different state, (knockback), then set finished event to that. 
-        }
     }
 
     public void Finish(int num)

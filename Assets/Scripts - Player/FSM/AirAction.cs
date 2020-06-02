@@ -55,32 +55,24 @@ public class AirAction : FSMAction
 
     public override void OnUpdate()
     {
-        if(StateManager.instance.grounded == true && StateManager.instance.walking == false)
-        {
-            //set trigger for landing animation here if you want to add that
-            Finish(0);
-            //Debug.Log("grounded");
-        }
-        else if(StateManager.instance.walking == true && StateManager.instance.grounded == true)
-        {
-
-            Finish(2);
-        }
-        else if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)
-        {
-            //Debug.Log("We are leaving air and going into attack");
+        if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
+            Finish(7);
+        if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
+            Finish(5);
+        if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)
             Finish(1);
-        }
-
-        else if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
-        {
+        if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
             Finish(4);
-        }
+        if(StateManager.instance.currentState == StateManager.PlayerState.DASH)
+            Finish(6);
         //this will reverse the jump while still in midair if we sheft to a positive or negative velocity while still in midair. 
         if((rising == true && player.m_Rigidbody2D.velocity.y <= 0) || (falling == true && player.m_Rigidbody2D.velocity.y > 0))
-        {
             Finish(3);
-        }
+        if(StateManager.instance.walking == true && StateManager.instance.grounded == true)
+            Finish(2);
+        else if(StateManager.instance.grounded == true && StateManager.instance.walking == false)
+            Finish(0);
+
 
     }
 

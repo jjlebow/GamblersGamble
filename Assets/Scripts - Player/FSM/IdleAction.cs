@@ -35,16 +35,25 @@ public class IdleAction : FSMAction
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead,
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
-        if(StateManager.instance.grounded == false)
-        {
-            Finish(3);
-        }
+        if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
+            Finish(7);
+        if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
+            Finish(5);
         if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)
             Finish(1);
-        else if(StateManager.instance.walking == true)
-            Finish(2);
-        else if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
+        if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
             Finish(4);
+        if(StateManager.instance.currentState == StateManager.PlayerState.DASH)
+            Finish(6);
+        if(StateManager.instance.grounded == false)
+            Finish(3);
+        if(StateManager.instance.walking == true)
+            Finish(2);
+        
+        
+        
+        
+        
         //record the state that existed before it entered this state and set that to finishedEvent
         //if we are exiting into a different state, (knockback), then set finished event to that. 
     }
