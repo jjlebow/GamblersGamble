@@ -123,6 +123,8 @@ public class Manager : MonoBehaviour
 
     private void ResetPlayerPosition()
     {
+        StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
+        player.m_Rigidbody2D.velocity = new Vector3(0,0,0);
         player.transform.position = startingPoint;
     }
     /*
