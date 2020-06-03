@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-    public int maxHealth;
-    public int health;
+    [Range(0,100)] public int health;
     //this is to prevent multiple hitboxes from being hit at once
     private bool canDamage = true;
     private float timer = 2.0f;  //timer before player can take damage again after being hit
     //public GameObject{?} death animation
+    public bool isDrainable;
+    int oldHealth;
 
 
     //this is the damage function for any collision that isn't the player taking damage
@@ -24,13 +25,17 @@ public class Damageable : MonoBehaviour
     		if(type == "CriticalHitbox")
     		{
     			Debug.Log("we have arrived at critical damage");
+                oldHealth = health;
     			health -= damage * 2;
-                attacker.GetComponent<Damageable>().health += (damage * 2);
+                if(isDrainable)
+                    attacker.GetComponent<Damageable>().health += ((oldHealth - health) * 2);
     		}
     		else if(type == "NormalHitbox")
     		{
+                oldHealth = health;
     			health -= damage;
-                attacker.GetComponent<Damageable>().health += damage;
+                if(isDrainable)
+                    attacker.GetComponent<Damageable>().health += (oldHealth - health);
     		}
     		//Debug.Log("damage taken: " + damage);
     		if(health <=0)
@@ -48,10 +53,15 @@ public class Damageable : MonoBehaviour
         //Debug.Log(player.name);
         if(canDamage)
         {
-            offender.GetComponent<Damageable>().health += damage;
+            oldHealth = health;
+            health -= damage;
+            
+            Debug.Log(health);
+            Debug.Log(oldHealth);
+            if(isDrainable)
+                offender.GetComponent<Damageable>().health += (oldHealth - health);
             canDamage = false;
             StartCoroutine(KnockbackRoutine(offender.transform.position, player.transform.position));
-            health -= damage;
             if(health <= 0)
             {
                 StateManager.instance.ChangeState(StateManager.PlayerState.DEAD);

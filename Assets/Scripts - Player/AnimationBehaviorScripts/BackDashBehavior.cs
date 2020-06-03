@@ -11,6 +11,7 @@ public class BackDashBehavior : StateMachineBehaviour
     {
         if(player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            //player = animator.GetComponent<PlayerController>();
         length = stateInfo.length;
         if(StateManager.instance.faceRight)
             player.m_Rigidbody2D.velocity = new Vector3(-20,0,0);
