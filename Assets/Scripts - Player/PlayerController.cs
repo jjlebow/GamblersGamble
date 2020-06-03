@@ -279,13 +279,23 @@ public class PlayerController : MonoBehaviour
     public void Dash(int damage)
     {
         TurnOffLayers();
-        StartCoroutine(DashRoutine());
+        //StartCoroutine(DashRoutine());
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
+        StateManager.instance.playerStatic = true;
+        m_Rigidbody2D.gravityScale = 0f;
+        StateManager.instance.dashDirection = true;
     }
 
     public void BackDash(int damage)
     {
         TurnOffLayers();
-        StartCoroutine(BackDashRoutine());
+        //StartCoroutine(BackDashRoutine());
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
+        StateManager.instance.playerStatic = true;
+        m_Rigidbody2D.gravityScale = 0f;
+        StateManager.instance.dashDirection = false;
     }
 
     public IEnumerator DashRoutine()
@@ -405,7 +415,7 @@ public class PlayerController : MonoBehaviour
             hitParent = PublicFunctions.FindParent(hitInfo.transform);   //ensures that damage is applied to the highest parent of whatever was collided with
             if(hitParent.GetComponent<Damageable>() != null)
             {
-                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damageHolder, hitInfo.collider.name);
+                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damageHolder, hitInfo.collider.name, this.gameObject);
             }
         }
         else
@@ -717,7 +727,7 @@ public class PlayerController : MonoBehaviour
         //knockbackDirLeft = new Vector3(transform.position.x + 12, transform.position.y + 10, transform.position.z);
         StartCoroutine(KnockbackTimer());
         StartCoroutine(DamageTimer());
-        playerDamage.TakeCollisionDamage(damage, "null");
+        //playerDamage.TakeCollisionDamage(damage, "null");
     }
 
     //determines how long the player will be in the knockback phase

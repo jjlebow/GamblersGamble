@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
+    public int maxHealth;
     public int health;
     //this is to prevent multiple hitboxes from being hit at once
     private bool canDamage = true;
@@ -12,7 +13,7 @@ public class Damageable : MonoBehaviour
 
 
     //this is the damage function for any collision that isn't the player taking damage
-    public void TakeCollisionDamage(int damage, string type)
+    public void TakeCollisionDamage(int damage, string type, GameObject attacker)
     {
     	if(canDamage)
     	{
@@ -24,10 +25,12 @@ public class Damageable : MonoBehaviour
     		{
     			Debug.Log("we have arrived at critical damage");
     			health -= damage * 2;
+                attacker.GetComponent<Damageable>().health += (damage * 2);
     		}
     		else if(type == "NormalHitbox")
     		{
     			health -= damage;
+                attacker.GetComponent<Damageable>().health += damage;
     		}
     		//Debug.Log("damage taken: " + damage);
     		if(health <=0)
@@ -39,12 +42,15 @@ public class Damageable : MonoBehaviour
     }
 
     //this is the damage function if the player takes collision damage
-    public void PlayerCollisionDamage(int damage, Vector3 player, Vector3 offender)
+    public void PlayerCollisionDamage(int damage, GameObject offender, GameObject player)
     {
+        //Debug.Log(offender.name);
+        //Debug.Log(player.name);
         if(canDamage)
         {
+            offender.GetComponent<Damageable>().health += damage;
             canDamage = false;
-            StartCoroutine(KnockbackRoutine(player, offender));
+            StartCoroutine(KnockbackRoutine(offender.transform.position, player.transform.position));
             health -= damage;
             if(health <= 0)
             {
@@ -61,6 +67,14 @@ public class Damageable : MonoBehaviour
     		Debug.Log(this.name + " has died");
     }
 
+    public void Heal(int amount)
+    {
+        if(health + amount < 100)
+            health += amount;
+        else 
+            health = 100;
+    }
+
 
 
 
@@ -70,11 +84,11 @@ public class Damageable : MonoBehaviour
     	canDamage = true;
     }
 
-    public IEnumerator KnockbackRoutine(Vector3 player, Vector3 offender)
+    public IEnumerator KnockbackRoutine(Vector3 offender, Vector3 player)
     {
         var temp = timer;
         Vector3 knockbackDir = new Vector3(0,0,0);
-        Vector3 moveDir = (player - offender).normalized;
+        Vector3 moveDir = (offender - player).normalized;
 
         this.GetComponent<PlayerController>().m_Rigidbody2D.velocity = new Vector3(0,0,0); //setting current velocity to 0
         

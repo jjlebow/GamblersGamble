@@ -22,10 +22,11 @@ public class BossStandingHitbox : MonoBehaviour
     	Transform hitParent = hitInfo.transform;
     	hitParent = PublicFunctions.FindParent(hitParent);
     	//Debug.Log("we are colliding with " + tempName);
-    	if(hitParent.GetComponent<Damageable>() != null && hitParent.name == "Player")
+    	//if(hitParent.GetComponent<Damageable>() != null && hitParent.name == "Player")
+    	if(hitInfo.gameObject.name == "Torso" || hitInfo.gameObject.name == "Legs")
     	{
     		Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
-    		hitParent.GetComponent<Damageable>().PlayerCollisionDamage(damage, this.transform.position, hitInfo.transform.position);
+    		hitParent.GetComponent<Damageable>().PlayerCollisionDamage(damage, PublicFunctions.FindParent(this.transform).gameObject, hitParent.gameObject);
     	}
     }
 }

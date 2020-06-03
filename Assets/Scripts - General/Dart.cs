@@ -35,7 +35,7 @@ public class Dart : MonoBehaviour
             hitParent = PublicFunctions.FindParent(hitParent);
             if(hitParent.GetComponent<Damageable>() != null)
             {
-                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name);
+                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, PublicFunctions.FindParent(this.transform).gameObject);  //this uses the player and the collision in the damage formula
                 Destroy(gameObject);
             }
         }

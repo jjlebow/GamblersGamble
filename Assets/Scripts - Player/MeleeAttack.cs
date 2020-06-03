@@ -25,7 +25,7 @@ public class MeleeAttack : MonoBehaviour
     	if(hitParent.GetComponent<Damageable>() != null)
     	{
     		Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
-    		hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder,  hitInfo.name);
+    		hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder,  hitInfo.name, player.gameObject);
     	}
     }
 }

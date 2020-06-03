@@ -30,7 +30,7 @@ public class PrecisionAttack : MonoBehaviour
     		if(hitParent.GetComponent<Damageable>() != null)
     		{
     			//Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
-    			hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder,  col.name);
+    			hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder,  col.name, player.gameObject);
     			hilt = false;
     		}
     	}
@@ -42,7 +42,7 @@ public class PrecisionAttack : MonoBehaviour
     		if(hitParent.GetComponent<Damageable>() != null)
     		{
     			//Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
-    			hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder * 2,  col.name);
+    			hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder * 2,  col.name, player.gameObject);
     			tip = false;
     		}
     	}

@@ -21,7 +21,6 @@ public class AttackEndBehavior : StateMachineBehaviour
             StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
             StateManager.instance.playerStatic = false;
         }
-
         //Debug.Log(StateManager.instance.isActive);
         //if(Input.GetKey(KeyCode.K))
         //{

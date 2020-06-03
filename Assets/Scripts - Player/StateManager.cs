@@ -32,6 +32,8 @@ public class StateManager : MonoBehaviour
     public PlayerState currentState;
     public PlayerState previousState;
 
+    public bool dashDirection = false;
+
 
 
 

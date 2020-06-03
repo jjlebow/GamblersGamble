@@ -29,7 +29,7 @@ public class DashAction : FSMAction
     {
         //there needs to be logic here to determine what animation each body 
         //part plays
-        if(StateManager.instance.faceRight == true)
+        if(StateManager.instance.dashDirection == true)
         {
             //Debug.Log(triggerName2);
             animator.SetTrigger(triggerName);
