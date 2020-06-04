@@ -175,7 +175,7 @@ MonoBehaviour:
     endFade: 1
   - name: Boss1Theme
     loop: 0
-    clip: {fileID: 8300000, guid: 348b86146e96aed46bd1ef28c4c8efea, type: 3}
+    clip: {fileID: 8300000, guid: a8b57e1cae0af7a40bdaf7ccf504029b, type: 3}
     volume: 0
     pitch: 1
     source: {fileID: 0}
@@ -448,7 +448,7 @@ MonoBehaviour:
   relations:
   - sceneName: Menu
     songName: TitleTheme
-  - sceneName: Boss1
+  - sceneName: Demo
     songName: Boss1Theme
 --- !u!4 &893851525
 Transform:
@@ -457,7 +457,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893851523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 324.7629, y: 138.40584, z: -13.555608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
