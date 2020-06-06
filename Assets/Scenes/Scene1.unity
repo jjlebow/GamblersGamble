@@ -8827,6 +8827,8 @@ MonoBehaviour:
     type: 3}
   heavyShotImpactEffect: {fileID: 0}
   lineRenderer: {fileID: 199061685}
+  cardPrefab: {fileID: 8014805045071709739, guid: e5b4a2a0d6dbed4449d0a39ede4760ac,
+    type: 3}
   neutralHitbox: {fileID: 1076079836}
   aerialNeutralHitbox: {fileID: 1595629536}
   heavyHitbox: {fileID: 665521125}
@@ -8834,6 +8836,7 @@ MonoBehaviour:
   precisionHitbox: {fileID: 530518104}
   aerialPrecisionHitbox: {fileID: 350557207}
   damageHolder: 0
+  charging: 0
 --- !u!114 &1609293310
 MonoBehaviour:
   m_ObjectHideFlags: 0

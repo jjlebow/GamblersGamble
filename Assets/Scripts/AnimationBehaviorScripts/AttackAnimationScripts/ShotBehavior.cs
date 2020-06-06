@@ -22,13 +22,20 @@ public class ShotBehavior : StateMachineBehaviour
         {
             player.StartHeavyCoroutineShot();
         }
+        else if(player.intendedLayer == 2)
+        {
+            //player.charging = true;
+            Debug.Log("instantiating");
+            GameObject card = Instantiate(player.cardPrefab, player.firePoint.position, player.firePoint.rotation);
+            card.transform.parent = player.transform;
+            card.GetComponent<PrecisionShot>().damage = player.damageHolder;
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {    
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

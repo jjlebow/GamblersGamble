@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject heavyShotImpactEffect;
     public LineRenderer lineRenderer;
+    public GameObject cardPrefab;
     //----------------------------------------------
 
 
@@ -108,6 +109,11 @@ public class PlayerController : MonoBehaviour
     //damage variables
     public int damageHolder;    //damage is applied by taking the damage value off the card (when its initialized). when the card is called, we store the 
                                 ///damage value here to make it accessible to other scripts easily, and then apply it to the damage dealt. 
+    public bool charging = false;
+    private KeyCode chargeKey;
+    [HideInInspector] public float chargeTime = 2f;
+    private float temp;
+    [HideInInspector] public float recordedTime = 0f;
 
 
 
@@ -120,6 +126,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         playerDamage = GetComponent<Damageable>();
         timer = jumpTimer;
+        temp = chargeTime / 2;
 
 
 
@@ -161,12 +168,20 @@ public class PlayerController : MonoBehaviour
         //only runs once per key pressdown regardless of duration held, but multiple keys can be pressed down at once and all are registered
 
         //this only gets run once every time a key is pressed.
-
+        if(charging)
+            temp -= Time.deltaTime;
+        if(Input.GetKeyUp(chargeKey) || temp <= 0)
+            {
+                charging = false;
+                recordedTime = (chargeTime / 2) - temp;  ///this is the time that the player held down the key for and we use it to determine how long the card continues to travel
+                temp = chargeTime / 2;
+            }
 
         if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false)
         {
 
             CheckKeyInput();
+
             //condition for the grounded jump
             if(Input.GetButtonDown("Jump") && availJumps > 0 && StateManager.instance.grounded)
             {
@@ -430,8 +445,11 @@ public class PlayerController : MonoBehaviour
     public void PrecisionShot(int damage)
     {
         TurnOffLayers();
+        charging = true;
         intendedLayer = 2;
         damageHolder = damage;
+        StateManager.instance.playerStatic = true;
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);
         StateManager.instance.ChangeState(StateManager.PlayerState.SHOOT);
     }
 
@@ -441,7 +459,6 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;
-
         //StateManager.instance.isActive = true;
         StateManager.instance.ChangeState(StateManager.PlayerState.MELEE);
     }
@@ -505,6 +522,7 @@ public class PlayerController : MonoBehaviour
                             if((code == KeyCode.Space && !StateManager.instance.grounded) || code != KeyCode.Space)//this condition is for the hard coding of the Jump function to make sure we dont call this on our first jump (delete this for other uses of this)
                             //if(code == KeyCode.Space && !StateManager.instance.grounded) this line is used if we are doing the constant double jump
                             {
+                                chargeKey = code;
                                 this.SendMessage(Deck.instance.handCards[i].card.name, Deck.instance.handCards[i].card.damage);
                                 Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
                                 Deck.instance.handCards[i].ClearSlot();
