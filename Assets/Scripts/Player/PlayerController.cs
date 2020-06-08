@@ -109,11 +109,9 @@ public class PlayerController : MonoBehaviour
     //damage variables
     public int damageHolder;    //damage is applied by taking the damage value off the card (when its initialized). when the card is called, we store the 
                                 ///damage value here to make it accessible to other scripts easily, and then apply it to the damage dealt. 
-    public bool charging = false;
     private KeyCode chargeKey;
-    [HideInInspector] public float chargeTime = 2f;
+    private float chargeTime = 1f;
     private float temp;
-    [HideInInspector] public float recordedTime = 0f;
 
 
 
@@ -126,7 +124,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         playerDamage = GetComponent<Damageable>();
         timer = jumpTimer;
-        temp = chargeTime / 2;
+        temp = chargeTime;
 
 
 
@@ -168,18 +166,16 @@ public class PlayerController : MonoBehaviour
         //only runs once per key pressdown regardless of duration held, but multiple keys can be pressed down at once and all are registered
 
         //this only gets run once every time a key is pressed.
-        if(charging)
+        if(StateManager.instance.charging)
             temp -= Time.deltaTime;
         if(Input.GetKeyUp(chargeKey) || temp <= 0)
             {
-                charging = false;
-                recordedTime = (chargeTime / 2) - temp;  ///this is the time that the player held down the key for and we use it to determine how long the card continues to travel
-                temp = chargeTime / 2;
+                StateManager.instance.charging = false;
+                temp = chargeTime;
             }
 
         if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false)
         {
-
             CheckKeyInput();
 
             //condition for the grounded jump
@@ -445,7 +441,7 @@ public class PlayerController : MonoBehaviour
     public void PrecisionShot(int damage)
     {
         TurnOffLayers();
-        charging = true;
+        StateManager.instance.charging = true;
         intendedLayer = 2;
         damageHolder = damage;
         StateManager.instance.playerStatic = true;

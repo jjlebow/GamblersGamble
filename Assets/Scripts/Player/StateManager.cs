@@ -51,6 +51,7 @@ public class StateManager : MonoBehaviour
     //public bool airFalling = false;
     //public bool airRising = false;
     public bool grounded = false;
+    public bool charging = false;
     //public bool canDamage = true;
 
     private void Start()

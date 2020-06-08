@@ -25,7 +25,7 @@ public class ShotBehavior : StateMachineBehaviour
         else if(player.intendedLayer == 2)
         {
             //player.charging = true;
-            Debug.Log("instantiating");
+            //Debug.Log("instantiating");
             GameObject card = Instantiate(player.cardPrefab, player.firePoint.position, player.firePoint.rotation);
             card.transform.parent = player.transform;
             card.GetComponent<PrecisionShot>().damage = player.damageHolder;

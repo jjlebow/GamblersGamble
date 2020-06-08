@@ -152,7 +152,7 @@ public class StateController : MonoBehaviour
             animator.SetBool("activeAction", true);
         else
             animator.SetBool("activeAction", false);
-        animator.SetBool("Charging", player.charging);
+        animator.SetBool("Charging", StateManager.instance.charging);
         //animator.SetBool("walking", StateManager.instance.walking);
         //animator.SetInteger("verticalVelocity", (int)player.m_Rigidbody2D.velocity.y);
     }

@@ -8,52 +8,42 @@ public class PrecisionShot : MonoBehaviour
 	public Rigidbody2D rb;
 	[HideInInspector] public int damage;
 	private bool canHit;
-	private float hitTimer;
 	public PlayerController player;
+	public bool collision = false;
     // Start is called before the first frame update
     void Awake()
     {
     	
         rb.velocity = -transform.right * speed;
         //player = PublicFunctions.FindParent(this.transform).gameObject.GetComponent<PlayerController>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        hitTimer = player.recordedTime;
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     void Update()
     {
-    	if(player.charging == false)
+    
+    	if(StateManager.instance.charging == false && collision == false)
     	{
-    		hitTimer -= Time.deltaTime;
+    		Destroy(gameObject);
     	}
-    	if(hitTimer <= 0)
-    	{
-    		canHit = true;
-    		StartCoroutine(HitboxActive);
-    	}
-
     }
 
     // Update is called once per frame
-    void OnTriggerEnter2D(Collider2D hitInfo)
+    void OnTriggerStay2D(Collider2D hitInfo)
     {
-        if(hitInfo.gameObject.CompareTag("Weapon") == false && hitInfo.gameObject.CompareTag("Player") == false)
+    	collision = true;
+        if(hitInfo.gameObject.CompareTag("Weapon") == false && hitInfo.gameObject.CompareTag("Player") == false && StateManager.instance.charging == false)
         {
         	Transform hitParent = hitInfo.transform;
-
+        	Debug.Log("we are here");
         	hitParent = PublicFunctions.FindParent(hitParent);
-        	if(hitParent.GetComponent<Damageable>() != null && canHit == true)
+        	if(hitParent.GetComponent<Damageable>() != null && StateManager.instance.charging == false)
         	{
         		hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, PublicFunctions.FindParent(this.transform).gameObject);
         		Destroy(gameObject);
         	}
+        	else
+        		Destroy(gameObject);
         }
-    }
-
-    //this ensures that after the object is activated for 0.2 seconds it always gets destroyed after, if it didnt hit anything
-    private IEnumerator HitboxActive()
-    {
-    	yield return WaitForSeconds(0.2f);
-    	Destroy(gameObject);
     }
 }
