@@ -8,8 +8,8 @@ public class PrecisionShot : MonoBehaviour
 	public Rigidbody2D rb;
 	[HideInInspector] public int damage;
 	private bool canHit;
-	public PlayerController player;
 	public bool collision = false;
+	public GameObject shooter;
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,7 +39,7 @@ public class PrecisionShot : MonoBehaviour
         	hitParent = PublicFunctions.FindParent(hitParent);
         	if(hitParent.GetComponent<Damageable>() != null && StateManager.instance.charging == false)
         	{
-        		hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, PublicFunctions.FindParent(this.transform).gameObject);
+        		hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, shooter);
         		Destroy(gameObject);
         	}
         	else

@@ -5,14 +5,16 @@ using UnityEngine;
 public class Dart : MonoBehaviour
 {
 	public float speed = 5f;
-	public Rigidbody2D rb;
+	public Rigidbody2D rb;         
     [HideInInspector] public int damage;
+    public GameObject shooter;
 	//public GameObject impactEffect; // a prefab in here to make an impact effect or destroy effect
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //rb = GetComponent<Rigidbody2D>();
     	rb.velocity = -transform.right * speed;
 
     }
@@ -35,7 +37,7 @@ public class Dart : MonoBehaviour
             hitParent = PublicFunctions.FindParent(hitParent);
             if(hitParent.GetComponent<Damageable>() != null)
             {
-                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, PublicFunctions.FindParent(this.transform).gameObject);  //this uses the player and the collision in the damage formula
+                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, shooter);  //this uses the player and the collision in the damage formula
                 Destroy(gameObject);
             }
         }

@@ -15,8 +15,9 @@ public class ShotBehavior : StateMachineBehaviour
         if(player.intendedLayer == 0)
         {
             GameObject dart = Instantiate(player.bulletPrefab, player.firePoint.position, player.firePoint.rotation);
-            dart.transform.parent = player.transform;  //this connects it to the player for damage reasons
+            //dart.transform.parent = player.transform;  //this connects it to the player for damage reasons
             dart.GetComponent<Dart>().damage = player.damageHolder;
+            dart.GetComponent<Dart>().shooter = player.gameObject;
         }
         else if(player.intendedLayer == 1)
         {
@@ -27,8 +28,9 @@ public class ShotBehavior : StateMachineBehaviour
             //player.charging = true;
             //Debug.Log("instantiating");
             GameObject card = Instantiate(player.cardPrefab, player.firePoint.position, player.firePoint.rotation);
-            card.transform.parent = player.transform;
+            //card.transform.parent = player.transform;
             card.GetComponent<PrecisionShot>().damage = player.damageHolder;
+            card.GetComponent<PrecisionShot>().shooter = player.gameObject;
         }
     }
 
