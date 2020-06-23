@@ -9,7 +9,7 @@ public class HeavyShotBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            player = animator.GetComponentInParent(typeof(PlayerController)) as PlayerController;
 
         //Debug.Log("WE SHOULD BE COMING HERE ARE WE NOT");
         player.StartHeavyCoroutineShot();

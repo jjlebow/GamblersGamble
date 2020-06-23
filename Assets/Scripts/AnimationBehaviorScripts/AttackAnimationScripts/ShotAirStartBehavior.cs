@@ -9,7 +9,7 @@ public class ShotAirStartBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            player = animator.GetComponentInParent(typeof(PlayerController)) as PlayerController;
         if(player.intendedLayer == 1)
         {
             player.m_Rigidbody2D.velocity = new Vector3(0f, 0f, 0f);

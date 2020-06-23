@@ -10,7 +10,7 @@ public class ShotBehavior : StateMachineBehaviour
     {
         if(player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            player = animator.GetComponentInParent(typeof(PlayerController)) as PlayerController;
         }
         if(player.intendedLayer == 0)
         {

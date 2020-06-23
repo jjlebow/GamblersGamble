@@ -9,7 +9,7 @@ public class AttackBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();   
+            player = animator.GetComponentInParent(typeof(PlayerController)) as PlayerController;   
         //if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
             //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
         if(player.intendedLayer == 0)

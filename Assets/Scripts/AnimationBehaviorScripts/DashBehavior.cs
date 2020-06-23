@@ -10,7 +10,7 @@ public class DashBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if(player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            player = animator.GetComponentInParent(typeof(PlayerController)) as PlayerController;
             //player = animator.GetComponent<PlayerController>();
         length = stateInfo.length;
         if(StateManager.instance.faceRight)
