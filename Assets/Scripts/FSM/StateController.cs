@@ -132,7 +132,7 @@ public class StateController : MonoBehaviour
         a_WalkAction.Init("Walking", endTransitions, animator, legAnimator);
         a_AirAction.Init("risingAir", "fallingAir", endTransitions, animator, legAnimator, player);
         a_ShootAction.Init("Shooting", "airShoot", endTransitions, animator, legAnimator);
-        a_KnockbackAction.Init("Knockback", endTransitions, animator, legAnimator);
+        a_KnockbackAction.Init("Knockback", endTransitions, animator, legAnimator, player);
         a_DashAction.Init("Dashing", "BackDash", endTransitions, animator, legAnimator);
         a_DeathAction.Init("Death", endTransitions, animator, legAnimator);
 

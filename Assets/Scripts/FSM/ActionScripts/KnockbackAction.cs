@@ -9,6 +9,7 @@ public class KnockbackAction : FSMAction
     string triggerName;
     string triggerName2;
     string[] finishEvent;
+    PlayerController player;
 
 
     public KnockbackAction(FSMState owner) : base(owner)
@@ -16,19 +17,19 @@ public class KnockbackAction : FSMAction
     }
 
     // triggername is the state we transition to, fnishEvent is the next state we transition to, and animtor is just the animator
-    public void Init(string triggerName, string[] finishEvent, Animator animator, Animator legAnimator)
+    public void Init(string triggerName, string[] finishEvent, Animator animator, Animator legAnimator, PlayerController player)
     {
         this.triggerName = triggerName;
         this.finishEvent = finishEvent;
         this.animator = animator;
         this.legAnimator = legAnimator;
+        this.player = player;
     }
 
     public override void OnEnter()
     {
         //there needs to be logic here to determine what animation each body 
         //part plays
-
         animator.SetTrigger(triggerName);
     }
 
@@ -37,6 +38,11 @@ public class KnockbackAction : FSMAction
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead,
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
+        if(StateManager.instance.currentState == StateManager.PlayerState.CANCEL)
+        {
+            player.GetComponent<Damageable>().StopKnockback();  //this line still needs to be tested
+            Finish(0);
+        }
         if(StateManager.instance.currentState != StateManager.PlayerState.KNOCKBACK)
         {
         	if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)

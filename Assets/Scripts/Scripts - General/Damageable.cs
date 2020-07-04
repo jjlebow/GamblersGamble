@@ -11,7 +11,7 @@ public class Damageable : MonoBehaviour
     //public GameObject{?} death animation
     public bool isDrainable;
     int oldHealth;
-
+    public IEnumerator temp = null;
 
     //this is the damage function for any collision that isn't the player taking damage
     public void TakeCollisionDamage(int damage, string type, GameObject attacker)
@@ -61,13 +61,19 @@ public class Damageable : MonoBehaviour
             if(isDrainable)
                 offender.GetComponent<Damageable>().health += (oldHealth - health);
             canDamage = false;
-            StartCoroutine(KnockbackRoutine(offender.transform.position, player.transform.position));
+            temp = KnockbackRoutine(offender.transform.position, player.transform.position);
+            StartCoroutine(temp);
             if(health <= 0)
             {
                 StateManager.instance.ChangeState(StateManager.PlayerState.DEAD);
                 Debug.Log(this.name + " has died");
             }
         }
+    }
+
+    public void StopKnockback()
+    {
+        StopCoroutine(temp);
     }
 
     public void TakeDamage(int damage)
