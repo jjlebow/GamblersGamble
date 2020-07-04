@@ -791,6 +791,7 @@ public class PlayerController : MonoBehaviour
         if(hit.collider && StateManager.instance.grounded == false)
         {
             StateManager.instance.grounded = true;
+            StateManager.instance.ChangeState(StateManager.PlayerState.CANCEL);
             hasLandedCallback.Invoke();
         }
         else if(!hit.collider && StateManager.instance.grounded == true)

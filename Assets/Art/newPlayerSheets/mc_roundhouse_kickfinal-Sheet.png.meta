@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 5be9c7fa07424a6418b3185e66b0b3cc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2281556796953213163
+    second: mc_roundhouse_kickfinal-Sheet_0
+  - first:
+      213: -8682151892648076457
+    second: mc_roundhouse_kickfinal-Sheet_1
+  - first:
+      213: -8501639825818954779
+    second: mc_roundhouse_kickfinal-Sheet_2
+  - first:
+      213: -2045257309345434418
+    second: mc_roundhouse_kickfinal-Sheet_3
+  - first:
+      213: -8711447433968383461
+    second: mc_roundhouse_kickfinal-Sheet_4
+  - first:
+      213: 7664434603456746973
+    second: mc_roundhouse_kickfinal-Sheet_5
+  - first:
+      213: 8310575522975816975
+    second: mc_roundhouse_kickfinal-Sheet_6
+  - first:
+      213: 6272591376992389889
+    second: mc_roundhouse_kickfinal-Sheet_7
+  - first:
+      213: 5924886834806894349
+    second: mc_roundhouse_kickfinal-Sheet_8
+  - first:
+      213: -1941508055096970102
+    second: mc_roundhouse_kickfinal-Sheet_9
+  - first:
+      213: -1153912816448441236
+    second: mc_roundhouse_kickfinal-Sheet_10
+  - first:
+      213: -2710876017472381702
+    second: mc_roundhouse_kickfinal-Sheet_11
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 90
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1
+        width: 32
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a0e56f1281f4a243ae44523ff308a4c
+      internalID: 2281556796953213163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 1
+        width: 35
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a281d80f612484b9e2e0ae1a66d60b
+      internalID: -8682151892648076457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 1
+        width: 33
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51a4cb42b5f9354ebe98840d99a40a9
+      internalID: -8501639825818954779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 4
+        width: 42
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6881b71e401c65545b0a1b2abb597257
+      internalID: -2045257309345434418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1
+        width: 42
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e79099874a7b9f4593ada0775c7051b
+      internalID: -8711447433968383461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 6
+        width: 34
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f36f335135de5b048924a4ac0f818eab
+      internalID: 7664434603456746973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 1
+        width: 42
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7ae29df735b594f8a7bade8add8244
+      internalID: 8310575522975816975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 1
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d9eab9924cc81499733d744b6244a4
+      internalID: 6272591376992389889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 1
+        width: 32
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffad9cb4912fe947b9833a3f2e2e9cb
+      internalID: 5924886834806894349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 1
+        width: 46
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a48762f28692940b70dba35541b922
+      internalID: -1941508055096970102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 1
+        width: 49
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4ba9c60d62f8884e87602eaec790f01
+      internalID: -1153912816448441236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_roundhouse_kickfinal-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1
+        width: 47
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2b3127c5a5eb74a80d4ac336e1bd84
+      internalID: -2710876017472381702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

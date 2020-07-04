@@ -49,6 +49,8 @@ public class AttackAction : FSMAction
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
         if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
             Finish(7);
+        if(StateManager.instance.currentState == StateManager.PlayerState.CANCEL)
+            Finish(0);
         if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
             Finish(5);
         if(StateManager.instance.currentState != StateManager.PlayerState.MELEE)

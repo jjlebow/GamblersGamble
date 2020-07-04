@@ -191,6 +191,7 @@ public class Manager : MonoBehaviour
             yield return null;
         }
         ResetPlayerPosition();
+        StateManager.instance.currentState = StateManager.PlayerState.CANCEL;
         for(int i = 0; i < Deck.instance.handCards.Length; i++)
         {
             if(Deck.instance.handCards[i].card != null)

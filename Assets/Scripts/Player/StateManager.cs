@@ -28,7 +28,7 @@ public class StateManager : MonoBehaviour
     public bool isStanceChanging = false;   //this represents the duration of the stance changing
 
 
-    public enum PlayerState{MELEE, SHOOT, DASH, KNOCKBACK, IDLE, DEAD};
+    public enum PlayerState{MELEE, SHOOT, DASH, KNOCKBACK, IDLE, DEAD, CANCEL};
     public PlayerState currentState;
     public PlayerState previousState;
 
