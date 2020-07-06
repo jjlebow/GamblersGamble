@@ -11,10 +11,11 @@ public class Manager : MonoBehaviour
     public TextMeshProUGUI timerUI;
 
 
-
-
     public GameObject GameOverPanel;
     public GameObject VictoryPanel;
+    public GameObject deckPanel;
+    public GameObject discardPanel;
+
 
     public float timer = 10f;
     
@@ -23,10 +24,10 @@ public class Manager : MonoBehaviour
     public float timeLeft;
     public bool startTimer = false;
 
-    public enum GameState {PAUSED, BATTLE, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL};
+    public enum GameState {BATTLE, PAUSED, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL};
     public GameState currentState;
     public GameState previousState;
-    public GameState gameState;
+    //public GameState gameState;
 
     
 
@@ -47,7 +48,7 @@ public class Manager : MonoBehaviour
 
     private void Awake()
     {
-        currentState = GameState.BATTLE;
+        ///gameState = GameState.BATTLE;
         //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FirstBoss>(); 
         if(instance != null)
         {
@@ -55,6 +56,7 @@ public class Manager : MonoBehaviour
             return;
         }
         instance = this;
+
         //player = player.GetComponent<PlayerController>();
         //stateMachine = stateMachine.GetComponent<StateController>();
         //playerDamageable = player.GetComponent<Damageable>();
@@ -76,6 +78,7 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
+
         //if(gameState.GameState = PAUSED)
             //Time.timeScale = 0;
         healthBar.value = playerDamageable.health;
@@ -85,20 +88,47 @@ public class Manager : MonoBehaviour
         {
             GameOver();
         }
-        if(Input.GetKeyDown(KeyCode.P) && gameState != GameState.MENU)
+        if(Input.GetKeyDown(KeyCode.P) && currentState != GameState.MENU)
         {
-            if(gameState != GameState.PAUSED)
+            if(currentState != GameState.PAUSED)
             {
                 Debug.Log("pausing game");
                 Time.timeScale = 0;
-                gameState = GameState.PAUSED;
+                NewState(GameState.PAUSED);
             }
-            else if(gameState == GameState.PAUSED)
+            else if(currentState == GameState.PAUSED)
             {
                 Debug.Log("Unpausing game");
                 Time.timeScale = 1;
-                gameState = GameState.BATTLE;
+                RevertState();
             }
+        }
+        else if(Input.GetKeyDown(KeyCode.O))
+        {
+            if(currentState == GameState.BATTLE)
+            {
+                NewState(GameState.MENU);
+                deckPanel.SetActive(true);
+            }
+            else if(currentState == GameState.MENU && deckPanel.activeSelf)
+            {
+                RevertState();
+                deckPanel.SetActive(false);
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Y))
+        {
+            if(currentState == GameState.BATTLE)
+            {
+                NewState(GameState.MENU);
+                discardPanel.SetActive(true);
+            }
+            else if(currentState == GameState.MENU && discardPanel.activeSelf)
+            {
+                RevertState();
+                discardPanel.SetActive(false);
+            }
+
         }
 
         //else if(boss.boss.isDead && StateManager.instance.playerState != StateManager.PlayerStates.DEAD)
@@ -177,6 +207,14 @@ public class Manager : MonoBehaviour
     public void RoundEnd()
     {
         StartCoroutine(RoundChange());
+        for(int i = 0; i < Deck.instance.deckUI.Length; i++)
+        {
+            Deck.instance.deckUI[i].ClearSlot();
+        }
+        for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
+        {
+            Deck.instance.deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
+        }
         //OnRoundChangeCallback.Invoke();
     }
 

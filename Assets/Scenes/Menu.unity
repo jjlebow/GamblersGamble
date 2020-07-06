@@ -166,7 +166,7 @@ MonoBehaviour:
   sounds:
   - name: TitleTheme
     loop: 1
-    clip: {fileID: 8300000, guid: a30a45c705deab542887a2255fd322cc, type: 3}
+    clip: {fileID: 8300000, guid: 348b86146e96aed46bd1ef28c4c8efea, type: 3}
     volume: 0
     pitch: 1
     source: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
     fadeOutTime: 2
     endFade: 1
   - name: Boss1Theme
-    loop: 0
+    loop: 1
     clip: {fileID: 8300000, guid: a8b57e1cae0af7a40bdaf7ccf504029b, type: 3}
     volume: 0
     pitch: 1
@@ -448,7 +448,7 @@ MonoBehaviour:
   relations:
   - sceneName: Menu
     songName: TitleTheme
-  - sceneName: Demo
+  - sceneName: Scene1
     songName: Boss1Theme
 --- !u!4 &893851525
 Transform:

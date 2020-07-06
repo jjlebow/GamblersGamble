@@ -21,6 +21,9 @@ public class Deck : MonoBehaviour
 
     private System.Random rand = new System.Random();
 
+    public Transform deckUIParent;
+    [HideInInspector] public CardSlot[] deckUI;
+
 
 
     void Awake()
@@ -82,6 +85,7 @@ public class Deck : MonoBehaviour
         
     	handCards = handParent.GetComponentsInChildren<CardSlot>();
     	drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
+        deckUI = deckUIParent.GetComponentsInChildren<CardSlot>();
         Shuffle(deckOfCards);
     }
 

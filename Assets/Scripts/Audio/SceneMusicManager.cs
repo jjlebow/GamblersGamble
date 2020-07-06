@@ -35,6 +35,7 @@ public class SceneMusicManager : MonoBehaviour
         {
             if(x.name == scName)
             {
+                Debug.Log(x.name);
                 FindObjectOfType<AudioManager>().Play(scName);
             }
         }
