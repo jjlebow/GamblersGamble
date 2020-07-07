@@ -22,7 +22,9 @@ public class Deck : MonoBehaviour
     private System.Random rand = new System.Random();
 
     public Transform deckUIParent;
+    public Transform discardUIParent;
     [HideInInspector] public CardSlot[] deckUI;
+    [HideInInspector] public CardSlot[] discardUI;
 
 
 
@@ -34,18 +36,19 @@ public class Deck : MonoBehaviour
             return;
         }
         instance = this;
-    }
 
-    //instantiate the default deck to have 10 attack cards
-    void Start()
-    {
-    	deckOfCards = new List<Card>();
-    	discardPile = new List<Card>();
+
+
+
         
-    	for(int i = 0; i < 5; i++)
-    	{
+
+        deckOfCards = new List<Card>();
+        discardPile = new List<Card>();
+        
+        for(int i = 0; i < 5; i++)
+        {
             deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7));
-    	}
+        }
         for(int i = 0; i < 5; i ++)
         {
             deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10));
@@ -83,10 +86,17 @@ public class Deck : MonoBehaviour
         }
 
         
-    	handCards = handParent.GetComponentsInChildren<CardSlot>();
-    	drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
+        handCards = handParent.GetComponentsInChildren<CardSlot>();
+        drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
         deckUI = deckUIParent.GetComponentsInChildren<CardSlot>();
+        discardUI = discardUIParent.GetComponentsInChildren<CardSlot>();
         Shuffle(deckOfCards);
+    }
+
+    //instantiate the default deck to have 10 attack cards
+    void Start()
+    {
+
     }
 
     //call this function to generate a card that you want

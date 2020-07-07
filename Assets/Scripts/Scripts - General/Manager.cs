@@ -70,6 +70,10 @@ public class Manager : MonoBehaviour
     private void Start()
     {
         timeLeft = timer;
+        for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
+        {
+            Deck.instance.deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
+        }
         
         //OnRoundChangeCallback += PauseScreen;
         //OnRoundChangeCallback += ResetPlayerPosition;
@@ -210,10 +214,15 @@ public class Manager : MonoBehaviour
         for(int i = 0; i < Deck.instance.deckUI.Length; i++)
         {
             Deck.instance.deckUI[i].ClearSlot();
+            Deck.instance.discardUI[i].ClearSlot();
         }
         for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
         {
             Deck.instance.deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
+        }
+        for(int i = 0; i < Deck.instance.discardPile.Count; i++)
+        {
+            Deck.instance.discardUI[i].AddCard(Deck.instance.discardPile[i]);
         }
         //OnRoundChangeCallback.Invoke();
     }
