@@ -53,7 +53,9 @@ public class PlayerController : MonoBehaviour
 
     //Dash variables
     public int numDash;
-    public float dashTimer;
+    [HideInInspector] public float dashTimer = 0.5f;
+    private float tempTimer;
+    public bool isDashing = false;
     //----------------------------------------------
     
 
@@ -133,6 +135,7 @@ public class PlayerController : MonoBehaviour
         
         //hasLandedCallback += playerAttacker.attackCancel;
         hasLandedCallback += jumpReset;
+        tempTimer = dashTimer;
         //hasLandedCallback += landingAnimation;
         //hasLandedCallback += playerMove.DashReset;
         
@@ -149,7 +152,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
         //if(health <= 0)
         //{
             //StateManager.instance.playerState = StateManager.PlayerStates.DEAD;
@@ -177,6 +179,8 @@ public class PlayerController : MonoBehaviour
         if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false)
         {
             CheckKeyInput();
+
+            
 
             //condition for the grounded jump
             if(Input.GetButtonDown("Jump") && availJumps > 0 && StateManager.instance.grounded)
@@ -291,6 +295,11 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         //StartCoroutine(DashRoutine());
         m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        /*if(StateManager.instance.faceRight)
+            m_Rigidbody2D.velocity = new Vector3(10,0,0);
+        else
+            m_Rigidbody2D.velocity = new Vector3(-10,0,0);
+            */
         StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
         StateManager.instance.playerStatic = true;
         m_Rigidbody2D.gravityScale = 0f;
@@ -301,7 +310,14 @@ public class PlayerController : MonoBehaviour
     {
         TurnOffLayers();
         //StartCoroutine(BackDashRoutine());
+        isDashing = true;
         m_Rigidbody2D.velocity = new Vector3(0,0,0);
+        /*
+        if(StateManager.instance.faceRight)
+            m_Rigidbody2D.velocity = new Vector3(-10,0,0);
+        else
+            m_Rigidbody2D.velocity = new Vector3(10,0,0);
+            */
         StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
         StateManager.instance.playerStatic = true;
         m_Rigidbody2D.gravityScale = 0f;
@@ -352,6 +368,38 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(StateManager.instance.currentState == StateManager.PlayerState.DASH)
+            {
+                if(tempTimer > 0)
+                {
+                    if(StateManager.instance.faceRight)
+                    {
+                        m_Rigidbody2D.velocity = new Vector3(20,0,0);
+                        tempTimer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        m_Rigidbody2D.velocity = new Vector3(-20,0,0);
+                        tempTimer -= Time.deltaTime;
+                    }
+                }
+                else
+                {
+                    StateManager.instance.RevertState();
+                    m_Rigidbody2D.velocity = Vector2.zero;
+                    tempTimer = dashTimer;
+                    StateManager.instance.playerStatic = false;
+                    m_Rigidbody2D.gravityScale = 1f;
+                    Debug.Log("shouldnt be here");
+                }   
+
+            }
+            else if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
+            {
+                tempTimer = dashTimer;
+                m_Rigidbody2D.gravityScale = 1f;
+            }
+
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             RaycastCheckUpdateGround();
@@ -793,6 +841,7 @@ public class PlayerController : MonoBehaviour
             StateManager.instance.grounded = true;
             StateManager.instance.ChangeState(StateManager.PlayerState.CANCEL);
             hasLandedCallback.Invoke();
+            StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
         }
         else if(!hit.collider && StateManager.instance.grounded == true)
         {

@@ -13,11 +13,6 @@ public class BackDashBehavior : StateMachineBehaviour
             player = animator.GetComponentInParent(typeof(PlayerController)) as PlayerController;
             //player = animator.GetComponent<PlayerController>();
         length = stateInfo.length;
-        if(StateManager.instance.faceRight)
-            player.m_Rigidbody2D.velocity = new Vector3(-20,0,0);
-        else
-            player.m_Rigidbody2D.velocity = new Vector3(20,0,0);
-        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -41,6 +41,7 @@ public class KnockbackAction : FSMAction
         if(StateManager.instance.currentState == StateManager.PlayerState.CANCEL)
         {
             player.GetComponent<Damageable>().StopKnockback();  //this line still needs to be tested
+            //Debug.Log("here");
             Finish(0);
         }
         if(StateManager.instance.currentState != StateManager.PlayerState.KNOCKBACK)

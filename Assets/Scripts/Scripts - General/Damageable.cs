@@ -74,6 +74,8 @@ public class Damageable : MonoBehaviour
     public void StopKnockback()
     {
         StopCoroutine(temp);
+        //Debug.Log("routine ended");
+
     }
 
     public void TakeDamage(int damage)
@@ -105,9 +107,11 @@ public class Damageable : MonoBehaviour
         var temp = timer;
         Vector3 knockbackDir = new Vector3(0,0,0);
         Vector3 moveDir = (offender - player).normalized;
+        //Debug.Log("routine started");
 
         this.GetComponent<PlayerController>().m_Rigidbody2D.velocity = new Vector3(0,0,0); //setting current velocity to 0
-        
+        this.GetComponent<PlayerController>().m_Rigidbody2D.angularVelocity = 0f;
+        //Debug.Log(this.GetComponent<PlayerController>().m_Rigidbody2D.velocity);
         if(moveDir.x <= 0)
             knockbackDir = new Vector3(2,4, 0);
         else
@@ -125,6 +129,7 @@ public class Damageable : MonoBehaviour
         {
             while(temp > timer * 0.6)
             {
+                //Debug.Log("running");
                 temp -= Time.deltaTime;
                 //this.GetComponent<PlayerController>().m_Rigidbody2D.velocity = knockbackDir;
                 //this.GetComponent<PlayerController>().m_Rigidbody2D.AddForce(knockbackDir);
