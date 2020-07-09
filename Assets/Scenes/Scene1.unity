@@ -59350,7 +59350,8 @@ MonoBehaviour:
   jumpForce: 6
   jumpTimer: 0.3
   numDash: 0
-  dashTimer: 0.2
+  dashTimer: 0.15
+  isDashing: 0
   m_Rigidbody2D: {fileID: 0}
   runningSpeed: 20
   movementSmoothing: 0.03
@@ -80531,6 +80532,7 @@ GameObject:
   - component: {fileID: 1397978501590223180}
   - component: {fileID: 1397978501590223185}
   - component: {fileID: 1397978501590223186}
+  - component: {fileID: 1397978501590223183}
   m_Layer: 10
   m_Name: Walkable Tiles
   m_TagString: Ground
@@ -80538,6 +80540,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!251 &1397978501590223183
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397978501590223182}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 1
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!19719996 &1397978501590223185
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -80549,7 +80570,7 @@ TilemapCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000

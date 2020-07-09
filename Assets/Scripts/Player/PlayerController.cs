@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     //Dash variables
     public int numDash;
-    [HideInInspector] public float dashTimer = 0.5f;
+    public float dashTimer;
     private float tempTimer;
     public bool isDashing = false;
     //----------------------------------------------
@@ -398,6 +398,7 @@ public class PlayerController : MonoBehaviour
             {
                 tempTimer = dashTimer;
                 m_Rigidbody2D.gravityScale = 1f;
+                Debug.Log("cancelling");
             }
 
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
