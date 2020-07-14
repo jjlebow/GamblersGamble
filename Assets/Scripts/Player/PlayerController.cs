@@ -390,7 +390,7 @@ public class PlayerController : MonoBehaviour
                     tempTimer = dashTimer;
                     StateManager.instance.playerStatic = false;
                     m_Rigidbody2D.gravityScale = 1f;
-                    Debug.Log("shouldnt be here");
+                    //Debug.Log("shouldnt be here");
                 }   
 
             }
@@ -398,7 +398,7 @@ public class PlayerController : MonoBehaviour
             {
                 tempTimer = dashTimer;
                 m_Rigidbody2D.gravityScale = 1f;
-                Debug.Log("cancelling");
+                //Debug.Log("cancelling");
             }
 
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
