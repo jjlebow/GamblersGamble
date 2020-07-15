@@ -237,6 +237,21 @@ PrefabInstance:
       propertyPath: playerDamageable
       value: 
       objectReference: {fileID: 1596616442}
+    - target: {fileID: 364696833312310327, guid: f3ee346b0a0042b4d81ba4dbe6a25332,
+        type: 3}
+      propertyPath: battleMenuUI
+      value: 
+      objectReference: {fileID: 998806723281585204}
+    - target: {fileID: 364696833312310327, guid: f3ee346b0a0042b4d81ba4dbe6a25332,
+        type: 3}
+      propertyPath: badHealthPanel
+      value: 
+      objectReference: {fileID: 4441627255910040692}
+    - target: {fileID: 364696833312310327, guid: f3ee346b0a0042b4d81ba4dbe6a25332,
+        type: 3}
+      propertyPath: goodHealthPanel
+      value: 
+      objectReference: {fileID: 4441627254375406024}
     - target: {fileID: 364696833312310328, guid: f3ee346b0a0042b4d81ba4dbe6a25332,
         type: 3}
       propertyPath: handParent
