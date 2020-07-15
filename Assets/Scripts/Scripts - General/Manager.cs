@@ -37,7 +37,10 @@ public class Manager : MonoBehaviour
     //public OnRoundChange OnRoundChangeCallback;
     private Vector2 startingPoint;
     public Damageable playerDamageable;
-    public Damageable bossDamageable;
+    [HideInInspector] public Damageable bossDamageable;
+    public GameObject battleMenuUI;
+    public GameObject goodHealthPanel;
+    public GameObject badHealthPanel;
 
 
 
@@ -86,7 +89,11 @@ public class Manager : MonoBehaviour
         //if(gameState.GameState = PAUSED)
             //Time.timeScale = 0;
         healthBar.value = playerDamageable.health;
-        badHealthBar.value = bossDamageable.health;
+        if(bossDamageable != null)
+        {
+            badHealthBar.value = bossDamageable.health;
+        }
+        //badHealthBar.value = bossDamageable.health;
         //runs the game over function when the player has died, regardless of whether or not the boss has died
         if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
         {

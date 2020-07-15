@@ -60,6 +60,26 @@ public class sceneManagement : MonoBehaviour
                 removeSongs.Add(y);
         }
         FindObjectOfType<AudioManager>().DialogueTransitionSong(removeSongs, playSongs);
+
+        if(scene.name.Split(' ')[0] == "Battle")
+        {
+            Manager.instance.bossDamageable = GameObject.FindGameObjectWithTag("Boss").GetComponent<Damageable>();
+            Manager.instance.battleMenuUI.SetActive(true);
+            Manager.instance.deckPanel.SetActive(true);
+            Manager.instance.discardPanel.SetActive(true);
+            Manager.instance.goodHealthPanel.SetActive(true);
+            Manager.instance.badHealthPanel.SetActive(true);
+        }
+        else if(scene.name.Split(' ')[0] == "Hub")
+        {
+            Manager.instance.deckPanel.SetActive(false);
+            Manager.instance.battleMenuUI.SetActive(false);
+            Manager.instance.discardPanel.SetActive(false);
+            Manager.instance.goodHealthPanel.SetActive(false);
+            Manager.instance.badHealthPanel.SetActive(false);
+
+
+        }
     }
 
     // called when the game is terminated
