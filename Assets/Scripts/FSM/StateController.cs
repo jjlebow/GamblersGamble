@@ -142,6 +142,7 @@ public class StateController : MonoBehaviour
     public void Awake()
     {
         player = GetComponent<PlayerController>();
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

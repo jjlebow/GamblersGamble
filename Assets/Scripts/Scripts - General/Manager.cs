@@ -35,7 +35,7 @@ public class Manager : MonoBehaviour
     public StateController stateMachine;
     //public delegate void OnRoundChange();
     //public OnRoundChange OnRoundChangeCallback;
-    private Vector2 startingPoint;
+    [HideInInspector] public Vector2 startingPoint;
     public Damageable playerDamageable;
     [HideInInspector] public Damageable bossDamageable;
     public GameObject battleMenuUI;
@@ -67,7 +67,6 @@ public class Manager : MonoBehaviour
         //currentBoss = currentBoss.GetComponent<Boss>();
         //bossDamageable = currentBoss
         // this should go in some kind of OnScenLoadedthing 
-        startingPoint = GameObject.FindGameObjectWithTag("StartingPosition").transform.position;
 
     }
 

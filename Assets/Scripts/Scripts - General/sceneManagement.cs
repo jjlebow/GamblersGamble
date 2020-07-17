@@ -61,6 +61,7 @@ public class sceneManagement : MonoBehaviour
         }
         FindObjectOfType<AudioManager>().DialogueTransitionSong(removeSongs, playSongs);
 
+        
         if(scene.name.Split(' ')[0] == "Battle")
         {
             Manager.instance.bossDamageable = GameObject.FindGameObjectWithTag("Boss").GetComponent<Damageable>();
@@ -82,6 +83,14 @@ public class sceneManagement : MonoBehaviour
 
 
         }
+        else
+        {
+            Manager.instance.player.gameObject.SetActive(false);
+        }
+
+        Manager.instance.startingPoint = GameObject.FindGameObjectWithTag("StartingPosition").transform.position;
+
+        Manager.instance.player.transform.position = Manager.instance.startingPoint;
     }
 
     // called when the game is terminated

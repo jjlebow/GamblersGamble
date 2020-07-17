@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         tempTimer = dashTimer;
         //hasLandedCallback += landingAnimation;
         //hasLandedCallback += playerMove.DashReset;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
         
         
     }

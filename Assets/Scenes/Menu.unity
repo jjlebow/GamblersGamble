@@ -120,90 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &445280143
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 445280144}
-  - component: {fileID: 445280145}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &445280144
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445280143}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 324.7629, y: 138.40584, z: -13.555608}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &445280145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445280143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50e2d9e25ca88b4381b48384df4d5af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: TitleTheme
-    loop: 1
-    clip: {fileID: 8300000, guid: 348b86146e96aed46bd1ef28c4c8efea, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    fadeInTime: 2
-    fadeOutTime: 2
-    endFade: 1
-  - name: Boss1Theme
-    loop: 1
-    clip: {fileID: 8300000, guid: a8b57e1cae0af7a40bdaf7ccf504029b, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    fadeInTime: 2
-    fadeOutTime: 2
-    endFade: 1
-  - name: Hub Theme
-    loop: 1
-    clip: {fileID: 8300000, guid: 60aff3a8f1e8bd64b9cf9b3bcf633e33, type: 3}
-    volume: 0
-    pitch: 1
-    source: {fileID: 0}
-    fadeInTime: 2
-    fadeOutTime: 2
-    endFade: 1
-  effects: []
-  CR_running: 0
-  currentSongs: []
-  currentEffect:
-    name: 
-    loop: 0
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
-    source: {fileID: 0}
-    fadeInTime: 0
-    fadeOutTime: 0
-    endFade: 0
 --- !u!1 &518388234
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,56 +340,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &893851523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 893851525}
-  - component: {fileID: 893851524}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &893851524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893851523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee39fa01f184315439f3c096a3ed6bea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  relations:
-  - sceneName: Menu
-    songName: TitleTheme
-  - sceneName: Battle 1
-    songName: Boss1Theme
-  - sceneName: Hub
-    songName: Hub Theme
---- !u!4 &893851525
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 893851523}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 324.7629, y: 138.40584, z: -13.555608}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &929337710
 GameObject:
@@ -936,6 +802,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304531576}
   m_CullTransparentMesh: 0
+--- !u!1 &1423273963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423273964}
+  m_Layer: 0
+  m_Name: StartingPoint
+  m_TagString: StartingPosition
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1423273964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423273963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.86, y: -5.83, z: -6613.603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1444895700
 GameObject:
   m_ObjectHideFlags: 0
