@@ -69,6 +69,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.discardPanel.SetActive(true);
             Manager.instance.goodHealthPanel.SetActive(true);
             Manager.instance.badHealthPanel.SetActive(true);
+            Manager.instance.player.gameObject.SetActive(true);
         }
         else if(scene.name.Split(' ')[0] == "Hub")
         {
@@ -77,6 +78,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.discardPanel.SetActive(false);
             Manager.instance.goodHealthPanel.SetActive(false);
             Manager.instance.badHealthPanel.SetActive(false);
+            Manager.instance.player.gameObject.SetActive(true);
 
 
         }

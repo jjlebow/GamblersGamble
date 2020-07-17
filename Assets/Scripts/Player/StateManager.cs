@@ -67,6 +67,7 @@ public class StateManager : MonoBehaviour
             Destroy(gameObject);
         currentState = PlayerState.IDLE;
 
+        DontDestroyOnLoad(this.gameObject);
         //animator = player.GetComponent<Animator>();
     }
 

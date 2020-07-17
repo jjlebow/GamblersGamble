@@ -59,6 +59,7 @@ public class Manager : MonoBehaviour
             return;
         }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
 
         //player = player.GetComponent<PlayerController>();
         //stateMachine = stateMachine.GetComponent<StateController>();

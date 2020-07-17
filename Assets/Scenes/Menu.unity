@@ -182,6 +182,15 @@ MonoBehaviour:
     fadeInTime: 2
     fadeOutTime: 2
     endFade: 1
+  - name: Hub Theme
+    loop: 1
+    clip: {fileID: 8300000, guid: 60aff3a8f1e8bd64b9cf9b3bcf633e33, type: 3}
+    volume: 0
+    pitch: 1
+    source: {fileID: 0}
+    fadeInTime: 2
+    fadeOutTime: 2
+    endFade: 1
   effects: []
   CR_running: 0
   currentSongs: []
@@ -448,8 +457,10 @@ MonoBehaviour:
   relations:
   - sceneName: Menu
     songName: TitleTheme
-  - sceneName: Scene1
+  - sceneName: Battle 1
     songName: Boss1Theme
+  - sceneName: Hub
+    songName: Hub Theme
 --- !u!4 &893851525
 Transform:
   m_ObjectHideFlags: 0

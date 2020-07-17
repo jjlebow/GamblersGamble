@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Knockback variables
-    [HideInInspector]public Vector3 knockbackDir;
+    [HideInInspector] public Vector3 knockbackDir;
     private float knockbackDuration = 0.3f; //how long player is knocked back for
     private float timeBtwDamage = 1.5f; //this is the cooldown between which the player can take damage
     //----------------------------------------------
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         tempTimer = dashTimer;
         //hasLandedCallback += landingAnimation;
         //hasLandedCallback += playerMove.DashReset;
-        
+        DontDestroyOnLoad(this.gameObject);
         
         
     }
