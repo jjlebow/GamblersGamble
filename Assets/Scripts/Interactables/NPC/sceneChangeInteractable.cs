@@ -8,7 +8,7 @@ public class sceneChangeInteractable : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = Manager.instance.player;
     }
 
     protected override void Interact()

@@ -39,6 +39,7 @@ public class Manager : MonoBehaviour
     public Damageable playerDamageable;
     [HideInInspector] public Damageable bossDamageable;
     public GameObject battleMenuUI;
+    public GameObject battleMenu;
     public GameObject goodHealthPanel;
     public GameObject badHealthPanel;
 
@@ -72,6 +73,8 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(Deck.instance.deckOfCards.Count);
+        Debug.Log(Deck.instance.deckUI.Length);
         timeLeft = timer;
         for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
         {

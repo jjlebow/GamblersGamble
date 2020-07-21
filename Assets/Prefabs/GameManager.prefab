@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 364696833312310326}
   - component: {fileID: 364696833312310325}
   - component: {fileID: 364696833312310327}
-  - component: {fileID: 364696833312310328}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -72,26 +71,9 @@ MonoBehaviour:
   previousState: 0
   player: {fileID: 0}
   stateMachine: {fileID: 0}
+  startingPoint: {x: 0, y: 0}
   playerDamageable: {fileID: 0}
   bossDamageable: {fileID: 0}
---- !u!114 &364696833312310328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364696833312310324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51017f4fafbe59846843d13697461145, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  storedKeys: 
-  drawnCardsParent: {fileID: 0}
-  handParent: {fileID: 0}
-  drawnCards: []
-  handCards: []
-  deckUIParent: {fileID: 0}
-  discardUIParent: {fileID: 0}
-  deckUI: []
-  discardUI: []
+  battleMenuUI: {fileID: 0}
+  goodHealthPanel: {fileID: 0}
+  badHealthPanel: {fileID: 0}

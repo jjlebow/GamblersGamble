@@ -8,7 +8,19 @@ using System;
 //The deck holds the deck of cards, the discard pile, the current drawn cards, and the array of cards in hand
 public class Deck : MonoBehaviour
 {
+
 	public static Deck instance;
+
+    public int basicAttack;
+    public int heavyAttack;
+    public int precisionAttack;
+    public int jump;
+    public int dash;
+    public int backDash;
+    public int basicShot;
+    public int heavyShot;
+    public int precisionShot;
+
 	public List<Card> deckOfCards;
 	public List<Card> discardPile;
     public List<KeyCode> storedKeys;
@@ -45,42 +57,42 @@ public class Deck : MonoBehaviour
         deckOfCards = new List<Card>();
         discardPile = new List<Card>();
         
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < basicAttack; i++)
         {
             deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7));
         }
-        for(int i = 0; i < 5; i ++)
+        for(int i = 0; i < heavyAttack; i ++)
         {
             deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10));
         }
-        for(int j = 0; j < 5; j++)
+        for(int j = 0; j < jump; j++)
         {
             deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0));
         }
         
-        for(int k = 0; k < 5; k++)
+        for(int k = 0; k < dash; k++)
         {
             deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0));
         }
-        for(int l = 0; l < 5; l++)
+        for(int l = 0; l < backDash; l++)
         {
             deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0));
         }
         
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < precisionShot; i++)
         {
             deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8));
         }
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < basicShot; i++)
         {
             deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5));
         }
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < heavyShot; i++)
         {
             deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7));
         }
 
-        for(int i = 0; i < 5; i++)
+        for(int i = 0; i < precisionAttack; i++)
         {
             deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
         }

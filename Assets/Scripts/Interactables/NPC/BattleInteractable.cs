@@ -10,7 +10,8 @@ public class BattleInteractable : Interactable
 
 	public void Awake()
 	{
-		//bm = bmScript.GetComponent<BattleMenu>();
+		player = Manager.instance.player;
+        battleMenu = Manager.instance.battleMenu;
 	}
 
 

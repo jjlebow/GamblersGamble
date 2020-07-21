@@ -9,7 +9,7 @@ public class BossStandingHitbox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = Manager.instance.player;
     }
 
     // Update is called once per frame

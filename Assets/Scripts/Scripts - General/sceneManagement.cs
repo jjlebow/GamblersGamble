@@ -66,27 +66,38 @@ public class sceneManagement : MonoBehaviour
         {
             Manager.instance.bossDamageable = GameObject.FindGameObjectWithTag("Boss").GetComponent<Damageable>();
             Manager.instance.battleMenuUI.SetActive(true);
-            Manager.instance.deckPanel.SetActive(true);
-            Manager.instance.discardPanel.SetActive(true);
+            //Manager.instance.battleMenu.SetActive(false);
+            //Manager.instance.deckPanel.SetActive(true);
+            //Manager.instance.discardPanel.SetActive(true);
             Manager.instance.goodHealthPanel.SetActive(true);
             Manager.instance.badHealthPanel.SetActive(true);
             Manager.instance.player.gameObject.SetActive(true);
         }
         else if(scene.name.Split(' ')[0] == "Hub")
         {
-            Manager.instance.deckPanel.SetActive(false);
+            
             Manager.instance.battleMenuUI.SetActive(false);
-            Manager.instance.discardPanel.SetActive(false);
+            
             Manager.instance.goodHealthPanel.SetActive(false);
             Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.player.gameObject.SetActive(true);
 
 
         }
-        else
+        else if(scene.name == "LoadScene")
         {
             Manager.instance.player.gameObject.SetActive(false);
+            Manager.instance.deckPanel.SetActive(false);
+            Manager.instance.discardPanel.SetActive(false);
+            DialogueManager.instance.gameObject.SetActive(false);
+            Manager.instance.goodHealthPanel.SetActive(false);
+            Manager.instance.badHealthPanel.SetActive(false);
+            Manager.instance.battleMenuUI.SetActive(false);
+            Manager.instance.battleMenu.SetActive(false);
+
         }
+        
+
 
         Manager.instance.startingPoint = GameObject.FindGameObjectWithTag("StartingPosition").transform.position;
 
