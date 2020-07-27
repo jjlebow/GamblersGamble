@@ -1,40 +1,37 @@
 fileFormatVersion: 2
-guid: e4902599daf898340a33e460e6268278
+guid: 94ceaae82ba4931448dbc83933dca567
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9206273567925496528
-    second: mc_idle-Sheet_0
+      213: 83352143949805699
+    second: mc_walk-Sheet_0
   - first:
-      213: 6660884302715550124
-    second: mc_idle-Sheet_1
+      213: -6726411787048810017
+    second: mc_walk-Sheet_1
   - first:
-      213: 547155585496025958
-    second: mc_idle-Sheet_2
+      213: 3924020206555733800
+    second: mc_walk-Sheet_2
   - first:
-      213: -4628219909694615110
-    second: mc_idle-Sheet_3
+      213: 1504071671874713118
+    second: mc_walk-Sheet_3
   - first:
-      213: -4163855572240359774
-    second: mc_idle-Sheet_4
+      213: -6045577162700991178
+    second: mc_walk-Sheet_4
   - first:
-      213: 3119050281392110447
-    second: mc_idle-Sheet_5
+      213: -565690214148793446
+    second: mc_walk-Sheet_5
   - first:
-      213: 6339135091454472517
-    second: mc_idle-Sheet_6
+      213: 5132574230223555434
+    second: mc_walk-Sheet_6
   - first:
-      213: -394167157557560476
-    second: mc_idle-Sheet_7
+      213: 8958561160604840305
+    second: mc_walk-Sheet_7
   - first:
-      213: -5715293518531188556
-    second: mc_idle-Sheet_8
+      213: 8084475969653985918
+    second: mc_walk-Sheet_8
   - first:
-      213: -4324083753373840531
-    second: mc_idle-Sheet_9
-  - first:
-      213: -1670556267095179734
-    second: mc_idle-Sheet_10
+      213: -8117716425380203198
+    second: mc_walk-Sheet_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -131,12 +128,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mc_idle-Sheet_0
+      name: mc_walk-Sheet_0
       rect:
         serializedVersion: 2
         x: 11
         y: 3
-        width: 26
+        width: 28
         height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,40 +142,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c4f44ff77543bd4fa1b2f30700f4dfe
-      internalID: 9206273567925496528
+      spriteID: 88d4dde120d4d904c8b00047e597b56e
+      internalID: 83352143949805699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_1
+      name: mc_walk-Sheet_1
       rect:
         serializedVersion: 2
-        x: 63
+        x: 57
         y: 3
-        width: 26
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: abf8f2ec0c2412e45b415653ec5a634e
-      internalID: 6660884302715550124
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_idle-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 115
-        y: 3
-        width: 26
+        width: 35
         height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,19 +163,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da63830cff200a443abeb5364f3734e7
-      internalID: 547155585496025958
+      spriteID: d83f24a6447fcce489890017dfc250e8
+      internalID: -6726411787048810017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_3
+      name: mc_walk-Sheet_2
       rect:
         serializedVersion: 2
-        x: 167
+        x: 107
         y: 3
-        width: 26
+        width: 39
         height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -208,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c3f46386a33e374aa32778501fcf79b
-      internalID: -4628219909694615110
+      spriteID: 5ccc9ea128193e94a8ecf2321109452b
+      internalID: 3924020206555733800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_4
+      name: mc_walk-Sheet_3
       rect:
         serializedVersion: 2
-        x: 219
+        x: 165
         y: 3
-        width: 26
-        height: 86
+        width: 31
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,19 +205,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ffd1fd51dd60204b9eb3edeaa06ef54
-      internalID: -4163855572240359774
+      spriteID: 43a5956aafe85a647991991d3677cf95
+      internalID: 1504071671874713118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_5
+      name: mc_walk-Sheet_4
       rect:
         serializedVersion: 2
-        x: 271
+        x: 221
         y: 3
-        width: 26
+        width: 20
         height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -250,19 +226,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e43acb75a17a6d43a455294b0db1229
-      internalID: 3119050281392110447
+      spriteID: 6bdc2c6286e253f49b621019567fcb14
+      internalID: -6045577162700991178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_6
+      name: mc_walk-Sheet_5
       rect:
         serializedVersion: 2
-        x: 323
+        x: 273
         y: 3
-        width: 26
+        width: 27
         height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -271,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9c7d05a67f122f4e88345a52da8cf87
-      internalID: 6339135091454472517
+      spriteID: 3487d25841fc09448990d423aa6215ff
+      internalID: -565690214148793446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_7
+      name: mc_walk-Sheet_6
       rect:
         serializedVersion: 2
-        x: 375
+        x: 317
         y: 3
-        width: 26
-        height: 88
+        width: 35
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d73215e3c71cb674e8359d570d8ed38e
-      internalID: -394167157557560476
+      spriteID: 49cf82b9b369df74c82fa10a93c7085a
+      internalID: 5132574230223555434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_8
+      name: mc_walk-Sheet_7
       rect:
         serializedVersion: 2
-        x: 427
+        x: 367
         y: 3
-        width: 26
-        height: 88
+        width: 39
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,20 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9795b39661aa5b54f80c32c4a1159b46
-      internalID: -5715293518531188556
+      spriteID: 0e868d12240e6b344a77026a3518c3d6
+      internalID: 8958561160604840305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_9
+      name: mc_walk-Sheet_8
       rect:
         serializedVersion: 2
-        x: 479
+        x: 425
         y: 3
-        width: 26
-        height: 88
+        width: 30
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +310,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 617993a159e7ff04c95b8ca384b9918a
-      internalID: -4324083753373840531
+      spriteID: 348aee413b9af7e46b7ed398fcd825c3
+      internalID: 8084475969653985918
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_idle-Sheet_10
+      name: mc_walk-Sheet_9
       rect:
         serializedVersion: 2
-        x: 531
+        x: 480
         y: 3
-        width: 26
-        height: 88
+        width: 20
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,8 +331,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca42fe1c424759c4d8199260755b4c98
-      internalID: -1670556267095179734
+      spriteID: 226f8f543d61c8d47a6f11208071c029
+      internalID: -8117716425380203198
       vertices: []
       indices: 
       edges: []

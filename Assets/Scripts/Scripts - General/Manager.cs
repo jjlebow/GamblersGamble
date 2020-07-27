@@ -38,6 +38,7 @@ public class Manager : MonoBehaviour
     [HideInInspector] public Vector2 startingPoint;
     public Damageable playerDamageable;
     [HideInInspector] public Damageable bossDamageable;
+    [HideInInspector] public BossController boss;
     public GameObject battleMenuUI;
     public GameObject battleMenu;
     public GameObject goodHealthPanel;
