@@ -23,7 +23,10 @@ public class AOEAction : FSMAction
 
     public override void OnEnter()
     {
+        Debug.Log("AOEAction");
     	animator.SetTrigger(triggerName);
+        Manager.instance.boss.bossActive = true;
+        Manager.instance.boss.enemyRB.velocity = Vector2.zero;
         //there needs to be logic here to determine what animation each body 
         //part plays
             //if(StateManager.instance.walking == false)

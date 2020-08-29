@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     //radius of the circle that determinds if the player is touching a ceiling or not
     const float ceilingRadius = 0.2f;
     //this adjusts the length for the raycast that recognizes if grounded or not
-    private float raycastMaxDistance = 0.32f; //this needs to change if you change the size of the player
+    private float raycastMaxDistance = 0.5f; //this needs to change if you change the size of the player
     private Vector2 direction = new Vector2(0,-1);
     //[SerializeField] public Collider2D crouchDisableCollider;
     //----------------------------------------------
@@ -439,6 +439,7 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;
+        StateManager.instance.playerStatic = true;
         StateManager.instance.ChangeState(StateManager.PlayerState.SHOOT);
         //StateManager.instance.isShooting = true;
     }
@@ -506,6 +507,7 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;
+        StateManager.instance.playerStatic = true;
         //StateManager.instance.isActive = true;
         StateManager.instance.ChangeState(StateManager.PlayerState.MELEE);
     }

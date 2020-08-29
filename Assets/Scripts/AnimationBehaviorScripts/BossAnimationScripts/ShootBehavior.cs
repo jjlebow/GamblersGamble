@@ -9,7 +9,7 @@ public class ShootBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         length = stateInfo.length;
-        Manager.instance.boss.bossActive = true;
+        Manager.instance.boss.ShootState();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

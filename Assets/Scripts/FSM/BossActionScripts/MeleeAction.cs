@@ -23,9 +23,10 @@ public class MeleeAction : FSMAction
 
     public override void OnEnter()
     {
-        Manager.instance.boss.meleeHitbox.SetActive(true);
+        Debug.Log("Melee Action");
         animator.SetTrigger(triggerName);
         Manager.instance.boss.enemyRB.velocity = Vector2.zero;
+        Manager.instance.boss.bossActive = true;
         //there needs to be logic here to determine what animation each body 
         //part plays
             //if(StateManager.instance.walking == false)

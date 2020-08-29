@@ -95,6 +95,7 @@ public class BossController : MonoBehaviour
 
     public void IdleState()
     {
+        ///Debug.Log("boss controller we should be movig");
     	if(isTouchingUp && goingUp)
     	{
     		ChangeDirection();
@@ -192,7 +193,6 @@ public class BossController : MonoBehaviour
     		Debug.Log("we are hereeeeeee");
     		if(rand > 3)
     		{
-    			Debug.Log("shotting");
     			return 2;
     		}
     		else if(rand == 3)

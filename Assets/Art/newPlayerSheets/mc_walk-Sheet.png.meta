@@ -131,91 +131,7 @@ TextureImporter:
       name: mc_walk-Sheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 3
-        width: 28
-        height: 88
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88d4dde120d4d904c8b00047e597b56e
-      internalID: 83352143949805699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_walk-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 57
-        y: 3
-        width: 35
-        height: 86
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d83f24a6447fcce489890017dfc250e8
-      internalID: -6726411787048810017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_walk-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 3
-        width: 39
-        height: 84
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ccc9ea128193e94a8ecf2321109452b
-      internalID: 3924020206555733800
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_walk-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 165
-        y: 3
-        width: 31
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43a5956aafe85a647991991d3677cf95
-      internalID: 1504071671874713118
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_walk-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 221
+        x: 20
         y: 3
         width: 20
         height: 89
@@ -226,80 +142,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6bdc2c6286e253f49b621019567fcb14
-      internalID: -6045577162700991178
+      spriteID: e7ef8d22bb32208448844351184396cd
+      internalID: 83352143949805699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_walk-Sheet_5
+      name: mc_walk-Sheet_1
       rect:
         serializedVersion: 2
-        x: 273
-        y: 3
-        width: 27
-        height: 89
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3487d25841fc09448990d423aa6215ff
-      internalID: -565690214148793446
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_walk-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 317
-        y: 3
-        width: 35
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 49cf82b9b369df74c82fa10a93c7085a
-      internalID: 5132574230223555434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_walk-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 367
-        y: 3
-        width: 39
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e868d12240e6b344a77026a3518c3d6
-      internalID: 8958561160604840305
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_walk-Sheet_8
-      rect:
-        serializedVersion: 2
-        x: 425
+        x: 65
         y: 3
         width: 30
         height: 87
@@ -310,17 +163,80 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 348aee413b9af7e46b7ed398fcd825c3
-      internalID: 8084475969653985918
+      spriteID: 27ab52dc29e72a243802e8364e9e6151
+      internalID: -6726411787048810017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_walk-Sheet_9
+      name: mc_walk-Sheet_2
       rect:
         serializedVersion: 2
-        x: 480
+        x: 114
+        y: 3
+        width: 39
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7e525a5f8a57f4688e431e2add4df8
+      internalID: 3924020206555733800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 3
+        width: 35
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e49591084bc6841b0efda5e6125fc5
+      internalID: 1504071671874713118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 3
+        width: 27
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875a9a34af4dcf74ab6b21225d87f8cb
+      internalID: -6045577162700991178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 279
         y: 3
         width: 20
         height: 89
@@ -331,7 +247,91 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 226f8f543d61c8d47a6f11208071c029
+      spriteID: 1c1c222fcd105d34294a8676d481749f
+      internalID: -565690214148793446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 3
+        width: 31
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d96b096dfec5624db5ad1a8a590b404
+      internalID: 5132574230223555434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 3
+        width: 39
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ca99eb5978fcde48887617ac8162e31
+      internalID: 8958561160604840305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 3
+        width: 35
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5e84d6dca89f06468a7afad1bda4a92
+      internalID: 8084475969653985918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mc_walk-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 3
+        width: 28
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4f856d568eb4c4dba2e3b512c496cb
       internalID: -8117716425380203198
       vertices: []
       indices: 

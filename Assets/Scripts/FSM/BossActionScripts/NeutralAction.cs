@@ -24,16 +24,14 @@ public class NeutralAction : FSMAction
 
     public override void OnEnter()
     {
-        rand = Random.Range(1, 4);
-        animator.SetTrigger(triggerName);
-        //there needs to be logic here to determine what animation each body 
-        //part plays
-            //if(StateManager.instance.walking == false)
-                //legAnimator.SetTrigger(triggerName);
+        Debug.Log("entering neutral");
+        //animator.SetTrigger(triggerName);     //this does not work here for some reason. Just sets netural trigger repeatedly when it shouldnt, even though we are not re-entering the state constantly
+        rand = Random.Range(1,4);
     }
 
     public override void OnUpdate()
     {
+        
         if(rand > 0)
         {
             Manager.instance.boss.IdleState();
@@ -43,6 +41,7 @@ public class NeutralAction : FSMAction
         {
             Finish(Manager.instance.boss.DecideAttack());
         }
+        
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving

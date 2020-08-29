@@ -7,7 +7,7 @@ public class SpecialAction : FSMAction
     public Animator animator;
     string triggerName;
     string[] finishEvent;
-    private Vector2 playerPosition;
+    //private Vector2 playerPosition;
 
 
     public SpecialAction(FSMState owner) : base(owner)
@@ -25,7 +25,9 @@ public class SpecialAction : FSMAction
     public override void OnEnter()
     {
     	animator.SetTrigger(triggerName);
-    	playerPosition = Manager.instance.player.transform.position - Manager.instance.boss.transform.position;
+    	Debug.Log("Special action");
+        Manager.instance.boss.bossActive = true;
+        Manager.instance.boss.enemyRB.velocity = Vector2.zero;
         //there needs to be logic here to determine what animation each body 
         //part plays
             //if(StateManager.instance.walking == false)
@@ -37,12 +39,16 @@ public class SpecialAction : FSMAction
         //if boss hp falls below 0, trigger death
         //if a cancel occurs, move to idle, 
         //else, Finish(Manager.instance.boss.DecideAttack())
-    	Manager.instance.boss.SpecialState(playerPosition);
+    	
     	if(Manager.instance.boss.isTouchingUp || Manager.instance.boss.isTouchingDown || Manager.instance.boss.isTouchingWall)
     	{
+            Debug.Log("we are exiting specialstate");
+            Manager.instance.boss.bossActive = false;
+            animator.SetTrigger("Neutral");
     		Finish(0);  //this will finish at neutral once the animation has run its course
     	}
     }
+
 
     public void Finish(int num)
     {

@@ -134,8 +134,8 @@ TextureImporter:
       name: mc_idle-Sheet_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 3
+        x: 15
+        y: 2
         width: 26
         height: 88
       alignment: 0
@@ -145,7 +145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c4f44ff77543bd4fa1b2f30700f4dfe
+      spriteID: a727a67e99cae454992e6b4003cd254b
       internalID: 9206273567925496528
       vertices: []
       indices: 
@@ -155,8 +155,8 @@ TextureImporter:
       name: mc_idle-Sheet_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 3
+        x: 67
+        y: 2
         width: 26
         height: 88
       alignment: 0
@@ -166,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abf8f2ec0c2412e45b415653ec5a634e
+      spriteID: 672aeb12f144d864e998ff72e611ec9e
       internalID: 6660884302715550124
       vertices: []
       indices: 
@@ -176,10 +176,10 @@ TextureImporter:
       name: mc_idle-Sheet_2
       rect:
         serializedVersion: 2
-        x: 115
-        y: 3
+        x: 119
+        y: 2
         width: 26
-        height: 86
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da63830cff200a443abeb5364f3734e7
+      spriteID: 6fbfb2bb5896a2544b6ebc150bd232e0
       internalID: 547155585496025958
       vertices: []
       indices: 
@@ -197,10 +197,10 @@ TextureImporter:
       name: mc_idle-Sheet_3
       rect:
         serializedVersion: 2
-        x: 167
-        y: 3
+        x: 171
+        y: 2
         width: 26
-        height: 84
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,7 +208,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c3f46386a33e374aa32778501fcf79b
+      spriteID: 437e3e73d1c168d43858d0914533d9cc
       internalID: -4628219909694615110
       vertices: []
       indices: 
@@ -218,10 +218,10 @@ TextureImporter:
       name: mc_idle-Sheet_4
       rect:
         serializedVersion: 2
-        x: 219
-        y: 3
+        x: 223
+        y: 2
         width: 26
-        height: 86
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,7 +229,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ffd1fd51dd60204b9eb3edeaa06ef54
+      spriteID: ee0f68d783106f942b4fac1090444aab
       internalID: -4163855572240359774
       vertices: []
       indices: 
@@ -239,8 +239,8 @@ TextureImporter:
       name: mc_idle-Sheet_5
       rect:
         serializedVersion: 2
-        x: 271
-        y: 3
+        x: 275
+        y: 2
         width: 26
         height: 89
       alignment: 0
@@ -250,7 +250,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e43acb75a17a6d43a455294b0db1229
+      spriteID: d3ebc486a34cd644fa64e2ee7e5cbab8
       internalID: 3119050281392110447
       vertices: []
       indices: 
@@ -260,10 +260,10 @@ TextureImporter:
       name: mc_idle-Sheet_6
       rect:
         serializedVersion: 2
-        x: 323
-        y: 3
+        x: 327
+        y: 2
         width: 26
-        height: 89
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,7 +271,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9c7d05a67f122f4e88345a52da8cf87
+      spriteID: 30dde87d8d1df444d986156426c507fa
       internalID: 6339135091454472517
       vertices: []
       indices: 
@@ -281,10 +281,10 @@ TextureImporter:
       name: mc_idle-Sheet_7
       rect:
         serializedVersion: 2
-        x: 375
-        y: 3
+        x: 379
+        y: 2
         width: 26
-        height: 88
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,7 +292,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d73215e3c71cb674e8359d570d8ed38e
+      spriteID: 06153adc980bed94083f03d8019384d6
       internalID: -394167157557560476
       vertices: []
       indices: 
@@ -302,10 +302,10 @@ TextureImporter:
       name: mc_idle-Sheet_8
       rect:
         serializedVersion: 2
-        x: 427
-        y: 3
+        x: 431
+        y: 2
         width: 26
-        height: 88
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,7 +313,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9795b39661aa5b54f80c32c4a1159b46
+      spriteID: c1878218abfd4e342ae5fe0829dcf689
       internalID: -5715293518531188556
       vertices: []
       indices: 
@@ -323,8 +323,8 @@ TextureImporter:
       name: mc_idle-Sheet_9
       rect:
         serializedVersion: 2
-        x: 479
-        y: 3
+        x: 483
+        y: 2
         width: 26
         height: 88
       alignment: 0
@@ -334,7 +334,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 617993a159e7ff04c95b8ca384b9918a
+      spriteID: 4d0f9b76e349ad74788f9678721891bc
       internalID: -4324083753373840531
       vertices: []
       indices: 
@@ -344,8 +344,8 @@ TextureImporter:
       name: mc_idle-Sheet_10
       rect:
         serializedVersion: 2
-        x: 531
-        y: 3
+        x: 535
+        y: 2
         width: 26
         height: 88
       alignment: 0
@@ -355,7 +355,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca42fe1c424759c4d8199260755b4c98
+      spriteID: db569c98f24edcd4e99dc0953f152228
       internalID: -1670556267095179734
       vertices: []
       indices: 

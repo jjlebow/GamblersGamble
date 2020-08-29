@@ -23,9 +23,10 @@ public class MissileAction : FSMAction
 
     public override void OnEnter()
     {
+        Debug.Log("missile action");
     	animator.SetTrigger(triggerName);
-    	Manager.instance.boss.ShootState();
-    	Manager.instance.boss.enemyRB.velocity = Vector2.zero;
+        Manager.instance.boss.enemyRB.velocity = Vector2.zero;
+        Manager.instance.boss.bossActive = true;
         //there needs to be logic here to determine what animation each body 
         //part plays
             //if(StateManager.instance.walking == false)
