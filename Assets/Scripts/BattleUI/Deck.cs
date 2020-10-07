@@ -23,6 +23,7 @@ public class Deck : MonoBehaviour
 
 	public List<Card> deckOfCards;
 	public List<Card> discardPile;
+    public List<Card> shop;
     public List<KeyCode> storedKeys;
 	public Transform drawnCardsParent;
 	public Transform handParent;
@@ -35,7 +36,11 @@ public class Deck : MonoBehaviour
 
     public Transform deckUIParent;
     public Transform discardUIParent;
+    public Transform shopDeckUIParent;
+    public Transform shopUIParent;
+    [HideInInspector] public CardSlot[] shopUI;
     [HideInInspector] public CardSlot[] deckUI;
+    [HideInInspector] public CardSlot[] shopDeckUI;
     [HideInInspector] public CardSlot[] discardUI;
 
 
@@ -56,6 +61,7 @@ public class Deck : MonoBehaviour
 
         deckOfCards = new List<Card>();
         discardPile = new List<Card>();
+        shop = new List<Card>();
         
         for(int i = 0; i < basicAttack; i++)
         {
@@ -97,10 +103,21 @@ public class Deck : MonoBehaviour
             deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
         }
 
+        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7));
+        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10));
+        shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0));
+        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0));
+        shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0));
+        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8));
+        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5));
+        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7));
+        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
         
         handCards = handParent.GetComponentsInChildren<CardSlot>();
         drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
         deckUI = deckUIParent.GetComponentsInChildren<CardSlot>();
+        shopUI = shopUIParent.GetComponentsInChildren<CardSlot>();
+        shopDeckUI = shopDeckUIParent.GetComponentsInChildren<CardSlot>();
         discardUI = discardUIParent.GetComponentsInChildren<CardSlot>();
         Shuffle(deckOfCards);
     }
@@ -152,7 +169,18 @@ public class Deck : MonoBehaviour
      	//return deck;
      }
 
-
+     public void DiscardHand()
+     {
+        for(int i = 0; i < handCards.Length; i++)
+        {
+            if(handCards[i].card != null)
+            {
+                discardPile.Add(handCards[i].card);
+                handCards[i].ClearSlot();
+            }
+        }
+        Manager.instance.UpdateDiscard();
+     }
 
 
 
@@ -188,6 +216,7 @@ public class Deck : MonoBehaviour
 
      		m_array[i].AddCard(deckOfCards[deckLength - 1]);
      		deckOfCards.RemoveAt(deckLength -1);
+            Manager.instance.UpdateDeckUI(deckUI);
      	}
      }
 

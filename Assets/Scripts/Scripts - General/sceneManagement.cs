@@ -94,6 +94,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.battleMenuUI.SetActive(false);
             Manager.instance.battleMenu.SetActive(false);
+            Manager.instance.shopPanel.SetActive(false);
 
         }
         

@@ -16,6 +16,7 @@ public class BattleMenu : MonoBehaviour
     //Cleanup function that discards any remaining cards in the drawn cards
 	public void CloseMenu()
     {
+        Time.timeScale = 1f;
         drawnCards = Deck.instance.drawnCards;
         for(int i = 0; i < drawnCards.Length; i++)
         {
@@ -27,7 +28,7 @@ public class BattleMenu : MonoBehaviour
                 drawnCards[i].ClearSlot();
             }
         }
-
+        Manager.instance.UpdateDiscard();
         battleMenu.SetActive(false);
         Manager.instance.NewState(Manager.GameState.BATTLE);
         //foreach(Card card in Deck.instance.discardPile)

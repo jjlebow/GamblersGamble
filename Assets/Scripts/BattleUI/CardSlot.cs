@@ -29,6 +29,30 @@ public class CardSlot : MonoBehaviour
     	///move the card to the discard pile
     }
 
+    public void PurchaseCard()
+    {
+        Debug.Log("should be pressing button");
+        if(Manager.instance.currentState == Manager.GameState.MENU)
+        {
+            Debug.Log("should be able to purchase");
+            if(Manager.instance.money >= this.card.cost)
+            {
+                Manager.instance.money -= this.card.cost;
+                Deck.instance.deckOfCards.Add(this.card);
+                Manager.instance.UpdateDeckUI(Deck.instance.shopDeckUI);
+            }
+            else
+            {
+                Debug.Log("cant afford this");
+            }
+        }
+    }
+
+    public void TrashCard()
+    {
+
+    }
+
     
     //Function that gets called when button is pressed
     //loops through your current hand slots and stores the card in the first available slot in your hand

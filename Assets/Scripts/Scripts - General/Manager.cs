@@ -9,20 +9,26 @@ public class Manager : MonoBehaviour
     public static Manager instance;
     //private FirstBoss boss;
     public TextMeshProUGUI timerUI;
+    public TextMeshProUGUI moneyUI;
 
 
     public GameObject GameOverPanel;
     public GameObject VictoryPanel;
     public GameObject deckPanel;
     public GameObject discardPanel;
+    public GameObject deckEditPanel;
+    public GameObject shopPanel;
 
 
     public float timer = 10f;
+    public int money = 50;
     
     public Slider healthBar;
     public Slider badHealthBar;
     public float timeLeft;
     public bool startTimer = false;
+
+    private bool turnEnd = true;
 
     public enum GameState {BATTLE, PAUSED, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL};
     public GameState currentState;
@@ -80,6 +86,11 @@ public class Manager : MonoBehaviour
         for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
         {
             Deck.instance.deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
+            Deck.instance.shopDeckUI[i].AddCard(Deck.instance.deckOfCards[i]);
+        }
+        for(int i = 0; i < Deck.instance.shop.Count; i++)
+        {
+            Deck.instance.shopUI[i].AddCard(Deck.instance.shop[i]);
         }
         
         //OnRoundChangeCallback += PauseScreen;
@@ -116,6 +127,18 @@ public class Manager : MonoBehaviour
                 Debug.Log("Unpausing game");
                 Time.timeScale = 1;
                 RevertState();
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.U))
+        {
+            if(currentState == GameState.BATTLE && turnEnd == true)
+            {
+                NewState(GameState.MENU);
+                turnEnd = false;
+                Deck.instance.DiscardHand();
+                Deck.instance.DrawCards(Deck.instance.drawnCards);
+                Time.timeScale = 0f;
+                battleMenu.SetActive(true);
             }
         }
         else if(Input.GetKeyDown(KeyCode.O))
@@ -179,7 +202,7 @@ public class Manager : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+        moneyUI.text = money.ToString();
         timerUI.text = timeLeft.ToString();
         if(startTimer == true)
         {
@@ -188,7 +211,7 @@ public class Manager : MonoBehaviour
             {
                 startTimer = false;
                 timeLeft = timer;
-                RoundEnd();
+                turnEnd = true;//RoundEnd();
             }
         }
     }
@@ -219,46 +242,56 @@ public class Manager : MonoBehaviour
         startTimer = true;
     }
 
-    public void RoundEnd()
+    public void UpdateDeckUI(CardSlot[] deckUI)
     {
-        StartCoroutine(RoundChange());
-        for(int i = 0; i < Deck.instance.deckUI.Length; i++)
+        //StartCoroutine(RoundChange());
+        for(int i = 0; i < deckUI.Length; i++)
         {
-            Deck.instance.deckUI[i].ClearSlot();
-            Deck.instance.discardUI[i].ClearSlot();
+            deckUI[i].ClearSlot();
         }
         for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
         {
-            Deck.instance.deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
-        }
-        for(int i = 0; i < Deck.instance.discardPile.Count; i++)
-        {
-            Deck.instance.discardUI[i].AddCard(Deck.instance.discardPile[i]);
+            deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
         }
         //OnRoundChangeCallback.Invoke();
     }
 
-    private IEnumerator RoundChange()
+    public void UpdateDiscard()
     {
-        float localTime = 3f;
-        //do something where the fade in of a black game over screen fades in at some point 
-        Time.timeScale = 0;
-        while(localTime >= 0)
-        {
-            localTime -= Time.unscaledDeltaTime;//Time.unscaledTime * 0.001f;
-            yield return null;
-        }
-        ResetPlayerPosition();
-        StateManager.instance.currentState = StateManager.PlayerState.CANCEL;
+        /*
         for(int i = 0; i < Deck.instance.handCards.Length; i++)
         {
-            if(Deck.instance.handCards[i].card != null)
+            if(Deck.instance.handCards[i] != null)
             {
                 Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
                 Deck.instance.handCards[i].ClearSlot();
             }
         }
-        Time.timeScale = 1.0f;
+        */
+        for(int i = 0; i < Deck.instance.discardUI.Length; i++)
+        {
+            Deck.instance.discardUI[i].ClearSlot();
+        }
+        for(int i = 0; i < Deck.instance.discardPile.Count; i++)
+        {
+            Deck.instance.discardUI[i].AddCard(Deck.instance.discardPile[i]);
+        }
+    }
+
+    private IEnumerator RoundChange()
+    {
+        //float localTime = 3f;
+        //do something where the fade in of a black game over screen fades in at some point 
+        //Time.timeScale = 0;
+        //while(localTime >= 0)
+        //{
+            //localTime -= Time.unscaledDeltaTime;//Time.unscaledTime * 0.001f;
+            yield return null;
+        //}
+        //ResetPlayerPosition();
+        //StateManager.instance.currentState = StateManager.PlayerState.CANCEL;
+        
+        //Time.timeScale = 1.0f;
         foreach(Card card in Deck.instance.discardPile)
         {
             //Debug.Log("Card " + card.name);

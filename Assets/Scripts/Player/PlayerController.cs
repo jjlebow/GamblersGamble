@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     //radius of the circle that determinds if the player is touching a ceiling or not
     const float ceilingRadius = 0.2f;
     //this adjusts the length for the raycast that recognizes if grounded or not
-    private float raycastMaxDistance = 0.5f; //this needs to change if you change the size of the player
+    private float raycastMaxDistance = 0.75f; //this needs to change if you change the size of the player
     private Vector2 direction = new Vector2(0,-1);
     //[SerializeField] public Collider2D crouchDisableCollider;
     //----------------------------------------------
@@ -574,6 +574,7 @@ public class PlayerController : MonoBehaviour
                                 chargeKey = code;
                                 this.SendMessage(Deck.instance.handCards[i].card.name, Deck.instance.handCards[i].card.damage);
                                 Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
+                                Manager.instance.UpdateDiscard(); // this updates the discard UI with the skill that was just used
                                 Deck.instance.handCards[i].ClearSlot();
                                 Deck.instance.storedKeys.Remove(code);
                                         //foreach(Card card in Deck.instance.discardPile)

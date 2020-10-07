@@ -9,4 +9,6 @@ public class Card
     public Sprite icon;
     public int cost;
     public int damage;
+    public int buyPrice;
+    public int trashPrice;
 }
