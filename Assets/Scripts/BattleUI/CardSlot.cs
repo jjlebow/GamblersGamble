@@ -31,15 +31,14 @@ public class CardSlot : MonoBehaviour
 
     public void PurchaseCard()
     {
-        Debug.Log("should be pressing button");
         if(Manager.instance.currentState == Manager.GameState.MENU)
         {
-            Debug.Log("should be able to purchase");
             if(Manager.instance.money >= this.card.cost)
             {
                 Manager.instance.money -= this.card.cost;
                 Deck.instance.deckOfCards.Add(this.card);
-                Manager.instance.UpdateDeckUI(Deck.instance.shopDeckUI);
+                Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
+                Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
             }
             else
             {
@@ -50,7 +49,17 @@ public class CardSlot : MonoBehaviour
 
     public void TrashCard()
     {
-
+        Debug.Log("trashing card");
+        if(Manager.instance.currentState == Manager.GameState.MENU)
+        {
+            if(Manager.instance.money >= (this.card.cost * 2))
+            {
+                Manager.instance.money -= (this.card.cost * 2);
+                Deck.instance.RemoveCard(this.card);
+                Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
+                Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
+            }
+        }
     }
 
     

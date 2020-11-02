@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -60,7 +61,7 @@ public class Manager : MonoBehaviour
     private void Awake()
     {
         ///gameState = GameState.BATTLE;
-        //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FirstBoss>(); 
+        //boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FirstBoss>(); 5
         if(instance != null)
         {
             Debug.LogWarning("More than one instance of inventory found");
@@ -80,18 +81,23 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Deck.instance.deckOfCards.Count);
-        Debug.Log(Deck.instance.deckUI.Length);
+        //Debug.Log(Deck.instance.deckOfCards.Count);
+        //Debug.Log(Deck.instance.deckUI.Length);
         timeLeft = timer;
+        UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
+        UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
+        /*
         for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
         {
             Deck.instance.deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
             Deck.instance.shopDeckUI[i].AddCard(Deck.instance.deckOfCards[i]);
         }
+        */
         for(int i = 0; i < Deck.instance.shop.Count; i++)
         {
             Deck.instance.shopUI[i].AddCard(Deck.instance.shop[i]);
         }
+
         
         //OnRoundChangeCallback += PauseScreen;
         //OnRoundChangeCallback += ResetPlayerPosition;
@@ -242,42 +248,36 @@ public class Manager : MonoBehaviour
         startTimer = true;
     }
 
-    public void UpdateDeckUI(CardSlot[] deckUI)
+    public void UpdateDeckUI(List<Card> cardList, CardSlot[] cardSlotUI)
     {
-        //StartCoroutine(RoundChange());
-        for(int i = 0; i < deckUI.Length; i++)
+        List<Card> tempCards;
+        tempCards = cardList.OrderBy(c => c.suit).ThenBy(c => c.name).ToList();
+        for(int i = 0; i < cardSlotUI.Length; i++)
         {
-            deckUI[i].ClearSlot();
+            cardSlotUI[i].ClearSlot();
         }
-        for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
+        for(int i = 0; i < tempCards.Count; i++)
         {
-            deckUI[i].AddCard(Deck.instance.deckOfCards[i]);
+            cardSlotUI[i].AddCard(tempCards[i]);
         }
+        //deckUI = deckUI.OrderBy(c => c.card.suit).ThenBy(c => c.card.name).ToArray();
         //OnRoundChangeCallback.Invoke();
     }
-
+    /*
     public void UpdateDiscard()
     {
-        /*
-        for(int i = 0; i < Deck.instance.handCards.Length; i++)
-        {
-            if(Deck.instance.handCards[i] != null)
-            {
-                Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
-                Deck.instance.handCards[i].ClearSlot();
-            }
-        }
-        */
+        List<Card> tempCards;
+        tempCards = Deck.instance.discardPile.OrderBy(c => c.suit).ThenBy(c =>c.name).ToList();
         for(int i = 0; i < Deck.instance.discardUI.Length; i++)
         {
             Deck.instance.discardUI[i].ClearSlot();
         }
         for(int i = 0; i < Deck.instance.discardPile.Count; i++)
         {
-            Deck.instance.discardUI[i].AddCard(Deck.instance.discardPile[i]);
+            Deck.instance.discardUI[i].AddCard(tempCards[i]);
         }
     }
-
+    */
     private IEnumerator RoundChange()
     {
         //float localTime = 3f;

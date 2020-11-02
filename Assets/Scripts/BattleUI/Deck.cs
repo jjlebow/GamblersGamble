@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,53 +65,53 @@ public class Deck : MonoBehaviour
         
         for(int i = 0; i < basicAttack; i++)
         {
-            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7));
+            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,1));
         }
         for(int i = 0; i < heavyAttack; i ++)
         {
-            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10));
+            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,1));
         }
         for(int j = 0; j < jump; j++)
         {
-            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0));
+            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
         }
         
         for(int k = 0; k < dash; k++)
         {
-            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0));
+            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0,0));
         }
         for(int l = 0; l < backDash; l++)
         {
-            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0));
+            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
         }
         
         for(int i = 0; i < precisionShot; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8));
+            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,2));
         }
         for(int i = 0; i < basicShot; i++)
         {
-            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5));
+            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5, 2));
         }
         for(int i = 0; i < heavyShot; i++)
         {
-            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7));
+            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7, 2));
         }
 
         for(int i = 0; i < precisionAttack; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
+            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5, 1));
         }
 
-        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7));
-        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10));
-        shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0));
-        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0));
-        shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0));
-        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8));
-        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5));
-        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7));
-        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5));
+        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,1));
+        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,1));
+        shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
+        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,0));
+        shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
+        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,2));
+        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,2));
+        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,2));
+        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,1));
         
         handCards = handParent.GetComponentsInChildren<CardSlot>();
         drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
@@ -129,13 +129,14 @@ public class Deck : MonoBehaviour
     }
 
     //call this function to generate a card that you want
-    public Card GenerateCard(string newName, string newIconPath, int newCost, int newDamage)
+    public Card GenerateCard(string newName, string newIconPath, int newCost, int newDamage, int newSuit)
     {
     	Card newCard = new Card();
     	newCard.cost = newCost;
     	newCard.name = newName;
     	newCard.icon = Resources.Load<Sprite>(newIconPath) as Sprite;
         newCard.damage = newDamage;
+        newCard.suit = newSuit;
     	return newCard;
     }
     //create some kind of default deck values for the deck
@@ -179,7 +180,7 @@ public class Deck : MonoBehaviour
                 handCards[i].ClearSlot();
             }
         }
-        Manager.instance.UpdateDiscard();
+        Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
      }
 
 
@@ -216,7 +217,7 @@ public class Deck : MonoBehaviour
 
      		m_array[i].AddCard(deckOfCards[deckLength - 1]);
      		deckOfCards.RemoveAt(deckLength -1);
-            Manager.instance.UpdateDeckUI(deckUI);
+            Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, deckUI);
      	}
      }
 
@@ -228,5 +229,12 @@ public class Deck : MonoBehaviour
      	deckOfCards.AddRange(discardPile);
         Shuffle(deckOfCards);
      	discardPile.Clear();
+     }
+
+     public void RemoveCard(Card card)
+     {
+        //int length = deckOfCards.Length;
+        deckOfCards.Remove(card);
+
      }
 }

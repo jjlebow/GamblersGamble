@@ -28,7 +28,7 @@ public class BattleMenu : MonoBehaviour
                 drawnCards[i].ClearSlot();
             }
         }
-        Manager.instance.UpdateDiscard();
+        Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
         battleMenu.SetActive(false);
         Manager.instance.NewState(Manager.GameState.BATTLE);
         //foreach(Card card in Deck.instance.discardPile)

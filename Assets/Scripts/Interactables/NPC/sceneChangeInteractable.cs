@@ -15,6 +15,6 @@ public class sceneChangeInteractable : Interactable
     {
     	if(canInteract && Input.GetKeyDown(KeyCode.E))
     	{
-    		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    	   TransitionsManager.instance.FadeInScene(this.name);
     	}
     }}

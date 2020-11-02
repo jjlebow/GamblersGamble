@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System; 
+//using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] public LayerMask whatIsGround;
 
     //an array of all keycodes for input reference
+
+    //PlayerControls controls;
     private bool keyRelease;
 
     //Calls an assortment of functions on landing
@@ -124,7 +127,8 @@ public class PlayerController : MonoBehaviour
         //playerAttacker = GetComponent<PlayerAttack>();
         //playerMove = GetComponent<PlayerMovement>();
         //playerAnim = GetComponent<Animator>();
-        
+        //controls = new PlayerControls();
+        //controls.Gameplay.Move.performed += ctx => Move(1f);
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
         playerDamage = GetComponent<Damageable>();
         timer = jumpTimer;
@@ -574,7 +578,7 @@ public class PlayerController : MonoBehaviour
                                 chargeKey = code;
                                 this.SendMessage(Deck.instance.handCards[i].card.name, Deck.instance.handCards[i].card.damage);
                                 Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
-                                Manager.instance.UpdateDiscard(); // this updates the discard UI with the skill that was just used
+                                Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI); // this updates the discard UI with the skill that was just used
                                 Deck.instance.handCards[i].ClearSlot();
                                 Deck.instance.storedKeys.Remove(code);
                                         //foreach(Card card in Deck.instance.discardPile)
