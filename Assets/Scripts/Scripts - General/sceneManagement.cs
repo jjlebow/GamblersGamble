@@ -61,6 +61,8 @@ public class sceneManagement : MonoBehaviour
         }
         FindObjectOfType<AudioManager>().DialogueTransitionSong(removeSongs, playSongs);
 
+
+        TransitionsManager.instance.FadeOut();
         
         if(scene.name.Split(' ')[0] == "Battle")
         {
@@ -72,7 +74,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.goodHealthPanel.SetActive(true);
             Manager.instance.badHealthPanel.SetActive(true);
             Manager.instance.player.gameObject.SetActive(true);
-            TransitionsManager.instance.FadeOut();
+            //TransitionsManager.instance.FadeOut();
         }
         else if(scene.name.Split(' ')[0] == "Hub")
         {
@@ -82,7 +84,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.goodHealthPanel.SetActive(false);
             Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.player.gameObject.SetActive(true);
-            TransitionsManager.instance.FadeOut();
+            //TransitionsManager.instance.FadeOut();
 
 
         }
@@ -111,6 +113,11 @@ public class sceneManagement : MonoBehaviour
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void OpenScene(string sceneName)
+    {
+        TransitionsManager.instance.FadeInScene(sceneName);
     }
 
 

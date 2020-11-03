@@ -5168,6 +5168,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 348571874999625366}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &324353916 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4100064583560359354, guid: 49389a5b6bc71774f8d134dbcc513b09,
+    type: 3}
+  m_PrefabInstance: {fileID: 1052380521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee39fa01f184315439f3c096a3ed6bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &328909867
 GameObject:
   m_ObjectHideFlags: 0
@@ -14032,7 +14044,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6981132, g: 0.16464935, b: 0.16464935, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -14052,8 +14064,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 693299897}
-        m_MethodName: Load
+      - m_Target: {fileID: 324353916}
+        m_MethodName: OpenScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20616,7 +20628,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.735849, g: 0.13189748, b: 0.13189748, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -20636,8 +20648,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 693299897}
-        m_MethodName: Load
+      - m_Target: {fileID: 324353916}
+        m_MethodName: OpenScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22774,6 +22786,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
+        type: 3}
+      propertyPath: effects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9075026003706110799, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -35827,7 +35844,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.6792453, g: 0.12815948, b: 0.12815948, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -35847,8 +35864,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 693299897}
-        m_MethodName: Load
+      - m_Target: {fileID: 324353916}
+        m_MethodName: OpenScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

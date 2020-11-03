@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {   
@@ -12,8 +13,11 @@ public class MainMenu : MonoBehaviour
 	public GameObject options;
 	public GameObject credits;
 	public GameObject quit;
+    //public Button playButton;
+
 
     public GameObject optionsPanel;
+    public GameObject creditsPanel;
 
 	private TMP_Text text;
 
@@ -22,12 +26,6 @@ public class MainMenu : MonoBehaviour
 		text = startButton.GetComponentInChildren<TMP_Text>();
 	}
 
-    public void Playgame()
-    {
-    	TransitionsManager.instance.FadeInScene("Hub");
-        
-    }
-
 
     public void QuitGame()
     {
@@ -35,7 +33,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartGame()
+    public void StartGame(Button button)
     {
     	var color = text.color;
 		var fadeoutColor = color;
@@ -45,20 +43,38 @@ public class MainMenu : MonoBehaviour
     	LeanTween.moveX(newGame, -7f, 1.5f).setEase(LeanTweenType.easeOutBack).setDelay(1f);
     	LeanTween.moveX(options, -6.5f,1.5f).setEase(LeanTweenType.easeOutBack).setDelay(1.1f);
     	LeanTween.moveX(credits, -6f, 1.5f).setEase(LeanTweenType.easeOutBack).setDelay(1.2f);
-    	LeanTween.moveX(quit, -5.5f, 1.5f).setEase(LeanTweenType.easeOutBack).setDelay(1.3f);
+    	LeanTween.moveX(quit, -5.5f, 1.5f).setEase(LeanTweenType.easeOutBack).setDelay(1.3f).setOnComplete(delegate(){SelectNewButton(button);});
     }
 
-    public void OpenSubMenu(GameObject menu)
+
+    public void OpenOptionsPanel(Button button)
     {
-        LeanTween.scale(menu, new Vector3(0.25f, 0.5f, 0.5f), 0.5f).setEase(LeanTweenType.easeInCubic);
-        LeanTween.move(menu, new Vector3(0f, 0f, 0f), 0.5f);
+        //LeanTween.scale(menu, new Vector3(0.25f, 0.5f, 0.5f), 0.5f).setEase(LeanTweenType.easeInCubic);
+        LeanTween.alphaCanvas(optionsPanel.GetComponent<CanvasGroup>(), 1f, 0.65f).setEase(LeanTweenType.easeInExpo);
+        LeanTween.move(optionsPanel, new Vector3(0f, 0f, 0f), 0.65f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){SelectNewButton(button);});
     }
 
-    public void HideOptionsMenu()
+    public void HideOptionsPanel(Button button)
     {
-        LeanTween.scale(optionsPanel, new Vector3(0f,0f,0f), 1f).setEase(LeanTweenType.easeOutCubic);
-        LeanTween.move(optionsPanel, new Vector3(-6.5f, -2.5f, 0), 1f);
+        //LeanTween.scale(optionsPanel, new Vector3(0f,0f,0f), 1f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.alphaCanvas(optionsPanel.GetComponent<CanvasGroup>(), 0f, 0.65f).setEase(LeanTweenType.easeOutQuint);
+        LeanTween.move(optionsPanel, new Vector3(0f, 5f, 0), 0.65f).setEase(LeanTweenType.easeInSine).setOnComplete(delegate(){SelectNewButton(button);});
     }
+
+    public void OpenCreditsPanel(Button button)
+    {
+        //LeanTween.scale(menu, new Vector3(0.25f, 0.5f, 0.5f), 0.5f).setEase(LeanTweenType.easeInCubic);
+        LeanTween.alphaCanvas(creditsPanel.GetComponent<CanvasGroup>(), 1f, 0.65f).setEase(LeanTweenType.easeInExpo);
+        LeanTween.move(creditsPanel, new Vector3(0f, 0f, 0f), 0.65f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){SelectNewButton(button);});
+    }
+
+    public void HideCreditsPanel(Button button)
+    {
+        //LeanTween.scale(optionsPanel, new Vector3(0f,0f,0f), 1f).setEase(LeanTweenType.easeOutCubic);
+        LeanTween.alphaCanvas(creditsPanel.GetComponent<CanvasGroup>(), 0f, 0.65f).setEase(LeanTweenType.easeOutQuint);
+        LeanTween.move(creditsPanel, new Vector3(0f, 5f, 0), 0.65f).setEase(LeanTweenType.easeInSine).setOnComplete(delegate(){SelectNewButton(button);});
+    }
+
 
     void UpdateValueCallback(Color val)
     {
@@ -69,6 +85,16 @@ public class MainMenu : MonoBehaviour
     {
     	startButton.SetActive(false);
     }
+
+
+
+    public void SelectNewButton(Button button)
+    {
+        button.Select();
+    }
+
+
+    
 
 }
 

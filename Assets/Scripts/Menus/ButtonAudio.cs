@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
 public class ButtonAudio : MonoBehaviour
 {
 	public AudioClip sound;
+    public AudioClip selectSound;
 	private Button button {get{return GetComponent<Button>();}}
 	private AudioSource source {get{return GetComponent<AudioSource>();}}
 
@@ -14,15 +14,25 @@ public class ButtonAudio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    	//gameObject.AddComponent<AudioSource>();
-    	source.clip = sound;
-    	source.playOnAwake = false;
+    	gameObject.AddComponent<AudioSource>();
         //button.onClick.AddListener(() => PlaySound());
     }
 
     // Update is called once per frame
     public void PlaySound()
     {
+        source.clip = sound;
+        source.volume = 0.2f;
+        source.playOnAwake = false;
     	source.PlayOneShot(sound);
     }
+
+    public void PlaySelectSound()
+    {
+        source.clip = selectSound;
+        source.volume = 1;
+        source.playOnAwake = false;
+        source.PlayOneShot(selectSound);
+    }
+
 }
