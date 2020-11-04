@@ -51,7 +51,7 @@ public class MainMenu : MonoBehaviour
     {
         //LeanTween.scale(menu, new Vector3(0.25f, 0.5f, 0.5f), 0.5f).setEase(LeanTweenType.easeInCubic);
         LeanTween.alphaCanvas(optionsPanel.GetComponent<CanvasGroup>(), 1f, 0.65f).setEase(LeanTweenType.easeInExpo);
-        LeanTween.move(optionsPanel, new Vector3(0f, 0f, 0f), 0.65f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){SelectNewButton(button);});
+        LeanTween.move(optionsPanel, new Vector3(0f, -1f, 0f), 0.65f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){SelectNewButton(button);});
     }
 
     public void HideOptionsPanel(Button button)
@@ -65,7 +65,7 @@ public class MainMenu : MonoBehaviour
     {
         //LeanTween.scale(menu, new Vector3(0.25f, 0.5f, 0.5f), 0.5f).setEase(LeanTweenType.easeInCubic);
         LeanTween.alphaCanvas(creditsPanel.GetComponent<CanvasGroup>(), 1f, 0.65f).setEase(LeanTweenType.easeInExpo);
-        LeanTween.move(creditsPanel, new Vector3(0f, 0f, 0f), 0.65f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){SelectNewButton(button);});
+        LeanTween.move(creditsPanel, new Vector3(0f, -1f, 0f), 0.65f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){SelectNewButton(button);});
     }
 
     public void HideCreditsPanel(Button button)
