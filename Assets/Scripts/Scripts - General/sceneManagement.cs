@@ -74,6 +74,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.goodHealthPanel.SetActive(true);
             Manager.instance.badHealthPanel.SetActive(true);
             Manager.instance.player.gameObject.SetActive(true);
+            Manager.instance.NewState(Manager.GameState.BATTLE);
             //TransitionsManager.instance.FadeOut();
         }
         else if(scene.name.Split(' ')[0] == "Hub")
@@ -84,6 +85,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.goodHealthPanel.SetActive(false);
             Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.player.gameObject.SetActive(true);
+            Manager.instance.NewState(Manager.GameState.BATTLE);
             //TransitionsManager.instance.FadeOut();
 
 

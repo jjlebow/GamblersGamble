@@ -11,10 +11,16 @@ public class sceneChangeInteractable : Interactable
         player = Manager.instance.player;
     }
 
-    protected override void Interact()
+    protected void Interact()
     {
-    	if(canInteract && Input.GetKeyDown(KeyCode.E))
+    	if(player.canInteract)
     	{
     	   TransitionsManager.instance.FadeInScene(this.name);
+           Manager.instance.NewState(Manager.GameState.PAUSED);
     	}
-    }}
+    }
+
+    void Update()
+    {
+    }
+}

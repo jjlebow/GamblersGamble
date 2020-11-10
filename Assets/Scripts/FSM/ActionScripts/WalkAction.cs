@@ -25,9 +25,6 @@ public class WalkAction : FSMAction
 
     public override void OnEnter()
     {
-        //since this is an indefinite repeated animation, we have a bool
-        //that when true, makes the animator play the walking animation until
-        //the bool turns false again. No trigger here. See StateController's update
         animator.SetTrigger(triggerName);
         //legAnimator.SetTrigger(triggerName);
     }

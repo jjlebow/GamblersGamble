@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class Manager : MonoBehaviour
 {  
@@ -31,7 +32,7 @@ public class Manager : MonoBehaviour
 
     private bool turnEnd = true;
 
-    public enum GameState {BATTLE, PAUSED, DIALOGUE, MENU, ACCEPTINPUT, NEUTRAL};
+    public enum GameState {MENU, BATTLE, PAUSED, DIALOGUE, ACCEPTINPUT, NEUTRAL};
     public GameState currentState;
     public GameState previousState;
     //public GameState gameState;
@@ -50,6 +51,7 @@ public class Manager : MonoBehaviour
     public GameObject battleMenu;
     public GameObject goodHealthPanel;
     public GameObject badHealthPanel;
+
 
 
 
@@ -106,7 +108,6 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
-
         //if(gameState.GameState = PAUSED)
             //Time.timeScale = 0;
         healthBar.value = playerDamageable.health;
@@ -116,6 +117,8 @@ public class Manager : MonoBehaviour
         }
         //badHealthBar.value = bossDamageable.health;
         //runs the game over function when the player has died, regardless of whether or not the boss has died
+
+/*
         if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
         {
             GameOver();
@@ -174,7 +177,7 @@ public class Manager : MonoBehaviour
             }
 
         }
-
+*/
         //else if(boss.boss.isDead && StateManager.instance.playerState != StateManager.PlayerStates.DEAD)
         //{
             //Victory();

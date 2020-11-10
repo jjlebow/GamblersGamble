@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Interactable : MonoBehaviour
 {
     public PlayerController player;
-    protected bool canInteract = false;
+    protected EventSystem m_eventSystem;
+    //public bool canInteract = false;
 
     [SerializeField] private Sprite oldSprite;
     [SerializeField] private Sprite newSprite = null;
@@ -19,7 +21,7 @@ public class Interactable : MonoBehaviour
     {
         if(col.gameObject.CompareTag("Player"))
         {
-            canInteract = false;
+            //canInteract = false;
             GetComponent<SpriteRenderer>().sprite = oldSprite;
         }
     }
@@ -28,22 +30,27 @@ public class Interactable : MonoBehaviour
     {
         if(col.gameObject.CompareTag("Player"))
         {
-            canInteract = true;
+            //canInteract = true;
             GetComponent<SpriteRenderer>().sprite = newSprite;
         }
     }
 
+    protected void Interact()
+    {
+        Debug.Log("this line should not be printed");
+    }
+
     private void Update()
     {
+
+
+/*
         if(Input.GetKeyDown(KeyCode.E) && canInteract && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             Interact();
         }
+*/
     }
 
-    protected virtual void Interact()
-    {
-        Debug.Log("This should not print");
-    }
 
 }

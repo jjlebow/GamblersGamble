@@ -10,6 +10,7 @@ TagManager:
   - DownWeapon
   - StateManager
   - StartingPosition
+  - Interactable
   layers:
   - Default
   - TransparentFX

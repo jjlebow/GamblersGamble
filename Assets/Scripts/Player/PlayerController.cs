@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System; 
+using UnityEngine.InputSystem;
 //using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -19,14 +20,14 @@ public class PlayerController : MonoBehaviour
 
     //an array of all keycodes for input reference
 
-    //PlayerControls controls;
+    
+
     private bool keyRelease;
 
     //Calls an assortment of functions on landing
     public delegate void hasLanded();
     public event hasLanded hasLandedCallback;
     //----------------------------------------------
-
     //checks for ground and ceiling collisions
     [SerializeField] public Transform groundCheck;
     [SerializeField] public Transform ceilingCheck;
@@ -117,13 +118,32 @@ public class PlayerController : MonoBehaviour
     private KeyCode chargeKey;
     private float chargeTime = 1f;
     private float temp;
+    private Collider2D col;
+    private bool isTriggered = false;
 
+    Controls controls;
+    Vector2 move;
+
+    bool jump = false;
+    [HideInInspector] public bool canInteract = false;
 
 
 
 
     private void Awake()
     {
+
+        controls = new Controls();
+
+        controls.PlayerControls.Jump.started += context => jumpPressed = true;
+        controls.PlayerControls.Jump.canceled += context => jumpPressed = false;
+        controls.PlayerMovement.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.PlayerMovement.Move.canceled += ctx => move = Vector2.zero;
+        //controls.PlayerControls.Interact.performed += ctx => canInteract = true;
+        //controls.PlayerControls.Interact.canceled += ctx => canInteract = false;
+        
+        controls.PlayerInteract.Interact.performed += context => Interact();
+
         //playerAttacker = GetComponent<PlayerAttack>();
         //playerMove = GetComponent<PlayerMovement>();
         //playerAnim = GetComponent<Animator>();
@@ -149,15 +169,80 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void Start()
+    void Interact()
     {
-        availJumps = numberOfJumps;   
+        Debug.Log("here");
+        if(canInteract && Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.grounded == true)
+        {
+            col.SendMessage("Interact");
+        }
     }
 
-    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        isTriggered = true;
+        col = other;
+        if(other.gameObject.tag == "Interactable" && StateManager.instance.grounded)
+        {
+            canInteract = true;
+            controls.PlayerControls.Disable();
+            controls.PlayerInteract.Enable();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        //this is in the even thtat we naturally exit the trigger. contributes to the
+        //update function's ontriggerexit
+        col = null;
+        /*
+        if(other.gameObject.tag == "Interactable")
+        {
+            controls.PlayerControls.Enable();
+            controls.PlayerInteract.Disable();
+            canInteract = false;
+            col = null;
+        }
+        */
+    }
+
+    void OnEnable()
+    {
+        controls.PlayerControls.Enable();
+        controls.PlayerInteract.Enable();
+        controls.PlayerMovement.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.PlayerControls.Disable();
+        controls.PlayerInteract.Disable();
+        controls.PlayerMovement.Disable();
+    }
+
+    public void Start()
+    {
+        availJumps = numberOfJumps;
+        controls.PlayerInteract.Disable();  
+    }
+
+
 
     private void Update()
     {
+
+        //OnTriggerExit functionality - inlcudes both cases where we exit the trigger as well 
+        //as having the triggered object be destroyed
+        if(isTriggered && !col)
+        {
+            controls.PlayerControls.Enable();
+            controls.PlayerInteract.Disable();
+            canInteract = false;
+            isTriggered = false;
+        }
+
+        //the rest of the Update functionality
+        Move();        
         //if(health <= 0)
         //{
             //StateManager.instance.playerState = StateManager.PlayerStates.DEAD;
@@ -174,17 +259,19 @@ public class PlayerController : MonoBehaviour
         //only runs once per key pressdown regardless of duration held, but multiple keys can be pressed down at once and all are registered
 
         //this only gets run once every time a key is pressed.
-        if(StateManager.instance.charging)
-            temp -= Time.deltaTime;
-        if(Input.GetKeyUp(chargeKey) || temp <= 0)
+        //if(StateManager.instance.charging)
+            //temp -= Time.deltaTime;
+        /*if(Input.GetKeyUp(chargeKey) || temp <= 0)
             {
                 StateManager.instance.charging = false;
                 temp = chargeTime;
             }
+        */
 
+/*
         if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false)
         {
-            CheckKeyInput();
+            //CheckKeyInput();
 
             
 
@@ -217,7 +304,7 @@ public class PlayerController : MonoBehaviour
                 } 
             }
         }
-
+*/
         //this chain of if statements is used to determine which direction the attack is used in. GetKey is used instead so that we can read 
         //multiple inputs at once
         /*
@@ -374,6 +461,28 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        RaycastCheckUpdateGround();
+        if(jumpPressed)
+        {
+            StartJump();
+        }
+        if(!jumpPressed)
+            StopJump();
+    
+        if(m_Rigidbody2D.velocity.y < 0)
+        {
+            m_Rigidbody2D.velocity += (Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
+        }
+        else if(m_Rigidbody2D.velocity.y > 0 && jumpPressed == false)// && !Input.GetButtonDown("Jump"))
+        {
+            m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
+
+
+
+
+
         if(StateManager.instance.currentState == StateManager.PlayerState.DASH)
             {
                 if(tempTimer > 0)
@@ -407,35 +516,7 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log("cancelling");
             }
 
-        if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
-        {
-            RaycastCheckUpdateGround();
-            horizontal = Input.GetAxisRaw("Horizontal") * runningSpeed;
-            //add a grounded check to this when you get that working
-            if(horizontal == 0)
-                StateManager.instance.walking = false;
-            else
-                StateManager.instance.walking = true;
-            if(jumpPressed)
-            {
-                StartJump();
-            }
-            if(jumpReleased)
-                StopJump();
-    
-            if(m_Rigidbody2D.velocity.y < 0)
-            {
-                m_Rigidbody2D.velocity += (Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime);
-            }
-            else if(m_Rigidbody2D.velocity.y > 0 && jumpReleased)// && !Input.GetButtonDown("Jump"))
-            {
-                m_Rigidbody2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
         
-            //Debug.Log(m_Rigidbody2D.gravityScale);
-
-            Move(horizontal * Time.fixedDeltaTime);
-        }
     }
 
     public void Shoot(int damage)
@@ -600,19 +681,55 @@ public class PlayerController : MonoBehaviour
 
     private void StartJump()
     {
+        if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
+        {
+            
+
+            if(availJumps > 0 && !StateManager.instance.grounded)
+            {
+                timer = jumpTimer;
+                m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x,0,0);
+                availJumps -= 1;
+            }
+
+            if(jumpPressed == true && timer > 0)
+            {
+
+
+                //m_Rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                m_Rigidbody2D.velocity = Vector2.up * jumpForce;
+                //jumpPressed = false;
+                startTimer = true;
+            }
+            if(startTimer) 
+            {
+                timer -= Time.deltaTime;
+                if(timer <= 0) 
+                {
+                    jumpPressed = false;
+                } 
+            }
+            
+//            horizontal = Input.GetAxisRaw("Horizontal") * runningSpeed;
+            //add a grounded check to this when you get that working
+            //if(horizontal == 0)
+                //StateManager.instance.walking = false;
+            //else
+                //StateManager.instance.walking = true;
+
+
+            //Debug.Log(m_Rigidbody2D.gravityScale);
+            //Move(horizontal * Time.fixedDeltaTime);
+        }
         //m_Rigidbody2D.gravityScale = 1;
-        m_Rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        jumpPressed = false;
-        startTimer = true;
+        
     }
 
     private void StopJump()
     {
         //m_Rigidbody2D.gravityScale = gravityScale;
-        jumpReleased = true;
-        timer = jumpTimer;
-        startTimer = false;
-        jumpTimer = timer;
+        //timer = jumpTimer;
+        //startTimer = false;
     }
 
 
@@ -635,8 +752,30 @@ public class PlayerController : MonoBehaviour
         availJumps = numberOfJumps;
     }
 
+    public void Move()
+    {
+        //sets movement vector to player input only while in BATTLE state, otherwise sets movement vector to 0,0
+        Vector2 m;
+        if(Manager.instance.currentState == Manager.GameState.BATTLE)
+        {
+            m = new Vector2(move.x, move.y) * Time.deltaTime * runningSpeed;
+        }
+        else
+        {
+            m = new Vector2(0, 0);
+        }
+        transform.Translate(m, Space.World);
+        if(m.x > 0 && StateManager.instance.faceRight == false)
+            Flip();
+        else if(move.x < 0 && StateManager.instance.faceRight == true)
+            Flip();
+        if(m.x != 0f)
+            StateManager.instance.walking = true;
+        else
+            StateManager.instance.walking = false;
+    }
     
-    public void Move(float move)
+    public void OldMove(float move)
     {
         //if(!inCooldown)
         //{
@@ -848,6 +987,7 @@ public class PlayerController : MonoBehaviour
         //this condition catches the exact moment of landing
         if(hit.collider && StateManager.instance.grounded == false)
         {
+            timer = jumpTimer;
             StateManager.instance.grounded = true;
             StateManager.instance.ChangeState(StateManager.PlayerState.CANCEL);
             hasLandedCallback.Invoke();

@@ -23,10 +23,10 @@ public class InventoryMenu : MonoBehaviour
     void Update()
     {
         //checks if inventory menus is brought up or put away
-        if(Input.GetKeyDown(KeyCode.I))  
-        {
-            inventoryMenu.SetActive(!inventoryMenu.activeSelf);  
-        }
+//        if(Input.GetKeyDown(KeyCode.I))  
+//        {
+//            inventoryMenu.SetActive(!inventoryMenu.activeSelf);  
+//        }
     }
     
     private void OnUpdate()

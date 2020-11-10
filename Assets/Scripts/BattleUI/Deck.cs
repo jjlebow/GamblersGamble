@@ -105,9 +105,9 @@ public class Deck : MonoBehaviour
 
         shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,1));
         shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,1));
-        shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
+        //shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
         shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,0));
-        shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
+        //shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
         shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,2));
         shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,2));
         shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,2));

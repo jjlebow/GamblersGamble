@@ -15,13 +15,17 @@ public class BattleInteractable : Interactable
 	}
 
 
-    protected override void Interact()
+    protected void Interact()
     {
-    	if(canInteract && Input.GetKeyDown(KeyCode.E))
-    	{
+        if(player.canInteract)
+        {
     		battleMenu.SetActive(true);
     		Deck.instance.DrawCards(Deck.instance.drawnCards);
             Manager.instance.NewState(Manager.GameState.MENU);
-    	}
+        }
+    }
+
+    void Update()
+    {
     }
 }

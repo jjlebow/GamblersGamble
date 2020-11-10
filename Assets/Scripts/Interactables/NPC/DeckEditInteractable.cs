@@ -10,15 +10,21 @@ public class DeckEditInteractable : Interactable
         player = Manager.instance.player;
     }
 
+    protected void Interact()
+    {
+        if(player.canInteract)
+        {
+            Manager.instance.deckEditPanel.SetActive(true);
+            //Deck.instance.DrawCards(Deck.instance.drawnCards);
+            Manager.instance.NewState(Manager.GameState.MENU);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-     		//create a new menu that allows button presses to get rid of cards and also displays cards that are in storage... wait... do we even want storage?
-     	if(canInteract && Input.GetKeyDown(KeyCode.E))
-    	{
-    		Manager.instance.deckEditPanel.SetActive(true);
-    		//Deck.instance.DrawCards(Deck.instance.drawnCards);
-            Manager.instance.NewState(Manager.GameState.MENU);
-    	}   
+
+     	//create a new menu that allows button presses to get rid of cards and also displays cards that are in storage... wait... do we even want storage?
+    		
     }
 }

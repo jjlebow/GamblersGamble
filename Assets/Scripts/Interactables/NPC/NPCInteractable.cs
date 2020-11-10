@@ -6,13 +6,18 @@ using UnityEngine.UI;
 public class NPCInteractable : Interactable
 {
 
-    protected override void Interact()
+    protected void Interact()
     {
-        if(canInteract && Input.GetKeyDown(KeyCode.E))
+        if(player.canInteract)
         {
         	//Manager.instance.currentState = Manager.GameState.DIALOGUE;
             DialogueManager.instance.LoadDialogue("Dialogue", this.name, "AUTUMN 1 TRUE END");
+            Manager.instance.NewState(Manager.GameState.DIALOGUE);
         }
+    }
+
+    void Update()
+    {
     }
 
     
