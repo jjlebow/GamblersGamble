@@ -6,7 +6,7 @@ public class ItemInteractable : Interactable
 {
     public Item item;
 
-    protected void Interact()
+    protected override void Interact()
     {
         //Debug.Log("The item is being interacted with"); 
         Pickup();

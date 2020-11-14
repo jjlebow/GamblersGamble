@@ -11,7 +11,7 @@ public class sceneChangeInteractable : Interactable
         player = Manager.instance.player;
     }
 
-    protected void Interact()
+    protected override void Interact()
     {
     	if(player.canInteract)
     	{

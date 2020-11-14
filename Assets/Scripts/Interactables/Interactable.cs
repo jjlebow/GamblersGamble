@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Interactable : MonoBehaviour
 {
     public PlayerController player;
-    protected EventSystem m_eventSystem;
+    //protected EventSystem m_eventSystem;
     //public bool canInteract = false;
 
     [SerializeField] private Sprite oldSprite;
@@ -35,7 +35,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    protected void Interact()
+    protected virtual void Interact()
     {
         Debug.Log("this line should not be printed");
     }

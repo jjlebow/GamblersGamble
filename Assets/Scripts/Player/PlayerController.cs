@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
         controls.PlayerControls.Jump.canceled += context => jumpPressed = false;
         controls.PlayerMovement.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.PlayerMovement.Move.canceled += ctx => move = Vector2.zero;
+        controls.PlayerMovement.OpenCards.performed += ctx => OpenCards();
         //controls.PlayerControls.Interact.performed += ctx => canInteract = true;
         //controls.PlayerControls.Interact.canceled += ctx => canInteract = false;
         
@@ -169,11 +170,17 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    void OpenCards()
+    {
+        
+    }
+
     void Interact()
     {
-        Debug.Log("here");
+        
         if(canInteract && Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.grounded == true)
         {
+            Debug.Log("here");
             col.SendMessage("Interact");
         }
     }

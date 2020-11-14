@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class NPCInteractable : Interactable
 {
 
-    protected void Interact()
+    protected override void Interact()
     {
         if(player.canInteract)
         {

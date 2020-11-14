@@ -6,24 +6,33 @@ using UnityEngine.EventSystems;
 public class ShopInteractable : Interactable
 {
     public GameObject button;
+    private ShopMenu shopPanel;
 
     // Start is called before the first frame update
     void Start()
     {
+        shopPanel = Manager.instance.shopPanel.transform.Find("ShopPanel").GetComponent<ShopMenu>();
+        //Manager.instance.shopPanel.SetActive(true);
+        //shopPanel = Manager.instance.shopPanel.GetComponent<ShopMenu>();
+        //Manager.instance.shopPanel.SetActive(false);
         player = Manager.instance.player;
-        button = Manager.instance.shopPanel.transform.Find("ShopPanel/Shop/ShopCard/Button").gameObject;
+        button = Manager.instance.shopPanel.transform.Find("ShopPanel/ShopGroup/Shop/ShopCard/Button").gameObject;
+        //button = Manager.instance.shopPanel.transform.Find("ShopPanel/ConfirmButton").gameObject;
     }
 
-    protected void Interact()
+    protected override void Interact()
     {
-        Debug.Log(button.name);
         if(player.canInteract)
         {
-            m_eventSystem = EventSystem.current;
-            Manager.instance.shopPanel.SetActive(true);
+
+            
+            shopPanel.OpenMenu(button);
+            //Manager.instance.shopPanel.SetActive(true);
+            //Manager.instance.shopPanel.GetComponent<ShopMenu>().AnimateMenu();
             //Deck.instance.DrawCards(Deck.instance.drawnCards);
+            //shopPanel.OpenMenu();
             Manager.instance.NewState(Manager.GameState.MENU);
-            m_eventSystem.SetSelectedGameObject(button);
+            
 
         }
     }

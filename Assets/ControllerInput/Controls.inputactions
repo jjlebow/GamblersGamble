@@ -28,14 +28,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Click",
-                    "type": "Button",
-                    "id": "26e8fa2b-26eb-4f09-83f6-035f31a0a0c9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -153,7 +145,7 @@
                     "name": "",
                     "id": "89914ca7-aec0-469a-a4ca-cd74acedc728",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Submit",
@@ -164,7 +156,7 @@
                     "name": "",
                     "id": "82ead851-6267-47d3-804a-41757d2123be",
                     "path": "<Keyboard>/enter",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Submit",
@@ -190,28 +182,6 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3acbeed5-30e8-47c6-9f8c-5f0bdd7ca813",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "86ccb259-0d5b-4b8e-9d68-07bea39aa9a1",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -264,6 +234,14 @@
                     "type": "Value",
                     "id": "75976be3-18a2-45b7-a3eb-739d22c236ef",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OpenCards",
+                    "type": "Button",
+                    "id": "5158d61c-b8b8-483b-be39-220737985b0a",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -378,6 +356,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b234c736-473a-4952-a4fb-0ef73c76a53d",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "OpenCards",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba145c45-057b-4721-bc84-5d026529812f",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "OpenCards",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -402,6 +402,17 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "63f4184f-a4e2-4576-8dee-318c757deb0b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false

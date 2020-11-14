@@ -15,7 +15,7 @@ public class BattleInteractable : Interactable
 	}
 
 
-    protected void Interact()
+    protected override void Interact()
     {
         if(player.canInteract)
         {

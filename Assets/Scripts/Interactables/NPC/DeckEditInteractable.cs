@@ -10,7 +10,7 @@ public class DeckEditInteractable : Interactable
         player = Manager.instance.player;
     }
 
-    protected void Interact()
+    protected override void Interact()
     {
         if(player.canInteract)
         {
