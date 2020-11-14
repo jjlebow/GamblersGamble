@@ -17,7 +17,7 @@ public class Manager : MonoBehaviour
     public GameObject GameOverPanel;
     public GameObject VictoryPanel;
     public GameObject deckPanel;
-    public GameObject discardPanel;
+    //public GameObject discardPanel;
     public GameObject deckEditPanel;
     public GameObject shopPanel;
 
@@ -30,7 +30,7 @@ public class Manager : MonoBehaviour
     public float timeLeft;
     public bool startTimer = false;
 
-    private bool turnEnd = true;
+    public bool turnEnd = true;
 
     public enum GameState {MENU, BATTLE, PAUSED, DIALOGUE, ACCEPTINPUT, NEUTRAL};
     public GameState currentState;

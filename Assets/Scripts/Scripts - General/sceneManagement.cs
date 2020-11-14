@@ -94,7 +94,7 @@ public class sceneManagement : MonoBehaviour
         {
             Manager.instance.player.gameObject.SetActive(false);
             Manager.instance.deckPanel.SetActive(false);
-            Manager.instance.discardPanel.SetActive(false);
+            //Manager.instance.discardPanel.SetActive(false);
             DialogueManager.instance.gameObject.SetActive(false);
             Manager.instance.goodHealthPanel.SetActive(false);
             Manager.instance.badHealthPanel.SetActive(false);

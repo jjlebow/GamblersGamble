@@ -170,9 +170,17 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void OpenCards()
+    void OpenCards() // have the arm go up first then delay then have the menu go up
     {
-        
+        if(Manager.instance.turnEnd)
+        {
+            Manager.instance.turnEnd = false;
+            Deck.instance.DiscardHand();
+            Deck.instance.DrawCards(Deck.instance.drawnCards);
+        }
+        Manager.instance.NewState(Manager.GameState.MENU);
+        Time.timeScale = 0f;
+        Manager.instance.deckPanel.SetActive(true);
     }
 
     void Interact()
