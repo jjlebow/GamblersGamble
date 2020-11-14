@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
     bool jump = false;
     [HideInInspector] public bool canInteract = false;
 
-
+    [SerializeField] bool m_logInput = false;
 
 
     private void Awake()
@@ -257,7 +257,15 @@ public class PlayerController : MonoBehaviour
         }
 
         //the rest of the Update functionality
-        Move();        
+        Move(); 
+
+        if (m_logInput){
+         foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+         {
+             if (Input.GetKeyDown(kcode))
+                 Debug.Log("KeyCode down: " + kcode);
+         }
+     }       
         //if(health <= 0)
         //{
             //StateManager.instance.playerState = StateManager.PlayerStates.DEAD;
