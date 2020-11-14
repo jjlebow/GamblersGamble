@@ -127,13 +127,18 @@ public class PlayerController : MonoBehaviour
     bool jump = false;
     [HideInInspector] public bool canInteract = false;
 
-    [SerializeField] bool m_logInput = false;
+    //[SerializeField] bool m_logInput = false;
+
+    //InputAction myAction = new InputAction(binding: "/*/<button>");
 
 
     private void Awake()
     {
-
         controls = new Controls();
+
+        //myAction.performed += (control) => Debug.Log($"Button {control.name} pressed!");
+        //unimyAction.Enable();
+
 
         controls.PlayerControls.Jump.started += context => jumpPressed = true;
         controls.PlayerControls.Jump.canceled += context => jumpPressed = false;
@@ -180,7 +185,8 @@ public class PlayerController : MonoBehaviour
         }
         Manager.instance.NewState(Manager.GameState.MENU);
         Time.timeScale = 0f;
-        Manager.instance.deckPanel.SetActive(true);
+        Manager.instance.battleMenu.SetActive(true);
+        Manager.instance.battleMenuUI.GetComponent<BattleMenu>().Select();
     }
 
     void Interact()
@@ -259,13 +265,13 @@ public class PlayerController : MonoBehaviour
         //the rest of the Update functionality
         Move(); 
 
-        if (m_logInput){
-         foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
-         {
-             if (Input.GetKeyDown(kcode))
-                 Debug.Log("KeyCode down: " + kcode);
-         }
-     }       
+        //if (m_logInput){
+         //foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+         //{
+             //if (Input.GetKeyDown(kcode))
+                 //Debug.Log("KeyCode down: " + kcode);
+         //}
+     //}       
         //if(health <= 0)
         //{
             //StateManager.instance.playerState = StateManager.PlayerStates.DEAD;

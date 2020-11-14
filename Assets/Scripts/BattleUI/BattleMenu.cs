@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BattleMenu : MonoBehaviour
 {
     public GameObject battleMenu;
     public PlayerController player;
     private CardSlot[] drawnCards;
+    public GameObject firstSelectedButton;
+    EventSystem es;
 
     private void Awake()
     {
@@ -40,5 +43,11 @@ public class BattleMenu : MonoBehaviour
     public void StartTimer()
     {
         Manager.instance.TimerStart();
+    }
+
+    public void Select()
+    {
+        es = EventSystem.current;
+        es.SetSelectedGameObject(firstSelectedButton);
     }
 }
