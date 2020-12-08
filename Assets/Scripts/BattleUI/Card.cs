@@ -10,4 +10,5 @@ public class Card
     public int cost;
     public int damage;
     public int suit;
+    public string bindingIcon;
 }

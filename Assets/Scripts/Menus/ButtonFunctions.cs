@@ -40,4 +40,6 @@ public class ButtonFunctions : MonoBehaviour
     {
     	slider.GetComponent<Slider>().interactable = true;
     }
+
+
 }

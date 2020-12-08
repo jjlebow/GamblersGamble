@@ -121,11 +121,14 @@ public class PlayerController : MonoBehaviour
     private Collider2D col;
     private bool isTriggered = false;
 
-    Controls controls;
+    public Controls controls;
     Vector2 move;
 
     bool jump = false;
     [HideInInspector] public bool canInteract = false;
+
+
+    [SerializeField] bool m_logInput = true;
 
     //[SerializeField] bool m_logInput = false;
 
@@ -145,6 +148,7 @@ public class PlayerController : MonoBehaviour
         controls.PlayerMovement.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.PlayerMovement.Move.canceled += ctx => move = Vector2.zero;
         controls.PlayerMovement.OpenCards.performed += ctx => OpenCards();
+        //controls.PlayerMovement.Attack.performed += ctx => Attack(7);
         //controls.PlayerControls.Interact.performed += ctx => canInteract = true;
         //controls.PlayerControls.Interact.canceled += ctx => canInteract = false;
         
@@ -264,6 +268,13 @@ public class PlayerController : MonoBehaviour
 
         //the rest of the Update functionality
         Move(); 
+        if (m_logInput){
+         foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+         {
+             if (Input.GetKeyDown(kcode))
+                 Debug.Log("KeyCode down: " + kcode);
+         }
+        }
 
         //if (m_logInput){
          //foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
@@ -297,13 +308,12 @@ public class PlayerController : MonoBehaviour
             }
         */
 
-/*
         if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false)
         {
-            //CheckKeyInput();
+            CheckKeyInput();
 
             
-
+/*
             //condition for the grounded jump
             if(Input.GetButtonDown("Jump") && availJumps > 0 && StateManager.instance.grounded)
             {
@@ -332,8 +342,8 @@ public class PlayerController : MonoBehaviour
                     jumpReleased = true;
                 } 
             }
+        */
         }
-*/
         //this chain of if statements is used to determine which direction the attack is used in. GetKey is used instead so that we can read 
         //multiple inputs at once
         /*
@@ -618,6 +628,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(int damage)
     {
+        Debug.Log("we are going to attack");
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;

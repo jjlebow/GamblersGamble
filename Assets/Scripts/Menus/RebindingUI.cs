@@ -10,7 +10,7 @@ public class RebindingUI : MonoBehaviour
 {
     public Button m_Button;
     public Text m_Text;
-    public InputActionReference m_ActionReference;
+    private InputActionReference m_ActionReference;
     public int m_DefaultBindingIndex;
     public Button[] m_CompositeButtons;
     public Text[] m_CompositeTexts;
@@ -23,7 +23,7 @@ public class RebindingUI : MonoBehaviour
 
     public void AcceptInput()
     {
-    	Debug.Log(GetComponentInParent<CardSlot>().card.name);
+    	//Debug.Log(GetComponentInParent<CardSlot>().card.name);
     	m_ActionReference = InputManager.instance.FindReturnReference(GetComponentInParent<CardSlot>().card.name);
         m_Action = m_ActionReference.action;
         if (m_Button == null)
@@ -31,22 +31,28 @@ public class RebindingUI : MonoBehaviour
         if (m_Text == null)
             m_Text = m_Button.GetComponentInChildren<Text>();
 
-        m_Button.onClick.AddListener(delegate { RemapButtonClicked(name, m_DefaultBindingIndex); });
-        if (m_CompositeButtons != null && m_CompositeButtons.Length > 0)
+        //m_Button.onClick.AddListener(delegate { RemapButtonClicked(name, m_DefaultBindingIndex); });
+        //Debug.Log(m_Action.GetBindingDisplayString());
+        if(m_Action.GetBindingDisplayString() == "")
         {
-            if (m_CompositeTexts == null || m_CompositeTexts.Length != m_CompositeButtons.Length)
-                m_CompositeTexts = new Text[m_CompositeButtons.Length];
-            m_CompositeBindingIndices = Enumerable.Range(0, m_Action.bindings.Count)
-                .Where(x => m_Action.bindings[x].isPartOfComposite).ToArray();
-            var compositeBinding = m_Action.bindings.First(x => x.isComposite);
-            m_CompositeType = compositeBinding.name;
-            for (int i = 0; i < m_CompositeButtons.Length && i < m_CompositeBindingIndices.Length; i++)
-            {
-                int compositeBindingIndex = m_CompositeBindingIndices[i];
-                m_CompositeButtons[i].onClick.AddListener(delegate { RemapButtonClicked(name, compositeBindingIndex); });
-                if (m_CompositeTexts[i] == null)
-                    m_CompositeTexts[i] = m_CompositeButtons[i].GetComponentInChildren<Text>();
-            }
+        	Debug.Log("we are here");
+        	RemapButtonClicked(name, m_DefaultBindingIndex);
+        	if (m_CompositeButtons != null && m_CompositeButtons.Length > 0)
+        	{
+            	if (m_CompositeTexts == null || m_CompositeTexts.Length != m_CompositeButtons.Length)
+                	m_CompositeTexts = new Text[m_CompositeButtons.Length];
+            	m_CompositeBindingIndices = Enumerable.Range(0, m_Action.bindings.Count)
+                	.Where(x => m_Action.bindings[x].isPartOfComposite).ToArray();
+            	var compositeBinding = m_Action.bindings.First(x => x.isComposite);
+            	m_CompositeType = compositeBinding.name;
+            	for (int i = 0; i < m_CompositeButtons.Length && i < m_CompositeBindingIndices.Length; i++)
+            	{
+                	int compositeBindingIndex = m_CompositeBindingIndices[i];
+                	m_CompositeButtons[i].onClick.AddListener(delegate { RemapButtonClicked(name, compositeBindingIndex); });
+                	if (m_CompositeTexts[i] == null)
+                    	m_CompositeTexts[i] = m_CompositeButtons[i].GetComponentInChildren<Text>();
+            	}
+        	}
         }
         ResetButtonMappingTextValue();
         
@@ -90,12 +96,34 @@ public class RebindingUI : MonoBehaviour
 
     void RemapButtonClicked(string name, int bindingIndex = 0)
     {
+    	Debug.Log("awaiting rebind");
         m_Button.enabled = false;
         m_Text.text = "Press button/stick for " + name;
         m_RebindOperation?.Dispose();
         m_RebindOperation = m_Action.PerformInteractiveRebinding()
             .WithControlsExcluding("<Mouse>/position")
             .WithControlsExcluding("<Mouse>/delta")
+            //.WithControlsExcluding("<ps4Controller>")
+            //.WithControlsExcluding("<xboxController>")
+            .WithControlsExcluding("<GamePad>/buttonSouth")
+            .WithControlsExcluding("<GamePad>/rightTriggerButton")
+            .WithControlsExcluding("<GamePad>/rightTrigger")
+            .WithControlsExcluding("<GamePad>/dPad")
+            .WithControlsExcluding("<GamePad>/select")
+            .WithControlsExcluding("<GamePad>/touchPadButton")
+            .WithControlsExcluding("<GamePad>/start")
+            .WithControlsExcluding("<GamePad>/leftStickPress")
+            .WithControlsExcluding("<GamePad>/rightStickPress")
+            .WithControlsExcluding("<GamePad>/System")
+            .WithControlsExcluding("<Keyboard>/leftShift")
+            .WithControlsExcluding("<Keyboard>/anyKey")
+            .WithControlsExcluding("<Keyboard>/shift")
+            .WithControlsExcluding("<Keyboard>/leftArrow")
+            .WithControlsExcluding("<Keyboard>/rightArrow")
+            .WithControlsExcluding("<Keboard>/downArrow")
+            .WithControlsExcluding("<Keyboard>upArrow")
+            .WithControlsExcluding("<Keyboard>/tab")
+            .WithControlsExcluding("<Keyboard>escape")
             .OnMatchWaitForAnother(0.1f)
             .OnComplete(operation => ButtonRebindCompleted());
         if (m_CompositeBindingIndices != null)
@@ -132,7 +160,8 @@ public class RebindingUI : MonoBehaviour
 
     void ResetButtonMappingTextValue()
     {
-        m_Text.text = InputControlPath.ToHumanReadableString(m_Action.bindings[0].effectivePath);
+    	GetComponentInParent<CardSlot>().card.bindingIcon = m_Action.GetBindingDisplayString();
+        //m_Text.text = InputControlPath.ToHumanReadableString(m_Action.bindings[0].effectivePath);
         m_Button.gameObject.SetActive(!m_IsUsingComposite);
         if (m_CompositeTexts != null)
             for (int i = 0; i < m_CompositeTexts.Length; i++)
@@ -148,5 +177,7 @@ public class RebindingUI : MonoBehaviour
         m_RebindOperation = null;
         ResetButtonMappingTextValue();
         m_Button.enabled = true;
+        Debug.Log("comleted the button rebind");
+        GetComponentInParent<CardSlot>().BuyCard();
     }
 }

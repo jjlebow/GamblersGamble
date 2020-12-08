@@ -8,6 +8,9 @@ public class CardSlot : MonoBehaviour
     public Image icon;
     public Card card;
     public string keyCode;
+    public Image bindIcon;
+
+    private float timer = 0.2f;
 
     //public Damageable playerDamage;
 
@@ -16,6 +19,12 @@ public class CardSlot : MonoBehaviour
     	card = newCard;
     	icon.sprite = newCard.icon;
     	icon.enabled = true;
+        if(bindIcon != null)
+        {
+            Debug.Log("ButtonIcons/" + newCard.bindingIcon);
+            bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + newCard.bindingIcon) as Sprite;
+        }
+
     }
 
     //this gets called when updating the programmatic hand
@@ -102,6 +111,36 @@ public class CardSlot : MonoBehaviour
         }
     }
 
+    public void oldBuyCard()
+    {
+        if(Manager.instance.currentState == Manager.GameState.MENU)
+        {
+           int length = Deck.instance.handCards.Length;
+           for(int i = 0; i < length; i++)
+           {
+              if(card != null && Deck.instance.handCards[i].card == null)
+              {
+
+                  if(Manager.instance.playerDamageable.health > this.card.cost)
+                  {
+
+                        Manager.instance.playerDamageable.TakeDamage(this.card.cost);
+                        //Deck.instance.storedKeys.Add(KeyCode.Space);
+                        Deck.instance.handCards[i].AddCard(this.card);
+                        //Deck.instance.handCards[i].keyCode = "Space";
+                        this.ClearSlot();
+                    break;
+                  }
+                  else
+                  {
+                    Debug.Log("card is too expensive");
+                    break;
+                  }
+              }
+           }
+        }
+    }
+
 
     //Helper functions for the BuyCard function that accepts input, identifies it and stores it in the appropriate place
 
@@ -110,8 +149,9 @@ public class CardSlot : MonoBehaviour
     public bool AcceptInput(int i)
     {
             //find a better way to do this
-            if(Input.anyKeyDown && !Input.GetButtonDown("Jump") && !Input.GetButtonDown("Horizontal") && !Input.GetButtonDown("Vertical") && !Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKeyDown(KeyCode.P) && !Input.GetKeyDown(KeyCode.I)) //&& !Input.GetButtonDown("Jump"))
+            if(Input.anyKeyDown)// && Input.GetButtown)// && !Input.GetButtonDown("Jump") && !Input.GetButtonDown("Horizontal") && !Input.GetButtonDown("Vertical") && !Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKeyDown(KeyCode.P) && !Input.GetKeyDown(KeyCode.I)) //&& !Input.GetButtonDown("Jump"))
             {
+
                 foreach (KeyCode keyCode in Deck.instance.allKeyCodes)
                 {
                     if(Input.GetKeyDown(keyCode))
@@ -130,10 +170,12 @@ public class CardSlot : MonoBehaviour
     //helper function to BuyCard().  after waiting for input, stores the card in the hand and removes it from drawnCards
     private IEnumerator WaitForInput(int i)
     {
+        yield return 1;
+
+        //Debug.Log("waiting for input");
         Manager.instance.NewState(Manager.GameState.ACCEPTINPUT);
         while(!AcceptInput(i))
         {
-            //Debug.Log("Waiting for input");
             yield return null;
         }
         Manager.instance.playerDamageable.TakeDamage(this.card.cost);

@@ -53,6 +53,8 @@ public class Manager : MonoBehaviour
     public GameObject badHealthPanel;
 
 
+    
+
 
 
 
@@ -115,6 +117,9 @@ public class Manager : MonoBehaviour
         {
             badHealthBar.value = bossDamageable.health;
         }
+
+
+        
         //badHealthBar.value = bossDamageable.health;
         //runs the game over function when the player has died, regardless of whether or not the boss has died
 

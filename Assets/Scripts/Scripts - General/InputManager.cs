@@ -25,7 +25,6 @@ public class InputManager : MonoBehaviour
 
 	public InputActionReference FindReturnReference(string name)
 	{
-		Debug.Log("we got to this point");
 		if(name == "Attack")
 		{
 			Debug.Log("returningAttack");
