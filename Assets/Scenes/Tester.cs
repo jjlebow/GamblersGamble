@@ -7,7 +7,8 @@ public class Tester : MonoBehaviour
 {
 	//public RawImage image;
 
-	//private Texture2D tex;
+	//private Texture2D tex; 
+
 
 	void DestroyObj()
 	{
