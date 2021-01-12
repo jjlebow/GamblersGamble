@@ -6,7 +6,9 @@ using UnityEngine.EventSystems;
 public class ShopInteractable : Interactable
 {
     public GameObject button;
+    
     private ShopMenu shopPanel;
+    
 
     // Start is called before the first frame update
     void Start()

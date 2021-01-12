@@ -45,7 +45,7 @@ public class StateManager : MonoBehaviour
     //public bool isActive = false;
     //public bool isShooting = false;
     public bool playerStatic = false;
-    public bool walking = false;
+    public bool walking = true;
     public bool playerGrounded = false;
     public bool faceRight = false;
     //public bool airFalling = false;

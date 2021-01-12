@@ -805,9 +805,10 @@ public class PlayerController : MonoBehaviour
             m = new Vector2(0, 0);
         }
         transform.Translate(m, Space.World);
-        if(m.x > 0 && StateManager.instance.faceRight == false)
+        //this is done opposite to what you would expect since the sprites are flipped on the x axis in the editor's sprite renderer.
+        if(m.x > 0 && StateManager.instance.faceRight == true)
             Flip();
-        else if(move.x < 0 && StateManager.instance.faceRight == true)
+        else if(move.x < 0 && StateManager.instance.faceRight == false)
             Flip();
         if(m.x != 0f)
             StateManager.instance.walking = true;

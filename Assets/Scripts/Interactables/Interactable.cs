@@ -6,11 +6,12 @@ using UnityEngine.EventSystems;
 public class Interactable : MonoBehaviour
 {
     public PlayerController player;
+    public GameObject bubble;
     //protected EventSystem m_eventSystem;
     //public bool canInteract = false;
 
-    [SerializeField] private Sprite oldSprite;
-    [SerializeField] private Sprite newSprite = null;
+    //[SerializeField] private Sprite oldSprite;
+    //[SerializeField] private Sprite newSprite = null;
 
     void Awake()
     {
@@ -21,8 +22,9 @@ public class Interactable : MonoBehaviour
     {
         if(col.gameObject.CompareTag("Player"))
         {
+            bubble.SetActive(false);
             //canInteract = false;
-            GetComponent<SpriteRenderer>().sprite = oldSprite;
+            //GetComponent<SpriteRenderer>().sprite = oldSprite;
         }
     }
 
@@ -30,8 +32,9 @@ public class Interactable : MonoBehaviour
     {
         if(col.gameObject.CompareTag("Player"))
         {
+            bubble.SetActive(true);
             //canInteract = true;
-            GetComponent<SpriteRenderer>().sprite = newSprite;
+            //GetComponent<SpriteRenderer>().sprite = newSprite;
         }
     }
 

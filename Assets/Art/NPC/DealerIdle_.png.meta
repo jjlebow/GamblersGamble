@@ -1,37 +1,40 @@
 fileFormatVersion: 2
-guid: ea0a41dab37d41d48a1d6e5852e584e5
+guid: e395af02ca5e58f40875f491807c4e22
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6975090955123202313
-    second: CybGamblerXCard_0
+      213: 3851493575583471087
+    second: DealerIdle__0
   - first:
-      213: -950844201496275605
-    second: CybGamblerXCard_1
+      213: 6989144447230199297
+    second: DealerIdle__1
   - first:
-      213: -1435322325257109717
-    second: CybGamblerXCard_2
+      213: -2828774289097001146
+    second: DealerIdle__2
   - first:
-      213: -6252056324349374178
-    second: CybGamblerXCard_3
+      213: -5571366728344543240
+    second: DealerIdle__3
   - first:
-      213: -3923594031537183483
-    second: CybGamblerXCard_4
+      213: 5789733040046834896
+    second: DealerIdle__4
   - first:
-      213: -5225018438461222262
-    second: CybGamblerXCard_5
+      213: 2778965387308711883
+    second: DealerIdle__5
   - first:
-      213: -65293693601317856
-    second: CybGamblerXCard_6
+      213: -1893254147976533482
+    second: DealerIdle__6
   - first:
-      213: 2914270505380004570
-    second: CybGamblerXCard_7
+      213: 6542725114226205328
+    second: DealerIdle__7
   - first:
-      213: 5897955225414409075
-    second: CybGamblerXCard_8
+      213: 2340934620822868007
+    second: DealerIdle__8
   - first:
-      213: -1739571360702868828
-    second: CybGamblerXCard_9
+      213: 6395018255338016291
+    second: DealerIdle__9
+  - first:
+      213: -3107533757774578144
+    second: DealerIdle__10
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -75,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 45
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -165,12 +168,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CybGamblerXCard_0
+      name: DealerIdle__0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 35
+        x: 10
+        y: 5
+        width: 51
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -179,19 +182,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f667df5bbf733f90800000000000000
-      internalID: -6975090955123202313
+      spriteID: fe51a5b3001437530800000000000000
+      internalID: 3851493575583471087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CybGamblerXCard_1
+      name: DealerIdle__1
       rect:
         serializedVersion: 2
-        x: 40
-        y: 0
-        width: 35
+        x: 63
+        y: 5
+        width: 51
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,40 +203,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b65131d8c3cedc2f0800000000000000
-      internalID: -950844201496275605
+      spriteID: 106cc0d38dd6ef060800000000000000
+      internalID: 6989144447230199297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CybGamblerXCard_2
+      name: DealerIdle__2
       rect:
         serializedVersion: 2
-        x: 80
-        y: 0
-        width: 37
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2fbcd823f5b41ce0800000000000000
-      internalID: -1435322325257109717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CybGamblerXCard_3
-      rect:
-        serializedVersion: 2
-        x: 122
-        y: 0
-        width: 39
+        x: 116
+        y: 5
+        width: 51
         height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -242,82 +224,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e11db67d5eb3c39a0800000000000000
-      internalID: -6252056324349374178
+      spriteID: 6477d9485cc2eb8d0800000000000000
+      internalID: -2828774289097001146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CybGamblerXCard_4
+      name: DealerIdle__3
       rect:
         serializedVersion: 2
-        x: 166
-        y: 0
-        width: 40
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 505226334089c89c0800000000000000
-      internalID: -3923594031537183483
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CybGamblerXCard_5
-      rect:
-        serializedVersion: 2
-        x: 211
-        y: 0
-        width: 40
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8217aed9610d77b0800000000000000
-      internalID: -5225018438461222262
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CybGamblerXCard_6
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 40
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02cf1da4bb7081ff0800000000000000
-      internalID: -65293693601317856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CybGamblerXCard_7
-      rect:
-        serializedVersion: 2
-        x: 301
-        y: 0
-        width: 39
+        x: 169
+        y: 5
+        width: 51
         height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -326,19 +245,82 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad2c29c8591917820800000000000000
-      internalID: 2914270505380004570
+      spriteID: 8ffd79b9a778ea2b0800000000000000
+      internalID: -5571366728344543240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CybGamblerXCard_8
+      name: DealerIdle__4
       rect:
         serializedVersion: 2
-        x: 345
-        y: 0
-        width: 37
+        x: 222
+        y: 5
+        width: 51
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d4855c4683495050800000000000000
+      internalID: 5789733040046834896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DealerIdle__5
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 5
+        width: 51
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf34a1db4ed09620800000000000000
+      internalID: 2778965387308711883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DealerIdle__6
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 5
+        width: 51
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ae250226fc9b5e0800000000000000
+      internalID: -1893254147976533482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DealerIdle__7
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 5
+        width: 51
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -347,20 +329,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37b1cff570fb9d150800000000000000
-      internalID: 5897955225414409075
+      spriteID: 092ea7893dd6cca50800000000000000
+      internalID: 6542725114226205328
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CybGamblerXCard_9
+      name: DealerIdle__8
       rect:
         serializedVersion: 2
-        x: 387
-        y: 0
-        width: 35
-        height: 64
+        x: 434
+        y: 5
+        width: 51
+        height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -368,8 +350,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a2dcd7601dcbd7e0800000000000000
-      internalID: -1739571360702868828
+      spriteID: 7209f8482abac7020800000000000000
+      internalID: 2340934620822868007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DealerIdle__9
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 5
+        width: 51
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e8f81983bafb850800000000000000
+      internalID: 6395018255338016291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DealerIdle__10
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 5
+        width: 51
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ebf400382dfd4d0800000000000000
+      internalID: -3107533757774578144
       vertices: []
       indices: 
       edges: []
