@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
         textOutput = new Queue<Dialogue>();
         if (!hasDoneIntro)
         {
-            LoadDialogue("Dialogue", "Introduction", "INTRODUCTION");
+            //LoadDialogue("Dialogue", "Introduction", "INTRODUCTION");
         }
     }
 
@@ -349,27 +349,17 @@ public class DialogueManager : MonoBehaviour
         //if(AudioManager.instance.currentSong.name != DialogueObj.audio && DialogueObj.audio != null)
             //FindObjectOfType<AudioManager>().DialogueTransitionSong(DialogueObj.audio);    //music changes during dialogue
         
-        if (DialogueObj.speaker.Length == 1) //monologue: set namePanel to invisible and text to italic. Monologue denoted by speaker: M
+        if (DialogueObj.speaker == "Monologue") //monologue: set namePanel to invisible and text to italic.
         {
             namePanel.SetActive(false);
             if(currentSprite == null)
                 spritePanel.SetActive(false);
             dialogueText.fontStyle = FontStyles.Italic;
         }
-        else if (DialogueObj.speaker.Length == 2) //for MC talking: name and sprite panel are both visible, showing MC name and girl he talks to
+        else//aka only loads avail sprite 
         {
             namePanel.SetActive(true);
             nameText.text = DialogueObj.speaker;
-            if(currentSprite == null)
-                spritePanel.SetActive(false);
-
-
-        }
-        else if (DialogueObj.speaker == "Haruka" || DialogueObj.speaker == "Touka" || DialogueObj.speaker == "Akiko" || DialogueObj.speaker == "Natsuki") //aka only loads avail sprite 
-        {
-            namePanel.SetActive(true);
-            nameText.text = DialogueObj.speaker;
-            //Debug.Log("here");
             filePath = string.Format("{0}{1}/{2}", filePath, DialogueObj.speaker.Trim(), spriteName);
             /*
             if (DialogueObj.speaker == "Haruka" && !introTransition)
@@ -377,20 +367,14 @@ public class DialogueManager : MonoBehaviour
                 StartCoroutine(TransitionManager.instance.screenFadeIn);
                 introTransition = true;
             }*/
-            //Debug.Log(filePath);
             currentSprite = Resources.Load<Sprite>(filePath) as Sprite;
             spritePanel.GetComponent<Image>().sprite = currentSprite;
-            if(currentSprite != null) 
+            if(currentSprite != null)    //if the character does not have a appropriate portrait in resources, the sprite panel disappears.
                 spritePanel.SetActive(true);
-        }
-        else //any other character: set namePanel to visible and text to normal
-        {
-            namePanel.SetActive(true);
-            nameText.text = DialogueObj.speaker;
-            filePath = string.Format("{0}{1}/{2}", filePath, DialogueObj.speaker.Trim(), spriteName);
-            if (currentSprite == null)
+            else
                 spritePanel.SetActive(false);
         }
+
 
         foreach (char letter in DialogueObj.text.ToCharArray())
         {

@@ -7,6 +7,8 @@ public class Interactable : MonoBehaviour
 {
     public PlayerController player;
     public GameObject bubble;
+    public bool firstInteract = false;
+    public string name;
     //protected EventSystem m_eventSystem;
     //public bool canInteract = false;
 

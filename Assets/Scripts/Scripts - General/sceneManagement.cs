@@ -95,12 +95,13 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.player.gameObject.SetActive(false);
             Manager.instance.deckPanel.SetActive(false);
             //Manager.instance.discardPanel.SetActive(false);
-            DialogueManager.instance.gameObject.SetActive(false);
+            //DialogueManager.instance.gameObject.SetActive(false);
             Manager.instance.goodHealthPanel.SetActive(false);
             Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.battleMenuUI.SetActive(false);
             Manager.instance.battleMenu.SetActive(false);
             Manager.instance.shopPanel.SetActive(false);
+            Manager.instance.musicPanel.SetActive(false);
 
         }
         

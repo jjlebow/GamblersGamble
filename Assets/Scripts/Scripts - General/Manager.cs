@@ -20,6 +20,7 @@ public class Manager : MonoBehaviour
     //public GameObject discardPanel;
     public GameObject deckEditPanel;
     public GameObject shopPanel;
+    public GameObject musicPanel;
 
 
     public float timer = 10f;

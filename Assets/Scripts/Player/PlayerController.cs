@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     //radius of the circle that determinds if the player is touching a ceiling or not
     const float ceilingRadius = 0.2f;
     //this adjusts the length for the raycast that recognizes if grounded or not
-    private float raycastMaxDistance = 0.75f; //this needs to change if you change the size of the player
+    private float raycastMaxDistance = 1.0f; //this needs to change if you change the size of the player
     private Vector2 direction = new Vector2(0,-1);
     //[SerializeField] public Collider2D crouchDisableCollider;
     //----------------------------------------------
@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private float gravityScale = 1f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float jumpTimer; //if the jumpTimer is low, there is no variability in jump heights
-    private bool jumpPressed = false;
-    private bool jumpReleased = true;
+    public bool jumpPressed = false;
+    public bool jumpReleased = true;
     private bool startTimer = false;
     private float timer;
     private int availJumps;
@@ -721,12 +721,14 @@ public class PlayerController : MonoBehaviour
 
     private void StartJump()
     {
+        //Debug.Log("====================================================================================================");
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             
-
+            //Debug.Log("blfdjsklfjdsklfjsdlkfjlksdjf");
             if(availJumps > 0 && !StateManager.instance.grounded)
             {
+                //Debug.Log("jump1");
                 timer = jumpTimer;
                 m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x,0,0);
                 availJumps -= 1;
@@ -735,7 +737,7 @@ public class PlayerController : MonoBehaviour
             if(jumpPressed == true && timer > 0)
             {
 
-
+                //Debug.Log("jump2");
                 //m_Rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 m_Rigidbody2D.velocity = Vector2.up * jumpForce;
                 //jumpPressed = false;
@@ -743,6 +745,7 @@ public class PlayerController : MonoBehaviour
             }
             if(startTimer) 
             {
+                //Debug.Log("jump3");
                 timer -= Time.deltaTime;
                 if(timer <= 0) 
                 {

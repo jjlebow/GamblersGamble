@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     private IEnumerator fadeOut;
     [HideInInspector]
     public bool CR_running = false;
-    [HideInInspector]
+    //[HideInInspector]
     public List<string> currentSongs = new List<string>();
     [HideInInspector]
     public Sound currentEffect = null;

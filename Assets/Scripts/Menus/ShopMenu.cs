@@ -10,7 +10,7 @@ public class ShopMenu : MonoBehaviour
     public GameObject shopImage;
     public GameObject deckGroup;
     public GameObject idleButton;
-    private EventSystem es;
+    public EventSystem es;
     // Start is called before the first frame update
     void Start()
     {

@@ -27,14 +27,16 @@ public class ShopInteractable : Interactable
         if(player.canInteract)
         {
 
-            
-            shopPanel.OpenMenu(button);
-            //Manager.instance.shopPanel.SetActive(true);
-            //Manager.instance.shopPanel.GetComponent<ShopMenu>().AnimateMenu();
-            //Deck.instance.DrawCards(Deck.instance.drawnCards);
-            //shopPanel.OpenMenu();
-            Manager.instance.NewState(Manager.GameState.MENU);
-            
+            if(!firstInteract)
+            {
+                DialogueManager.instance.LoadDialogue("Dialogue/NPC", name, "INTRO");
+                firstInteract = true;
+            }
+            else
+            {
+                shopPanel.OpenMenu(button);
+                Manager.instance.NewState(Manager.GameState.MENU);
+            }
 
         }
     }
