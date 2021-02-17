@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     //radius of the circle that determinds if the player is touching a ceiling or not
     const float ceilingRadius = 0.2f;
     //this adjusts the length for the raycast that recognizes if grounded or not
-    private float raycastMaxDistance = 1.0f; //this needs to change if you change the size of the player
+    private float raycastMaxDistance = 1.1f; //this needs to change if you change the size of the player
     private Vector2 direction = new Vector2(0,-1);
     //[SerializeField] public Collider2D crouchDisableCollider;
     //----------------------------------------------
@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float jumpTimer; //if the jumpTimer is low, there is no variability in jump heights
     public bool jumpPressed = false;
-    public bool jumpReleased = true;
+    public bool canDoubleJump = false;
     private bool startTimer = false;
     private float timer;
-    private int availJumps;
+    public int availJumps;
     //----------------------------------------------
 
     //Dash variables
@@ -721,31 +721,28 @@ public class PlayerController : MonoBehaviour
 
     private void StartJump()
     {
-        //Debug.Log("====================================================================================================");
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             
-            //Debug.Log("blfdjsklfjdsklfjsdlkfjlksdjf");
-            if(availJumps > 0 && !StateManager.instance.grounded)
+            if(availJumps > 0 && !StateManager.instance.grounded && canDoubleJump)
             {
-                //Debug.Log("jump1");
                 timer = jumpTimer;
                 m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x,0,0);
                 availJumps -= 1;
+                canDoubleJump = false;
             }
 
-            if(jumpPressed == true && timer > 0)
+            if(timer > 0 && !canDoubleJump)
             {
 
-                //Debug.Log("jump2");
-                //m_Rigidbody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                Debug.Log("jump2");
                 m_Rigidbody2D.velocity = Vector2.up * jumpForce;
-                //jumpPressed = false;
                 startTimer = true;
+                canDoubleJump = false;
             }
             if(startTimer) 
             {
-                //Debug.Log("jump3");
+                Debug.Log("jump3");
                 timer -= Time.deltaTime;
                 if(timer <= 0) 
                 {
@@ -770,8 +767,12 @@ public class PlayerController : MonoBehaviour
 
     private void StopJump()
     {
+        if(StateManager.instance.grounded == false)
+        {
+            canDoubleJump = true;
+        }
         //m_Rigidbody2D.gravityScale = gravityScale;
-        //timer = jumpTimer;
+        ///timer = jumpTimer;
         //startTimer = false;
     }
 
@@ -1031,6 +1032,8 @@ public class PlayerController : MonoBehaviour
         //this condition catches the exact moment of landing
         if(hit.collider && StateManager.instance.grounded == false)
         {
+            Debug.Log("landed");
+            canDoubleJump = false;
             timer = jumpTimer;
             StateManager.instance.grounded = true;
             StateManager.instance.ChangeState(StateManager.PlayerState.CANCEL);

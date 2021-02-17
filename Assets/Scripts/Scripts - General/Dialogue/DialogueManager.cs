@@ -197,13 +197,13 @@ public class DialogueManager : MonoBehaviour
                 //Debug.Log(maxLines - count);
                 //pressing spacebar while spaceDelay is false means the sentence is done printing and will advance to the next line. 
                 //also reduces the count of the queue which signifies moving on to the next line. 
-                if (Input.GetKeyDown(KeyCode.Space) && !spaceDelay)
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1")) && !spaceDelay)
                 {
                     DisplayNextSentence();
                     count -= 1;
                 }
                 //pressing spacebar while the spaceDelay is true means the sentence is not done printing yet and will just immediately print the rest of the current line. 
-                else if (Input.GetKeyDown(KeyCode.Space) && spaceDelay)
+                else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1")) && spaceDelay)
                     DisplayFullSentence();
 
             }
@@ -211,7 +211,7 @@ public class DialogueManager : MonoBehaviour
             else if (textOutput.Count == 0) 
             {
                 //also the two cases for whether spaceDelay is true or false
-                if(Input.GetKeyDown(KeyCode.Space) && !spaceDelay)
+                if((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1")) && !spaceDelay)
                 {
                     ShouldBePlayingDialogue = false;
                     HidePanels();
@@ -227,7 +227,7 @@ public class DialogueManager : MonoBehaviour
                     Manager.instance.RevertState();
                 }
                 //dont know if this is accurate. i dont think this should necessarily hidePanels yet, we are just skipping the last dialgoue i think. 
-                else if (Input.GetKeyDown(KeyCode.Space) && spaceDelay)
+                else if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown("joystick button 1")) && spaceDelay)
                 {
                     ShouldBePlayingDialogue = false;
                     if (!hasDoneIntro)
