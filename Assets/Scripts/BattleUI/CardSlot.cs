@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CardSlot : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class CardSlot : MonoBehaviour
     public Card card;
     public string keyCode;
     public Image bindIcon;
+    public int quantity;
+    public TextMeshProUGUI cardQuantity;
 
     private float timer = 0.2f;
 
@@ -19,11 +22,11 @@ public class CardSlot : MonoBehaviour
     	card = newCard;
     	icon.sprite = newCard.icon;
     	icon.enabled = true;
-        if(bindIcon != null)
-        {
-            Debug.Log("ButtonIcons/" + newCard.bindingIcon);
-            bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + newCard.bindingIcon) as Sprite;
-        }
+        //if(bindIcon != null)
+        //{
+            //Debug.Log("ButtonIcons/" + newCard.bindingIcon);
+            //bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + newCard.bindingIcon) as Sprite;
+        //}
 
     }
 
@@ -35,6 +38,11 @@ public class CardSlot : MonoBehaviour
 
     	icon.sprite = null;
     	icon.enabled = false;
+        if(bindIcon != null)
+            bindIcon.sprite = null;
+        //bindIcon.enabled = false;
+        if(cardQuantity != null)
+            cardQuantity.SetText("");
     	///move the card to the discard pile
     }
 
@@ -80,15 +88,16 @@ public class CardSlot : MonoBehaviour
         if(Manager.instance.currentState == Manager.GameState.MENU)
         {
     	   int length = Deck.instance.handCards.Length;
-    	   for(int i = 0; i < length; i++)
-    	   {
-    		  if(card != null && Deck.instance.handCards[i].card == null)
-    		  {
+    	   //for(int i = 0; i < length; i++)
+    	   //{
+    		if(card != null && Deck.instance.handCardsBackend.Count <= Deck.instance.handCards.Length)//Deck.instance.handCards[i].card == null)
+    		{
 
-    		      if(Manager.instance.playerDamageable.health > this.card.cost)
-    			  {
+    		    if(Manager.instance.playerDamageable.health > this.card.cost)
+    			{
                     //hard code in the jump condition because this is always a default to space bar. we must skip all the steps
                     //that assign the action to a key.
+                    /*
                     if(this.card.name == "Jump")
                     {
                         Manager.instance.playerDamageable.TakeDamage(this.card.cost);
@@ -97,17 +106,21 @@ public class CardSlot : MonoBehaviour
                         Deck.instance.handCards[i].keyCode = "Space";
                         this.ClearSlot();
                         return;
-                    }
-                    StartCoroutine(WaitForInput(i));
-	    			break;
-	    		  }
-	    		  else
-	    		  {
-	    			Debug.Log("card is too expensive");
-	    			break;
-	    		  }
-	    	  }
-	       }
+                    }*/
+                    StartCoroutine(WaitForInput());
+	    			//break;
+	    		}
+	    		else
+	    		{
+	    		    Debug.Log("card is too expensive");
+	    		    //break;
+	    		}
+	    	}
+            else
+            {
+                Debug.Log("your hand is full or this slot is empty");
+            }
+	       //}
         }
     }
 
@@ -129,7 +142,7 @@ public class CardSlot : MonoBehaviour
                         Deck.instance.handCards[i].AddCard(this.card);
                         //Deck.instance.handCards[i].keyCode = "Space";
                         this.ClearSlot();
-                    break;
+                        break;
                   }
                   else
                   {
@@ -146,7 +159,7 @@ public class CardSlot : MonoBehaviour
 
     //figures out the exact input that was pressed and stores it in an array to make for more efficient lookup later
     //helper function to BuyCard(). Accepts the input and stores it in the proper places
-    public bool AcceptInput(int i)
+    public bool AcceptInput()
     {
             //find a better way to do this
             if(Input.anyKeyDown)// && Input.GetButtown)// && !Input.GetButtonDown("Jump") && !Input.GetButtonDown("Horizontal") && !Input.GetButtonDown("Vertical") && !Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKeyDown(KeyCode.P) && !Input.GetKeyDown(KeyCode.I)) //&& !Input.GetButtonDown("Jump"))
@@ -157,7 +170,8 @@ public class CardSlot : MonoBehaviour
                     if(Input.GetKeyDown(keyCode))
                     {
                         Deck.instance.storedKeys.Add(keyCode);
-                        Deck.instance.handCards[i].keyCode = keyCode.ToString();
+                        Deck.instance.handCardsBackend.Add(this.card, new Pair{quantity = 1, useKey = keyCode.ToString()});
+                        //Deck.instance.handCards[i].keyCode = keyCode.ToString();
                         Manager.instance.RevertState();
                         return true;
                     }
@@ -168,19 +182,50 @@ public class CardSlot : MonoBehaviour
 
     //waits to receive input before the process of buying the card
     //helper function to BuyCard().  after waiting for input, stores the card in the hand and removes it from drawnCards
-    private IEnumerator WaitForInput(int i)
+    private IEnumerator WaitForInput()
     {
         yield return 1;
 
         //Debug.Log("waiting for input");
-        Manager.instance.NewState(Manager.GameState.ACCEPTINPUT);
-        while(!AcceptInput(i))
+        
+        //Deck.instance.handCards[i].AddCard(this.card);\
+        if(Deck.instance.handCardsBackend.ContainsKey(this.card))
         {
-            yield return null;
+            //Debug.Log("we already have this card");
+            Deck.instance.handCardsBackend[this.card].quantity += 1;
+            for(int i = 0; i < Deck.instance.handCards.Length; i++)
+            {
+                if(Deck.instance.handCards[i].card.name == this.card.name)
+                {
+                    Deck.instance.handCards[i].cardQuantity.SetText((Deck.instance.handCardsBackend[this.card].quantity).ToString());
+                    break;
+                }
+            }
+
         }
+        else
+        {
+           //Debug.Log("this is a new card " + this.card.name + " " + this.card.icon + " " + this.card.cost + " " + this.card.damage + " " + this.card.suit);
+            Manager.instance.NewState(Manager.GameState.ACCEPTINPUT);
+            while(!AcceptInput())
+            {
+                yield return null;
+            }
+
+            //finds the first empty space in the list of handcards and puts the selected card into it
+            for(int i = 0; i < Deck.instance.handCards.Length; i++)
+            {
+                if(Deck.instance.handCards[i].card == null)
+                {
+                    Deck.instance.handCards[i].AddCard(this.card);
+                    Deck.instance.handCards[i].bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + (Deck.instance.handCardsBackend[this.card].useKey).ToString()) as Sprite;
+                    Deck.instance.handCards[i].cardQuantity.SetText((Deck.instance.handCardsBackend[this.card].quantity).ToString());
+                    break;
+                }
+            }
+        }
+        
         Manager.instance.playerDamageable.TakeDamage(this.card.cost);
-        Deck.instance.handCards[i].AddCard(this.card);
-        //Hand.instance.cards.Add(this.card);
         this.ClearSlot();
     }
 }

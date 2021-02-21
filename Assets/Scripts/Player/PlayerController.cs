@@ -308,7 +308,7 @@ public class PlayerController : MonoBehaviour
             }
         */
 
-        if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false)
+        if(Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.playerStatic == false && Input.anyKey)
         {
             CheckKeyInput();
 
@@ -685,23 +685,35 @@ public class PlayerController : MonoBehaviour
     //avoid looping through the entire keyboard every frame and only looping through the keys that were registered to buttons
     public void CheckKeyInput()
     {
+        
         for(int i = 0; i < Deck.instance.handCards.Length; i++)
             {
                 if(Deck.instance.handCards[i].card != null)
                 {
                     foreach(KeyCode code in Deck.instance.storedKeys)
                     {
-                        if(Input.GetKeyDown(code) && code.ToString() == Deck.instance.handCards[i].keyCode)
+                        if(Input.GetKeyDown(code) && code.ToString() == Deck.instance.handCardsBackend[Deck.instance.handCards[i].card].useKey)//Deck.instance.handCards[i].keyCode)
                         {
+                            
                             if((code == KeyCode.Space && !StateManager.instance.grounded) || code != KeyCode.Space)//this condition is for the hard coding of the Jump function to make sure we dont call this on our first jump (delete this for other uses of this)
                             //if(code == KeyCode.Space && !StateManager.instance.grounded) this line is used if we are doing the constant double jump
                             {
+                                
                                 chargeKey = code;
                                 this.SendMessage(Deck.instance.handCards[i].card.name, Deck.instance.handCards[i].card.damage);
                                 Deck.instance.discardPile.Add(Deck.instance.handCards[i].card);
+                                Deck.instance.handCardsBackend[Deck.instance.handCards[i].card].quantity -= 1;
+                                Deck.instance.handCards[i].cardQuantity.SetText((Deck.instance.handCardsBackend[Deck.instance.handCards[i].card].quantity).ToString());
+                                if(Deck.instance.handCardsBackend[Deck.instance.handCards[i].card].quantity == 0)
+                                {
+                                    //Deck.instance.handCards[i].cardQuantity.SetText("");
+                                    Deck.instance.handCardsBackend.Remove(Deck.instance.handCards[i].card);
+                                    Deck.instance.handCards[i].ClearSlot();
+                                    Deck.instance.storedKeys.Remove(code);
+                                }
+                                    
                                 Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI); // this updates the discard UI with the skill that was just used
-                                Deck.instance.handCards[i].ClearSlot();
-                                Deck.instance.storedKeys.Remove(code);
+                                
                                         //foreach(Card card in Deck.instance.discardPile)
                                         //{
                                         //        Debug.Log("Card " + card.name);

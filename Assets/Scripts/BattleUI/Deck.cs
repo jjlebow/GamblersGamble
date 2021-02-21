@@ -29,6 +29,7 @@ public class Deck : MonoBehaviour
 	public Transform handParent;
 
 	public CardSlot[] drawnCards;
+    public Dictionary<Card, Pair> handCardsBackend = new Dictionary<Card, Pair>();
 	public CardSlot[] handCards;
     public readonly Array allKeyCodes = Enum.GetValues(typeof(KeyCode));
 
@@ -53,6 +54,7 @@ public class Deck : MonoBehaviour
             return;
         }
         instance = this;
+        DontDestroyOnLoad(gameObject);
 
 
 
@@ -180,6 +182,7 @@ public class Deck : MonoBehaviour
                 handCards[i].ClearSlot();
             }
         }
+        handCardsBackend.Clear();
         Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
      }
 
@@ -236,5 +239,16 @@ public class Deck : MonoBehaviour
         //int length = deckOfCards.Length;
         deckOfCards.Remove(card);
 
+     }
+
+     public void UpdateHandCardsUI(Card card)
+     {
+         if(handCardsBackend.ContainsKey(card) == false)
+         {
+             foreach(KeyValuePair<Card, Pair> entry in handCardsBackend)
+             {
+            
+             }
+         }
      }
 }

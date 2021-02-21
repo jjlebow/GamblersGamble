@@ -103,8 +103,6 @@ public class RebindingUI : MonoBehaviour
         m_RebindOperation = m_Action.PerformInteractiveRebinding()
             .WithControlsExcluding("<Mouse>/position")
             .WithControlsExcluding("<Mouse>/delta")
-            //.WithControlsExcluding("<ps4Controller>")
-            //.WithControlsExcluding("<xboxController>")
             .WithControlsExcluding("<GamePad>/buttonSouth")
             .WithControlsExcluding("<GamePad>/rightTriggerButton")
             .WithControlsExcluding("<GamePad>/rightTrigger")
@@ -160,8 +158,7 @@ public class RebindingUI : MonoBehaviour
 
     void ResetButtonMappingTextValue()
     {
-    	GetComponentInParent<CardSlot>().card.bindingIcon = m_Action.GetBindingDisplayString();
-        //m_Text.text = InputControlPath.ToHumanReadableString(m_Action.bindings[0].effectivePath);
+    	//GetComponentInParent<CardSlot>().card.bindingIcon = m_Action.GetBindingDisplayString();
         m_Button.gameObject.SetActive(!m_IsUsingComposite);
         if (m_CompositeTexts != null)
             for (int i = 0; i < m_CompositeTexts.Length; i++)
