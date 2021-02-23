@@ -68,11 +68,13 @@ public class sceneManagement : MonoBehaviour
         {
             Manager.instance.bossDamageable = GameObject.FindGameObjectWithTag("Boss").GetComponent<Damageable>();
             Manager.instance.battleMenuUI.SetActive(true);
-            //Manager.instance.battleMenu.SetActive(false);
+            Manager.instance.healthTimePanel.SetActive(true);
+            Manager.instance.handPanel.SetActive(true);
+            Manager.instance.battleMenu.SetActive(false);
             //Manager.instance.deckPanel.SetActive(true);
             //Manager.instance.discardPanel.SetActive(true);
-            Manager.instance.goodHealthPanel.SetActive(true);
-            Manager.instance.badHealthPanel.SetActive(true);
+            //Manager.instance.goodHealthPanel.SetActive(true);
+            //Manager.instance.badHealthPanel.SetActive(true);
             Manager.instance.player.gameObject.SetActive(true);
             Manager.instance.NewState(Manager.GameState.BATTLE);
             //TransitionsManager.instance.FadeOut();
@@ -81,9 +83,10 @@ public class sceneManagement : MonoBehaviour
         {
             
             Manager.instance.battleMenuUI.SetActive(false);
-            
-            Manager.instance.goodHealthPanel.SetActive(false);
-            Manager.instance.badHealthPanel.SetActive(false);
+            Manager.instance.healthTimePanel.SetActive(false);
+            Manager.instance.handPanel.SetActive(false);
+           // Manager.instance.goodHealthPanel.SetActive(false);
+            //Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.player.gameObject.SetActive(true);
             Manager.instance.NewState(Manager.GameState.BATTLE);
             //TransitionsManager.instance.FadeOut();
@@ -93,11 +96,13 @@ public class sceneManagement : MonoBehaviour
         else if(scene.name == "LoadScene")
         {
             Manager.instance.player.gameObject.SetActive(false);
+            Manager.instance.healthTimePanel.SetActive(false);
             Manager.instance.deckPanel.SetActive(false);
+            Manager.instance.handPanel.SetActive(false);
             //Manager.instance.discardPanel.SetActive(false);
             //DialogueManager.instance.gameObject.SetActive(false);
-            Manager.instance.goodHealthPanel.SetActive(false);
-            Manager.instance.badHealthPanel.SetActive(false);
+            //Manager.instance.goodHealthPanel.SetActive(false);
+            //Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.battleMenuUI.SetActive(false);
             Manager.instance.battleMenu.SetActive(false);
             Manager.instance.shopPanel.SetActive(false);

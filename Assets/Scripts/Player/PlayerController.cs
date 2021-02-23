@@ -186,11 +186,12 @@ public class PlayerController : MonoBehaviour
             Manager.instance.turnEnd = false;
             Deck.instance.DiscardHand();
             Deck.instance.DrawCards(Deck.instance.drawnCards);
+        
+            Manager.instance.NewState(Manager.GameState.MENU);
+            Time.timeScale = 0f;
+            Manager.instance.battleMenu.SetActive(true);
+            Manager.instance.battleMenuUI.GetComponent<BattleMenu>().Select();
         }
-        Manager.instance.NewState(Manager.GameState.MENU);
-        Time.timeScale = 0f;
-        Manager.instance.battleMenu.SetActive(true);
-        Manager.instance.battleMenuUI.GetComponent<BattleMenu>().Select();
     }
 
     void Interact()

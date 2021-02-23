@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
 {  
     public static Manager instance;
     //private FirstBoss boss;
-    public TextMeshProUGUI timerUI;
+    //public TextMeshProUGUI timerUI;
     public TextMeshProUGUI moneyUI;
 
 
@@ -21,14 +21,16 @@ public class Manager : MonoBehaviour
     public GameObject deckEditPanel;
     public GameObject shopPanel;
     public GameObject musicPanel;
+    public GameObject handPanel;
 
 
-    public float timer = 10f;
+    public float timerMax;
+    public float timer;
     public int money = 50;
     
     public Slider healthBar;
     public Slider badHealthBar;
-    public float timeLeft;
+    public Slider timerUI;
     public bool startTimer = false;
 
     public bool turnEnd = true;
@@ -50,8 +52,9 @@ public class Manager : MonoBehaviour
     [HideInInspector] public BossController boss;
     public GameObject battleMenuUI;
     public GameObject battleMenu;
-    public GameObject goodHealthPanel;
-    public GameObject badHealthPanel;
+    //public GameObject goodHealthPanel;
+    //public GameObject badHealthPanel;
+    public GameObject healthTimePanel;
 
 
     
@@ -88,7 +91,8 @@ public class Manager : MonoBehaviour
     {
         //Debug.Log(Deck.instance.deckOfCards.Count);
         //Debug.Log(Deck.instance.deckUI.Length);
-        timeLeft = timer;
+        timer = timerMax;
+        timerUI.maxValue = timerMax;
         UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
         UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
         /*
@@ -218,14 +222,13 @@ public class Manager : MonoBehaviour
     private void FixedUpdate()
     {
         moneyUI.text = money.ToString();
-        timerUI.text = timeLeft.ToString();
+        timerUI.value = timer;
         if(startTimer == true)
         {
-            timeLeft -= Time.deltaTime;
-            if(timeLeft <= 0)
+            timer += Time.deltaTime;
+            if(timer > timerMax)
             {
                 startTimer = false;
-                timeLeft = timer;
                 turnEnd = true;//RoundEnd();
             }
         }
@@ -254,6 +257,8 @@ public class Manager : MonoBehaviour
 
     public void TimerStart()
     {
+        timer = 0f;
+        //maybe play a sound effect here or something and make the bar shimmmer to signify that its ready
         startTimer = true;
     }
 
