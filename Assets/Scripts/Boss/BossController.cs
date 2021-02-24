@@ -32,6 +32,12 @@ public class BossController : MonoBehaviour
 	[HideInInspector] public bool bossActive = false;
 	public Transform firePoint;
 	public GameObject shotPrefab;
+	public int idleAngle;
+
+	private float minX;
+	private float maxX;
+	private float minY;
+	private float maxY;
 
 	public GameObject meleeHitbox;
 
@@ -74,7 +80,7 @@ public class BossController : MonoBehaviour
 
     void FlipTowardsPlayer()
     {
-    	float playerDirection = Manager.instance.transform.position.x - transform.position.x;
+    	float playerDirection = Manager.instance.player.transform.position.x - transform.position.x;
     	if(playerDirection > 0 && facingLeft)
     	{
     		Flip();
@@ -98,11 +104,11 @@ public class BossController : MonoBehaviour
         ///Debug.Log("boss controller we should be movig");
     	if(isTouchingUp && goingUp)
     	{
-    		ChangeDirection();
+    		ChangeIdleDirection();
     	}
     	else if(isTouchingDown && !goingUp)
     	{
-    		ChangeDirection();
+    		ChangeIdleDirection();
     	}
 
     	if(isTouchingWall)
@@ -110,9 +116,11 @@ public class BossController : MonoBehaviour
     		if(facingLeft)
     		{
     			Flip();
+				ChangeIdleDirection();
     		}
     		else if(!facingLeft)
     		{
+				ChangeIdleDirection();
     			Flip();
     		}
     	}
@@ -157,9 +165,16 @@ public class BossController : MonoBehaviour
     private void ChangeDirection()
     {
     	goingUp = !goingUp;
-    	idleMoveDirection.y *= -1;
+    	//idleMoveDirection.y *= -1;
+		//put some kind of pause and squishing effect here. 
     	attackMoveDirection.y *= -1;
     }
+
+	private void ChangeIdleDirection()
+	{
+		goingUp = !goingUp;
+		idleMoveDirection = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+	}
 
     private void Flip()
     {
@@ -208,4 +223,9 @@ public class BossController : MonoBehaviour
     	Debug.Log("we should not be here: DecideAttack");
     	return 0;
     }
+
+	private void CalculateVertices()
+	{
+
+	}
 }
