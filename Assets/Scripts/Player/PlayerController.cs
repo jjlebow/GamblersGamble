@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private bool startTimer = false;
     private float timer;
     public int availJumps;
+    private bool jumpSound = true;
     //----------------------------------------------
 
     //Dash variables
@@ -133,6 +134,9 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] bool m_logInput = false;
 
     //InputAction myAction = new InputAction(binding: "/*/<button>");
+
+    public AudioClip jumpNoise;
+    AudioSource audioSource;
 
 
     private void Awake()
@@ -249,6 +253,7 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         availJumps = numberOfJumps;
+        audioSource = GetComponent<AudioSource>();
         controls.PlayerInteract.Disable();  
     }
 
@@ -734,11 +739,17 @@ public class PlayerController : MonoBehaviour
 
     private void StartJump()
     {
+        if(jumpSound)
+        {
+            audioSource.PlayOneShot(jumpNoise, 1.0f);
+            jumpSound = false;
+        }
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
         {
             
             if(availJumps > 0 && !StateManager.instance.grounded && canDoubleJump)
             {
+
                 timer = jumpTimer;
                 m_Rigidbody2D.velocity = new Vector3(m_Rigidbody2D.velocity.x,0,0);
                 availJumps -= 1;
@@ -755,7 +766,7 @@ public class PlayerController : MonoBehaviour
             }
             if(startTimer) 
             {
-                Debug.Log("jump3");
+                //Debug.Log("jump3");
                 timer -= Time.deltaTime;
                 if(timer <= 0) 
                 {
@@ -783,6 +794,7 @@ public class PlayerController : MonoBehaviour
         if(StateManager.instance.grounded == false)
         {
             canDoubleJump = true;
+            jumpSound = true;
         }
         //m_Rigidbody2D.gravityScale = gravityScale;
         ///timer = jumpTimer;

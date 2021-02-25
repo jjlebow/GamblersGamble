@@ -38,6 +38,8 @@ public class BossController : MonoBehaviour
 
 	public GameObject meleeHitbox;
 
+	private Node topNode;
+
 	void Awake()
 	{
 		Manager.instance.boss = GetComponent<BossController>();
@@ -46,6 +48,7 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		ConstructBehaviorTree();
         player = Manager.instance.player;
         idleMoveDirection.Normalize();
         attackMoveDirection.Normalize();
@@ -67,6 +70,11 @@ public class BossController : MonoBehaviour
         //}
         //FlipTowardsPlayer();
     }
+
+	private void ConstructBehaviorTree()
+	{
+		
+	}
 
     public void SpecialState(Vector2 playerPosition)
     {
