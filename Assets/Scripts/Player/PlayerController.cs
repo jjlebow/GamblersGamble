@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool canInteract = false;
 
 
-    [SerializeField] bool m_logInput = true;
+    [SerializeField] bool m_logInput = false;
 
     //[SerializeField] bool m_logInput = false;
 
@@ -629,7 +629,7 @@ public class PlayerController : MonoBehaviour
 
     public void Attack(int damage)
     {
-        Debug.Log("we are going to attack");
+        //Debug.Log("we are going to attack");
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;
@@ -813,7 +813,7 @@ public class PlayerController : MonoBehaviour
     {
         //sets movement vector to player input only while in BATTLE state, otherwise sets movement vector to 0,0
         Vector2 m;
-        if(Manager.instance.currentState == Manager.GameState.BATTLE)
+        if(Manager.instance.currentState == Manager.GameState.BATTLE && (!StateManager.instance.playerStatic || !StateManager.instance.grounded))
         {
             m = new Vector2(move.x, move.y) * Time.deltaTime * runningSpeed;
         }
@@ -1045,7 +1045,7 @@ public class PlayerController : MonoBehaviour
         //this condition catches the exact moment of landing
         if(hit.collider && StateManager.instance.grounded == false)
         {
-            Debug.Log("landed");
+            //Debug.Log("landed");
             canDoubleJump = false;
             timer = jumpTimer;
             StateManager.instance.grounded = true;

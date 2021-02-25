@@ -23,7 +23,7 @@ public class AOEAction : FSMAction
 
     public override void OnEnter()
     {
-        Debug.Log("AOEAction");
+        //Debug.Log("AOEAction");
     	animator.SetTrigger(triggerName);
         Manager.instance.boss.bossActive = true;
         Manager.instance.boss.enemyRB.velocity = Vector2.zero;

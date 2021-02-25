@@ -28,16 +28,13 @@ public class BossController : MonoBehaviour
 	public bool isTouchingWall;
 	private bool goingUp = true;
 	public Rigidbody2D enemyRB;
-	private bool facingLeft = false;
+	public bool facingLeft = false;
 	[HideInInspector] public bool bossActive = false;
 	public Transform firePoint;
 	public GameObject shotPrefab;
 	public int idleAngle;
 
-	private float minX;
-	private float maxX;
-	private float minY;
-	private float maxY;
+	private bool deflected = false;
 
 	public GameObject meleeHitbox;
 
@@ -61,6 +58,7 @@ public class BossController : MonoBehaviour
         isTouchingUp = Physics2D.OverlapCircle(groundCheckUp.position, groundCheckRadius, groundLayer);
         isTouchingDown = Physics2D.OverlapCircle(groundCheckDown.position, groundCheckRadius, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(groundCheckWall.position, groundCheckRadius, groundLayer);
+
         //IdleState();
         //AOEState();
         //if(Input.GetKeyDown(KeyCode.H))
@@ -73,22 +71,17 @@ public class BossController : MonoBehaviour
     public void SpecialState(Vector2 playerPosition)
     {
     	playerPosition.Normalize();
+		if(player.transform.position.x > transform.position.x && facingLeft)
+		{
+			WallFlip();
+		}
+		else if(player.transform.position.x < transform.position.x && !facingLeft)
+		{
+			WallFlip();
+		}
     	enemyRB.velocity = playerPosition * attackPlayerSpeed;
 
     	//make this state end once one of the ground checks is true
-    }
-
-    void FlipTowardsPlayer()
-    {
-    	float playerDirection = Manager.instance.player.transform.position.x - transform.position.x;
-    	if(playerDirection > 0 && facingLeft)
-    	{
-    		Flip();
-    	}
-    	else if (playerDirection < 0 && !facingLeft)
-    	{
-    		Flip();
-    	}
     }
 
     private void OnDrawGizmoSelected()
@@ -115,13 +108,13 @@ public class BossController : MonoBehaviour
     	{
     		if(facingLeft)
     		{
-    			Flip();
-				ChangeIdleDirection();
+    			WallFlip();
+				//ChangeIdleDirection();
     		}
     		else if(!facingLeft)
     		{
-				ChangeIdleDirection();
-    			Flip();
+				//ChangeIdleDirection();
+    			WallFlip();
     		}
     	}
     	enemyRB.velocity = idleMoveSpeed * idleMoveDirection;
@@ -152,11 +145,11 @@ public class BossController : MonoBehaviour
     	{
     		if(facingLeft)
     		{
-    			Flip();
+    			WallFlip();
     		}
     		else if(!facingLeft)
     		{
-    			Flip();
+    			WallFlip();
     		}
     	}
     	enemyRB.velocity = attackMoveSpeed * attackMoveDirection;
@@ -168,16 +161,53 @@ public class BossController : MonoBehaviour
     	//idleMoveDirection.y *= -1;
 		//put some kind of pause and squishing effect here. 
     	attackMoveDirection.y *= -1;
+		if(idleMoveDirection.x > 0 && facingLeft)
+		{
+			CeilingFlip();
+			//facingLeft = !facingLeft;
+			//transform.Rotate(0,180,0);
+		}
+		else if(idleMoveDirection.x < 0 && !facingLeft)
+		{
+			CeilingFlip();
+			//facingLeft = !facingLeft;
+			//transform.Rotate(0,180,0);
+		}
     }
 
 	private void ChangeIdleDirection()
 	{
 		goingUp = !goingUp;
-		idleMoveDirection = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+		float p = Random.Range(-1.0f, 1.0f);
+		//idleMoveDirection = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+		idleMoveDirection = new Vector2(p, idleMoveDirection.y * -1);
+		attackMoveDirection.y *= -1;
+
+		if(p > 0 && facingLeft)
+		{
+			CeilingFlip();
+			//facingLeft = !facingLeft;
+			//transform.Rotate(0,180,0);
+		}
+		else if(p < 0 && !facingLeft)
+		{
+			CeilingFlip();
+			//facingLeft = !facingLeft;
+			//transform.Rotate(0,180,0);
+		}
+
+		
 	}
 
-    private void Flip()
+	private void CeilingFlip()
+	{
+		facingLeft = !facingLeft;
+		transform.Rotate(0,180,0);
+	}
+
+    private void WallFlip()
     {
+		//Debug.Log("Flipping " + idleMoveDirection.x);
     	facingLeft = !facingLeft;
     	idleMoveDirection.x *= -1;
     	attackMoveDirection.x *= -1;
@@ -205,7 +235,6 @@ public class BossController : MonoBehaviour
     	}
     	else
     	{
-    		Debug.Log("we are hereeeeeee");
     		if(rand > 3)
     		{
     			return 2;
@@ -220,12 +249,14 @@ public class BossController : MonoBehaviour
     		}
     	}
     	//this is where we decide what attack to use
-    	Debug.Log("we should not be here: DecideAttack");
     	return 0;
     }
 
 	private void CalculateVertices()
 	{
+		//float distance = (transform.position - player.transform.position).magnitude;
+		//float l = Math.sqrt(Math.pow(distance, 2) + Math.pow(distance, 2) - (2 * distance * distance * Math.Cos(idleAngle)));
+
 
 	}
 }

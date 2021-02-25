@@ -25,7 +25,6 @@ public class SpecialAction : FSMAction
     public override void OnEnter()
     {
     	animator.SetTrigger(triggerName);
-    	Debug.Log("Special action");
         Manager.instance.boss.bossActive = true;
         Manager.instance.boss.enemyRB.velocity = Vector2.zero;
         //there needs to be logic here to determine what animation each body 
@@ -42,11 +41,11 @@ public class SpecialAction : FSMAction
     	
     	if(Manager.instance.boss.isTouchingUp || Manager.instance.boss.isTouchingDown || Manager.instance.boss.isTouchingWall)
     	{
-            Debug.Log("we are exiting specialstate");
             Manager.instance.boss.bossActive = false;
             animator.SetTrigger("Neutral");
     		Finish(0);  //this will finish at neutral once the animation has run its course
     	}
+        
     }
 
 

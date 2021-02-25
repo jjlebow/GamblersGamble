@@ -23,7 +23,7 @@ public class MeleeAction : FSMAction
 
     public override void OnEnter()
     {
-        Debug.Log("Melee Action");
+        //Debug.Log("Melee Action");
         animator.SetTrigger(triggerName);
         Manager.instance.boss.enemyRB.velocity = Vector2.zero;
         Manager.instance.boss.bossActive = true;

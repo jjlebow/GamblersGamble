@@ -10,20 +10,20 @@ public class SpecialBehavior : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerPosition = Manager.instance.player.transform.position - Manager.instance.boss.transform.position;
-        Debug.Log("this is where we are supposed to be");
+        //Debug.Log("this is where we are supposed to be");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Manager.instance.boss.SpecialState(playerPosition);
-        Debug.Log("this should happen multiple times");
+        //Debug.Log("this should happen multiple times");
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("hmm");
+        //Debug.Log("hmm");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

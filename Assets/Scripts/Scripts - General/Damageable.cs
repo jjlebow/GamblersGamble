@@ -21,7 +21,7 @@ public class Damageable : MonoBehaviour
 
     		canDamage = false;
     		StartCoroutine(DamageWait());
-    		Debug.Log("The type is: " + type);
+    		//Debug.Log("The type is: " + type);
     		if(type == "CriticalHitbox")
     		{
     			Debug.Log("we have arrived at critical damage");
@@ -56,8 +56,8 @@ public class Damageable : MonoBehaviour
             oldHealth = health;
             health -= damage;
             
-            Debug.Log(health);
-            Debug.Log(oldHealth);
+            //Debug.Log(health);
+            //Debug.Log(oldHealth);
             if(isDrainable)
                 offender.GetComponent<Damageable>().health += (oldHealth - health);
             canDamage = false;

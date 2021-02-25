@@ -28,5 +28,9 @@ public class BossStandingHitbox : MonoBehaviour
     		Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
     		hitParent.GetComponent<Damageable>().PlayerCollisionDamage(damage, PublicFunctions.FindParent(this.transform).gameObject, hitParent.gameObject);
     	}
+        else if(hitInfo.gameObject.tag == "Weapon")
+        {
+            Debug.Log("HIT WITH A WEAPON");
+        }
     }
 }

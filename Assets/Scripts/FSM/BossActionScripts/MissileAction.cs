@@ -23,7 +23,7 @@ public class MissileAction : FSMAction
 
     public override void OnEnter()
     {
-        Debug.Log("missile action");
+        //Debug.Log("missile action");
     	animator.SetTrigger(triggerName);
         Manager.instance.boss.enemyRB.velocity = Vector2.zero;
         Manager.instance.boss.bossActive = true;

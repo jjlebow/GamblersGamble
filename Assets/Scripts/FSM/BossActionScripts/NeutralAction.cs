@@ -24,7 +24,7 @@ public class NeutralAction : FSMAction
 
     public override void OnEnter()
     {
-        Debug.Log("entering neutral");
+        //Debug.Log("entering neutral");
         //animator.SetTrigger(triggerName);     //this does not work here for some reason. Just sets netural trigger repeatedly when it shouldnt, even though we are not re-entering the state constantly
         rand = Random.Range(1,4);
     }
