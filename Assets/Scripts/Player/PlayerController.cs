@@ -136,7 +136,8 @@ public class PlayerController : MonoBehaviour
     //InputAction myAction = new InputAction(binding: "/*/<button>");
 
     public AudioClip jumpNoise;
-    AudioSource audioSource;
+    public AudioClip neutralAttackSound;
+    [HideInInspector] public AudioSource audioSource;
 
 
     private void Awake()

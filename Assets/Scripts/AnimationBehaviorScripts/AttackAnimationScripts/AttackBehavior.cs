@@ -13,11 +13,18 @@ public class AttackBehavior : StateMachineBehaviour
         //if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
             //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
         if(player.intendedLayer == 0)
+        {
             player.neutralHitbox.SetActive(true);
+            player.audioSource.PlayOneShot(player.neutralAttackSound, 1.0f);
+        }
         else if(player.intendedLayer == 1)
+        {
             player.heavyHitbox.SetActive(true);
+        }
         else if(player.intendedLayer ==2)
+        {
             player.precisionHitbox.SetActive(true);
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -21025,7 +21025,7 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpNoise
       value: 
-      objectReference: {fileID: 8300000, guid: 53051789335a7ed4da2d411882876389, type: 3}
+      objectReference: {fileID: 8300000, guid: fe33df221086f6c4a8a179bffcf32f8d, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: jumpTimer
@@ -21071,6 +21071,11 @@ PrefabInstance:
       propertyPath: lowJumpMultiplier
       value: 4.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: neutralAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e11f87c8ef31914b907010856f4501b, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: wasd.m_ExpectedControlType
@@ -26806,12 +26811,12 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: a82be474c6ffa7b459bd50c6203abaa9, type: 3}
+      objectReference: {fileID: 8300000, guid: 60928fa77e8f9f343be6e37f32c96d40, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 653ace2685cc1c949ad24a6730a4bfc7, type: 3}
+      objectReference: {fileID: 8300000, guid: 9fbaad83de6253d429388bc7966e3dc5, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[3].loop
@@ -26826,7 +26831,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 569d232d5ccc60843aade91d1dc37233, type: 3}
+      objectReference: {fileID: 8300000, guid: a83b223f0c54b83409d686f1ad22428d, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[4].loop
@@ -26869,13 +26874,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
+      propertyPath: sounds.Array.data[2].endFade
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
+        type: 3}
       propertyPath: sounds.Array.data[3].endFade
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[4].endFade
-      value: 1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
@@ -36484,7 +36494,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
