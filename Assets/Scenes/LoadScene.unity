@@ -21025,7 +21025,7 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpNoise
       value: 
-      objectReference: {fileID: 8300000, guid: fe33df221086f6c4a8a179bffcf32f8d, type: 3}
+      objectReference: {fileID: 8300000, guid: c8abf4cc092ae9f4ba72a0f2b90ec0b5, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: jumpTimer
@@ -21066,6 +21066,11 @@ PrefabInstance:
       propertyPath: numberOfJumps
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: doubleJumpNoise
+      value: 
+      objectReference: {fileID: 8300000, guid: 778c72041d7e00447b083d6ac3ba467c, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: lowJumpMultiplier
@@ -21284,22 +21289,22 @@ PrefabInstance:
     - target: {fileID: 6439083807075541003, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.7434587
+      value: 1.7620635
       objectReference: {fileID: 0}
     - target: {fileID: 6439083807075541003, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_Size.y
-      value: 1.3622394
+      value: 0.2823348
       objectReference: {fileID: 0}
     - target: {fileID: 6439083807075541003, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_Offset.x
-      value: 1.6998377
+      value: 1.0042799
       objectReference: {fileID: 0}
     - target: {fileID: 6439083807075541003, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.1411879
+      value: 0.4499786
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb6a5464489498048b0fa455934980b6, type: 3}
@@ -36494,7 +36499,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

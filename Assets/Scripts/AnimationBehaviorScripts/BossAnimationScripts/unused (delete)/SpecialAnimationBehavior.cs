@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackStart : StateMachineBehaviour
+public class SpecialAnimationBehavior : StateMachineBehaviour
 {
-    private PlayerController player;
+
+    Vector2 playerPosition;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = Manager.instance.player;
-        if(player.intendedLayer == 0)
-            player.audioSource.PlayOneShot(player.neutralAttackSound, 1.0f);
+        playerPosition = Manager.instance.player.transform.position - Manager.instance.boss.transform.position;
+        //Debug.Log("this is where we are supposed to be");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Manager.instance.boss.SpecialState(playerPosition);
+        //Debug.Log("this should happen multiple times");
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
-        //StateManager.instance.attackInitiate = false;    
+        //Debug.Log("hmm");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

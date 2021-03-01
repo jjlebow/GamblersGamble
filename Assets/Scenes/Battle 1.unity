@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 13611336}
   - component: {fileID: 13611338}
   - component: {fileID: 13611341}
-  - component: {fileID: 13611342}
+  - component: {fileID: 13611343}
   m_Layer: 5
   m_Name: Boss
   m_TagString: Boss
@@ -241,6 +241,7 @@ MonoBehaviour:
   isTouchingUp: 0
   isTouchingDown: 0
   isTouchingWall: 0
+  goingUp: 1
   enemyRB: {fileID: 13611336}
   facingLeft: 0
   bossActive: 0
@@ -249,6 +250,7 @@ MonoBehaviour:
     type: 3}
   idleAngle: 0
   meleeHitbox: {fileID: 1256474953}
+  bossState: 0
 --- !u!224 &13611339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -309,7 +311,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &13611342
+--- !u!114 &13611343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,9 +320,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 13611335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e43a73c7016e84a4b9c1c7969eed5657, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d7b55c7ecdb49a4a89fa5e6f9022861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startWhenEnabled: 1
+  asynchronousLoad: 0
+  pauseWhenDisabled: 0
+  restartWhenComplete: 1
+  logTaskChanges: 0
+  group: 0
+  resetValuesOnRestart: 0
+  externalBehavior: {fileID: 0}
+  mBehaviorSource:
+    behaviorName: Boss Behavior
+    behaviorDescription: 
+    mTaskData:
+      types: []
+      parentIndex: 
+      startIndex: 
+      variableStartIndex: 
+      JSONSerialization: '{"EntryTask":{"Type":"BehaviorDesigner.Runtime.Tasks.EntryTask","NodeData":{"Offset":"(480.512268,-55.17723)"},"ID":0,"Name":"Entry","Instant":true},"RootTask":{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(2.99102783,119.589127)"},"ID":1,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"IdleBehavior","NodeData":{"Offset":"(-251.818054,115.151505)"},"ID":2,"Name":"Idle
+        Behavior","Instant":true,"Singlemin":2,"Singlemax":5},{"Type":"BehaviorDesigner.Runtime.Tasks.Selector","NodeData":{"Offset":"(3.30135155,108.271866)"},"ID":3,"Name":"Selector","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-246.081,114.133636)"},"ID":4,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"CloseDistance","NodeData":{"Offset":"(-98.34224,153.208557)"},"ID":5,"Name":"Close
+        Distance","Instant":true,"BossControllerboss":0},{"Type":"BehaviorDesigner.Runtime.Tasks.RandomSelector","NodeData":{"Offset":"(70.1468,138.614166)"},"ID":6,"Name":"Random
+        Selector","Instant":true,"Int32seed":0,"BooleanuseSeed":false,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-105.127106,116.645844)"},"ID":7,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"AOETelegraph","NodeData":{"Offset":"(-142.4675,129.745636)"},"ID":8,"Name":"AOE
+        Telegraph","Instant":true},{"Type":"AOEBehavior","NodeData":{"Offset":"(-4.695155,125.000275)"},"ID":9,"Name":"AOE
+        Behavior","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(115.777527,130.362122)"},"ID":10,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"MeleeTelegraph","NodeData":{"Offset":"(-68.1884155,115.47953)"},"ID":11,"Name":"Melee
+        Telegraph","Instant":true},{"Type":"MeleeBehavior","NodeData":{"Offset":"(85.6577759,124.996429)"},"ID":12,"Name":"Melee
+        Behavior","Instant":true}]}]}]},{"Type":"BehaviorDesigner.Runtime.Tasks.RandomSelector","NodeData":{"Offset":"(385.867249,107.910683)"},"ID":13,"Name":"Random
+        Selector","Instant":true,"Int32seed":0,"BooleanuseSeed":false,"AbortTypeabortType":"None","Children":[{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(-146.995453,279.0365)"},"ID":14,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"ShootTelegraph","NodeData":{"Offset":"(-64.603714,111.933617)"},"ID":15,"Name":"Shoot
+        Telegraph","Instant":true},{"Type":"ShootBehavior","NodeData":{"Offset":"(85.26358,111.933586)"},"ID":16,"Name":"Shoot
+        Behavior","Instant":true}]},{"Type":"BehaviorDesigner.Runtime.Tasks.Sequence","NodeData":{"Offset":"(177.600952,278.697876)"},"ID":17,"Name":"Sequence","Instant":true,"AbortTypeabortType":"None","Children":[{"Type":"SpecialTelegraph","NodeData":{"Offset":"(-81.14105,105.366577)"},"ID":18,"Name":"Special
+        Telegraph","Instant":true},{"Type":"SpecialBehavior","NodeData":{"Offset":"(84.6040039,111.479553)"},"ID":19,"Name":"Special
+        Behavior","Instant":true}]}]}]}]}}'
+      fieldSerializationData:
+        typeName: []
+        fieldNameHash: 
+        startIndex: 
+        dataPosition: 
+        unityObjects:
+        - {fileID: 13611338}
+        byteData: 
+        byteDataArray: 
+      Version: 1.6.7
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!1 &70614805
 GameObject:
   m_ObjectHideFlags: 0

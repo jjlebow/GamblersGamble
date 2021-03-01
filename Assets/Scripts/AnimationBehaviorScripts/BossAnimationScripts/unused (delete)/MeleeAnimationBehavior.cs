@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackStart : StateMachineBehaviour
+public class MeleeAnimationBehavior : StateMachineBehaviour
 {
-    private PlayerController player;
+    //private float length;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = Manager.instance.player;
-        if(player.intendedLayer == 0)
-            player.audioSource.PlayOneShot(player.neutralAttackSound, 1.0f);
+        //length = stateInfo.length;
+        //Manager.instance.boss.meleeHitbox.SetActive(true);
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //if(stateInfo.normalizedTime >= length)
+        //{
+            //Manager.instance.boss.bossActive = false;
+        //}
+    }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //StateManager.instance.playerState = StateManager.PlayerStates.IDLE;
-        //StateManager.instance.attackInitiate = false;    
+        Manager.instance.boss.bossState = BossController.BossState.IDLE;
+        //Manager.instance.boss.meleeHitbox.SetActive(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

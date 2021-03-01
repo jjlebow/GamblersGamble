@@ -34,7 +34,7 @@ public class NeutralAction : FSMAction
         
         if(rand > 0)
         {
-            Manager.instance.boss.IdleState();
+            //Manager.instance.boss.IdleState();
             rand -= Time.deltaTime;
         }
         else if(rand <= 0)

@@ -6,15 +6,15 @@ public class BossController : MonoBehaviour
 {
 
 	[Header("Idle")]
-	[SerializeField] float idleMoveSpeed;
-	[SerializeField] Vector2 idleMoveDirection;
+	public float idleMoveSpeed;
+	public Vector2 idleMoveDirection;
 
 	[Header("AttackUpAndDown")]
-	[SerializeField] float attackMoveSpeed;
-	[SerializeField] Vector2 attackMoveDirection;
+	public float attackMoveSpeed;
+	public Vector2 attackMoveDirection;
 
 	[Header("AttackPlayer")]
-	[SerializeField] float attackPlayerSpeed;
+	public float attackPlayerSpeed;
 	private PlayerController player;
 
 	[Header("Other")]
@@ -26,19 +26,24 @@ public class BossController : MonoBehaviour
 	public bool isTouchingUp;
 	public bool isTouchingDown;
 	public bool isTouchingWall;
-	private bool goingUp = true;
+	public bool goingUp = true;
 	public Rigidbody2D enemyRB;
 	public bool facingLeft = false;
 	[HideInInspector] public bool bossActive = false;
 	public Transform firePoint;
 	public GameObject shotPrefab;
 	public int idleAngle;
+	private Animator anim;
 
 	private bool deflected = false;
 
 	public GameObject meleeHitbox;
 
-	private Node topNode;
+	
+	public enum BossState{IDLE, TAOE, AOE, TSHOOT, SHOOT, TMELEE, MELEE, TSPECIAL, SPECIAL}
+	public BossState bossState;
+
+	///private Node topNode;
 
 	void Awake()
 	{
@@ -48,11 +53,11 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		ConstructBehaviorTree();
         player = Manager.instance.player;
         idleMoveDirection.Normalize();
         attackMoveDirection.Normalize();
         enemyRB = GetComponent<Rigidbody2D>();
+		anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -61,6 +66,8 @@ public class BossController : MonoBehaviour
         isTouchingUp = Physics2D.OverlapCircle(groundCheckUp.position, groundCheckRadius, groundLayer);
         isTouchingDown = Physics2D.OverlapCircle(groundCheckDown.position, groundCheckRadius, groundLayer);
         isTouchingWall = Physics2D.OverlapCircle(groundCheckWall.position, groundCheckRadius, groundLayer);
+
+		anim.SetInteger("BossState", (int)bossState);
 
         //IdleState();
         //AOEState();
@@ -71,14 +78,14 @@ public class BossController : MonoBehaviour
         //FlipTowardsPlayer();
     }
 
-	private void ConstructBehaviorTree()
+	public void Shoot()
 	{
-		
+		GameObject bullet = Instantiate(shotPrefab, firePoint.position, firePoint.rotation);
 	}
 
-    public void SpecialState(Vector2 playerPosition)
-    {
-    	playerPosition.Normalize();
+	public void FacePlayer()
+	{
+		player.transform.position.Normalize();
 		if(player.transform.position.x > transform.position.x && facingLeft)
 		{
 			WallFlip();
@@ -87,6 +94,10 @@ public class BossController : MonoBehaviour
 		{
 			WallFlip();
 		}
+	}
+    public void SpecialState(Vector2 playerPosition)
+    {	
+		FacePlayer();
     	enemyRB.velocity = playerPosition * attackPlayerSpeed;
 
     	//make this state end once one of the ground checks is true
@@ -100,120 +111,14 @@ public class BossController : MonoBehaviour
     	Gizmos.DrawWireSphere(groundCheckWall.position, groundCheckRadius);
     }
 
-    public void IdleState()
-    {
-        ///Debug.Log("boss controller we should be movig");
-    	if(isTouchingUp && goingUp)
-    	{
-    		ChangeIdleDirection();
-    	}
-    	else if(isTouchingDown && !goingUp)
-    	{
-    		ChangeIdleDirection();
-    	}
-
-    	if(isTouchingWall)
-    	{
-    		if(facingLeft)
-    		{
-    			WallFlip();
-				//ChangeIdleDirection();
-    		}
-    		else if(!facingLeft)
-    		{
-				//ChangeIdleDirection();
-    			WallFlip();
-    		}
-    	}
-    	enemyRB.velocity = idleMoveSpeed * idleMoveDirection;
-    }
-
-    public void ShootState()
-    {
-    	GameObject bullet = Instantiate(shotPrefab, firePoint.position, firePoint.rotation);
-    }
-
-   public void MeleeState()
-    {
-    	meleeHitbox.SetActive(true);
-    }
-
-    public void AOEState()
-    {
-    	if(isTouchingUp && goingUp)
-    	{
-    		ChangeDirection();
-    	}
-    	else if(isTouchingDown && !goingUp)
-    	{
-    		ChangeDirection();
-    	}
-
-    	if(isTouchingWall)
-    	{
-    		if(facingLeft)
-    		{
-    			WallFlip();
-    		}
-    		else if(!facingLeft)
-    		{
-    			WallFlip();
-    		}
-    	}
-    	enemyRB.velocity = attackMoveSpeed * attackMoveDirection;
-    }
-
-    private void ChangeDirection()
-    {
-    	goingUp = !goingUp;
-    	//idleMoveDirection.y *= -1;
-		//put some kind of pause and squishing effect here. 
-    	attackMoveDirection.y *= -1;
-		if(idleMoveDirection.x > 0 && facingLeft)
-		{
-			CeilingFlip();
-			//facingLeft = !facingLeft;
-			//transform.Rotate(0,180,0);
-		}
-		else if(idleMoveDirection.x < 0 && !facingLeft)
-		{
-			CeilingFlip();
-			//facingLeft = !facingLeft;
-			//transform.Rotate(0,180,0);
-		}
-    }
-
-	private void ChangeIdleDirection()
-	{
-		goingUp = !goingUp;
-		float p = Random.Range(-1.0f, 1.0f);
-		//idleMoveDirection = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-		idleMoveDirection = new Vector2(p, idleMoveDirection.y * -1);
-		attackMoveDirection.y *= -1;
-
-		if(p > 0 && facingLeft)
-		{
-			CeilingFlip();
-			//facingLeft = !facingLeft;
-			//transform.Rotate(0,180,0);
-		}
-		else if(p < 0 && !facingLeft)
-		{
-			CeilingFlip();
-			//facingLeft = !facingLeft;
-			//transform.Rotate(0,180,0);
-		}
-
-		
-	}
-
-	private void CeilingFlip()
+	public void CeilingFlip()
 	{
 		facingLeft = !facingLeft;
+		attackMoveDirection.x *= -1;
 		transform.Rotate(0,180,0);
 	}
 
-    private void WallFlip()
+    public void WallFlip()
     {
 		//Debug.Log("Flipping " + idleMoveDirection.x);
     	facingLeft = !facingLeft;
@@ -260,11 +165,4 @@ public class BossController : MonoBehaviour
     	return 0;
     }
 
-	private void CalculateVertices()
-	{
-		//float distance = (transform.position - player.transform.position).magnitude;
-		//float l = Math.sqrt(Math.pow(distance, 2) + Math.pow(distance, 2) - (2 * distance * distance * Math.Cos(idleAngle)));
-
-
-	}
 }

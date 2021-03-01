@@ -38,7 +38,7 @@ public class AOEAction : FSMAction
         //if boss hp falls below 0, trigger death
         //if a cancel occurs, move to idle, 
         //else, Finish(Manager.instance.boss.DecideAttack())
-    	Manager.instance.boss.AOEState();
+    	//Manager.instance.boss.AOEState();
     	if(Manager.instance.boss.bossActive == false)
     	{
     		Finish(0);  //this will finish at neutral once the animation has run its course

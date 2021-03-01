@@ -1,40 +1,25 @@
 fileFormatVersion: 2
-guid: e395af02ca5e58f40875f491807c4e22
+guid: 9dfe6bb2b8f61234d812c8bb6d378b69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3851493575583471087
-    second: DealerIdle__0
+      213: -8481684527534126542
+    second: CybGamblerAttackRange_0
   - first:
-      213: 6989144447230199297
-    second: DealerIdle__1
+      213: -2413385546000588174
+    second: CybGamblerAttackRange_1
   - first:
-      213: -2828774289097001146
-    second: DealerIdle__2
+      213: -1313202210935927203
+    second: CybGamblerAttackRange_2
   - first:
-      213: -5571366728344543240
-    second: DealerIdle__3
+      213: 7537284365203906080
+    second: CybGamblerAttackRange_3
   - first:
-      213: 5789733040046834896
-    second: DealerIdle__4
+      213: 4408886702003239311
+    second: CybGamblerAttackRange_4
   - first:
-      213: 2778965387308711883
-    second: DealerIdle__5
-  - first:
-      213: -1893254147976533482
-    second: DealerIdle__6
-  - first:
-      213: 6542725114226205328
-    second: DealerIdle__7
-  - first:
-      213: 2340934620822868007
-    second: DealerIdle__8
-  - first:
-      213: 6395018255338016291
-    second: DealerIdle__9
-  - first:
-      213: -3107533757774578144
-    second: DealerIdle__10
+      213: -3485457813750704982
+    second: CybGamblerAttackRange_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -168,232 +153,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DealerIdle__0
+      name: CybGamblerAttackRange_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 5
-        width: 51
-        height: 65
+        x: 0
+        y: 0
+        width: 38
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe51a5b3001437530800000000000000
-      internalID: 3851493575583471087
+      spriteID: 23ac66f2cd00b4a80800000000000000
+      internalID: -8481684527534126542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DealerIdle__1
+      name: CybGamblerAttackRange_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 5
-        width: 51
-        height: 65
+        x: 118
+        y: 0
+        width: 67
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 106cc0d38dd6ef060800000000000000
-      internalID: 6989144447230199297
+      spriteID: 272a290f1aee18ed0800000000000000
+      internalID: -2413385546000588174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DealerIdle__2
+      name: CybGamblerAttackRange_2
       rect:
         serializedVersion: 2
-        x: 116
-        y: 5
-        width: 51
-        height: 65
+        x: 269
+        y: 0
+        width: 121
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6477d9485cc2eb8d0800000000000000
-      internalID: -2828774289097001146
+      spriteID: d5e08eafb8196cde0800000000000000
+      internalID: -1313202210935927203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DealerIdle__3
+      name: CybGamblerAttackRange_3
       rect:
         serializedVersion: 2
-        x: 169
-        y: 5
-        width: 51
-        height: 65
+        x: 518
+        y: 0
+        width: 83
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ffd79b9a778ea2b0800000000000000
-      internalID: -5571366728344543240
+      spriteID: 02e95172230d99860800000000000000
+      internalID: 7537284365203906080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DealerIdle__4
+      name: CybGamblerAttackRange_4
       rect:
         serializedVersion: 2
-        x: 222
-        y: 5
-        width: 51
-        height: 65
+        x: 657
+        y: 0
+        width: 97
+        height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d4855c4683495050800000000000000
-      internalID: 5789733040046834896
+      spriteID: f89b8df98138f2d30800000000000000
+      internalID: 4408886702003239311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DealerIdle__5
+      name: CybGamblerAttackRange_5
       rect:
         serializedVersion: 2
-        x: 275
-        y: 5
-        width: 51
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 862
+        y: 0
+        width: 38
+        height: 64
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcf34a1db4ed09620800000000000000
-      internalID: 2778965387308711883
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DealerIdle__6
-      rect:
-        serializedVersion: 2
-        x: 328
-        y: 5
-        width: 51
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61ae250226fc9b5e0800000000000000
-      internalID: -1893254147976533482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DealerIdle__7
-      rect:
-        serializedVersion: 2
-        x: 381
-        y: 5
-        width: 51
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 092ea7893dd6cca50800000000000000
-      internalID: 6542725114226205328
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DealerIdle__8
-      rect:
-        serializedVersion: 2
-        x: 434
-        y: 5
-        width: 51
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7209f8482abac7020800000000000000
-      internalID: 2340934620822868007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DealerIdle__9
-      rect:
-        serializedVersion: 2
-        x: 487
-        y: 5
-        width: 51
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32e8f81983bafb850800000000000000
-      internalID: 6395018255338016291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DealerIdle__10
-      rect:
-        serializedVersion: 2
-        x: 540
-        y: 5
-        width: 51
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02ebf400382dfd4d0800000000000000
-      internalID: -3107533757774578144
+      spriteID: aa497cbc59a21afc0800000000000000
+      internalID: -3485457813750704982
       vertices: []
       indices: 
       edges: []

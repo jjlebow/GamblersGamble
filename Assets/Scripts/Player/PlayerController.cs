@@ -137,6 +137,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioClip jumpNoise;
     public AudioClip neutralAttackSound;
+    public AudioClip doubleJumpNoise;
     [HideInInspector] public AudioSource audioSource;
 
 
@@ -740,9 +741,14 @@ public class PlayerController : MonoBehaviour
 
     private void StartJump()
     {
-        if(jumpSound)
+        if(jumpSound && availJumps > 0 && StateManager.instance.grounded)
         {
             audioSource.PlayOneShot(jumpNoise, 1.0f);
+            jumpSound = false;
+        }
+        else if(jumpSound && availJumps > 0 && StateManager.instance.grounded == false)
+        {
+            audioSource.PlayOneShot(doubleJumpNoise, 1.0f);
             jumpSound = false;
         }
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
