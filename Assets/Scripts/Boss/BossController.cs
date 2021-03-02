@@ -38,9 +38,12 @@ public class BossController : MonoBehaviour
 	private bool deflected = false;
 
 	public GameObject meleeHitbox;
+	public GameObject weakPoint;
+
+	[HideInInspector] public Collider2D hitInfo;
 
 	
-	public enum BossState{IDLE, TAOE, AOE, TSHOOT, SHOOT, TMELEE, MELEE, TSPECIAL, SPECIAL}
+	public enum BossState{IDLE, TAOE, AOE, TSHOOT, SHOOT, TMELEE, MELEE, TSPECIAL, SPECIAL, KNOCKBACK}
 	public BossState bossState;
 
 	///private Node topNode;
@@ -77,6 +80,11 @@ public class BossController : MonoBehaviour
         //}
         //FlipTowardsPlayer();
     }
+
+	void LateUpdate()
+	{
+		hitInfo = null;
+	}
 
 	public void Shoot()
 	{

@@ -15,7 +15,6 @@ public class BossStandingHitbox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void OnTriggerEnter2D(Collider2D hitInfo)
     {
@@ -25,12 +24,10 @@ public class BossStandingHitbox : MonoBehaviour
     	//if(hitParent.GetComponent<Damageable>() != null && hitParent.name == "Player")
     	if(hitInfo.gameObject.name == "Torso" || hitInfo.gameObject.name == "Legs")
     	{
-    		Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
+            //Debug.Log("we are getting hit");
+    		//Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
     		hitParent.GetComponent<Damageable>().PlayerCollisionDamage(damage, PublicFunctions.FindParent(this.transform).gameObject, hitParent.gameObject);
     	}
-        else if(hitInfo.gameObject.tag == "Weapon")
-        {
-            Debug.Log("HIT WITH A WEAPON");
-        }
+        Manager.instance.boss.hitInfo = hitInfo;
     }
 }
