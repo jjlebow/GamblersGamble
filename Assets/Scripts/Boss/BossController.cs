@@ -131,7 +131,7 @@ public class BossController : MonoBehaviour
 		//Debug.Log("Flipping " + idleMoveDirection.x);
     	facingLeft = !facingLeft;
     	idleMoveDirection.x *= -1;
-    	attackMoveDirection.x *= -1;
+    	//attackMoveDirection.x *= -1;   //we leave this out since the attack vectors are all relative to boss facing/position instead of global
     	transform.Rotate(0,180,0);
     }
 

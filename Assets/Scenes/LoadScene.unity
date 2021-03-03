@@ -21028,6 +21028,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6439083806101077911, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439083806101077911, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.03
+      objectReference: {fileID: 0}
     - target: {fileID: 6439083806631088393, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_Size.x
@@ -21133,7 +21143,7 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpNoise
       value: 
-      objectReference: {fileID: 8300000, guid: c8abf4cc092ae9f4ba72a0f2b90ec0b5, type: 3}
+      objectReference: {fileID: 8300000, guid: e7e2194f579d7554a954194a604984e1, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: jumpTimer
@@ -21178,7 +21188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: doubleJumpNoise
       value: 
-      objectReference: {fileID: 8300000, guid: 778c72041d7e00447b083d6ac3ba467c, type: 3}
+      objectReference: {fileID: 8300000, guid: fdc9eda2233ea0943b578b47264bcb1e, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: lowJumpMultiplier
@@ -21188,7 +21198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: neutralAttackSound
       value: 
-      objectReference: {fileID: 8300000, guid: 4e11f87c8ef31914b907010856f4501b, type: 3}
+      objectReference: {fileID: 8300000, guid: af59c76037a198248be50eeec3f888da, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: wasd.m_ExpectedControlType
@@ -21418,6 +21428,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439083807514439379, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439083807514439379, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.97
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb6a5464489498048b0fa455934980b6, type: 3}
@@ -26983,12 +27003,12 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 60928fa77e8f9f343be6e37f32c96d40, type: 3}
+      objectReference: {fileID: 8300000, guid: 9ea958a4ecbdf61438165298bc50aefb, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9fbaad83de6253d429388bc7966e3dc5, type: 3}
+      objectReference: {fileID: 8300000, guid: e80e363afc648004dba27ce048bef9ce, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[3].loop
@@ -27003,7 +27023,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: a83b223f0c54b83409d686f1ad22428d, type: 3}
+      objectReference: {fileID: 8300000, guid: 76947cc968d373147bb88c8275cd271b, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[4].loop
@@ -46958,6 +46978,8 @@ GameObject:
   - component: {fileID: 348571876972944073}
   - component: {fileID: 348571876972944078}
   - component: {fileID: 348571876972944079}
+  - component: {fileID: 348571876972944080}
+  - component: {fileID: 348571876972944081}
   m_Layer: 5
   m_Name: Confirm Button
   m_TagString: Untagged
@@ -47059,6 +47081,59 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 348571876972944080}
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &348571876972944080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348571876972944077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c2460020327f1e4283495bf6aa31bdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 434756c24a111784d8dab0bca0511e63, type: 3}
+  selectSound: {fileID: 8300000, guid: db0cae6df4dd403468f32a6277b64484, type: 3}
+--- !u!114 &348571876972944081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348571876972944077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 348571876972944080}
+          m_MethodName: PlaySelectSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &348571876988961845
 CanvasRenderer:
   m_ObjectHideFlags: 0
