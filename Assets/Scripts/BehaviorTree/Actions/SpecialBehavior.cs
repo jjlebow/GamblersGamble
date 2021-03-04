@@ -62,6 +62,7 @@ public class SpecialBehavior : Action
         if(boss.bossState == BossController.BossState.IDLE)
         {
             boss.weakPointEnabler.SetActive(false);
+            boss.weakPoint.SetActive(false);
             LeanTween.cancel(id);
             return TaskStatus.Success;
         }
