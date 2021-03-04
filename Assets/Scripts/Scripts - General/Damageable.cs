@@ -24,7 +24,7 @@ public class Damageable : MonoBehaviour
     		//Debug.Log("The type is: " + type);
     		if(type == "CriticalHitbox")
     		{
-    			Debug.Log("we have arrived at critical damage");
+    			Debug.Log("critical damage: " + damage * 2);
                 oldHealth = health;
     			health -= damage * 2;
                 if(isDrainable)
@@ -32,6 +32,7 @@ public class Damageable : MonoBehaviour
     		}
     		else if(type == "NormalHitbox")
     		{
+                Debug.Log("Normal Damage: " + damage);
                 oldHealth = health;
     			health -= damage;
                 if(isDrainable)
@@ -98,7 +99,7 @@ public class Damageable : MonoBehaviour
 
     public IEnumerator DamageWait()
     {
-    	yield return new WaitForSeconds(0.02f);
+    	yield return new WaitForSeconds(1f);
     	canDamage = true;
     }
 

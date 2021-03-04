@@ -13,8 +13,8 @@ public class BossController : MonoBehaviour
 	public float attackMoveSpeed;
 	public Vector2 attackMoveDirection;
 
-	[Header("AttackPlayer")]
-	public float attackPlayerSpeed;
+	//[Header("AttackPlayer")]
+	//public float attackPlayerSpeed;
 	private PlayerController player;
 
 	[Header("Other")]

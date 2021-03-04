@@ -17,7 +17,7 @@ public class SpecialBehavior : Action
         boss.FacePlayer();
         playerPos = Manager.instance.player.ceilingCheck.position;// - boss.transform.position;   //aims at the players head to lessen collisions with the environment this second part is if we dont want to leantween
         playerPos.Normalize();
-        id = LeanTween.move(boss.gameObject, new Vector2(playerPos.x * boss.attackPlayerSpeed, playerPos.y * boss.attackPlayerSpeed), 1f).setEase(LeanTweenType.easeInQuart).id; 
+        id = LeanTween.move(boss.gameObject, new Vector2(playerPos.x * 10, playerPos.y * 10), 0.7f).setEase(LeanTweenType.easeInQuart).id; 
         //boss.enemyRB.velocity = playerPos * boss.attackPlayerSpeed;  //this is our backup option if we dont want to leantween this
         //Debug.Log("we are entering aoe behavior");
         
@@ -32,13 +32,13 @@ public class SpecialBehavior : Action
             if(boss.hitInfo.tag == "Ground") //if we collide with ground
             {
                 LeanTween.cancel(id);
-                Debug.Log("this is hitting the ground");
+                //Debug.Log("this is hitting the ground");
                 return TaskStatus.Success;
             }
             if(boss.hitInfo.gameObject.tag == "Player")
             {
                 LeanTween.cancel(id);
-                Debug.Log("we are hitting the player");
+                //Debug.Log("we are hitting the player");
                 return TaskStatus.Success;
             }
             //else if we collide with player weapon
@@ -46,8 +46,8 @@ public class SpecialBehavior : Action
             else if(boss.hitInfo.gameObject.tag == "Weapon")
             {
                 LeanTween.cancel(id);
-                Debug.Log("we are hitting a weapon");
-                boss.WallFlip();
+                //Debug.Log("we are hitting a weapon");
+                //boss.WallFlip();
                 boss.enemyRB.velocity = new Vector2(0,0);
                 boss.weakPoint.SetActive(true);
                 boss.bossState = BossController.BossState.KNOCKBACK;

@@ -22,9 +22,10 @@ public class MeleeAttack : MonoBehaviour
     	Transform hitParent = hitInfo.transform;
     	hitParent = PublicFunctions.FindParent(hitParent);
     	//Debug.Log("we are colliding with " + tempName);
-    	if(hitParent.GetComponent<Damageable>() != null)
+    	if(hitParent.GetComponent<Damageable>() != null && hitInfo.tag != "Player")
     	{
-    		Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
+    		//Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
+            Debug.Log("this is the hitbox we are hitting: " + hitInfo.name);
     		hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder,  hitInfo.name, player.gameObject);
     	}
     }

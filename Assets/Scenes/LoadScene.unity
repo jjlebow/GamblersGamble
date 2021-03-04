@@ -21028,6 +21028,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6439083806078794851, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6439083806101077911, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21076,7 +21081,7 @@ PrefabInstance:
     - target: {fileID: 6439083806631088393, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2
+      value: 2.0625
       objectReference: {fileID: 0}
     - target: {fileID: 6439083806631088396, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
@@ -21092,6 +21097,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Offset.y
       value: -0.5389278
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439083806631088397, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439083806631088437, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
@@ -21347,12 +21357,12 @@ PrefabInstance:
     - target: {fileID: 6439083806820225327, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: -5.23
       objectReference: {fileID: 0}
     - target: {fileID: 6439083806820225327, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.49
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6439083806820225327, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
@@ -21399,6 +21409,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6439083807061244167, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6439083807075541001, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_IsActive
@@ -21432,7 +21447,7 @@ PrefabInstance:
     - target: {fileID: 6439083807514439379, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439083807514439379, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
@@ -34866,15 +34881,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51017f4fafbe59846843d13697461145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicAttack: 2
-  heavyAttack: 2
-  precisionAttack: 2
+  basicAttack: 10
+  heavyAttack: 0
+  precisionAttack: 0
   jump: 0
-  dash: 2
+  dash: 0
   backDash: 0
-  basicShot: 2
-  heavyShot: 2
-  precisionShot: 2
+  basicShot: 10
+  heavyShot: 0
+  precisionShot: 0
   storedKeys: 
   drawnCardsParent: {fileID: 348571876444929028}
   handParent: {fileID: 348571875816161938}
@@ -36685,7 +36700,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -36694,7 +36709,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.39258456
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
