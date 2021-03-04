@@ -21143,7 +21143,7 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpNoise
       value: 
-      objectReference: {fileID: 8300000, guid: e7e2194f579d7554a954194a604984e1, type: 3}
+      objectReference: {fileID: 8300000, guid: ce1a19a7cfc55d54e9e7b20f72004e61, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: jumpTimer
@@ -21188,7 +21188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: doubleJumpNoise
       value: 
-      objectReference: {fileID: 8300000, guid: fdc9eda2233ea0943b578b47264bcb1e, type: 3}
+      objectReference: {fileID: 8300000, guid: 701adb015021fbf49909d94fdfff1a40, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: lowJumpMultiplier
@@ -21198,7 +21198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: neutralAttackSound
       value: 
-      objectReference: {fileID: 8300000, guid: af59c76037a198248be50eeec3f888da, type: 3}
+      objectReference: {fileID: 8300000, guid: 131d2c37dbe2eb74b85ad38db0dc2fef, type: 3}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: wasd.m_ExpectedControlType
@@ -27003,12 +27003,12 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[2].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 9ea958a4ecbdf61438165298bc50aefb, type: 3}
+      objectReference: {fileID: 8300000, guid: 9fd6dbe6947fa224d82d7dad55a82bac, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[3].clip
       value: 
-      objectReference: {fileID: 8300000, guid: e80e363afc648004dba27ce048bef9ce, type: 3}
+      objectReference: {fileID: 8300000, guid: c6341fe26b98cae4f95754e1ca6c76f8, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[3].loop
@@ -27023,7 +27023,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 76947cc968d373147bb88c8275cd271b, type: 3}
+      objectReference: {fileID: 8300000, guid: 2382df7d1e3f7274182423de4395c666, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.data[4].loop
@@ -47105,7 +47105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 434756c24a111784d8dab0bca0511e63, type: 3}
-  selectSound: {fileID: 8300000, guid: db0cae6df4dd403468f32a6277b64484, type: 3}
+  selectSound: {fileID: 8300000, guid: 7174d13fbb8da834a92a00011711eb80, type: 3}
 --- !u!114 &348571876972944081
 MonoBehaviour:
   m_ObjectHideFlags: 0

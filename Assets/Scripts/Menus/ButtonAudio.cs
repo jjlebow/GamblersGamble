@@ -22,7 +22,7 @@ public class ButtonAudio : MonoBehaviour
     public void PlaySound()
     {
         source.clip = sound;
-        source.volume = 0.2f;
+        source.volume = 1f;
         source.playOnAwake = false;
     	source.PlayOneShot(sound);
     }
