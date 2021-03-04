@@ -6,45 +6,29 @@ public class Damageable : MonoBehaviour
 {
     [Range(0,100)] public int health;
     //this is to prevent multiple hitboxes from being hit at once
-    private bool canDamage = true;
+    private bool collisionDamageEventRaised = false;
     private float timer = 2.0f;  //timer before player can take damage again after being hit
     //public GameObject{?} death animation
     public bool isDrainable;
     int oldHealth;
     public IEnumerator temp = null;
+    private Dictionary<string, int> hitboxesHit = null;
+    private bool canDamage = true;
 
     //this is the damage function for any collision that isn't the player taking damage
-    public void TakeCollisionDamage(int damage, string type, GameObject attacker)
+    public void TakeCollisionDamage(int baseDamage, string type, GameObject attacker)
     {
-    	if(canDamage)
-    	{
-
-    		canDamage = false;
-    		StartCoroutine(DamageWait());
-    		//Debug.Log("The type is: " + type);
-    		if(type == "CriticalHitbox")
-    		{
-    			Debug.Log("critical damage: " + damage * 2);
-                oldHealth = health;
-    			health -= damage * 2;
-                if(isDrainable)
-                    attacker.GetComponent<Damageable>().health += ((oldHealth - health) * 2);
-    		}
-    		else if(type == "NormalHitbox")
-    		{
-                Debug.Log("Normal Damage: " + damage);
-                oldHealth = health;
-    			health -= damage;
-                if(isDrainable)
-                    attacker.GetComponent<Damageable>().health += (oldHealth - health);
-    		}
-    		//Debug.Log("damage taken: " + damage);
-    		if(health <=0)
-    		{	 
-    			Debug.Log(this.name + " has died");
-    			//destroy the gameobject here the same way we do a dart
-    		}
-    	}
+        if(!collisionDamageEventRaised)
+        {
+            hitboxesHit = new Dictionary<string, int>();
+            collisionDamageEventRaised = true;
+            StartCoroutine(CalculateDamage(attacker));
+        }
+        //canDamage = false;
+        //StartCoroutine(DamageWait());
+        //Debug.Log("The type is: " + type);
+        hitboxesHit[type] = baseDamage;
+        
     }
 
     //this is the damage function if the player takes collision damage
@@ -97,10 +81,49 @@ public class Damageable : MonoBehaviour
 
 
 
-    public IEnumerator DamageWait()
+    public IEnumerator CalculateDamage(GameObject attacker)
     {
-    	yield return new WaitForSeconds(1f);
-    	canDamage = true;
+        //Debug.Log("calling calculate damage");
+    	yield return new WaitForSeconds(0.1f);  //this is waiting on top to collect all hitboxes that were hit by the player during the attack
+        if(!hitboxesHit.ContainsKey("NormalHitbox"))
+        {
+            collisionDamageEventRaised = false;  //this handles scenarios where subsequent hitboxes that were activated are hit in the same action
+            //Debug.Log("thorwing away calculate damage");
+            yield break;
+        }
+        if(hitboxesHit.ContainsKey("CriticalHitbox"))
+        {
+            //Debug.Log("critical damage: " + hitboxesHit["CriticalHitbox"] * 2);
+            oldHealth = health;
+            health -= hitboxesHit["CriticalHitbox"] * 2;
+            if(isDrainable)
+                attacker.GetComponent<Damageable>().health += ((oldHealth - health) * 2);
+        }
+        else if(hitboxesHit.ContainsKey("CriticalEnablerHitbox"))
+        {
+            //Debug.Log("enabling critical hitbox");
+            Manager.instance.boss.weakPoint.SetActive(true);
+            //Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
+            oldHealth = health;
+            health -= hitboxesHit["NormalHitbox"];
+            if(isDrainable)
+                attacker.GetComponent<Damageable>().health += (oldHealth - health);
+        }
+        else
+        {
+            //Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
+            oldHealth = health;
+            health -= hitboxesHit["NormalHitbox"];
+            if(isDrainable)
+                attacker.GetComponent<Damageable>().health += (oldHealth - health);
+        }
+        //Debug.Log("damage taken: " + damage);
+        if(health <=0)
+        {	 
+            Debug.Log(this.name + " has died");
+            //destroy the gameobject here the same way we do a dart
+        }
+        collisionDamageEventRaised = false;
     }
 
     public IEnumerator KnockbackRoutine(Vector3 offender, Vector3 player)

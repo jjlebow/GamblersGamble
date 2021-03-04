@@ -16,7 +16,7 @@ public class SpecialAnimationBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Manager.instance.boss.SpecialState(playerPosition);
+        //Manager.instance.boss.SpecialState(playerPosition);
         //Debug.Log("this should happen multiple times");
     }
 

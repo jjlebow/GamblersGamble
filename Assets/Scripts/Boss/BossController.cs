@@ -39,6 +39,7 @@ public class BossController : MonoBehaviour
 
 	public GameObject meleeHitbox;
 	public GameObject weakPoint;
+	public GameObject weakPointEnabler;
 
 	[HideInInspector] public Collider2D hitInfo;
 
@@ -103,13 +104,6 @@ public class BossController : MonoBehaviour
 			WallFlip();
 		}
 	}
-    public void SpecialState(Vector2 playerPosition)
-    {	
-		FacePlayer();
-    	enemyRB.velocity = playerPosition * attackPlayerSpeed;
-
-    	//make this state end once one of the ground checks is true
-    }
 
     private void OnDrawGizmoSelected()
     {

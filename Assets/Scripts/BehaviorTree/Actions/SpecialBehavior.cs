@@ -49,7 +49,7 @@ public class SpecialBehavior : Action
                 //Debug.Log("we are hitting a weapon");
                 //boss.WallFlip();
                 boss.enemyRB.velocity = new Vector2(0,0);
-                boss.weakPoint.SetActive(true);
+                boss.weakPointEnabler.SetActive(true);
                 boss.bossState = BossController.BossState.KNOCKBACK;
                 if(boss.transform.position.x < Manager.instance.player.transform.position.x)
                     LeanTween.move(boss.gameObject, new Vector2(boss.transform.position.x - 1, boss.transform.position.y), 0.5f).setEase(LeanTweenType.easeOutSine);
@@ -61,7 +61,7 @@ public class SpecialBehavior : Action
         }
         if(boss.bossState == BossController.BossState.IDLE)
         {
-            boss.weakPoint.SetActive(false);
+            boss.weakPointEnabler.SetActive(false);
             LeanTween.cancel(id);
             return TaskStatus.Success;
         }
