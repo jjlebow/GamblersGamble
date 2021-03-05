@@ -47,6 +47,9 @@ public class BossController : MonoBehaviour
 	public enum BossState{IDLE, TAOE, AOE, TSHOOT, SHOOT, TMELEE, MELEE, TSPECIAL, SPECIAL, KNOCKBACK}
 	public BossState bossState;
 
+	public AudioSource audioSource;
+	public AudioClip hitNoise;
+
 	///private Node topNode;
 
 	void Awake()

@@ -609,7 +609,8 @@ public class PlayerController : MonoBehaviour
             hitParent = PublicFunctions.FindParent(hitInfo.transform);   //ensures that damage is applied to the highest parent of whatever was collided with
             if(hitParent.GetComponent<Damageable>() != null)
             {
-                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damageHolder, hitInfo.collider.name, this.gameObject);
+                //Might have to code a function in damageable specifically for raycasts
+                //hitParent.GetComponent<Damageable>().TakeCollisionDamage(damageHolder, hitInfo.collider.name, this.gameObject);
             }
         }
         else

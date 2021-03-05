@@ -12,10 +12,15 @@ public class Damageable : MonoBehaviour
     public bool isDrainable;
     int oldHealth;
     public IEnumerator temp = null;
-    private Dictionary<string, int> hitboxesHit = null;
+    private Dictionary<string, int> hitboxesHit = null;   //dictionary is not really necessary...
     private bool canDamage = true;
 
-    //this is the damage function for any collision that isn't the player taking damage
+    private const float WAITEDSECONDS = 0.03f;
+
+
+    
+
+    //this is the damage function for any collision that isn't the player taking damage (boss collisions)  
     public void TakeCollisionDamage(int baseDamage, string type, GameObject attacker)
     {
         if(!collisionDamageEventRaised)
@@ -28,7 +33,32 @@ public class Damageable : MonoBehaviour
         //StartCoroutine(DamageWait());
         //Debug.Log("The type is: " + type);
         hitboxesHit[type] = baseDamage;
-        
+    }
+
+    public void CalculateSingleDamage(int baseDamage, string type, GameObject attacker)
+    {
+        if(type == "CriticalHitbox")
+        {
+            Debug.Log("critical damage: " + baseDamage * 2);
+            oldHealth = health;
+            health -= baseDamage * 2;
+            if(isDrainable)
+                attacker.GetComponent<Damageable>().health += ((oldHealth - health) * 2);
+        }
+        else
+        {
+            Manager.instance.boss.audioSource.PlayOneShot(Manager.instance.boss.hitNoise, 1f);
+            Debug.Log("Normal Damage: " + baseDamage);
+            oldHealth = health;
+            health -= baseDamage;
+            if(isDrainable)
+                attacker.GetComponent<Damageable>().health += (oldHealth - health);
+        }
+        if(health <=0)
+        {	 
+            Debug.Log(this.name + " has died");
+            //destroy the gameobject here the same way we do a dart
+        }
     }
 
     //this is the damage function if the player takes collision damage
@@ -80,11 +110,18 @@ public class Damageable : MonoBehaviour
 
 
 
+    //this groups up the normalhitbox hit with the criticalEnabler hitbox. The critical enabler 
+    //then activates the critical hitbox so that it can be collected in a separate event. This 
+    //makes the critical collision its own event at first, so it doesnt register as a critical hit, 
+    //but then groups it with the normal hitbox in any subsequent hits which will allow critical damage to happen. 
+    //any group that does not contain normalhitbox is not counted as a hit. 
 
+    //Used for enabling a critical hitbox upon hitting a
+    //normal hitbox AND could also be used for hitboxes that overlap with normal hitboxes. Generally for melee.
     public IEnumerator CalculateDamage(GameObject attacker)
     {
         //Debug.Log("calling calculate damage");
-    	yield return new WaitForSeconds(0.1f);  //this is waiting on top to collect all hitboxes that were hit by the player during the attack
+    	yield return new WaitForSeconds(WAITEDSECONDS);  //this is waiting on top to collect all hitboxes that were hit by the player during the attack (some computers might run into a bug where they dont process frames fast enough given this short time)
         if(!hitboxesHit.ContainsKey("NormalHitbox"))
         {
             collisionDamageEventRaised = false;  //this handles scenarios where subsequent hitboxes that were activated are hit in the same action
@@ -93,7 +130,7 @@ public class Damageable : MonoBehaviour
         }
         if(hitboxesHit.ContainsKey("CriticalHitbox"))
         {
-            //Debug.Log("critical damage: " + hitboxesHit["CriticalHitbox"] * 2);
+            Debug.Log("critical damage: " + hitboxesHit["CriticalHitbox"] * 2);
             oldHealth = health;
             health -= hitboxesHit["CriticalHitbox"] * 2;
             if(isDrainable)
@@ -103,7 +140,8 @@ public class Damageable : MonoBehaviour
         {
             //Debug.Log("enabling critical hitbox");
             Manager.instance.boss.weakPoint.SetActive(true);
-            //Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
+            Manager.instance.boss.audioSource.PlayOneShot(Manager.instance.boss.hitNoise, 1f);
+            Debug.Log("Normal (Enabler) Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
             if(isDrainable)
@@ -111,7 +149,8 @@ public class Damageable : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
+            Manager.instance.boss.audioSource.PlayOneShot(Manager.instance.boss.hitNoise, 1f);
+            Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
             if(isDrainable)

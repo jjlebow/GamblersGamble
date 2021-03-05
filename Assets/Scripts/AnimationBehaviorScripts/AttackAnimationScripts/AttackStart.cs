@@ -9,8 +9,8 @@ public class AttackStart : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = Manager.instance.player;
-        if(player.intendedLayer == 0)
-            player.audioSource.PlayOneShot(player.neutralAttackSound, 1.0f);
+        //if(player.intendedLayer == 0)
+            //player.audioSource.PlayOneShot(player.neutralAttackSound, 1.0f);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

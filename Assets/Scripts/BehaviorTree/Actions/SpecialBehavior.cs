@@ -18,6 +18,7 @@ public class SpecialBehavior : Action
         playerPos = Manager.instance.player.ceilingCheck.position;// - boss.transform.position;   //aims at the players head to lessen collisions with the environment this second part is if we dont want to leantween
         playerPos.Normalize();
         id = LeanTween.move(boss.gameObject, new Vector2(playerPos.x * 10, playerPos.y * 10), 0.7f).setEase(LeanTweenType.easeInQuart).id; 
+        boss.weakPointEnabler.SetActive(true); //if weakpoint enabler is set to active, then in the damageable script, the weakpoint will be activated;
         //boss.enemyRB.velocity = playerPos * boss.attackPlayerSpeed;  //this is our backup option if we dont want to leantween this
         //Debug.Log("we are entering aoe behavior");
         
@@ -49,7 +50,7 @@ public class SpecialBehavior : Action
                 //Debug.Log("we are hitting a weapon");
                 //boss.WallFlip();
                 boss.enemyRB.velocity = new Vector2(0,0);
-                boss.weakPointEnabler.SetActive(true);
+                
                 boss.bossState = BossController.BossState.KNOCKBACK;
                 if(boss.transform.position.x < Manager.instance.player.transform.position.x)
                     LeanTween.move(boss.gameObject, new Vector2(boss.transform.position.x - 1, boss.transform.position.y), 0.5f).setEase(LeanTweenType.easeOutSine);

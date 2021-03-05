@@ -39,7 +39,7 @@ public class PrecisionShot : MonoBehaviour
         	hitParent = PublicFunctions.FindParent(hitParent);
         	if(hitParent.GetComponent<Damageable>() != null && StateManager.instance.charging == false)
         	{
-        		hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, shooter);
+        		//hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, shooter);
         		Destroy(gameObject);
         	}
         	else
