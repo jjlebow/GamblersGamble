@@ -14,9 +14,10 @@ public class Damageable : MonoBehaviour
     public IEnumerator temp = null;
     private Dictionary<string, int> hitboxesHit = null;   //dictionary is not really necessary...
     private bool canDamage = true;
+    private int knockbackID;
+    
 
     private const float WAITEDSECONDS = 0.03f;
-
 
     
 
@@ -76,15 +77,46 @@ public class Damageable : MonoBehaviour
             if(isDrainable)
                 offender.GetComponent<Damageable>().health += (oldHealth - health);
             canDamage = false;
-            temp = KnockbackRoutine(offender.transform.position, player.transform.position);
-            StartCoroutine(temp);
+
+            //StartKnockBack();
+
             if(health <= 0)
             {
                 StateManager.instance.ChangeState(StateManager.PlayerState.DEAD);
                 Debug.Log(this.name + " has died");
             }
+            else
+            {
+                temp = KnockbackRoutine(offender.transform.position, player.transform.position);
+
+                //enter a death animation or something
+                StartCoroutine(temp);
+            }
         }
     }
+    
+    private void StartKnockBack()
+    {
+        Vector3[] knockbackPath = new Vector3 [] 
+        {
+            new Vector3(this.transform.position.x, this.transform.position.y, 0), 
+            new Vector3(this.transform.position.x + 0.3f, this.transform.position.y + 1.5f),
+            new Vector3(this.transform.position.x + 0.3f, this.transform.position.y + 0.7f),
+            new Vector3(this.transform.position.x + 1.75f, this.transform.position.y)
+        };
+        StateManager.instance.ChangeState(StateManager.PlayerState.KNOCKBACK);
+        StateManager.instance.playerStatic = false;
+        knockbackID = (LeanTween.move(this.GetComponent<PlayerController>().gameObject, knockbackPath, 0.8f).setOnComplete(delegate(){StopKnockback();})).id;
+    }
+
+    public void StopKnockbackd()
+    {
+        StateManager.instance.playerStatic = false;
+        StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
+        canDamage = true;
+        LeanTween.cancel(knockbackID);
+    }
+
 
     public void StopKnockback()
     {
@@ -165,22 +197,24 @@ public class Damageable : MonoBehaviour
         collisionDamageEventRaised = false;
     }
 
+
     public IEnumerator KnockbackRoutine(Vector3 offender, Vector3 player)
     {
         var temp = timer;
+        StateManager.instance.playerStatic = true;
         Vector3 knockbackDir = new Vector3(0,0,0);
         Vector3 moveDir = (offender - player).normalized;
-        //Debug.Log("routine started");
+        Debug.Log("routine started");
 
         this.GetComponent<PlayerController>().m_Rigidbody2D.velocity = new Vector3(0,0,0); //setting current velocity to 0
         this.GetComponent<PlayerController>().m_Rigidbody2D.angularVelocity = 0f;
         //Debug.Log(this.GetComponent<PlayerController>().m_Rigidbody2D.velocity);
         if(moveDir.x <= 0)
-            knockbackDir = new Vector3(2,4, 0);
+            knockbackDir = new Vector3(6,6, 0);
         else
-            knockbackDir = new Vector3(-2,4, 0);
+            knockbackDir = new Vector3(-6,6, 0);
         
-        StateManager.instance.playerStatic = true;
+        
         StateManager.instance.ChangeState(StateManager.PlayerState.KNOCKBACK);
         //try to find a knockback equation that works here the rest of the physics here should work
         
@@ -188,23 +222,10 @@ public class Damageable : MonoBehaviour
 
         //this is the waiting between the time that we are immobilizzed from knockback and the time 
         //that we are invincible
-        while(temp > 0)
-        {
-            while(temp > timer * 0.6)
-            {
-                //Debug.Log("running");
-                temp -= Time.deltaTime;
-                //this.GetComponent<PlayerController>().m_Rigidbody2D.velocity = knockbackDir;
-                //this.GetComponent<PlayerController>().m_Rigidbody2D.AddForce(knockbackDir);
-                yield return null;
-            }
-            StateManager.instance.playerStatic = false;
-            StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
-            temp -= Time.deltaTime;
-            //play invincible animation during this time
-            yield return null;
-        }
-
+        yield return new WaitForSeconds(0.7f);
+        StateManager.instance.playerStatic = false;
+        StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
+        yield return new WaitForSeconds(1f); //this is your invincibility
         canDamage = true;
         
     }

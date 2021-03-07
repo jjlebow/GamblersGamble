@@ -275,6 +275,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //the rest of the Update functionality
+        
         Move(); 
         if (m_logInput){
          foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
@@ -833,9 +834,13 @@ public class PlayerController : MonoBehaviour
     {
         //sets movement vector to player input only while in BATTLE state, otherwise sets movement vector to 0,0
         Vector2 m;
-        if(Manager.instance.currentState == Manager.GameState.BATTLE && (!StateManager.instance.playerStatic || !StateManager.instance.grounded))
+        if(Manager.instance.currentState == Manager.GameState.BATTLE && !StateManager.instance.playerStatic)
         {
             m = new Vector2(move.x, move.y) * Time.deltaTime * runningSpeed;
+            if(m.x > 0 && StateManager.instance.faceRight == true)
+                Flip();
+            else if(move.x < 0 && StateManager.instance.faceRight == false)
+                Flip();
         }
         else
         {
@@ -843,10 +848,7 @@ public class PlayerController : MonoBehaviour
         }
         transform.Translate(m, Space.World);
         //this is done opposite to what you would expect since the sprites are flipped on the x axis in the editor's sprite renderer.
-        if(m.x > 0 && StateManager.instance.faceRight == true)
-            Flip();
-        else if(move.x < 0 && StateManager.instance.faceRight == false)
-            Flip();
+        
         if(m.x != 0f)
             StateManager.instance.walking = true;
         else
