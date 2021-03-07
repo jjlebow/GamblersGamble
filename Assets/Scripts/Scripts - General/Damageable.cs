@@ -39,7 +39,7 @@ public class Damageable : MonoBehaviour
     {
         if(type == "CriticalHitbox")
         {
-            Debug.Log("critical damage: " + baseDamage * 2);
+            Debug.Log("critical damage(single hitbox): " + baseDamage * 2);
             oldHealth = health;
             health -= baseDamage * 2;
             if(isDrainable)

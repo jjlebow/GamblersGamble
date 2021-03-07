@@ -1,0 +1,21 @@
+SPEAKER,CONVO,SPRITE,AUDIO,BACKGROUND
+,,,,
+MC,"Ah, the sounds of the city. The thud of the dice, the swish of the cards, the clack of the chips…",default,NONE,NONE
+,,,,
+MC,What have we here?,smirk,NONE,NONE
+,,,,
+B1,Mind your business.,default,NONE,NONE
+,,,,
+MC,"My business is to find one of you, and I did. Do you hear that?",smirk,NONE,NONE
+,,,,
+B1,Hear what?,default,NONE,NONE
+,,,,
+MC,My money jingling in your pocket.,smirk,NONE,NONE
+,,,,
+B1,That ain't yours.,default,NONE,NONE
+,,,,
+MC,"It was, and it's about to be mine again.",default,NONE,NONE
+,,,,
+B1,Why I oughta--!,angry,NONE,NONE
+,,,,
+MC,Too slow.,smirk,NONE,NONE
