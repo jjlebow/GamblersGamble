@@ -15,7 +15,7 @@ public class AttackBehavior : StateMachineBehaviour
         if(player.intendedLayer == 0)
         {
             player.neutralHitbox.SetActive(true);
-            player.audioSource.PlayOneShot(player.neutralAttackSound, 1.0f);
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.neutralAttackSound, 1.0f);
         }
         else if(player.intendedLayer == 1)
         {

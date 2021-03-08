@@ -135,10 +135,8 @@ public class PlayerController : MonoBehaviour
 
     //InputAction myAction = new InputAction(binding: "/*/<button>");
 
-    public AudioClip jumpNoise;
-    public AudioClip neutralAttackSound;
-    public AudioClip doubleJumpNoise;
-    [HideInInspector] public AudioSource audioSource;
+    
+
 
 
     private void Awake()
@@ -255,7 +253,6 @@ public class PlayerController : MonoBehaviour
     public void Start()
     {
         availJumps = numberOfJumps;
-        audioSource = GetComponent<AudioSource>();
         controls.PlayerInteract.Disable();  
     }
 
@@ -745,12 +742,12 @@ public class PlayerController : MonoBehaviour
     {
         if(jumpSound && availJumps > 0 && StateManager.instance.grounded)
         {
-            audioSource.PlayOneShot(jumpNoise, 1.0f);
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.jumpNoise, 1.0f);
             jumpSound = false;
         }
         else if(jumpSound && availJumps > 0 && StateManager.instance.grounded == false)
         {
-            audioSource.PlayOneShot(doubleJumpNoise, 1.0f);
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.doubleJumpNoise, 1.0f);
             jumpSound = false;
         }
         if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)

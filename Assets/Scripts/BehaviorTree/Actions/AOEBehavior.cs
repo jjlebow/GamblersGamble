@@ -43,12 +43,14 @@ public class AOEBehavior : Action
 		if(boss.isTouchingWall)
 		{
 			//Debug.Log(boss.attackMoveDirection.x * boss.attackMoveSpeed);
+			AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.crashNoise, 1f);
 			LeanTween.cancel(id);
 			boss.WallFlip();
 			id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInQuart).id;
 		}
 		if(boss.isTouchingUp && boss.goingUp)
 		{
+			AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.crashNoise, 1f);
 			//Debug.Log("we are touching up");
 			LeanTween.cancel(id);
 			ChangeDirection();
@@ -57,6 +59,7 @@ public class AOEBehavior : Action
 		}
 		else if(boss.isTouchingDown && !boss.goingUp)
 		{
+			AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.crashNoise, 1f);
 			//Debug.Log("boss is touching down");
 			LeanTween.cancel(id);
 			ChangeDirection();

@@ -20,6 +20,16 @@ public class AudioManager : MonoBehaviour
     [HideInInspector]
     public Sound currentEffect = null;
 
+
+    //SFX
+    [HideInInspector] public AudioSource audioSource;
+    public AudioClip hitNoise;
+
+    public AudioClip jumpNoise;
+    public AudioClip neutralAttackSound;
+    public AudioClip doubleJumpNoise;
+    public AudioClip crashNoise;
+
     void Awake()
     {
         if(instance == null)
@@ -29,6 +39,8 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        audioSource = GetComponent<AudioSource>();
         
         DontDestroyOnLoad(gameObject);
         foreach(Sound track in sounds)  //sets all initial values of audio source to be whats in inspector when those sounds are played

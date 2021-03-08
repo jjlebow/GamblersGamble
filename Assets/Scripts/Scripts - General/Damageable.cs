@@ -48,7 +48,7 @@ public class Damageable : MonoBehaviour
         }
         else
         {
-            Manager.instance.boss.audioSource.PlayOneShot(Manager.instance.boss.hitNoise, 1f);
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.hitNoise, 1f);
             Debug.Log("Normal Damage: " + baseDamage);
             oldHealth = health;
             health -= baseDamage;
@@ -172,7 +172,7 @@ public class Damageable : MonoBehaviour
         {
             //Debug.Log("enabling critical hitbox");
             Manager.instance.boss.weakPoint.SetActive(true);
-            Manager.instance.boss.audioSource.PlayOneShot(Manager.instance.boss.hitNoise, 1f);
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.hitNoise, 1f);
             Debug.Log("Normal (Enabler) Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
@@ -181,7 +181,7 @@ public class Damageable : MonoBehaviour
         }
         else
         {
-            Manager.instance.boss.audioSource.PlayOneShot(Manager.instance.boss.hitNoise, 1f);
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.hitNoise, 1f);
             Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
