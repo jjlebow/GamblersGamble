@@ -37,7 +37,7 @@ public class ShootAction : FSMAction
         else
         {
             animator.SetTrigger(triggerName);
-            StateManager.instance.playerStatic = false;
+            StateManager.instance.playerStatic = true;
             //if(StateManager.instance.walking == false)
                 //legAnimator.SetTrigger(triggerName);
         }

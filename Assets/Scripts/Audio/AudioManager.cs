@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip doubleJumpNoise;
     public AudioClip crashNoise;
     public AudioClip dashSound;
+    public AudioClip knifeThrowSound;
 
     void Awake()
     {

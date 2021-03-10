@@ -33,12 +33,16 @@ public class SpecialBehavior : Action
             if(boss.hitInfo.tag == "Ground") //if we collide with ground
             {
                 LeanTween.cancel(id);
+                boss.weakPointEnabler.SetActive(false);
+                boss.weakPoint.SetActive(false);
                 //Debug.Log("this is hitting the ground");
                 return TaskStatus.Success;
             }
             if(boss.hitInfo.gameObject.tag == "Player")
             {
                 LeanTween.cancel(id);
+                boss.weakPointEnabler.SetActive(false);
+                boss.weakPoint.SetActive(false);
                 //Debug.Log("we are hitting the player");
                 return TaskStatus.Success;
             }

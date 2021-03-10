@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Dart : MonoBehaviour
 {
-	public float speed = 5f;
+	public float speed;
 	public Rigidbody2D rb;         
     [HideInInspector] public int damage;
     public GameObject shooter;
+    private Animator animator;
 	//public GameObject impactEffect; // a prefab in here to make an impact effect or destroy effect
 
 
@@ -15,7 +16,8 @@ public class Dart : MonoBehaviour
     void Start()
     {
         //rb = GetComponent<Rigidbody2D>();
-    	rb.velocity = -transform.right * speed;
+    	rb.velocity = transform.right * speed;
+        animator = GetComponent<Animator>();
 
     }
 
@@ -34,12 +36,13 @@ public class Dart : MonoBehaviour
                     break;
             }
             */
+            rb.velocity = new Vector3(0,0,0);
             hitParent = PublicFunctions.FindParent(hitParent);
             if(hitParent.GetComponent<Damageable>() != null)
             {
-                //hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, shooter);  //this uses the player and the collision in the damage formula
-                Destroy(gameObject);
+                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, shooter);  //this uses the player and the collision in the damage formula
             }
+            animator.SetTrigger("Despawn");
         }
         
     	//play animation for bullet falling out (impact effect);

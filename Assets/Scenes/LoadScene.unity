@@ -21458,7 +21458,12 @@ PrefabInstance:
     - target: {fileID: 6439083807061244167, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439083807061244167, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6439083807075541001, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
@@ -27110,6 +27115,11 @@ PrefabInstance:
       propertyPath: doubleJumpNoise
       value: 
       objectReference: {fileID: 8300000, guid: 701adb015021fbf49909d94fdfff1a40, type: 3}
+    - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
+        type: 3}
+      propertyPath: knifeThrowSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 334a489e1cc22a04c9b86b22eae3694a, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: sounds.Array.size

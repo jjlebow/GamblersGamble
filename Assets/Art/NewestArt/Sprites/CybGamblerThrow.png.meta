@@ -1,7 +1,25 @@
 fileFormatVersion: 2
 guid: 1504da3901bbd6d40a20e7397ef85cf2
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2693661560126393632
+    second: CybGamblerThrow_0
+  - first:
+      213: -1058643013056084251
+    second: CybGamblerThrow_1
+  - first:
+      213: -8293581662407893597
+    second: CybGamblerThrow_2
+  - first:
+      213: -1066499293623759003
+    second: CybGamblerThrow_3
+  - first:
+      213: -2567117735333900896
+    second: CybGamblerThrow_4
+  - first:
+      213: 6761497061579833051
+    second: CybGamblerThrow_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -133,7 +151,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: CybGamblerThrow_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 13
+        width: 45
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2ba8b25113e9ad0800000000000000
+      internalID: -2693661560126393632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CybGamblerThrow_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 13
+        width: 43
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6c7ded9c1fe41f0800000000000000
+      internalID: -1058643013056084251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CybGamblerThrow_2
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 13
+        width: 91
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3addb785b6747ec80800000000000000
+      internalID: -8293581662407893597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CybGamblerThrow_3
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 13
+        width: 73
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56fc9520b880331f0800000000000000
+      internalID: -1066499293623759003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CybGamblerThrow_4
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 13
+        width: 69
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad41d85504cf5cd0800000000000000
+      internalID: -2567117735333900896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CybGamblerThrow_5
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 13
+        width: 48
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bde3059e0c9a5dd50800000000000000
+      internalID: 6761497061579833051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
