@@ -35,6 +35,9 @@ public class IdleAction : FSMAction
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead,
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
+        if(StateManager.instance.currentState != StateManager.PlayerState.IDLE)
+            if(StateManager.instance.DI == true)
+                StateManager.instance.playerStatic = false;
         if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
             Finish(7);
         if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
