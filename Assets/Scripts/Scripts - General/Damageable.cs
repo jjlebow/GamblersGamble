@@ -204,15 +204,15 @@ public class Damageable : MonoBehaviour
         StateManager.instance.playerStatic = true;
         Vector3 knockbackDir = new Vector3(0,0,0);
         Vector3 moveDir = (offender - player).normalized;
-        Debug.Log("routine started");
+        //this.GetComponent<PlayerController>().m_Rigidbody2D.gravityScale = 0f;
 
         this.GetComponent<PlayerController>().m_Rigidbody2D.velocity = new Vector3(0,0,0); //setting current velocity to 0
         this.GetComponent<PlayerController>().m_Rigidbody2D.angularVelocity = 0f;
         //Debug.Log(this.GetComponent<PlayerController>().m_Rigidbody2D.velocity);
         if(moveDir.x <= 0)
-            knockbackDir = new Vector3(6,6, 0);
+            knockbackDir = new Vector3(4,6, 0);
         else
-            knockbackDir = new Vector3(-6,6, 0);
+            knockbackDir = new Vector3(-4,6, 0);
         
         
         StateManager.instance.ChangeState(StateManager.PlayerState.KNOCKBACK);
@@ -223,6 +223,7 @@ public class Damageable : MonoBehaviour
         //this is the waiting between the time that we are immobilizzed from knockback and the time 
         //that we are invincible
         yield return new WaitForSeconds(0.7f);
+        //this.GetComponent<PlayerController>().m_Rigidbody2D.gravityScale = 1f;
         StateManager.instance.playerStatic = false;
         StateManager.instance.ChangeState(StateManager.PlayerState.IDLE);
         yield return new WaitForSeconds(1f); //this is your invincibility
