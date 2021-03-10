@@ -65,6 +65,8 @@ public class Deck : MonoBehaviour
         discardPile = new List<Card>();
         shop = new List<Card>();
         
+
+
         for(int i = 0; i < basicAttack; i++)
         {
             deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,1));
@@ -114,7 +116,16 @@ public class Deck : MonoBehaviour
         shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,2));
         shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,2));
         shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,1));
-        
+
+     
+        // test code serialization
+        // Card testCard = GenerateCard("Attack", "Art/sword_icon", 5, 7,1);
+        // string testCardJson = JsonUtility.ToJson(testCard);
+        // Debug.Log(testCardJson);
+        // Card testCard2 = JsonUtility.FromJson<Card>(testCardJson);
+        // Debug.Log(testCard2);
+
+
         handCards = handParent.GetComponentsInChildren<CardSlot>();
         drawnCards = drawnCardsParent.GetComponentsInChildren<CardSlot>();
         deckUI = deckUIParent.GetComponentsInChildren<CardSlot>();
@@ -122,6 +133,7 @@ public class Deck : MonoBehaviour
         shopDeckUI = shopDeckUIParent.GetComponentsInChildren<CardSlot>();
         discardUI = discardUIParent.GetComponentsInChildren<CardSlot>();
         Shuffle(deckOfCards);
+
     }
 
     //instantiate the default deck to have 10 attack cards
