@@ -443,7 +443,7 @@ public class PlayerController : MonoBehaviour
             TurnOffLayers();
 
             StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
-            dashID = LeanTween.move(gameObject, gameObject.transform.TransformPoint(new Vector3(3,0, 0)), 0.5f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){DashFinish();}).id;
+            dashID = LeanTween.move(gameObject, gameObject.transform.TransformPoint(new Vector3(3f,0, 0)), 0.3f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){DashFinish();}).id;
             StateManager.instance.playerStatic = true;
         }
     }

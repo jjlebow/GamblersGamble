@@ -55,7 +55,8 @@ public class DashAction : FSMAction
         if(StateManager.instance.currentState != StateManager.PlayerState.DASH)
         {
             LeanTween.cancel(Manager.instance.player.dashID);
-            StateManager.instance.playerStatic = false;  //this allows a frame of adjusting the velocity before we move into knockback which will alter the results. (only from dash)
+            if(StateManager.instance.DI == true)
+                StateManager.instance.playerStatic = false;  //this allows a frame of adjusting the velocity before we move into knockback which will alter the results. (only from dash)
             if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
         	    Finish(7);
             if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)

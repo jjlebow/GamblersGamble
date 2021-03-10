@@ -31,6 +31,8 @@ public class WalkAction : FSMAction
 
     public override void OnUpdate()
     {
+        if(StateManager.instance.DI == true)
+            StateManager.instance.playerStatic = false;
         if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
             Finish(7);
         if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
