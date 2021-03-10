@@ -29,6 +29,9 @@ public class DashAction : FSMAction
     {
         //there needs to be logic here to determine what animation each body 
         //part plays
+        animator.SetTrigger(triggerName);
+        /*
+        
         if(StateManager.instance.dashDirection == true)
         {
             //Debug.Log(triggerName2);
@@ -40,6 +43,7 @@ public class DashAction : FSMAction
             //if(StateManager.instance.walking == false)
                 //legAnimator.SetTrigger(triggerName);
         }
+        */
     }
 
     public override void OnUpdate()
@@ -47,12 +51,15 @@ public class DashAction : FSMAction
         //if we enter knockback, or if hte attack finishes, then we 
         //set the finishEvent to knockback or whatever and transition there instead,
         //and if we are leaving the full animation early, the we change the "attacking variable to 'false' on leaving
-        if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
-        	Finish(7);
-        if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
-        	Finish(5);
+
         if(StateManager.instance.currentState != StateManager.PlayerState.DASH)
         {
+            LeanTween.cancel(Manager.instance.player.dashID);
+            StateManager.instance.playerStatic = false;  //this allows a frame of adjusting the velocity before we move into knockback which will alter the results. (only from dash)
+            if(StateManager.instance.currentState == StateManager.PlayerState.DEAD)
+        	    Finish(7);
+            if(StateManager.instance.currentState == StateManager.PlayerState.KNOCKBACK)
+        	    Finish(5);
         	if(StateManager.instance.currentState == StateManager.PlayerState.SHOOT)
          		Finish(4);
         	if(StateManager.instance.currentState == StateManager.PlayerState.MELEE)

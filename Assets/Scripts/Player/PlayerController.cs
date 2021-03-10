@@ -131,6 +131,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool m_logInput = false;
 
+    public int dashID;
+    private bool canDash = true;
+    [SerializeField] private float dashCooldown = 3f;
+
     //[SerializeField] bool m_logInput = false;
 
     //InputAction myAction = new InputAction(binding: "/*/<button>");
@@ -149,6 +153,7 @@ public class PlayerController : MonoBehaviour
 
         controls.PlayerControls.Jump.started += context => jumpPressed = true;
         controls.PlayerControls.Jump.canceled += context => jumpPressed = false;
+        controls.PlayerControls.Dash.performed += context => Dash();
         controls.PlayerMovement.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.PlayerMovement.Move.canceled += ctx => move = Vector2.zero;
         controls.PlayerMovement.OpenCards.performed += ctx => OpenCards();
@@ -428,40 +433,35 @@ public class PlayerController : MonoBehaviour
         //anim.SetBool("Landing", false);    //ensures that landing animation is not true for any frame past the frame that the character lands
     }
 
-    public void Dash(int damage)
+    public void Dash()
     {
-        TurnOffLayers();
-        //StartCoroutine(DashRoutine());
-        m_Rigidbody2D.velocity = new Vector3(0,0,0);
-        /*if(StateManager.instance.faceRight)
-            m_Rigidbody2D.velocity = new Vector3(10,0,0);
-        else
-            m_Rigidbody2D.velocity = new Vector3(-10,0,0);
-            */
-        StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
-        StateManager.instance.playerStatic = true;
-        m_Rigidbody2D.gravityScale = 0f;
-        StateManager.instance.dashDirection = true;
+        if(canDash)
+        {
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.dashSound, 1f);
+            canDash = false;
+            StartCoroutine(DashTimer());      //starts timer for when new dash can be used again
+            TurnOffLayers();
+
+            StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
+            dashID = LeanTween.move(gameObject, gameObject.transform.TransformPoint(new Vector3(3,0, 0)), 0.5f).setEase(LeanTweenType.easeOutSine).setOnComplete(delegate(){DashFinish();}).id;
+            StateManager.instance.playerStatic = true;
+        }
     }
 
-    public void BackDash(int damage)
+    public void DashFinish()
     {
-        TurnOffLayers();
-        //StartCoroutine(BackDashRoutine());
-        isDashing = true;
-        m_Rigidbody2D.velocity = new Vector3(0,0,0);
-        /*
-        if(StateManager.instance.faceRight)
-            m_Rigidbody2D.velocity = new Vector3(-10,0,0);
-        else
-            m_Rigidbody2D.velocity = new Vector3(10,0,0);
-            */
-        StateManager.instance.ChangeState(StateManager.PlayerState.DASH);
-        StateManager.instance.playerStatic = true;
-        m_Rigidbody2D.gravityScale = 0f;
-        StateManager.instance.dashDirection = false;
+        StateManager.instance.RevertState();
+        StateManager.instance.playerStatic = false;
+        m_Rigidbody2D.velocity = new Vector3(0,0,0);   //resets player's current acceleration and velocity at the end of a dash
     }
 
+    private IEnumerator DashTimer()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+
+/*
     public IEnumerator DashRoutine()
     {
         float temp = dashTimer;
@@ -485,6 +485,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator BackDashRoutine()
     {
+        
         float temp = dashTimer;
         m_Rigidbody2D.gravityScale = 0f;
         m_Rigidbody2D.velocity = new Vector3(0,0,0);
@@ -503,10 +504,13 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody2D.velocity = new Vector3(0,0,0);
         m_Rigidbody2D.gravityScale = 1f;
     }
+    */
 
     private void FixedUpdate()
     {
         RaycastCheckUpdateGround();
+
+        //Jump Stuff
         if(jumpPressed)
         {
             StartJump();
@@ -524,10 +528,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        //Dash Stuff
 
 
-
-
+    /*
         if(StateManager.instance.currentState == StateManager.PlayerState.DASH)
             {
                 if(tempTimer > 0)
@@ -560,6 +564,7 @@ public class PlayerController : MonoBehaviour
                 m_Rigidbody2D.gravityScale = 1f;
                 //Debug.Log("cancelling");
             }
+            */
 
         
     }

@@ -21217,6 +21217,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439083806820225320, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
       propertyPath: runningSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -27075,6 +27080,16 @@ PrefabInstance:
       propertyPath: hitNoise
       value: 
       objectReference: {fileID: 8300000, guid: 0929ade8ee0fee6428dfa72d4f113f69, type: 3}
+    - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
+        type: 3}
+      propertyPath: DashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2bb6be51149f6be45943086513331c0e, type: 3}
+    - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
+        type: 3}
+      propertyPath: dashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 696841a698039284ab9a979389733de8, type: 3}
     - target: {fileID: 9075026003706110798, guid: f5ea833850a73434ea8d738611a0c346,
         type: 3}
       propertyPath: jumpNoise

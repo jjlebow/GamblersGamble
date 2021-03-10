@@ -15,7 +15,7 @@ public class AOEBehavior : Action
         boss = Manager.instance.boss;
         boss.FacePlayer();
 		//Debug.Log(boss.attackMoveDirection.x * boss.attackMoveSpeed);
-		id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInQuart).id;
+		id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInExpo).id;
 		AOEState();
 		
         //Debug.Log("we are entering aoe behavior");
@@ -46,7 +46,7 @@ public class AOEBehavior : Action
 			AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.crashNoise, 1f);
 			LeanTween.cancel(id);
 			boss.WallFlip();
-			id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInQuart).id;
+			id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInExpo).id;
 		}
 		if(boss.isTouchingUp && boss.goingUp)
 		{
@@ -54,7 +54,7 @@ public class AOEBehavior : Action
 			//Debug.Log("we are touching up");
 			LeanTween.cancel(id);
 			ChangeDirection();
-			id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInQuart).id;
+			id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInExpo).id;
 
 		}
 		else if(boss.isTouchingDown && !boss.goingUp)
@@ -63,7 +63,7 @@ public class AOEBehavior : Action
 			//Debug.Log("boss is touching down");
 			LeanTween.cancel(id);
 			ChangeDirection();
-			id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInQuart).id;
+			id = LeanTween.move(boss.gameObject, boss.transform.TransformPoint(new Vector3(boss.attackMoveDirection.x * boss.attackMoveSpeed, boss.attackMoveDirection.y * boss.attackMoveSpeed, 0)), 0.7f).setEase(LeanTweenType.easeInExpo).id;
 
 		}
 		

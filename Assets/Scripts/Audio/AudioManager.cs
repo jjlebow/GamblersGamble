@@ -29,6 +29,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip neutralAttackSound;
     public AudioClip doubleJumpNoise;
     public AudioClip crashNoise;
+    public AudioClip dashSound;
 
     void Awake()
     {
