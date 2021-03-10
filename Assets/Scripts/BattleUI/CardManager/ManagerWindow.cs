@@ -43,7 +43,7 @@ public class ManagerWindow : EditorWindow
         return newCard;
     }
 
-    public static Card SaveCard()
+    public void SaveCard()
     {
         Debug.Log("Saving Card JSON");
         string testCardJson = JsonUtility.ToJson(testCard);
