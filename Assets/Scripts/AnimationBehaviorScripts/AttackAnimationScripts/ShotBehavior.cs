@@ -16,9 +16,9 @@ public class ShotBehavior : StateMachineBehaviour
         {
             AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.knifeThrowSound, 1.0f);
             GameObject dart = Instantiate(player.bulletPrefab, player.firePoint.position, player.firePoint.rotation);
-            //dart.transform.parent = player.transform;  //this connects it to the player for damage reasons
+            dart.transform.parent = player.transform;  //this connects it to the player for damage reasons
             dart.GetComponent<Dart>().damage = player.damageHolder;
-            dart.GetComponent<Dart>().shooter = player.gameObject;
+            //dart.GetComponent<Dart>().shooter = player.gameObject;
         }
         else if(player.intendedLayer == 1)
         {

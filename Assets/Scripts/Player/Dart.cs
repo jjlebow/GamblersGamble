@@ -7,7 +7,7 @@ public class Dart : MonoBehaviour
 	public float speed;
 	public Rigidbody2D rb;         
     [HideInInspector] public int damage;
-    public GameObject shooter;
+    //public GameObject shooter;
     private Animator animator;
 	//public GameObject impactEffect; // a prefab in here to make an impact effect or destroy effect
 
@@ -36,13 +36,15 @@ public class Dart : MonoBehaviour
                     break;
             }
             */
+            //transform.parent = hitInfo.transform; //parents the dart to the collision object so that it moves with it during its despawn animation
             rb.velocity = new Vector3(0,0,0);
             hitParent = PublicFunctions.FindParent(hitParent);
             if(hitParent.GetComponent<Damageable>() != null)
             {
-                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, shooter);  //this uses the player and the collision in the damage formula
+                hitParent.GetComponent<Damageable>().TakeCollisionDamage(damage, hitInfo.name, this.gameObject);  //this uses the player and the collision in the damage formula
             }
             animator.SetTrigger("Despawn");
+            
         }
         
     	//play animation for bullet falling out (impact effect);

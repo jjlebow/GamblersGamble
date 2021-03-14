@@ -32,7 +32,9 @@ public class SpecialBehavior : Action
         {
             if(boss.hitInfo.tag == "Ground") //if we collide with ground
             {
+                Debug.Log("hitting ground");
                 LeanTween.cancel(id);
+                boss.enemyRB.velocity = new Vector3(0,0,0);
                 boss.weakPointEnabler.SetActive(false);
                 boss.weakPoint.SetActive(false);
                 //Debug.Log("this is hitting the ground");

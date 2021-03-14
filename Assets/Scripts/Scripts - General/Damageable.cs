@@ -15,6 +15,7 @@ public class Damageable : MonoBehaviour
     private Dictionary<string, int> hitboxesHit = null;   //dictionary is not really necessary...
     private bool canDamage = true;
     private int knockbackID;
+    public ParticleSystem particleEffects;
     
 
     private const float WAITEDSECONDS = 0.03f;
@@ -40,20 +41,22 @@ public class Damageable : MonoBehaviour
     {
         if(type == "CriticalHitbox")
         {
+            SpawnParticles(attacker);
             Debug.Log("critical damage(single hitbox): " + baseDamage * 2);
             oldHealth = health;
             health -= baseDamage * 2;
             if(isDrainable)
-                attacker.GetComponent<Damageable>().health += ((oldHealth - health) * 2);
+                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += ((oldHealth - health) * 2);
         }
         else
         {
+            SpawnParticles(attacker);
             AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.hitNoise, 1f);
-            Debug.Log("Normal Damage: " + baseDamage);
+            Debug.Log("Normal Damage(singleHitbox): " + baseDamage);
             oldHealth = health;
             health -= baseDamage;
             if(isDrainable)
-                attacker.GetComponent<Damageable>().health += (oldHealth - health);
+                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
         }
         if(health <=0)
         {	 
@@ -162,31 +165,35 @@ public class Damageable : MonoBehaviour
         }
         if(hitboxesHit.ContainsKey("CriticalHitbox"))
         {
+            SpawnParticles(attacker);
             Debug.Log("critical damage: " + hitboxesHit["CriticalHitbox"] * 2);
             oldHealth = health;
             health -= hitboxesHit["CriticalHitbox"] * 2;
             if(isDrainable)
-                attacker.GetComponent<Damageable>().health += ((oldHealth - health) * 2);
+                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += ((oldHealth - health) * 2);
         }
         else if(hitboxesHit.ContainsKey("CriticalEnablerHitbox"))
         {
             //Debug.Log("enabling critical hitbox");
+            SpawnParticles(attacker);
             Manager.instance.boss.weakPoint.SetActive(true);
             AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.hitNoise, 1f);
             Debug.Log("Normal (Enabler) Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
             if(isDrainable)
-                attacker.GetComponent<Damageable>().health += (oldHealth - health);
+                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
         }
         else
         {
+            //Instantiate hitparticle here:;
+            SpawnParticles(attacker);
             AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.hitNoise, 1f);
             Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
             if(isDrainable)
-                attacker.GetComponent<Damageable>().health += (oldHealth - health);
+                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
         }
         //Debug.Log("damage taken: " + damage);
         if(health <=0)
@@ -229,5 +236,14 @@ public class Damageable : MonoBehaviour
         yield return new WaitForSeconds(1f); //this is your invincibility
         canDamage = true;
         
+    }
+
+    private void SpawnParticles(GameObject collider)  //way to optimize: have one disabled particle emitter that gets enabled at the appropriate position, shoots out its particles, and then disappears again. 
+    {
+        Debug.Log("here is this position " + this.transform.position);
+        Debug.Log("here is another position " + collider.transform.position);
+        particleEffects.transform.position = (this.transform.position + collider.transform.position)/2;
+        particleEffects.GetComponent<ParticleSystem>().Play();
+        //Destroy(clone, 1f);
     }
 }
