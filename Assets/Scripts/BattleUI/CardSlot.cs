@@ -11,6 +11,7 @@ public class CardSlot : MonoBehaviour
     public string keyCode;
     public Image bindIcon;
     public int quantity;
+    public List<string> keyBinding;
     public TextMeshProUGUI cardQuantity;
 
     private float timer = 0.2f;

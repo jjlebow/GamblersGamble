@@ -250,6 +250,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &10869373
 MonoBehaviour:
@@ -810,6 +811,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &51005906
 MonoBehaviour:
@@ -1055,6 +1057,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &52162833
 MonoBehaviour:
@@ -1222,6 +1225,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &69460052
 MonoBehaviour:
@@ -2099,6 +2103,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &88874981
 MonoBehaviour:
@@ -2425,6 +2430,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &99781573
 MonoBehaviour:
@@ -2592,6 +2598,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &103703018
 MonoBehaviour:
@@ -3558,6 +3565,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &124381023
 MonoBehaviour:
@@ -3651,6 +3659,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &125361459
 MonoBehaviour:
@@ -3744,6 +3753,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &141697991
 MonoBehaviour:
@@ -4180,6 +4190,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &174787532
 MonoBehaviour:
@@ -4273,6 +4284,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &179268860
 MonoBehaviour:
@@ -4518,6 +4530,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &189986138
 MonoBehaviour:
@@ -4611,6 +4624,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &190701909
 MonoBehaviour:
@@ -4778,6 +4792,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &201774775
 MonoBehaviour:
@@ -4909,6 +4924,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &208424810
 MonoBehaviour:
@@ -5002,6 +5018,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &217945912
 MonoBehaviour:
@@ -5171,6 +5188,9 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 302580550}
   quantity: 0
+  keyBinding:
+  - JoystickButton0
+  - A
   cardQuantity: {fileID: 1480299143}
 --- !u!114 &220691012
 MonoBehaviour:
@@ -5662,6 +5682,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &246139275
 MonoBehaviour:
@@ -5988,6 +6009,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &272765707
 MonoBehaviour:
@@ -6240,6 +6262,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &281545517
 MonoBehaviour:
@@ -6407,6 +6430,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &288414423
 MonoBehaviour:
@@ -6648,6 +6672,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &310293319
 MonoBehaviour:
@@ -6833,6 +6858,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &324966898
 MonoBehaviour:
@@ -6926,6 +6952,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &327637410
 MonoBehaviour:
@@ -7453,6 +7480,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &358289759
 MonoBehaviour:
@@ -7546,6 +7574,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &361645374
 MonoBehaviour:
@@ -7639,6 +7668,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &361706733
 MonoBehaviour:
@@ -7917,6 +7947,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &378775030
 MonoBehaviour:
@@ -9293,6 +9324,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &417930205
 MonoBehaviour:
@@ -9935,6 +9967,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &469450933
 MonoBehaviour:
@@ -10187,6 +10220,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &473694765
 MonoBehaviour:
@@ -10763,6 +10797,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &532734316
 MonoBehaviour:
@@ -11171,6 +11206,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &557471271
 MonoBehaviour:
@@ -11560,6 +11596,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &585698424
 MonoBehaviour:
@@ -12390,6 +12427,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &619589713
 MonoBehaviour:
@@ -13151,6 +13189,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &677520572
 MonoBehaviour:
@@ -13250,6 +13289,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &690432518
 MonoBehaviour:
@@ -13455,6 +13495,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &696028004
 MonoBehaviour:
@@ -13548,6 +13589,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &699633772
 MonoBehaviour:
@@ -13641,6 +13683,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &706122036
 MonoBehaviour:
@@ -13812,6 +13855,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &737409234
 MonoBehaviour:
@@ -14464,6 +14508,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &761832535
 MonoBehaviour:
@@ -14875,6 +14920,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &771145318
 MonoBehaviour:
@@ -15207,6 +15253,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &792679604
 MonoBehaviour:
@@ -16330,6 +16377,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &858347437
 MonoBehaviour:
@@ -17003,6 +17051,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &872813826
 MonoBehaviour:
@@ -17442,6 +17491,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &890830483
 MonoBehaviour:
@@ -18385,6 +18435,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &936253070
 MonoBehaviour:
@@ -18552,6 +18603,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &942145808
 MonoBehaviour:
@@ -18719,6 +18771,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &951522186
 MonoBehaviour:
@@ -19278,6 +19331,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &975770916
 MonoBehaviour:
@@ -19678,6 +19732,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &982292939
 MonoBehaviour:
@@ -20253,6 +20308,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1005263990
 MonoBehaviour:
@@ -20420,6 +20476,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1013248131
 MonoBehaviour:
@@ -20979,6 +21036,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1033406708
 MonoBehaviour:
@@ -22311,6 +22369,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1078219572
 MonoBehaviour:
@@ -24204,6 +24263,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1158801741
 MonoBehaviour:
@@ -24297,6 +24357,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1159768201
 MonoBehaviour:
@@ -24637,6 +24698,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1187162203
 MonoBehaviour:
@@ -25969,6 +26031,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1276538280
 MonoBehaviour:
@@ -26295,6 +26358,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1303900951
 MonoBehaviour:
@@ -26388,6 +26452,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1317617890
 MonoBehaviour:
@@ -26480,9 +26545,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 456670924}
-  keyCode: 
+  keyCode: JoystickButton2
   bindIcon: {fileID: 1014190487}
   quantity: 0
+  keyBinding:
+  - JoystickButton3
+  - W
   cardQuantity: {fileID: 1826506654}
 --- !u!114 &1319169219
 MonoBehaviour:
@@ -27035,6 +27103,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1354100019
 MonoBehaviour:
@@ -28084,6 +28153,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1397680253
 MonoBehaviour:
@@ -28251,6 +28321,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1413399878
 MonoBehaviour:
@@ -28661,9 +28732,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 920256910}
-  keyCode: 
+  keyCode: JoystickButton1
   bindIcon: {fileID: 1607110690}
   quantity: 0
+  keyBinding:
+  - JoystickButton2
+  - D
   cardQuantity: {fileID: 548450672}
 --- !u!114 &1420351642
 MonoBehaviour:
@@ -28916,6 +28990,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1428060289
 MonoBehaviour:
@@ -29560,6 +29635,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1448752481
 MonoBehaviour:
@@ -30995,6 +31071,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1494188266
 MonoBehaviour:
@@ -31247,6 +31324,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1512366910
 MonoBehaviour:
@@ -32113,6 +32191,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1576547256
 MonoBehaviour:
@@ -32819,6 +32898,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1609051740
 MonoBehaviour:
@@ -32912,6 +32992,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1613902430
 MonoBehaviour:
@@ -33005,6 +33086,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1625231029
 MonoBehaviour:
@@ -33098,6 +33180,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1630370292
 MonoBehaviour:
@@ -33191,6 +33274,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1632272139
 MonoBehaviour:
@@ -33362,6 +33446,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1641872446
 MonoBehaviour:
@@ -33677,6 +33762,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1648044461
 MonoBehaviour:
@@ -33770,6 +33856,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1649084554
 MonoBehaviour:
@@ -34096,6 +34183,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1665220371
 MonoBehaviour:
@@ -34398,6 +34486,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1679149343
 MonoBehaviour:
@@ -34491,6 +34580,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1687371120
 MonoBehaviour:
@@ -35118,7 +35208,9 @@ MonoBehaviour:
   basicShot: 10
   heavyShot: 0
   precisionShot: 0
+  drawNumber: 10
   storedKeys: 
+  possibleKeys: 4a0100004c0100004d0100004e0100004f0100006100000077000000640000007100000065000000
   drawnCardsParent: {fileID: 348571876444929028}
   handParent: {fileID: 348571875816161938}
   drawnCards: []
@@ -35519,6 +35611,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1699824771
 MonoBehaviour:
@@ -35771,6 +35864,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1707637084
 MonoBehaviour:
@@ -35938,6 +36032,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1716524272
 MonoBehaviour:
@@ -36031,6 +36126,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1724636344
 MonoBehaviour:
@@ -36124,6 +36220,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1726890016
 MonoBehaviour:
@@ -36540,6 +36637,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1777613085
 MonoBehaviour:
@@ -36793,6 +36891,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1793013869
 MonoBehaviour:
@@ -37562,6 +37661,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1832045881
 MonoBehaviour:
@@ -37992,6 +38092,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1859164533
 MonoBehaviour:
@@ -38318,6 +38419,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1869704250
 MonoBehaviour:
@@ -38826,6 +38928,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1918694909
 MonoBehaviour:
@@ -39078,6 +39181,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1929517971
 MonoBehaviour:
@@ -39171,6 +39275,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1936037410
 MonoBehaviour:
@@ -40363,6 +40468,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1981116830
 MonoBehaviour:
@@ -40690,6 +40796,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &1987096408
 MonoBehaviour:
@@ -40942,6 +41049,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2003584986
 MonoBehaviour:
@@ -41035,6 +41143,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2011168142
 MonoBehaviour:
@@ -41128,6 +41237,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2013211299
 MonoBehaviour:
@@ -41295,6 +41405,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2028910900
 MonoBehaviour:
@@ -42399,6 +42510,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2090825877
 MonoBehaviour:
@@ -42861,6 +42973,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2108774453
 MonoBehaviour:
@@ -43122,6 +43235,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2116973880
 MonoBehaviour:
@@ -43374,6 +43488,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2120244937
 MonoBehaviour:
@@ -43626,6 +43741,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2128315623
 MonoBehaviour:
@@ -44038,6 +44154,7 @@ MonoBehaviour:
   keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
+  keyBinding: []
   cardQuantity: {fileID: 0}
 --- !u!114 &2135906491
 MonoBehaviour:

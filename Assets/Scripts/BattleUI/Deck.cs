@@ -21,10 +21,13 @@ public class Deck : MonoBehaviour
     public int heavyShot;
     public int precisionShot;
 
+    public int drawNumber = 10;
+
 	public List<Card> deckOfCards;
 	public List<Card> discardPile;
     public List<Card> shop;
     public List<KeyCode> storedKeys;
+    public List<KeyCode> possibleKeys = new List<KeyCode>();   //this list holds all the possible keycodes we can use to attaack with 
 	public Transform drawnCardsParent;
 	public Transform handParent;
 
@@ -32,6 +35,7 @@ public class Deck : MonoBehaviour
     public Dictionary<Card, Pair> handCardsBackend = new Dictionary<Card, Pair>();
 	public CardSlot[] handCards;
     public readonly Array allKeyCodes = Enum.GetValues(typeof(KeyCode));
+    private List<Card> temporaryHoldingCards = new List<Card>();
 
     private System.Random rand = new System.Random();
 
@@ -69,53 +73,53 @@ public class Deck : MonoBehaviour
 
         for(int i = 0; i < basicAttack; i++)
         {
-            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,1));
+            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"JoystickButton0"));
         }
         for(int i = 0; i < heavyAttack; i ++)
         {
-            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,1));
+            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10, ""));
         }
         for(int j = 0; j < jump; j++)
         {
-            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
+            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,""));
         }
         
         for(int k = 0; k < dash; k++)
         {
-            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0,0));
+            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0,""));
         }
         for(int l = 0; l < backDash; l++)
         {
-            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
+            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,""));
         }
         
         for(int i = 0; i < precisionShot; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,2));
+            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,""));
         }
         for(int i = 0; i < basicShot; i++)
         {
-            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5, 2));
+            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5, "JoystickButton2"));
         }
         for(int i = 0; i < heavyShot; i++)
         {
-            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7, 2));
+            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7, ""));
         }
 
         for(int i = 0; i < precisionAttack; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5, 1));
+            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5, ""));
         }
 
-        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,1));
-        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,1));
+        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,""));
+        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,""));
         //shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
-        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,0));
+        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,""));
         //shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
-        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,2));
-        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,2));
-        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,2));
-        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,1));
+        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,""));
+        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,""));
+        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,""));
+        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,""));
 
      
         // test code serialization
@@ -143,14 +147,14 @@ public class Deck : MonoBehaviour
     }
 
     //call this function to generate a card that you want
-    public Card GenerateCard(string newName, string newIconPath, int newCost, int newDamage, int newSuit)
+    public Card GenerateCard(string newName, string newIconPath, int newCost, int newDamage, string newKey)
     {
     	Card newCard = new Card();
     	newCard.cost = newCost;
     	newCard.name = newName;
     	newCard.icon = Resources.Load<Sprite>(newIconPath) as Sprite;
         newCard.damage = newDamage;
-        newCard.suit = newSuit;
+        newCard.bindingKey = newKey;
     	return newCard;
     }
     //create some kind of default deck values for the deck
@@ -216,24 +220,58 @@ public class Deck : MonoBehaviour
      public void DrawCards(CardSlot[] m_array)
      {
      	int length = m_array.Length;
-     	int deckLength;
-     	for(int i = length - 1; i >= 0; i--) //for each of the drawnCard slots,
-     	{
-     		deckLength = deckOfCards.Count;//we readjust the length variable of the deck
-     		if(deckLength == 0)  //if the deckLength is zero, then we 
-     		{
+     	int deckLength = deckOfCards.Count;
+        bool wasDrawn = false;
+        for(int j = 0; j < drawNumber; j++)
+        {
+            wasDrawn = false;
+            deckLength = deckOfCards.Count;//we readjust the length variable of the deck
+            if(deckLength == 0)  //if the deckLength is zero, then we reshuffle the discaqrd into the deck and continue
+            {
                 //Debug.Log("reshuffling");
                 //Debug.Log("pre length " + discardPile.Count);
                 //Debug.Log("current index " + i);
-     			Reshuffle();
+                Reshuffle();
                 //Debug.Log("post length " + discardPile.Count);
-     			deckLength = deckOfCards.Count;  //must refresh the size variable after we reshuffle
-     		}
-
-     		m_array[i].AddCard(deckOfCards[deckLength - 1]);
-     		deckOfCards.RemoveAt(deckLength -1);
-            Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, deckUI);
-     	}
+                deckLength = deckOfCards.Count;  //must refresh the size variable after we reshuffle
+            }
+            for(int i = length - 1; i >= 0; i--) //for each of the drawnCard slots,
+            {
+                
+                if(m_array[i].keyBinding.Contains(deckOfCards[deckLength - 1].bindingKey))
+                {
+                    if(m_array[i].card == null || m_array[i].card.name == deckOfCards[deckLength - 1].name)
+                    {
+                        m_array[i].quantity += 1;
+                        m_array[i].AddCard(deckOfCards[deckLength - 1]);
+                        deckOfCards.RemoveAt(deckLength -1);
+                        wasDrawn = true;
+                        m_array[i].cardQuantity.SetText((m_array[i].quantity).ToString());
+                        break;
+                    }
+                    
+                }
+                
+            }
+            //if we make it here by passing the break statement, this means that the card did not fit in any slots, so we add it to this list. 
+            if(wasDrawn == false)
+            {
+                j--; //revert back one so that we count the next card
+                temporaryHoldingCards.Add(deckOfCards[deckLength - 1]);
+                deckOfCards.RemoveAt(deckLength - 1);
+            }            
+            
+        }
+        //re add all temporary discard cards back into the hand here, and then SHUFFLE. 
+        if(temporaryHoldingCards.Count != 0)
+        {
+            deckOfCards.AddRange(temporaryHoldingCards);
+            Shuffle(deckOfCards);
+            temporaryHoldingCards.Clear();
+        }
+        Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, deckUI);
+        
+     	
      }
 
 

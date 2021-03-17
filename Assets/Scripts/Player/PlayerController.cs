@@ -194,12 +194,12 @@ public class PlayerController : MonoBehaviour
         {
             Manager.instance.turnEnd = false;
             Deck.instance.DiscardHand();
-            Deck.instance.DrawCards(Deck.instance.drawnCards);
+            Deck.instance.DrawCards(Deck.instance.handCards);
         
-            Manager.instance.NewState(Manager.GameState.MENU);
-            Time.timeScale = 0f;
-            Manager.instance.battleMenu.SetActive(true);
-            Manager.instance.battleMenuUI.GetComponent<BattleMenu>().Select();
+            //Manager.instance.NewState(Manager.GameState.MENU);
+            //Time.timeScale = 0f;
+            //Manager.instance.battleMenu.SetActive(true);
+            //Manager.instance.battleMenuUI.GetComponent<BattleMenu>().Select();
         }
     }
 
@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
          foreach(KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
          {
              if (Input.GetKeyDown(kcode))
-                 Debug.Log("KeyCode down: " + kcode);
+                Debug.Log("KeyCode down: " + kcode);
          }
         }
 
@@ -693,9 +693,33 @@ public class PlayerController : MonoBehaviour
         torsoAnim.SetLayerWeight(2,0);
     }
 
+    public void CheckKeyInput()
+    {
+        foreach(CardSlot slot in Deck.instance.handCards)
+        {
+            foreach(KeyCode key in Deck.instance.possibleKeys)
+            {
+                if(Input.GetKeyDown(key) && slot.keyBinding.Contains(key.ToString()) && slot.card != null)
+                {
+                    this.SendMessage(slot.card.name, slot.card.damage);
+                    Deck.instance.discardPile.Add(slot.card);
+                    slot.quantity -= 1;
+                    slot.cardQuantity.SetText(slot.quantity.ToString());
+                    if(slot.quantity == 0)
+                    {
+                        slot.ClearSlot();
+                    }
+                    Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
+                    return;
+                }
+            }
+            //if(slot.keyBinding.Contains())
+        }
+    }
+
     //this matches the input with the appropriate action function and executes it. we use the storedKeys array to 
     //avoid looping through the entire keyboard every frame and only looping through the keys that were registered to buttons
-    public void CheckKeyInput()
+    public void CheckKeyInputold()
     {
         
         for(int i = 0; i < Deck.instance.handCards.Length; i++)

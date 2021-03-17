@@ -230,6 +230,9 @@ public class Manager : MonoBehaviour
             {
                 startTimer = false;
                 turnEnd = true;//RoundEnd();
+                Deck.instance.DiscardHand();
+                Deck.instance.DrawCards(Deck.instance.handCards);
+
             }
         }
     }
@@ -265,7 +268,7 @@ public class Manager : MonoBehaviour
     public void UpdateDeckUI(List<Card> cardList, CardSlot[] cardSlotUI)
     {
         List<Card> tempCards;
-        tempCards = cardList.OrderBy(c => c.suit).ThenBy(c => c.name).ToList();
+        tempCards = cardList.OrderBy(c => c.bindingKey).ThenBy(c => c.name).ToList();
         for(int i = 0; i < cardSlotUI.Length; i++)
         {
             cardSlotUI[i].ClearSlot();
