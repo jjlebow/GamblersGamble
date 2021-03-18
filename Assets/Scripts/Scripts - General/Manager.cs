@@ -33,9 +33,9 @@ public class Manager : MonoBehaviour
     public Slider timerUI;
     public bool startTimer = false;
 
-    public bool turnEnd = true;
+    public bool turnEnd = false;
 
-    public enum GameState {MENU, BATTLE, PAUSED, DIALOGUE, ACCEPTINPUT, NEUTRAL};
+    public enum GameState {MENU, BATTLE, PAUSED, DIALOGUE, ACCEPTINPUT, NEUTRAL, HUB};
     public GameState currentState;
     public GameState previousState;
     //public GameState gameState;
@@ -55,6 +55,7 @@ public class Manager : MonoBehaviour
     //public GameObject goodHealthPanel;
     //public GameObject badHealthPanel;
     public GameObject healthTimePanel;
+
 
 
     
@@ -77,6 +78,8 @@ public class Manager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(this.gameObject);
+        
+        //UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
 
         //player = player.GetComponent<PlayerController>();
         //stateMachine = stateMachine.GetComponent<StateController>();
@@ -93,8 +96,6 @@ public class Manager : MonoBehaviour
         //Debug.Log(Deck.instance.deckUI.Length);
         timer = timerMax;
         timerUI.maxValue = timerMax;
-        UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
-        UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
         /*
         for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
         {
@@ -223,18 +224,22 @@ public class Manager : MonoBehaviour
     {
         moneyUI.text = money.ToString();
         timerUI.value = timer;
-        if(startTimer == true)
+        //if(startTimer == true)
+        //{
+        if(Manager.instance.currentState == Manager.GameState.BATTLE)
         {
-            timer += Time.deltaTime;
-            if(timer > timerMax)
+            timer -= Time.deltaTime;
+            if(timer <= 0)
             {
-                startTimer = false;
-                turnEnd = true;//RoundEnd();
+                //startTimer = false;
+                //turnEnd = true;//RoundEnd();
                 Deck.instance.DiscardHand();
                 Deck.instance.DrawCards(Deck.instance.handCards);
+                timer = timerMax;
 
             }
         }
+        //}
     }
 
 
@@ -276,6 +281,10 @@ public class Manager : MonoBehaviour
         for(int i = 0; i < tempCards.Count; i++)
         {
             cardSlotUI[i].AddCard(tempCards[i]);
+            if(sceneManagement.instance.isKeyboard)
+                cardSlotUI[i].bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + tempCards[i].bindingKeyAlt) as Sprite;
+            else if(!sceneManagement.instance.isKeyboard)
+                cardSlotUI[i].bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + tempCards[i].bindingKey) as Sprite;
         }
         //deckUI = deckUI.OrderBy(c => c.card.suit).ThenBy(c => c.card.name).ToArray();
         //OnRoundChangeCallback.Invoke();

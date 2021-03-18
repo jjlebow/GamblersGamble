@@ -43,10 +43,12 @@ public class Deck : MonoBehaviour
     public Transform discardUIParent;
     public Transform shopDeckUIParent;
     public Transform shopUIParent;
+    public Transform deckEditorUIParent;
     [HideInInspector] public CardSlot[] shopUI;
     [HideInInspector] public CardSlot[] deckUI;
     [HideInInspector] public CardSlot[] shopDeckUI;
     [HideInInspector] public CardSlot[] discardUI;
+    [HideInInspector] public CardSlot[] deckEditorUI;
 
 
 
@@ -73,53 +75,53 @@ public class Deck : MonoBehaviour
 
         for(int i = 0; i < basicAttack; i++)
         {
-            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"JoystickButton0"));
+            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"JoystickButton0", "A"));
         }
         for(int i = 0; i < heavyAttack; i ++)
         {
-            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10, ""));
+            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10, "", ""));
         }
         for(int j = 0; j < jump; j++)
         {
-            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,""));
+            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,"", ""));
         }
         
         for(int k = 0; k < dash; k++)
         {
-            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0,""));
+            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0,"", ""));
         }
         for(int l = 0; l < backDash; l++)
         {
-            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,""));
+            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,"", ""));
         }
         
         for(int i = 0; i < precisionShot; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,""));
+            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,"", ""));
         }
         for(int i = 0; i < basicShot; i++)
         {
-            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5, "JoystickButton2"));
+            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5, "JoystickButton2", "D"));
         }
         for(int i = 0; i < heavyShot; i++)
         {
-            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7, ""));
+            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7, "", ""));
         }
 
         for(int i = 0; i < precisionAttack; i++)
         {
-            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5, ""));
+            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5, "", ""));
         }
 
-        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,""));
-        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,""));
+        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"", ""));
+        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,"", ""));
         //shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
-        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,""));
+        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,"", ""));
         //shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
-        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,""));
-        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,""));
-        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,""));
-        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,""));
+        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,"", ""));
+        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,"", ""));
+        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,"", ""));
+        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,"", ""));
 
      
         // test code serialization
@@ -136,6 +138,7 @@ public class Deck : MonoBehaviour
         shopUI = shopUIParent.GetComponentsInChildren<CardSlot>();
         shopDeckUI = shopDeckUIParent.GetComponentsInChildren<CardSlot>();
         discardUI = discardUIParent.GetComponentsInChildren<CardSlot>();
+        deckEditorUI = deckEditorUIParent.GetComponentsInChildren<CardSlot>();
         Shuffle(deckOfCards);
 
     }
@@ -147,7 +150,7 @@ public class Deck : MonoBehaviour
     }
 
     //call this function to generate a card that you want
-    public Card GenerateCard(string newName, string newIconPath, int newCost, int newDamage, string newKey)
+    public Card GenerateCard(string newName, string newIconPath, int newCost, int newDamage, string newKey, string newAltKey)
     {
     	Card newCard = new Card();
     	newCard.cost = newCost;
@@ -155,6 +158,7 @@ public class Deck : MonoBehaviour
     	newCard.icon = Resources.Load<Sprite>(newIconPath) as Sprite;
         newCard.damage = newDamage;
         newCard.bindingKey = newKey;
+        newCard.bindingKeyAlt = newAltKey;
     	return newCard;
     }
     //create some kind of default deck values for the deck
@@ -194,12 +198,15 @@ public class Deck : MonoBehaviour
         {
             if(handCards[i].card != null)
             {
-                discardPile.Add(handCards[i].card);
-                handCards[i].ClearSlot();
+                for(int j = 0; j < handCards[i].quantity; j++)
+                {
+                    discardPile.Add(handCards[i].card);
+                }
             }
+            handCards[i].ClearSlot();
         }
         handCardsBackend.Clear();
-        Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
+        //Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
      }
 
 
@@ -242,9 +249,14 @@ public class Deck : MonoBehaviour
                 {
                     if(m_array[i].card == null || m_array[i].card.name == deckOfCards[deckLength - 1].name)
                     {
+                        //altkey and bindingkey should be the same after the firs battle, this is just for the sprites to show correctly at the first battle.  
+                        if(sceneManagement.instance.isKeyboard)
+                            m_array[i].bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + deckOfCards[deckLength - 1].bindingKeyAlt) as Sprite;
+                        else
+                            m_array[i].bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + deckOfCards[deckLength - 1].bindingKey) as Sprite;
                         m_array[i].quantity += 1;
                         m_array[i].AddCard(deckOfCards[deckLength - 1]);
-                        deckOfCards.RemoveAt(deckLength -1);
+                        deckOfCards.RemoveAt(deckLength - 1);
                         wasDrawn = true;
                         m_array[i].cardQuantity.SetText((m_array[i].quantity).ToString());
                         break;
@@ -282,6 +294,7 @@ public class Deck : MonoBehaviour
      	deckOfCards.AddRange(discardPile);
         Shuffle(deckOfCards);
      	discardPile.Clear();
+        //Debug.Log("we have reshuffled and the lenght of the deck is: " + deckOfCards.Count);
      }
 
      public void RemoveCard(Card card)

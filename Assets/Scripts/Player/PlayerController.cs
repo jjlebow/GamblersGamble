@@ -156,7 +156,8 @@ public class PlayerController : MonoBehaviour
         controls.PlayerControls.Dash.performed += context => Dash();
         controls.PlayerMovement.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
         controls.PlayerMovement.Move.canceled += ctx => move = Vector2.zero;
-        controls.PlayerMovement.OpenCards.performed += ctx => OpenCards();
+        //controls.PlayerMovement.OpenCards.started += ctx => OpenDeck();
+        //controls.PlayerMovement.OpenCards.canceled += ctx => CloseDeck();
         //controls.PlayerMovement.Attack.performed += ctx => Attack(7);
         //controls.PlayerControls.Interact.performed += ctx => canInteract = true;
         //controls.PlayerControls.Interact.canceled += ctx => canInteract = false;
@@ -188,11 +189,22 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void OpenCards() // have the arm go up first then delay then have the menu go up
+    void OpenDeck() // have the arm go up first then delay then have the menu go up
     {
+        if(Manager.instance.currentState == Manager.GameState.BATTLE)
+        {
+            Manager.instance.NewState(Manager.GameState.MENU);
+            Manager.instance.deckPanel.SetActive(!Manager.instance.deckPanel.activeInHierarchy);
+        }
+        /*
+        else if(Manager.instance.currentState == Manager.GameState.MENU)
+        {
+            Manager.instance.NewState(Manager.GameState.BATTLE);
+            Manager.instance.deckPanel.SetActive(!Manager.instance.deckPanel.activeInHierarchy);
+        }
         if(Manager.instance.turnEnd)
         {
-            Manager.instance.turnEnd = false;
+            //Manager.instance.turnEnd = false;
             Deck.instance.DiscardHand();
             Deck.instance.DrawCards(Deck.instance.handCards);
         
@@ -200,6 +212,16 @@ public class PlayerController : MonoBehaviour
             //Time.timeScale = 0f;
             //Manager.instance.battleMenu.SetActive(true);
             //Manager.instance.battleMenuUI.GetComponent<BattleMenu>().Select();
+        }
+        */
+    }
+
+    void CloseDeck()
+    {
+        if(Manager.instance.currentState == Manager.GameState.MENU)
+        {
+            Manager.instance.NewState(Manager.GameState.BATTLE);
+            Manager.instance.deckPanel.SetActive(!Manager.instance.deckPanel.activeInHierarchy);
         }
     }
 
@@ -265,7 +287,38 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.JoystickButton8) || Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(Manager.instance.currentState == Manager.GameState.BATTLE)
+            {
+                //DeckUI will update every time cards are drawn (deck panel) or changes to the deck have been made as oopposed to every time the player accesses the deck menu
+                //Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
+                Manager.instance.deckPanel.SetActive(!Manager.instance.deckPanel.activeInHierarchy);
+                StateManager.instance.playerStatic = true;
+            }
+            else if(Manager.instance.currentState == Manager.GameState.HUB)
+            {
+                if(!Manager.instance.deckEditPanel.activeInHierarchy)
+                {
+                    //UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
+                    Manager.instance.deckEditPanel.SetActive(true);
+                    Manager.instance.NewState(Manager.GameState.MENU);
+                }
+            }
+            else if(Manager.instance.currentState == Manager.GameState.MENU && Manager.instance.deckEditPanel.activeInHierarchy)
+            {
+                Manager.instance.deckEditPanel.SetActive(false);
+                Manager.instance.RevertState();        
+            }
+        }
+        if(Input.GetKeyUp(KeyCode.JoystickButton8) || Input.GetKeyUp(KeyCode.Tab))
+        {
+            if(Manager.instance.currentState == Manager.GameState.BATTLE)
+            {
+                Manager.instance.deckPanel.SetActive(!Manager.instance.deckPanel.activeInHierarchy);
+                StateManager.instance.playerStatic = false;
+            }
+        }
         //OnTriggerExit functionality - inlcudes both cases where we exit the trigger as well 
         //as having the triggered object be destroyed
         if(isTriggered && !col)
@@ -709,7 +762,7 @@ public class PlayerController : MonoBehaviour
                     {
                         slot.ClearSlot();
                     }
-                    Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
+                    //Manager.instance.UpdateDeckUI(Deck.instance.discardPile, Deck.instance.discardUI);
                     return;
                 }
             }
@@ -779,7 +832,7 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.doubleJumpNoise, 1.0f);
             jumpSound = false;
         }
-        if(!StateManager.instance.playerStatic && Manager.instance.currentState == Manager.GameState.BATTLE)
+        if(!StateManager.instance.playerStatic && (Manager.instance.currentState == Manager.GameState.BATTLE || Manager.instance.currentState == Manager.GameState.HUB))
         {
             
             if(availJumps > 0 && !StateManager.instance.grounded && canDoubleJump)
@@ -860,7 +913,7 @@ public class PlayerController : MonoBehaviour
     {
         //sets movement vector to player input only while in BATTLE state, otherwise sets movement vector to 0,0
         Vector2 m;
-        if(Manager.instance.currentState == Manager.GameState.BATTLE && !StateManager.instance.playerStatic)
+        if((Manager.instance.currentState == Manager.GameState.BATTLE  || Manager.instance.currentState == Manager.GameState.HUB) && !StateManager.instance.playerStatic)
         {
             m = new Vector2(move.x, move.y) * Time.deltaTime * runningSpeed;
             if(m.x > 0 && StateManager.instance.faceRight == true)

@@ -17,6 +17,8 @@ public class sceneManagement : MonoBehaviour
     private List<string> songs = new List<string>();
     private IEnumerator playRandom;
 
+    [HideInInspector] public bool isKeyboard = false;
+
     void Awake()
     {
         if(instance == null)
@@ -33,6 +35,17 @@ public class sceneManagement : MonoBehaviour
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void Update()
+    {
+        if(SceneManager.GetActiveScene().name == "LoadScene" || SceneManager.GetActiveScene().name == "Menu")
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+                isKeyboard = true;
+            else if(Input.GetKeyDown(KeyCode.JoystickButton1))
+                isKeyboard = false;
+        }
     }
     // called second
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)   //ISSUE: when playing two songs before a stop is called, the first fade in coroutine
@@ -66,6 +79,8 @@ public class sceneManagement : MonoBehaviour
         
         if(scene.name.Split(' ')[0] == "Battle")
         {
+            Deck.instance.DiscardHand();
+            Deck.instance.DrawCards(Deck.instance.handCards); //this calls the updateDeckUI method
             Manager.instance.bossDamageable = GameObject.FindGameObjectWithTag("Boss").GetComponent<Damageable>();
             Manager.instance.battleMenuUI.SetActive(true);
             Manager.instance.healthTimePanel.SetActive(true);
@@ -85,10 +100,11 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.battleMenuUI.SetActive(false);
             Manager.instance.healthTimePanel.SetActive(false);
             Manager.instance.handPanel.SetActive(false);
+            Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckEditorUI);
            // Manager.instance.goodHealthPanel.SetActive(false);
             //Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.player.gameObject.SetActive(true);
-            Manager.instance.NewState(Manager.GameState.BATTLE);
+            Manager.instance.NewState(Manager.GameState.HUB);
             //TransitionsManager.instance.FadeOut();
 
 
@@ -99,6 +115,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.healthTimePanel.SetActive(false);
             Manager.instance.deckPanel.SetActive(false);
             Manager.instance.handPanel.SetActive(false);
+            Manager.instance.deckEditPanel.SetActive(false);
             //Manager.instance.discardPanel.SetActive(false);
             //DialogueManager.instance.gameObject.SetActive(false);
             //Manager.instance.goodHealthPanel.SetActive(false);

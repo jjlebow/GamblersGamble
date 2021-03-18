@@ -279,14 +279,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""OpenCards"",
-                    ""type"": ""Button"",
-                    ""id"": ""5158d61c-b8b8-483b-be39-220737985b0a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -399,28 +391,6 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b234c736-473a-4952-a4fb-0ef73c76a53d"",
-                    ""path"": ""<Gamepad>/select"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""OpenCards"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ba145c45-057b-4721-bc84-5d026529812f"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""OpenCards"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -500,7 +470,6 @@ public class @Controls : IInputActionCollection, IDisposable
         // PlayerMovement
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Move = m_PlayerMovement.FindAction("Move", throwIfNotFound: true);
-        m_PlayerMovement_OpenCards = m_PlayerMovement.FindAction("OpenCards", throwIfNotFound: true);
         // PlayerInteract
         m_PlayerInteract = asset.FindActionMap("PlayerInteract", throwIfNotFound: true);
         m_PlayerInteract_Interact = m_PlayerInteract.FindAction("Interact", throwIfNotFound: true);
@@ -644,13 +613,11 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerMovement;
     private IPlayerMovementActions m_PlayerMovementActionsCallbackInterface;
     private readonly InputAction m_PlayerMovement_Move;
-    private readonly InputAction m_PlayerMovement_OpenCards;
     public struct PlayerMovementActions
     {
         private @Controls m_Wrapper;
         public PlayerMovementActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_PlayerMovement_Move;
-        public InputAction @OpenCards => m_Wrapper.m_PlayerMovement_OpenCards;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -663,9 +630,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMove;
-                @OpenCards.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnOpenCards;
-                @OpenCards.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnOpenCards;
-                @OpenCards.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnOpenCards;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -673,9 +637,6 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @OpenCards.started += instance.OnOpenCards;
-                @OpenCards.performed += instance.OnOpenCards;
-                @OpenCards.canceled += instance.OnOpenCards;
             }
         }
     }
@@ -745,7 +706,6 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnOpenCards(InputAction.CallbackContext context);
     }
     public interface IPlayerInteractActions
     {

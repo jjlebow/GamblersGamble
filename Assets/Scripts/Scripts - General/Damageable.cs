@@ -240,8 +240,8 @@ public class Damageable : MonoBehaviour
 
     private void SpawnParticles(GameObject collider)  //way to optimize: have one disabled particle emitter that gets enabled at the appropriate position, shoots out its particles, and then disappears again. 
     {
-        Debug.Log("here is this position " + this.transform.position);
-        Debug.Log("here is another position " + collider.transform.position);
+        //Debug.Log("here is this position " + this.transform.position);
+        //Debug.Log("here is another position " + collider.transform.position);
         particleEffects.transform.position = (this.transform.position + collider.transform.position)/2;
         particleEffects.GetComponent<ParticleSystem>().Play();
         //Destroy(clone, 1f);

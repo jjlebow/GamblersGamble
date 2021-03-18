@@ -18,6 +18,16 @@ public class CardSlot : MonoBehaviour
 
     //public Damageable playerDamage;
 
+    void Start()
+    {
+        if(this.keyBinding.Count > 0)
+        {   
+            if(sceneManagement.instance.isKeyboard)
+                bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + keyBinding[1]) as Sprite;
+            else
+                bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + keyBinding[0]) as Sprite;
+        }
+    }
     public void AddCard(Card newCard)
     {
     	card = newCard;
@@ -42,6 +52,7 @@ public class CardSlot : MonoBehaviour
         if(bindIcon != null)
             bindIcon.sprite = null;
         //bindIcon.enabled = false;
+        quantity = 0;
         if(cardQuantity != null)
             cardQuantity.SetText("");
     	///move the card to the discard pile

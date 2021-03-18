@@ -10,6 +10,7 @@ public class Card
     public int cost;
     public int damage;
     public string bindingKey;
+    public string bindingKeyAlt;
     public int suit;
     //public string bindingIcon;
 
