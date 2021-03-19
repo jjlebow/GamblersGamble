@@ -227,10 +227,10 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
-        
-        if(canInteract && Manager.instance.currentState == Manager.GameState.BATTLE && StateManager.instance.grounded == true)
+        Debug.Log("we are interacting here");
+        if((canInteract && Manager.instance.currentState == Manager.GameState.BATTLE || canInteract && Manager.instance.currentState == Manager.GameState.HUB) && StateManager.instance.grounded == true)
         {
-            Debug.Log("here");
+            //Debug.Log("here");
             col.SendMessage("Interact");
         }
     }
@@ -287,38 +287,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.JoystickButton8) || Input.GetKeyDown(KeyCode.Tab))
-        {
-            if(Manager.instance.currentState == Manager.GameState.BATTLE)
-            {
-                //DeckUI will update every time cards are drawn (deck panel) or changes to the deck have been made as oopposed to every time the player accesses the deck menu
-                //Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
-                Manager.instance.deckPanel.SetActive(!Manager.instance.deckPanel.activeInHierarchy);
-                StateManager.instance.playerStatic = true;
-            }
-            else if(Manager.instance.currentState == Manager.GameState.HUB)
-            {
-                if(!Manager.instance.deckEditPanel.activeInHierarchy)
-                {
-                    //UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
-                    Manager.instance.deckEditPanel.SetActive(true);
-                    Manager.instance.NewState(Manager.GameState.MENU);
-                }
-            }
-            else if(Manager.instance.currentState == Manager.GameState.MENU && Manager.instance.deckEditPanel.activeInHierarchy)
-            {
-                Manager.instance.deckEditPanel.SetActive(false);
-                Manager.instance.RevertState();        
-            }
-        }
-        if(Input.GetKeyUp(KeyCode.JoystickButton8) || Input.GetKeyUp(KeyCode.Tab))
-        {
-            if(Manager.instance.currentState == Manager.GameState.BATTLE)
-            {
-                Manager.instance.deckPanel.SetActive(!Manager.instance.deckPanel.activeInHierarchy);
-                StateManager.instance.playerStatic = false;
-            }
-        }
+        
         //OnTriggerExit functionality - inlcudes both cases where we exit the trigger as well 
         //as having the triggered object be destroyed
         if(isTriggered && !col)
@@ -847,7 +816,7 @@ public class PlayerController : MonoBehaviour
             if(timer > 0 && !canDoubleJump)
             {
 
-                Debug.Log("jump2");
+                //Debug.Log("jump2");
                 m_Rigidbody2D.velocity = Vector2.up * jumpForce;
                 startTimer = true;
                 canDoubleJump = false;

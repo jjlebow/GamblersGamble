@@ -123,6 +123,40 @@ public class Manager : MonoBehaviour
         {
             badHealthBar.value = bossDamageable.health;
         }
+        if(Input.GetKeyDown(KeyCode.JoystickButton8) || Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(currentState == GameState.BATTLE)
+            {
+                //DeckUI will update every time cards are drawn (deck panel) or changes to the deck have been made as oopposed to every time the player accesses the deck menu
+                //Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckUI);
+                LeanTween.alphaCanvas(deckPanel.GetComponent<CanvasGroup>(), 0.5f, 0.15f);
+                //LeanTween.move(Manager.instance.deckPanel, new Vector3(0f, 0f, 0f), 0.1f).setEase(LeanTweenType.easeOutSine);
+                deckPanel.SetActive(!deckPanel.activeInHierarchy);
+                StateManager.instance.playerStatic = true;
+            }
+            else if(currentState == GameState.HUB)
+            {
+                if(!deckEditPanel.activeInHierarchy)
+                {
+                    LeanTween.alphaCanvas(deckEditPanel.GetComponent<CanvasGroup>(), 1f, 0.5f).setOnComplete(delegate(){Deck.instance.deckEditorUI[0].GetComponentInChildren<Button>().Select();});
+                    deckEditPanel.SetActive(true);
+                    NewState(GameState.MENU);
+                }
+            }
+            else if(currentState == GameState.MENU && deckEditPanel.activeInHierarchy)
+            {
+                LeanTween.alphaCanvas(deckEditPanel.GetComponent<CanvasGroup>(), 0f, 0.5f).setOnComplete(delegate(){deckEditPanel.SetActive(!deckEditPanel.activeInHierarchy);});
+                RevertState();        
+            }
+        }
+        if(Input.GetKeyUp(KeyCode.JoystickButton8) || Input.GetKeyUp(KeyCode.Tab))
+        {
+            if(currentState == GameState.BATTLE)
+            {
+                LeanTween.alphaCanvas(deckPanel.GetComponent<CanvasGroup>(), 0f, 0.15f).setOnComplete(delegate(){deckPanel.SetActive(!deckPanel.activeInHierarchy);});
+                StateManager.instance.playerStatic = false;
+            }
+        }
 
 
         
