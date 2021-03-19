@@ -70,6 +70,7 @@ public class Deck : MonoBehaviour
         deckOfCards = new List<Card>();
         discardPile = new List<Card>();
         shop = new List<Card>();
+        // shop = CardFunctions.GetShopCards();
         
 
 
