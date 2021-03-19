@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -19,6 +20,13 @@ public class ManagerCardList
         {
             card.Load();
         }
+    }
+
+    public void Sort()
+    {
+        this.list = this.list
+                        .OrderBy(managerCard => managerCard.card.name)
+                        .ToList();
     }
 }
 

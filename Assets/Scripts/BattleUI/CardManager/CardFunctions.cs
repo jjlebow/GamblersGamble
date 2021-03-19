@@ -12,16 +12,21 @@ public static class CardFunctions
 /// <summary>
 /// Return unique ManagerCards added and saved from the ManagerWindow
 /// </summary>
-    public static ManagerCardList ReadSavedList()
+    public static ManagerCardList ReadSavedList(bool sorted = true)
     {
         string json = "";
         using (StreamReader r = new StreamReader(jsonSavePath))
         {
             json = r.ReadToEnd();
         }
-        ManagerCardList list = JsonUtility.FromJson<ManagerCardList>(json);
-        list.Load();
-        return list;
+        ManagerCardList managerCardList = JsonUtility.FromJson<ManagerCardList>(json);
+        managerCardList.Load();
+
+        if (sorted == true) {
+            managerCardList.Sort();
+        }
+
+        return managerCardList;
     }
 
 /// <summary>
