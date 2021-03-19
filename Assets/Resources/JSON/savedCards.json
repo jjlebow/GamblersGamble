@@ -49,7 +49,7 @@
                 "suit": 2
             },
             "iconPath": "Art/precision_shot",
-            "inShop": false,
+            "inShop": true,
             "cardsInDeck": 0
         },
         {
@@ -62,7 +62,7 @@
                 "suit": 2
             },
             "iconPath": "Art/Dart",
-            "inShop": false,
+            "inShop": true,
             "cardsInDeck": 6
         },
         {
@@ -75,7 +75,7 @@
                 "suit": 2
             },
             "iconPath": "Art/heavy_shot",
-            "inShop": false,
+            "inShop": true,
             "cardsInDeck": 0
         },
         {
@@ -88,7 +88,7 @@
                 "suit": 1
             },
             "iconPath": "Art/precision_attack",
-            "inShop": false,
+            "inShop": true,
             "cardsInDeck": 0
         }
     ]
