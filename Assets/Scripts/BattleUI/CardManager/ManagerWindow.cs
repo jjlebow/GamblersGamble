@@ -110,6 +110,7 @@ public class ManagerWindow : EditorWindow
             managerCard.card.cost = EditorGUILayout.IntField("Cost: ", managerCard.card.cost);
             managerCard.card.damage = EditorGUILayout.IntField("Damage: ", managerCard.card.damage);
             managerCard.card.suit = EditorGUILayout.IntField("Suit: ", managerCard.card.suit); 
+            managerCard.inShop = EditorGUILayout.Toggle("In Shop: ", managerCard.inShop);
             if (GUILayout.Button("Delete", GUILayout.Height(20), GUILayout.Width(100))) {
                 cardToDelete = managerCard;
             }
