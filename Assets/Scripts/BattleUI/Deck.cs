@@ -11,15 +11,15 @@ public class Deck : MonoBehaviour
 
 	public static Deck instance;
 
-    public int basicAttack;
-    public int heavyAttack;
-    public int precisionAttack;
-    public int jump;
-    public int dash;
-    public int backDash;
-    public int basicShot;
-    public int heavyShot;
-    public int precisionShot;
+    // public int basicAttack;
+    // public int heavyAttack;
+    // public int precisionAttack;
+    // public int jump;
+    // public int dash;
+    // public int backDash;
+    // public int basicShot;
+    // public int heavyShot;
+    // public int precisionShot;
 
     public int drawNumber = 10;
 
