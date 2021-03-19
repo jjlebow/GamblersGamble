@@ -6,24 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 
-[Serializable]
-public class ManagerCardList
-{
-    public List<ManagerCard> list;
 
-    public ManagerCardList()
-    {
-        this.list = new List<ManagerCard>();
-    }
-
-    public void Load()
-    {
-        foreach (var card in list) 
-        {
-            card.Load();
-        }
-    }
-}
 
 
 public class ManagerWindow : EditorWindow
@@ -51,22 +34,11 @@ public class ManagerWindow : EditorWindow
 
     public void Awake()
     {
-        cards = ReadSavedList();
+        cards = CardFunctions.ReadSavedList();
     }
 
-    public static ManagerCardList ReadSavedList()
-    {
-        string json = "";
-        using (StreamReader r = new StreamReader(jsonSavePath))
-        {
-            json = r.ReadToEnd();
-        }
-        ManagerCardList list = JsonUtility.FromJson<ManagerCardList>(json);
-        list.Load();
-        return list;
-    }
 
-    public void SaveCard()
+    public void SaveCards()
     {
         Debug.Log("Saving Card JSON");
 
@@ -109,8 +81,14 @@ public class ManagerWindow : EditorWindow
             managerCard.card.icon = EditorGUILayout.ObjectField("Icon Prefab: ", managerCard.card.icon, typeof(Sprite), false) as Sprite;
             managerCard.card.cost = EditorGUILayout.IntField("Cost: ", managerCard.card.cost);
             managerCard.card.damage = EditorGUILayout.IntField("Damage: ", managerCard.card.damage);
-            managerCard.card.suit = EditorGUILayout.IntField("Suit: ", managerCard.card.suit); 
+            managerCard.card.suit = EditorGUILayout.IntField("Suit: ", managerCard.card.suit);
+            managerCard.card.bindingKey = EditorGUILayout.TextField("Binding Key 1: ", managerCard.card.bindingKey);
+            managerCard.card.bindingKeyAlt = EditorGUILayout.TextField("Binding Key 2: ", managerCard.card.bindingKeyAlt);
+
+            managerCard.cardsInDeck = EditorGUILayout.IntField("Cards In Deck: ", managerCard.cardsInDeck);
             managerCard.inShop = EditorGUILayout.Toggle("In Shop: ", managerCard.inShop);
+
+
             if (GUILayout.Button("Delete", GUILayout.Height(20), GUILayout.Width(100))) {
                 cardToDelete = managerCard;
             }
@@ -143,7 +121,7 @@ public class ManagerWindow : EditorWindow
 
         if (GUILayout.Button("Load", GUILayout.Height(20), GUILayout.Width(100))) {
             Debug.Log("Loading Card JSON");
-            cards = ReadSavedList();
+            cards = CardFunctions.ReadSavedList();
             Repaint();
         }
 
@@ -183,7 +161,7 @@ public class ManagerWindow : EditorWindow
         // EditorGUILayout.ObjectField()
 
         if (GUILayout.Button("Save")) {
-            SaveCard();
+            SaveCards();
         }
 
         HandleDelayedEvents();

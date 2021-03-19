@@ -4,12 +4,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
+public class ManagerCardList
+{
+    public List<ManagerCard> list;
+
+    public ManagerCardList()
+    {
+        this.list = new List<ManagerCard>();
+    }
+
+    public void Load()
+    {
+        foreach (var card in list) 
+        {
+            card.Load();
+        }
+    }
+}
+
+[Serializable]
 public class ManagerCard
 {
     public Card card;
 
     public string iconPath;
     public bool inShop;
+    public int cardsInDeck = 0;
     //public string bindingIcon;
 
     public ManagerCard(Card card, string iconPath, bool inShop)

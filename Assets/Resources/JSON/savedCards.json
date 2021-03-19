@@ -5,70 +5,91 @@
                 "name": "Attack",
                 "cost": 5,
                 "damage": 7,
+                "bindingKey": "JoystickButton0",
+                "bindingKeyAlt": "A",
                 "suit": 1
             },
             "iconPath": "Art/sword_icon",
-            "inShop": false
+            "inShop": true,
+            "cardsInDeck": 6
         },
         {
             "card": {
                 "name": "HeavyAttack",
                 "cost": 5,
                 "damage": 10,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
                 "suit": 1
             },
             "iconPath": "Art/heavyAttack",
-            "inShop": false
+            "inShop": true,
+            "cardsInDeck": 0
         },
         {
             "card": {
                 "name": "Dash",
                 "cost": 5,
                 "damage": 0,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
                 "suit": 0
             },
             "iconPath": "Art/Dash",
-            "inShop": false
+            "inShop": true,
+            "cardsInDeck": 0
         },
         {
             "card": {
                 "name": "PrecisionShot",
                 "cost": 5,
                 "damage": 8,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
                 "suit": 2
             },
             "iconPath": "Art/precision_shot",
-            "inShop": false
+            "inShop": false,
+            "cardsInDeck": 0
         },
         {
             "card": {
                 "name": "Shoot",
                 "cost": 5,
                 "damage": 5,
+                "bindingKey": "JoystickButton2",
+                "bindingKeyAlt": "D",
                 "suit": 2
             },
             "iconPath": "Art/Dart",
-            "inShop": false
+            "inShop": false,
+            "cardsInDeck": 6
         },
         {
             "card": {
                 "name": "HeavyShot",
                 "cost": 5,
                 "damage": 7,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
                 "suit": 2
             },
             "iconPath": "Art/heavy_shot",
-            "inShop": false
+            "inShop": false,
+            "cardsInDeck": 0
         },
         {
             "card": {
                 "name": "PrecisionAttack",
                 "cost": 5,
                 "damage": 5,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
                 "suit": 1
             },
             "iconPath": "Art/precision_attack",
-            "inShop": false
+            "inShop": false,
+            "cardsInDeck": 0
         }
     ]
 }

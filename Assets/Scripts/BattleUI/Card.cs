@@ -26,6 +26,16 @@ public class Card
         this.suit = suit;
     }
 
+    public Card(Card templateCard) {
+        this.name = templateCard.name;
+        this.icon = templateCard.icon;
+        this.cost = templateCard.cost;
+        this.damage = templateCard.damage;
+        this.bindingKey = templateCard.bindingKey;
+        this.bindingKeyAlt = templateCard.bindingKeyAlt;
+        this.suit = templateCard.suit;
+    }
+
     //these two override functions ensure that each card type will be recognized as the same object type in the dictionary of cards
     public override int GetHashCode()
     {

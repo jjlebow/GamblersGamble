@@ -63,66 +63,63 @@ public class Deck : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
 
-
-
-        
-
-        deckOfCards = new List<Card>();
+        // deckOfCards = new List<Card>();
+        deckOfCards = CardFunctions.GetDefaultCardDeck();
         discardPile = new List<Card>();
-        shop = new List<Card>();
-        // shop = CardFunctions.GetShopCards();
+        // shop = new List<Card>();
+        shop = CardFunctions.GetShopCards();
         
 
 
-        for(int i = 0; i < basicAttack; i++)
-        {
-            deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"JoystickButton0", "A"));
-        }
-        for(int i = 0; i < heavyAttack; i ++)
-        {
-            deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10, "", ""));
-        }
-        for(int j = 0; j < jump; j++)
-        {
-            deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,"", ""));
-        }
+        // for(int i = 0; i < basicAttack; i++)
+        // {
+        //     deckOfCards.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"JoystickButton0", "A"));
+        // }
+        // for(int i = 0; i < heavyAttack; i ++)
+        // {
+        //     deckOfCards.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10, "", ""));
+        // }
+        // for(int j = 0; j < jump; j++)
+        // {
+        //     deckOfCards.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,"", ""));
+        // }
         
-        for(int k = 0; k < dash; k++)
-        {
-            deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0,"", ""));
-        }
-        for(int l = 0; l < backDash; l++)
-        {
-            deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,"", ""));
-        }
+        // for(int k = 0; k < dash; k++)
+        // {
+        //     deckOfCards.Add(GenerateCard("Dash", "Art/Dash", 5, 0,"", ""));
+        // }
+        // for(int l = 0; l < backDash; l++)
+        // {
+        //     deckOfCards.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,"", ""));
+        // }
         
-        for(int i = 0; i < precisionShot; i++)
-        {
-            deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,"", ""));
-        }
-        for(int i = 0; i < basicShot; i++)
-        {
-            deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5, "JoystickButton2", "D"));
-        }
-        for(int i = 0; i < heavyShot; i++)
-        {
-            deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7, "", ""));
-        }
+        // for(int i = 0; i < precisionShot; i++)
+        // {
+        //     deckOfCards.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,"", ""));
+        // }
+        // for(int i = 0; i < basicShot; i++)
+        // {
+        //     deckOfCards.Add(GenerateCard("Shoot", "Art/Dart", 5, 5, "JoystickButton2", "D"));
+        // }
+        // for(int i = 0; i < heavyShot; i++)
+        // {
+        //     deckOfCards.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7, "", ""));
+        // }
 
-        for(int i = 0; i < precisionAttack; i++)
-        {
-            deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5, "", ""));
-        }
+        // for(int i = 0; i < precisionAttack; i++)
+        // {
+        //     deckOfCards.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5, "", ""));
+        // }
 
-        shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"", ""));
-        shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,"", ""));
-        //shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
-        shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,"", ""));
-        //shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
-        shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,"", ""));
-        shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,"", ""));
-        shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,"", ""));
-        shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,"", ""));
+        // shop.Add(GenerateCard("Attack", "Art/sword_icon", 5, 7,"", ""));
+        // shop.Add(GenerateCard("HeavyAttack", "Art/heavyAttack", 5, 10,"", ""));
+        // //shop.Add(GenerateCard("Jump", "Art/double_jump", 5, 0,0));
+        // shop.Add(GenerateCard("Dash", "Art/Dash", 5, 0,"", ""));
+        // //shop.Add(GenerateCard("BackDash", "Art/BackDash", 5, 0,0));
+        // shop.Add(GenerateCard("PrecisionShot", "Art/precision_shot", 5, 8,"", ""));
+        // shop.Add(GenerateCard("Shoot", "Art/Dart", 5, 5,"", ""));
+        // shop.Add(GenerateCard("HeavyShot", "Art/heavy_shot", 5, 7,"", ""));
+        // shop.Add(GenerateCard("PrecisionAttack", "Art/precision_attack", 5, 5,"", ""));
 
      
         // test code serialization
