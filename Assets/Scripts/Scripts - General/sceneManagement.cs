@@ -101,6 +101,7 @@ public class sceneManagement : MonoBehaviour
             Manager.instance.healthTimePanel.SetActive(false);
             Manager.instance.handPanel.SetActive(false);
             Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckEditorUI);
+            Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
            // Manager.instance.goodHealthPanel.SetActive(false);
             //Manager.instance.badHealthPanel.SetActive(false);
             Manager.instance.player.gameObject.SetActive(true);

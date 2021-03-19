@@ -54,7 +54,7 @@ public class ShopMenu : MonoBehaviour
 
     private void MenuCleanup()
     {
-        Manager.instance.RevertState();
+        Manager.instance.NewState(Manager.GameState.HUB);
         Manager.instance.shopPanel.SetActive(false);
         //es.SetSelectedGameObject(idleButton);
     }

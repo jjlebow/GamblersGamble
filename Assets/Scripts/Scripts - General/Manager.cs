@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 public class Manager : MonoBehaviour
 {  
@@ -146,7 +148,7 @@ public class Manager : MonoBehaviour
             else if(currentState == GameState.MENU && deckEditPanel.activeInHierarchy)
             {
                 LeanTween.alphaCanvas(deckEditPanel.GetComponent<CanvasGroup>(), 0f, 0.5f).setOnComplete(delegate(){deckEditPanel.SetActive(!deckEditPanel.activeInHierarchy);});
-                RevertState();        
+                NewState(GameState.HUB);        
             }
         }
         if(Input.GetKeyUp(KeyCode.JoystickButton8) || Input.GetKeyUp(KeyCode.Tab))
@@ -307,9 +309,13 @@ public class Manager : MonoBehaviour
     public void UpdateDeckUI(List<Card> cardList, CardSlot[] cardSlotUI)
     {
         List<Card> tempCards;
-        tempCards = cardList.OrderBy(c => c.bindingKey).ThenBy(c => c.name).ToList();
+        if(!sceneManagement.instance.isKeyboard)
+            tempCards = cardList.OrderBy(c => c.bindingKey).ThenBy(c => c.name).ToList();
+        else
+            tempCards = cardList.OrderBy(c => c.bindingKeyAlt).ThenBy(c => c.name).ToList();
         for(int i = 0; i < cardSlotUI.Length; i++)
         {
+            //Debug.Log("clearing this slot");
             cardSlotUI[i].ClearSlot();
         }
         for(int i = 0; i < tempCards.Count; i++)
@@ -360,6 +366,12 @@ public class Manager : MonoBehaviour
         {
             //Debug.Log("CardDeck " + card.name);
         }
+    }
+
+    //toggles the current UI nav between true and false
+    public void ReverseEnableUINav()
+    {
+        EventSystem.current.GetComponent<InputSystemUIInputModule>().enabled = !EventSystem.current.GetComponent<InputSystemUIInputModule>().enabled;
     }
 
 }

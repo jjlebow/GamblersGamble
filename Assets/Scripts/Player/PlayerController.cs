@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool m_logInput = false;
 
-    public int dashID;
+    [HideInInspector] public int dashID;
     private bool canDash = true;
     [SerializeField] private float dashCooldown = 3f;
 
@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
 
     void Interact()
     {
-        Debug.Log("we are interacting here");
+        //Debug.Log("we are interacting here");
         if((canInteract && Manager.instance.currentState == Manager.GameState.BATTLE || canInteract && Manager.instance.currentState == Manager.GameState.HUB) && StateManager.instance.grounded == true)
         {
             //Debug.Log("here");
@@ -263,15 +263,17 @@ public class PlayerController : MonoBehaviour
         */
     }
 
-    void OnEnable()
+    public void OnEnable()
     {
         controls.PlayerControls.Enable();
         controls.PlayerInteract.Enable();
         controls.PlayerMovement.Enable();
+        controls.UI.Enable();
     }
 
-    void OnDisable()
+    public void OnDisable()
     {
+        controls.UI.Disable();
         controls.PlayerControls.Disable();
         controls.PlayerInteract.Disable();
         controls.PlayerMovement.Disable();

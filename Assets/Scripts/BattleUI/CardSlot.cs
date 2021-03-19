@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
 public class CardSlot : MonoBehaviour
 {
     public Image icon;
@@ -15,11 +16,15 @@ public class CardSlot : MonoBehaviour
     public TextMeshProUGUI cardQuantity;
 
     private float timer = 0.2f;
+    private string tempKey = "";
+    //private Navigation noneNav = new Navigation();   //creates a navigation type that allows us to turn off all navigation with this input. 
 
     //public Damageable playerDamage;
 
     void Start()
-    {/*
+    {
+        //noneNav.mode = Navigation.Mode.None;  //defining the navigation mode as none here. 
+        /*
         if(this.keyBinding.Count > 0)
         {   
             if(sceneManagement.instance.isKeyboard)
@@ -61,10 +66,10 @@ public class CardSlot : MonoBehaviour
 
     public void ReassignCard()
     {
-        
+        StartCoroutine(WaitForInput());
     }
 
-    public void PurchaseCard()
+    public void PurchaseCardOld()
     {
         if(Manager.instance.currentState == Manager.GameState.MENU)
         {
@@ -79,6 +84,42 @@ public class CardSlot : MonoBehaviour
             {
                 Debug.Log("cant afford this");
             }
+        }
+    }
+    public void PurchaseCard()
+    {
+        if(Manager.instance.money >= this.card.cost)
+        {
+            if(!Deck.instance.deckOfCards.Contains(this.card))
+            {
+                StartCoroutine(WaitForInputShop());
+            }
+            else
+            {
+                string binding = "";
+                for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
+                {
+                    if(Deck.instance.deckOfCards[i].name == this.card.name)
+                    {
+                        if(sceneManagement.instance.isKeyboard)
+                            binding = Deck.instance.deckOfCards[i].bindingKeyAlt;
+                        else 
+                            binding = Deck.instance.deckOfCards[i].bindingKey;
+                    }
+                }
+                Card tempCard = this.card;
+                tempCard.bindingKey = binding;
+                tempCard.bindingKeyAlt = binding;
+                Debug.Log(tempCard.bindingKey + " " + tempCard.bindingKeyAlt);
+                Deck.instance.deckOfCards.Add(tempCard);
+                Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
+                Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckEditorUI);
+            }
+            Manager.instance.money -= this.card.cost;
+        }
+        else
+        {
+            Debug.Log("cant afford this");
         }
     }
 
@@ -183,6 +224,25 @@ public class CardSlot : MonoBehaviour
             if(Input.anyKeyDown)// && Input.GetButtown)// && !Input.GetButtonDown("Jump") && !Input.GetButtonDown("Horizontal") && !Input.GetButtonDown("Vertical") && !Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKeyDown(KeyCode.P) && !Input.GetKeyDown(KeyCode.I)) //&& !Input.GetButtonDown("Jump"))
             {
 
+                foreach (KeyCode keyCode in Deck.instance.possibleKeys)
+                {
+                    if(Input.GetKeyDown(keyCode))
+                    {
+                        //Deck.instance.handCards[i].keyCode = keyCode.ToString();
+                        tempKey = keyCode.ToString();
+                        Manager.instance.RevertState();
+                        return true;
+                    }
+                }
+            }
+            return false;
+    }
+    public bool AcceptInputold()
+    {
+            //find a better way to do this
+            if(Input.anyKeyDown)// && Input.GetButtown)// && !Input.GetButtonDown("Jump") && !Input.GetButtonDown("Horizontal") && !Input.GetButtonDown("Vertical") && !Input.GetKeyDown(KeyCode.Mouse0) && !Input.GetKeyDown(KeyCode.P) && !Input.GetKeyDown(KeyCode.I)) //&& !Input.GetButtonDown("Jump"))
+            {
+
                 foreach (KeyCode keyCode in Deck.instance.allKeyCodes)
                 {
                     if(Input.GetKeyDown(keyCode))
@@ -201,6 +261,66 @@ public class CardSlot : MonoBehaviour
     //waits to receive input before the process of buying the card
     //helper function to BuyCard().  after waiting for input, stores the card in the hand and removes it from drawnCards
     private IEnumerator WaitForInput()
+    {
+        yield return 1;
+
+        //Debug.Log("waiting for input");
+        
+        //Deck.instance.handCards[i].AddCard(this.card);\
+           //Debug.Log("this is a new card " + this.card.name + " " + this.card.icon + " " + this.card.cost + " " + this.card.damage + " " + this.card.suit);
+        Manager.instance.NewState(Manager.GameState.ACCEPTINPUT);
+        //var currentNav = GetComponentInChildren<Button>().navigation;
+        //GetComponentInChildren<Button>().navigation = noneNav;
+        Manager.instance.ReverseEnableUINav();
+        Debug.Log("awaiting new key reassignment");
+        while(!AcceptInput())
+        {
+            yield return null;
+        }
+        //finds the first empty space in the list of handcards and puts the selected card into it
+        for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
+        {
+            if(Deck.instance.deckOfCards[i].name == this.card.name)
+            {
+                Deck.instance.deckOfCards[i].bindingKey = tempKey;
+                Deck.instance.deckOfCards[i].bindingKeyAlt = tempKey;
+            }
+        }
+        //GetComponentInChildren<Button>().navigation = currentNav;
+        Manager.instance.ReverseEnableUINav();
+        Debug.Log("key successfully reassigned");
+        Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckEditorUI);
+        Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
+    }
+
+    private IEnumerator WaitForInputShop()
+    {
+        yield return 1;
+
+        //Debug.Log("waiting for input");
+        
+        //Deck.instance.handCards[i].AddCard(this.card);\
+           //Debug.Log("this is a new card " + this.card.name + " " + this.card.icon + " " + this.card.cost + " " + this.card.damage + " " + this.card.suit);
+        Manager.instance.NewState(Manager.GameState.ACCEPTINPUT);
+        //var currentNav = GetComponentInChildren<Button>().navigation;
+        //GetComponentInChildren<Button>().navigation = noneNav;
+        Manager.instance.ReverseEnableUINav();
+        Debug.Log("awaiting new key reassignment");
+        while(!AcceptInput())
+        {
+            yield return null;
+        }
+        Card tempCard = this.card;
+        tempCard.bindingKey = tempKey;
+        tempCard.bindingKeyAlt = tempKey;
+        Deck.instance.deckOfCards.Add(tempCard);
+        //GetComponentInChildren<Button>().navigation = currentNav;
+        Manager.instance.ReverseEnableUINav();
+        Debug.Log("key successfully reassigned");
+        Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.deckEditorUI);
+        Manager.instance.UpdateDeckUI(Deck.instance.deckOfCards, Deck.instance.shopDeckUI);
+    }
+    private IEnumerator WaitForInputold()
     {
         yield return 1;
 
