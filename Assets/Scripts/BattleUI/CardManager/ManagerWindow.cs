@@ -19,6 +19,8 @@ public class ManagerWindow : EditorWindow
 
     public ManagerCardList cards = new ManagerCardList();
 
+
+    public EditorWindow window = null;
     private static string jsonSavePath = "Assets/Resources/JSON/savedCards.json";
     private Vector2 scrollPosition;
     private float cardWidth = 250;
@@ -35,6 +37,7 @@ public class ManagerWindow : EditorWindow
     public void Awake()
     {
         cards = CardFunctions.ReadSavedList();
+        window = GetWindow<ManagerWindow>("ManagerWindow");
     }
 
 
@@ -72,7 +75,7 @@ public class ManagerWindow : EditorWindow
     	return newManagerCard;
     }
 
-    void DisplayCard(ManagerCard managerCard, float width, float height)
+    private void DisplayCard(ManagerCard managerCard, float width, float height)
     {
         if (managerCard != null)
         {
@@ -97,6 +100,35 @@ public class ManagerWindow : EditorWindow
        
     }
 
+    private void DisplayAllCards()
+    {
+        int cardsPerRow = CardsFittableOnRow();
+        int rows = (int)Math.Ceiling(cards.list.Count / (float)cardsPerRow);
+
+
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition);
+
+        for (int i = 0; i < rows; ++i) {
+            GUILayout.BeginHorizontal("Card Row " + i, GUILayout.Height(cardHeight));
+
+            for (int j = 0; j < cardsPerRow; ++j) {         
+                int cardIndex = (i * cardsPerRow) + j;
+                if (cardIndex >= cards.list.Count) { break; }
+                DisplayCard(cards.list[cardIndex], cardWidth, cardHeight);
+            }
+
+            GUILayout.EndHorizontal();
+        }
+
+        GUILayout.EndScrollView();
+    }
+
+    private int CardsFittableOnRow()
+    {
+        int cardsFit = (int)Math.Floor(window.position.width / cardWidth);
+        return Math.Max(1, cardsFit);
+    }
+
     void HandleDelayedEvents()
     {
         // deleting cards
@@ -116,9 +148,6 @@ public class ManagerWindow : EditorWindow
     {
         GUILayout.Label("This is a label.", EditorStyles.boldLabel);
 
-        //string newName, string newIconPath, int newCost, int newDamage, int newSuit
-        //"Attack", "Art/sword_icon", 5, 7, 1
-
         if (GUILayout.Button("Load", GUILayout.Height(20), GUILayout.Width(100))) {
             Debug.Log("Loading Card JSON");
             cards = CardFunctions.ReadSavedList();
@@ -129,36 +158,9 @@ public class ManagerWindow : EditorWindow
             AddCard();   
         }
 
-        int boxHeight = 500;
-        int cardsPerRow = 4;
-        int rows = (int)Math.Ceiling(cards.list.Count / (float)cardsPerRow);
 
-        scrollPosition = GUILayout.BeginScrollView(
-            scrollPosition, GUILayout.Width(cardWidth * cardsPerRow * 1.10f), GUILayout.Height(cardHeight * rows * 1.20f));
+        DisplayAllCards();
 
-        for (int i = 0; i < rows; ++i) {
-            GUILayout.BeginHorizontal("Card Row " + i, GUILayout.Height(cardHeight));
-
-            for (int j = 0; j < cardsPerRow; ++j) {         
-                int cardIndex = (i * cardsPerRow) + j;
-                if (cardIndex >= cards.list.Count) { break; }
-                DisplayCard(cards.list[cardIndex], cardWidth, cardHeight);
-            }
-
-            GUILayout.EndHorizontal();
-        }
-
-        // GUILayout.BeginHorizontal("Group Outside");
-
-        // foreach (ManagerCard card in cards.list) {
-        //     DisplayCard(card);
-        // }
-        
-        // GUILayout.EndHorizontal();
-
-        GUILayout.EndScrollView();
-
-        // EditorGUILayout.ObjectField()
 
         if (GUILayout.Button("Save")) {
             SaveCards();
