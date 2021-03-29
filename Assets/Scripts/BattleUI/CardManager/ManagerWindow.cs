@@ -44,6 +44,10 @@ public class ManagerWindow : EditorWindow
     public void SaveCards()
     {
         Debug.Log("Saving Card JSON");
+        
+        foreach (var managerCard in cards.list) {
+            managerCard.UpdateIconPath();
+        }
 
         string cardJson = JsonUtility.ToJson(cards, true);
         File.WriteAllText(jsonSavePath, cardJson);

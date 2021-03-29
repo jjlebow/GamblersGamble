@@ -9,22 +9,9 @@
                 "bindingKeyAlt": "A",
                 "suit": 1
             },
-            "iconPath": "Art/sword_icon",
+            "iconPath": "Assets/Resources/Art/sword_icon.jpg",
             "inShop": true,
             "cardsInDeck": 6
-        },
-        {
-            "card": {
-                "name": "HeavyAttack",
-                "cost": 5,
-                "damage": 10,
-                "bindingKey": "",
-                "bindingKeyAlt": "",
-                "suit": 1
-            },
-            "iconPath": "Art/heavyAttack",
-            "inShop": true,
-            "cardsInDeck": 0
         },
         {
             "card": {
@@ -35,35 +22,22 @@
                 "bindingKeyAlt": "",
                 "suit": 0
             },
-            "iconPath": "Art/Dash",
+            "iconPath": "Assets/Resources/Art/Dash.png",
             "inShop": true,
             "cardsInDeck": 0
         },
         {
             "card": {
-                "name": "PrecisionShot",
+                "name": "HeavyAttack",
                 "cost": 5,
-                "damage": 8,
+                "damage": 10,
                 "bindingKey": "",
                 "bindingKeyAlt": "",
-                "suit": 2
+                "suit": 1
             },
-            "iconPath": "Art/precision_shot",
+            "iconPath": "Assets/Resources/Art/heavyAttack.jpg",
             "inShop": true,
             "cardsInDeck": 0
-        },
-        {
-            "card": {
-                "name": "Shoot",
-                "cost": 5,
-                "damage": 5,
-                "bindingKey": "JoystickButton2",
-                "bindingKeyAlt": "D",
-                "suit": 2
-            },
-            "iconPath": "Art/Dart",
-            "inShop": true,
-            "cardsInDeck": 6
         },
         {
             "card": {
@@ -74,7 +48,7 @@
                 "bindingKeyAlt": "",
                 "suit": 2
             },
-            "iconPath": "Art/heavy_shot",
+            "iconPath": "Assets/Resources/Art/heavy_shot.jpg",
             "inShop": true,
             "cardsInDeck": 0
         },
@@ -87,8 +61,47 @@
                 "bindingKeyAlt": "",
                 "suit": 1
             },
-            "iconPath": "Art/precision_attack",
+            "iconPath": "Assets/Resources/Art/precision_attack.png",
             "inShop": true,
+            "cardsInDeck": 0
+        },
+        {
+            "card": {
+                "name": "PrecisionShot",
+                "cost": 5,
+                "damage": 8,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
+                "suit": 2
+            },
+            "iconPath": "Assets/Resources/Art/precision_shot.png",
+            "inShop": true,
+            "cardsInDeck": 0
+        },
+        {
+            "card": {
+                "name": "Shoot",
+                "cost": 5,
+                "damage": 5,
+                "bindingKey": "JoystickButton2",
+                "bindingKeyAlt": "D",
+                "suit": 2
+            },
+            "iconPath": "Assets/Resources/Art/Dart.jpg",
+            "inShop": true,
+            "cardsInDeck": 6
+        },
+        {
+            "card": {
+                "name": "Mysterious Chicken",
+                "cost": 999,
+                "damage": 999,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
+                "suit": 0
+            },
+            "iconPath": "Assets/Art/Boss1/PeckAttack/Cock_Peck0128.png",
+            "inShop": false,
             "cardsInDeck": 0
         }
     ]

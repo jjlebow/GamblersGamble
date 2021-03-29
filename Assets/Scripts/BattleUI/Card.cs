@@ -20,7 +20,7 @@ public class Card
 
     public Card(string name, string iconPath, int cost, int damage, int suit) {
     	this.name = name;
-    	this.icon = Resources.Load<Sprite>(iconPath);
+    	this.icon = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath(iconPath, typeof(Sprite));
         this.cost = cost;
         this.damage = damage;
         this.suit = suit;
