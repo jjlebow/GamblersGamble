@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-    [Range(0,100)] public int health;
+    [Range(0,100)] public float health;
     //this is to prevent multiple hitboxes from being hit at once
     private bool collisionDamageEventRaised = false;
     private float timer = 2.0f;  //timer before player can take damage again after being hit
     //public GameObject{?} death animation
     public bool isDrainable;
-    int oldHealth;
+    private float oldHealth;
     public IEnumerator temp = null;
     private Dictionary<string, int> hitboxesHit = null;   //dictionary is not really necessary...
     private bool canDamage = true;

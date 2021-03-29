@@ -30,9 +30,12 @@ public class Manager : MonoBehaviour
     public float timer;
     public int money = 50;
     
-    public Slider healthBar;
-    public Slider badHealthBar;
-    public Slider timerUI;
+    //public Slider healthBar;
+    //public Slider badHealthBar;
+    public Image timerUI;
+
+    public Image healthBarFill;
+    public Image badHealthBarFill;
     public bool startTimer = false;
 
     public bool turnEnd = false;
@@ -97,7 +100,7 @@ public class Manager : MonoBehaviour
         //Debug.Log(Deck.instance.deckOfCards.Count);
         //Debug.Log(Deck.instance.deckUI.Length);
         timer = timerMax;
-        timerUI.maxValue = timerMax;
+        //timerUI.maxValue = timerMax;
         /*
         for(int i = 0; i < Deck.instance.deckOfCards.Count; i++)
         {
@@ -120,10 +123,14 @@ public class Manager : MonoBehaviour
     {
         //if(gameState.GameState = PAUSED)
             //Time.timeScale = 0;
-        healthBar.value = playerDamageable.health;
+        
+        healthBarFill.fillAmount = playerDamageable.health / 100;
+        healthBarFill.SetNativeSize();
+        badHealthBarFill.SetNativeSize();
         if(bossDamageable != null)
         {
-            badHealthBar.value = bossDamageable.health;
+            badHealthBarFill.fillAmount = bossDamageable.health / 100;
+            //badHealthBar.value = bossDamageable.health;
         }
         if(Input.GetKeyDown(KeyCode.JoystickButton8) || Input.GetKeyDown(KeyCode.Tab))
         {
@@ -259,7 +266,7 @@ public class Manager : MonoBehaviour
     private void FixedUpdate()
     {
         moneyUI.text = money.ToString();
-        timerUI.value = timer;
+        timerUI.fillAmount = timer / timerMax;
         //if(startTimer == true)
         //{
         if(Manager.instance.currentState == Manager.GameState.BATTLE)

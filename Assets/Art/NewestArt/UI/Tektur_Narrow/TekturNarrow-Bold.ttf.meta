@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 90070cb2b8c156d4ab96d0a406fb5284
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Tektur Narrow
+  fontNames:
+  - Tektur Narrow
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 708e9af8ab2af514a8a7ac856e79da7d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
