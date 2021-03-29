@@ -15,6 +15,19 @@
         },
         {
             "card": {
+                "name": "Dash",
+                "cost": 5,
+                "damage": 0,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
+                "suit": 0
+            },
+            "iconPath": "Art/Dash",
+            "inShop": true,
+            "cardsInDeck": 0
+        },
+        {
+            "card": {
                 "name": "HeavyAttack",
                 "cost": 5,
                 "damage": 10,
@@ -28,14 +41,27 @@
         },
         {
             "card": {
-                "name": "Dash",
+                "name": "HeavyShot",
                 "cost": 5,
-                "damage": 0,
+                "damage": 7,
                 "bindingKey": "",
                 "bindingKeyAlt": "",
-                "suit": 0
+                "suit": 2
             },
-            "iconPath": "Art/Dash",
+            "iconPath": "Art/heavy_shot",
+            "inShop": true,
+            "cardsInDeck": 0
+        },
+        {
+            "card": {
+                "name": "PrecisionAttack",
+                "cost": 5,
+                "damage": 5,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
+                "suit": 1
+            },
+            "iconPath": "Art/precision_attack",
             "inShop": true,
             "cardsInDeck": 0
         },
@@ -64,32 +90,6 @@
             "iconPath": "Art/Dart",
             "inShop": true,
             "cardsInDeck": 6
-        },
-        {
-            "card": {
-                "name": "HeavyShot",
-                "cost": 5,
-                "damage": 7,
-                "bindingKey": "",
-                "bindingKeyAlt": "",
-                "suit": 2
-            },
-            "iconPath": "Art/heavy_shot",
-            "inShop": true,
-            "cardsInDeck": 0
-        },
-        {
-            "card": {
-                "name": "PrecisionAttack",
-                "cost": 5,
-                "damage": 5,
-                "bindingKey": "",
-                "bindingKeyAlt": "",
-                "suit": 1
-            },
-            "iconPath": "Art/precision_attack",
-            "inShop": true,
-            "cardsInDeck": 0
         }
     ]
 }
