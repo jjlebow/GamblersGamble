@@ -13,7 +13,10 @@ public class AerialAttackBehavior : StateMachineBehaviour
         //if(StateManager.instance.playerGrounded && StateManager.instance.stance == false) 
             //StateManager.instance.playerState = StateManager.PlayerStates.HOLD;
         if(player.intendedLayer == 0)
+        {
             player.aerialNeutralHitbox.SetActive(true);
+            AudioManager.instance.audioSource.PlayOneShot(AudioManager.instance.neutralAttackSound, 1.0f);
+        }
         else if(player.intendedLayer == 1)
             player.aerialHeavyHitbox.SetActive(true);
         else if(player.intendedLayer == 2)

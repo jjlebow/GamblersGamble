@@ -668,7 +668,8 @@ public class PlayerController : MonoBehaviour
         TurnOffLayers();
         intendedLayer = 0;
         damageHolder = damage;
-        StateManager.instance.playerStatic = true;
+        if(StateManager.instance.grounded)
+            StateManager.instance.playerStatic = true;
         //StateManager.instance.isActive = true;
         StateManager.instance.ChangeState(StateManager.PlayerState.MELEE);
     }
@@ -1030,7 +1031,7 @@ public class PlayerController : MonoBehaviour
 
     private void Flip()
     {
-        if(!StateManager.instance.attacking) //&& !StateManager.instance.stance)
+        if(StateManager.instance.currentState == StateManager.PlayerState.IDLE) //&& !StateManager.instance.stance)
         {
             //switches the way the player is facing
             StateManager.instance.faceRight = !StateManager.instance.faceRight;//1;//StateManager.instance.faceRight * -1;

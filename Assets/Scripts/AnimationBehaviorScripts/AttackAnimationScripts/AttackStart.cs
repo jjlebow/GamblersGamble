@@ -8,7 +8,7 @@ public class AttackStart : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = Manager.instance.player;
+        //player = Manager.instance.player;
         //if(player.intendedLayer == 0)
             //player.audioSource.PlayOneShot(player.neutralAttackSound, 1.0f);
     }
