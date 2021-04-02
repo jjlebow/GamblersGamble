@@ -9,7 +9,7 @@
                 "bindingKeyAlt": "A",
                 "suit": 1
             },
-            "iconPath": "Assets/Resources/Art/sword_icon.jpg",
+            "iconPath": "Assets/Resources/Art/Icon_sword_normal.png",
             "inShop": true,
             "cardsInDeck": 6
         },
@@ -54,6 +54,19 @@
         },
         {
             "card": {
+                "name": "Mysterious Chicken",
+                "cost": 999,
+                "damage": 999,
+                "bindingKey": "",
+                "bindingKeyAlt": "",
+                "suit": 0
+            },
+            "iconPath": "Assets/Art/Boss1/PeckAttack/Cock_Peck0128.png",
+            "inShop": false,
+            "cardsInDeck": 0
+        },
+        {
+            "card": {
                 "name": "PrecisionAttack",
                 "cost": 5,
                 "damage": 5,
@@ -87,22 +100,9 @@
                 "bindingKeyAlt": "D",
                 "suit": 2
             },
-            "iconPath": "Assets/Resources/Art/Dart.jpg",
+            "iconPath": "Assets/Resources/Art/Icon_knife_normal.png",
             "inShop": true,
             "cardsInDeck": 6
-        },
-        {
-            "card": {
-                "name": "Mysterious Chicken",
-                "cost": 999,
-                "damage": 999,
-                "bindingKey": "",
-                "bindingKeyAlt": "",
-                "suit": 0
-            },
-            "iconPath": "Assets/Art/Boss1/PeckAttack/Cock_Peck0128.png",
-            "inShop": false,
-            "cardsInDeck": 0
         }
     ]
 }

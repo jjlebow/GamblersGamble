@@ -27,6 +27,7 @@ public class MeleeAttack : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D hitInfo)
     {
+        
     	Transform hitParent = hitInfo.transform;
     	hitParent = PublicFunctions.FindParent(hitParent);
 
@@ -39,7 +40,9 @@ public class MeleeAttack : MonoBehaviour
                 hitParent.GetComponent<Damageable>().TakeCollisionDamage(player.damageHolder, hitInfo.name, player.gameObject);
     		//Debug.Log("the boss should be taking: " + player.damageHolder + " much damage");
             //Debug.Log("this is the hitbox we are hitting: " + hitInfo.name);
+            
     		
     	}
+        
     }
 }

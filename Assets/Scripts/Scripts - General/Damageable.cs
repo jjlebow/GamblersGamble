@@ -45,8 +45,8 @@ public class Damageable : MonoBehaviour
             Debug.Log("critical damage(single hitbox): " + baseDamage * 2);
             oldHealth = health;
             health -= baseDamage * 2;
-            if(isDrainable)
-                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += ((oldHealth - health) * 2);
+            //if(isDrainable)
+                //PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += ((oldHealth - health) * 2);
         }
         else
         {
@@ -55,8 +55,8 @@ public class Damageable : MonoBehaviour
             Debug.Log("Normal Damage(singleHitbox): " + baseDamage);
             oldHealth = health;
             health -= baseDamage;
-            if(isDrainable)
-                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
+            //if(isDrainable)
+                //PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
         }
         if(health <=0)
         {	 
@@ -77,8 +77,8 @@ public class Damageable : MonoBehaviour
             
             //Debug.Log(health);
             //Debug.Log(oldHealth);
-            if(isDrainable)
-                offender.GetComponent<Damageable>().health += (oldHealth - health);
+            //if(isDrainable)
+                //offender.GetComponent<Damageable>().health += (oldHealth - health);
             canDamage = false;
 
             //StartKnockBack();
@@ -169,8 +169,8 @@ public class Damageable : MonoBehaviour
             Debug.Log("critical damage: " + hitboxesHit["CriticalHitbox"] * 2);
             oldHealth = health;
             health -= hitboxesHit["CriticalHitbox"] * 2;
-            if(isDrainable)
-                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += ((oldHealth - health) * 2);
+            //if(isDrainable)
+                //PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += ((oldHealth - health) * 2);
         }
         else if(hitboxesHit.ContainsKey("CriticalEnablerHitbox"))
         {
@@ -181,8 +181,8 @@ public class Damageable : MonoBehaviour
             Debug.Log("Normal (Enabler) Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
-            if(isDrainable)
-                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
+            //if(isDrainable)
+                //PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
         }
         else
         {
@@ -192,8 +192,8 @@ public class Damageable : MonoBehaviour
             Debug.Log("Normal Damage: " + hitboxesHit["NormalHitbox"]);
             oldHealth = health;
             health -= hitboxesHit["NormalHitbox"];
-            if(isDrainable)
-                PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
+            //if(isDrainable)
+                //PublicFunctions.FindParent(attacker.transform).GetComponent<Damageable>().health += (oldHealth - health);
         }
         //Debug.Log("damage taken: " + damage);
         if(health <=0)

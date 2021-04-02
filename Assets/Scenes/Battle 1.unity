@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fd1c0aeae4602e41955251ed01cd0aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 100
   isDrainable: 1
   particleEffects: {fileID: 371904040}
 --- !u!95 &13611341

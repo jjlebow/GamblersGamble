@@ -242,11 +242,13 @@ public class Deck : MonoBehaviour
             }
             for(int i = length - 1; i >= 0; i--) //for each of the drawnCard slots,
             {
-                
+                //Debug.Log(deckLength - 1);
+                //Debug.Log(deckOfCards[deckLength - 1].bindingKey);
                 if(m_array[i].keyBinding.Contains(deckOfCards[deckLength - 1].bindingKey))
                 {
                     if(m_array[i].card == null || m_array[i].card.name == deckOfCards[deckLength - 1].name)
                     {
+                        //Debug.Log("we are drawing a card" + deckOfCards.Count);
                         //altkey and bindingkey should be the same after the firs battle, this is just for the sprites to show correctly at the first battle.  
                         if(sceneManagement.instance.isKeyboard)
                             m_array[i].bindIcon.sprite = Resources.Load<Sprite>("ButtonIcons/" + deckOfCards[deckLength - 1].bindingKeyAlt) as Sprite;
@@ -266,6 +268,7 @@ public class Deck : MonoBehaviour
             //if we make it here by passing the break statement, this means that the card did not fit in any slots, so we add it to this list. 
             if(wasDrawn == false)
             {
+                //Debug.Log("we are here");
                 j--; //revert back one so that we count the next card
                 temporaryHoldingCards.Add(deckOfCards[deckLength - 1]);
                 deckOfCards.RemoveAt(deckLength - 1);

@@ -9,7 +9,7 @@ public class CardSlot : MonoBehaviour
 {
     public Image icon;
     public Card card;
-    public string keyCode;
+    //public string keyCode;
     public Image bindIcon;
     public int quantity;
     public List<string> keyBinding;
@@ -51,7 +51,7 @@ public class CardSlot : MonoBehaviour
     public void ClearSlot()
     {
     	card = null;
-        keyCode = null;
+        //keyCode = null;
 
     	icon.sprite = null;
     	icon.enabled = false;

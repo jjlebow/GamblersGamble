@@ -330,7 +330,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 480572616}
   quantity: 0
   keyBinding: []
@@ -507,7 +506,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 895530903}
   quantity: 0
   keyBinding: []
@@ -1222,7 +1220,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1498886764}
   quantity: 0
   keyBinding: []
@@ -1477,7 +1474,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 2128961397}
   quantity: 0
   keyBinding: []
@@ -1734,7 +1730,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -3241,7 +3236,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -3416,7 +3410,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -4230,7 +4223,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 233408847}
   quantity: 0
   keyBinding: []
@@ -4331,7 +4323,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -4664,7 +4655,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 855249750}
   quantity: 0
   keyBinding: []
@@ -4987,7 +4977,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -6123,7 +6112,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 296678187}
   quantity: 0
   keyBinding: []
@@ -6226,7 +6214,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1163725194}
   quantity: 0
   keyBinding: []
@@ -6481,7 +6468,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 888658611}
   quantity: 0
   keyBinding: []
@@ -6582,7 +6568,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -6683,7 +6668,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -6860,7 +6844,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 80313132}
   quantity: 0
   keyBinding: []
@@ -7183,7 +7166,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -7322,7 +7304,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -7499,7 +7480,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1935043912}
   quantity: 0
   keyBinding: []
@@ -7833,7 +7813,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -8146,7 +8125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -130, y: -75}
+  m_AnchoredPosition: {x: -130, y: -100}
   m_SizeDelta: {x: 71, y: 98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220691011
@@ -8169,7 +8148,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 302580550}
   quantity: 0
   keyBinding:
@@ -8843,7 +8821,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -9483,7 +9460,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 2002522340}
   quantity: 0
   keyBinding: []
@@ -9817,7 +9793,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -10646,7 +10621,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 589694914}
   quantity: 0
   keyBinding: []
@@ -11313,7 +11287,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -11720,7 +11693,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 440780155}
   quantity: 0
   keyBinding: []
@@ -12127,7 +12099,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1834661335}
   quantity: 0
   keyBinding: []
@@ -12230,7 +12201,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1784066858}
   quantity: 0
   keyBinding: []
@@ -12644,7 +12614,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -12747,7 +12716,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1026954314}
   quantity: 0
   keyBinding: []
@@ -12856,7 +12824,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0, g: 0.43529412, b: 0.54509807, a: 1}
+  m_fontColor: {r: 0, g: 0.7999997, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13005,7 +12973,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -13106,7 +13073,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -13713,7 +13679,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 877661670}
   quantity: 0
   keyBinding: []
@@ -14002,7 +13967,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396319228}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -15334,7 +15299,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -15799,7 +15763,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1495493247}
   quantity: 0
   keyBinding: []
@@ -15976,7 +15939,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 260963803}
   quantity: 0
   keyBinding: []
@@ -16079,7 +16041,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 133816536}
   quantity: 0
   keyBinding: []
@@ -16295,7 +16256,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452557625}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -17881,7 +17842,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1364699798}
   quantity: 0
   keyBinding: []
@@ -18143,7 +18103,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 2054763830}
   quantity: 0
   keyBinding: []
@@ -18400,7 +18359,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -18651,7 +18609,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 458810445}
   quantity: 0
   keyBinding: []
@@ -18908,7 +18865,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -19477,7 +19433,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1032778168}
   quantity: 0
   keyBinding: []
@@ -19736,7 +19691,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1096239162}
   quantity: 0
   keyBinding: []
@@ -20218,7 +20172,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -21420,39 +21373,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 607383165}
   m_CullTransparentMesh: 0
---- !u!1 &608457160 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6439083807075541001, guid: fb6a5464489498048b0fa455934980b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1034224485}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &608457162 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 6439083807075541003, guid: fb6a5464489498048b0fa455934980b6,
     type: 3}
   m_PrefabInstance: {fileID: 1034224485}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &608457164
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608457160}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 0
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &608470937
 GameObject:
   m_ObjectHideFlags: 0
@@ -21820,7 +21746,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -21923,7 +21848,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1858956512}
   quantity: 0
   keyBinding: []
@@ -22341,7 +22265,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 838078786}
   quantity: 0
   keyBinding: []
@@ -22518,12 +22441,11 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 280409665}
   quantity: 0
   keyBinding:
-  - JoystickButton0
-  - A
+  - JoystickButton3
+  - W
   cardQuantity: {fileID: 1649625431}
 --- !u!114 &643559167
 MonoBehaviour:
@@ -22941,7 +22863,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 150832964}
   quantity: 0
   keyBinding: []
@@ -23200,7 +23121,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1956742679}
   quantity: 0
   keyBinding: []
@@ -23695,7 +23615,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1380111123}
   quantity: 0
   keyBinding: []
@@ -24073,7 +23992,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -24845,7 +24763,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 789444559}
   quantity: 0
   keyBinding: []
@@ -25330,7 +25247,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1630957638}
   quantity: 0
   keyBinding: []
@@ -25746,7 +25662,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -26666,7 +26581,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -28087,7 +28001,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 148329086}
   quantity: 0
   keyBinding: []
@@ -28412,7 +28325,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1907161046}
   quantity: 0
   keyBinding: []
@@ -28589,7 +28501,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 127862475}
   quantity: 0
   keyBinding: []
@@ -29256,7 +29167,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 405342851}
   quantity: 0
   keyBinding: []
@@ -29605,6 +29515,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856279424}
   m_CullTransparentMesh: 0
+--- !u!1 &858588631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6439083807075541001, guid: fb6a5464489498048b0fa455934980b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034224485}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &858588634
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858588631}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!224 &862079442 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5029375487455533253, guid: 7c4571a5b8f9c404b82d4a655f414e1b,
@@ -30170,7 +30107,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -30347,7 +30283,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1477611614}
   quantity: 0
   keyBinding: []
@@ -30877,7 +30812,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888479920}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -31555,7 +31490,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1412532823}
   quantity: 0
   keyBinding: []
@@ -31888,7 +31822,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1091960497}
   quantity: 0
   keyBinding: []
@@ -33413,7 +33346,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1671425458}
   quantity: 0
   keyBinding: []
@@ -34361,7 +34293,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -35484,7 +35415,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -35974,7 +35904,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -37311,7 +37240,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -37711,6 +37639,11 @@ PrefabInstance:
       propertyPath: wasd.m_SingletonActionBindings.Array.data[4].m_Action
       value: Wasd
       objectReference: {fileID: 0}
+    - target: {fileID: 6439083806820225323, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6439083806820225324, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
       propertyPath: m_Name
@@ -37785,6 +37718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6439083806821307189, guid: fb6a5464489498048b0fa455934980b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6439083807061244164, guid: fb6a5464489498048b0fa455934980b6,
         type: 3}
@@ -38776,7 +38714,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 407023951}
   quantity: 0
   keyBinding: []
@@ -39678,7 +39615,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -42342,7 +42278,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -43235,7 +43170,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -43571,7 +43505,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 433214085}
   quantity: 0
   keyBinding: []
@@ -43989,7 +43922,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 672213712}
   quantity: 0
   keyBinding: []
@@ -44143,7 +44075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -75}
+  m_AnchoredPosition: {x: 50, y: -100}
   m_SizeDelta: {x: 71, y: 98}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1209526857
@@ -44166,12 +44098,11 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 740725725}
   quantity: 0
   keyBinding:
-  - JoystickButton0
-  - A
+  - JoystickButton2
+  - D
   cardQuantity: {fileID: 358908187}
 --- !u!114 &1209526858
 MonoBehaviour:
@@ -44473,27 +44404,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1034224485}
   m_PrefabAsset: {fileID: 0}
---- !u!50 &1227649246
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227649245}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &1227649248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44504,7 +44414,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.9336289, y: 0.5726261}
@@ -44520,6 +44430,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.7717998, y: 0.2779932}
   m_EdgeRadius: 0
+--- !u!50 &1227649249
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227649245}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1234762965
 GameObject:
   m_ObjectHideFlags: 0
@@ -45015,7 +44946,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 344766553}
   quantity: 0
   keyBinding: []
@@ -45230,7 +45160,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244735701}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -45690,7 +45620,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 357376615}
   quantity: 0
   keyBinding: []
@@ -47421,7 +47350,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 603911144}
   quantity: 0
   keyBinding: []
@@ -47672,7 +47600,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1388692505}
   quantity: 0
   keyBinding: []
@@ -47775,7 +47702,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 909098212}
   quantity: 0
   keyBinding: []
@@ -47876,7 +47802,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -48676,7 +48601,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1680805371}
   quantity: 0
   keyBinding: []
@@ -49240,7 +49164,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -50529,7 +50452,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1403706046}
   quantity: 0
   keyBinding: []
@@ -51550,7 +51472,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1522967609}
   quantity: 0
   keyBinding: []
@@ -52275,7 +52196,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1933177741}
   quantity: 0
   keyBinding: []
@@ -53475,7 +53395,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -53652,7 +53571,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 80678079}
   quantity: 0
   keyBinding: []
@@ -54995,7 +54913,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 37398635}
   quantity: 0
   keyBinding: []
@@ -55337,7 +55254,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0, g: 0.43529412, b: 0.54509807, a: 1}
+  m_fontColor: {r: 0, g: 0.7999997, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -55872,7 +55789,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -56049,7 +55965,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1150432453}
   quantity: 0
   keyBinding: []
@@ -56700,7 +56615,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 197640246}
   quantity: 0
   keyBinding: []
@@ -57562,7 +57476,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 209669402}
   quantity: 0
   keyBinding: []
@@ -57665,7 +57578,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1161790285}
   quantity: 0
   keyBinding: []
@@ -57768,7 +57680,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 2027665030}
   quantity: 0
   keyBinding: []
@@ -58892,7 +58803,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1570873725}
   quantity: 0
   keyBinding: []
@@ -58995,7 +58905,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1528989518}
   quantity: 0
   keyBinding: []
@@ -59257,7 +59166,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 580351082}
   quantity: 0
   keyBinding: []
@@ -59827,7 +59735,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -60484,7 +60391,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1892896833}
   quantity: 0
   keyBinding: []
@@ -61285,7 +61191,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -61534,7 +61439,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -61643,7 +61547,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 0, g: 0.43529412, b: 0.54509807, a: 1}
+  m_fontColor: {r: 0, g: 0.7999997, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -61953,7 +61857,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1034733381}
   quantity: 0
   keyBinding: []
@@ -62289,7 +62192,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 498629963}
   quantity: 0
   keyBinding: []
@@ -62831,7 +62733,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1519222982}
   quantity: 0
   keyBinding: []
@@ -62932,7 +62833,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -63342,7 +63242,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 445208543}
   quantity: 0
   keyBinding: []
@@ -64206,7 +64105,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -64463,7 +64361,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -64566,7 +64463,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 815529288}
   quantity: 0
   keyBinding: []
@@ -64900,7 +64796,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -65236,7 +65131,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1943250293}
   quantity: 0
   keyBinding: []
@@ -65337,7 +65231,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -65747,7 +65640,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 232609446}
   quantity: 0
   keyBinding: []
@@ -66162,7 +66054,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 2107366764}
   quantity: 0
   keyBinding: []
@@ -66424,7 +66315,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 2130804721}
   quantity: 0
   keyBinding: []
@@ -67057,7 +66947,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 802845788}
   quantity: 0
   keyBinding: []
@@ -67160,7 +67049,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1691231762}
   quantity: 0
   keyBinding: []
@@ -67826,7 +67714,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1969815902}
   quantity: 0
   keyBinding: []
@@ -67882,7 +67769,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831932026}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -67954,7 +67841,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -69569,7 +69455,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -69781,7 +69666,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878793430}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -70009,7 +69894,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1136950178}
   quantity: 0
   keyBinding: []
@@ -70420,7 +70304,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 462414182}
   quantity: 0
   keyBinding: []
@@ -70753,7 +70636,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 8543347}
   quantity: 0
   keyBinding: []
@@ -70856,7 +70738,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 890393791}
   quantity: 0
   keyBinding: []
@@ -70959,7 +70840,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1399818539}
   quantity: 0
   keyBinding: []
@@ -71403,7 +71283,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -73771,7 +73650,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1968769758}
   quantity: 0
   keyBinding: []
@@ -74483,7 +74361,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -74658,7 +74535,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -74918,7 +74794,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -75402,7 +75277,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1742437862}
   quantity: 0
   keyBinding: []
@@ -75503,7 +75377,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -75606,7 +75479,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 852953078}
   quantity: 0
   keyBinding: []
@@ -75868,7 +75740,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1619453026}
   quantity: 0
   keyBinding: []
@@ -77447,7 +77318,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 297180169}
   quantity: 0
   keyBinding: []
@@ -77548,7 +77418,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -78043,7 +77912,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 160088259}
   quantity: 0
   keyBinding: []
@@ -78507,7 +78375,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -79014,7 +78881,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -79433,7 +79299,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -80003,7 +79868,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 1842039881}
   quantity: 0
   keyBinding: []
@@ -80104,7 +79968,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 0}
   quantity: 0
   keyBinding: []
@@ -80523,7 +80386,6 @@ MonoBehaviour:
     bindingKey: 
     bindingKeyAlt: 
     suit: 0
-  keyCode: 
   bindIcon: {fileID: 24934572}
   quantity: 0
   keyBinding: []

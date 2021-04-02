@@ -18,6 +18,7 @@ public class Dart : MonoBehaviour
         //rb = GetComponent<Rigidbody2D>();
     	rb.velocity = transform.right * speed;
         animator = GetComponent<Animator>();
+        this.transform.parent = null;
 
     }
 

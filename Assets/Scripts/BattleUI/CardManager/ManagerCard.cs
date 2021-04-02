@@ -52,16 +52,16 @@ public class ManagerCard
     public void Load()
     {
         // loads icons in containing card
-        Debug.Log("Loading Asset at path: " + this.iconPath);
+        //Debug.Log("Loading Asset at path: " + this.iconPath);
         card.icon = (Sprite)UnityEditor.AssetDatabase.LoadAssetAtPath(this.iconPath, typeof(Sprite));
-        Debug.Log("Card Icon: " + card.icon);
+        //Debug.Log("Card Icon: " + card.icon);
     }
 
     public void UpdateIconPath()
     {
         if (this.card.icon != null) {
             iconPath = UnityEditor.AssetDatabase.GetAssetPath(this.card.icon);
-            Debug.Log("Asset Path: " + iconPath);
+            //Debug.Log("Asset Path: " + iconPath);
         }
     }
 }
